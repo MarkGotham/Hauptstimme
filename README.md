@@ -41,11 +41,11 @@ Works
 (to appear soon, others to follow after):
 
 - Brahms, Johannes:
- - 4 symphonies,
-   - 16 movements
+  - 4 symphonies,
+    - 16 movements
 - Beach, Amy:
   - 1 symphony, the 'Gaelic',
-   - 4 movements
+    - 4 movements
 
 Files:
 - `score.mscz`: The annotated MuseScore file. Edit this file.
@@ -61,8 +61,8 @@ Many thanks to:
 - Deutsche Telekom for funding part of this work in the context of the 'Beethoven X' project
 - Fellow 'Beethoven X' project team members for discussions.
 - Annotators 
- - On the 'Beethoven X' project, including Nicolai Böhlefeld and many others.
- - At Cornell, Eastman, and TU Dortmund and elsewhere
+  - On the 'Beethoven X' project, including Nicolai Böhlefeld and many others.
+  - At Cornell, Eastman, and TU Dortmund and elsewhere
 - MuseScore users for transcribing scores and making them freely available under the CCO licence:
- - Jay W: [Brahms Symphonies](https://musescore.com/user/43726/sets/5150330)
- - Mike320: [Beach Symphony](https://musescore.com/user/6105546/sets/4187216)
+  - Jay W: [Brahms Symphonies](https://musescore.com/user/43726/sets/5150330)
+  - Mike320: [Beach Symphony](https://musescore.com/user/6105546/sets/4187216)
