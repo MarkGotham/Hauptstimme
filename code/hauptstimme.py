@@ -227,7 +227,8 @@ class ScoreThemeAnnotation:
             return
 
         else:
-            with open(outPath + "annotations.csv", "w") as f:
+            pathToAnnotation = os.path.join(outPath, "annotations.csv")
+            with open(pathToAnnotation, "w") as f:
                 f.write(",".join(headers) + "\n")
                 for annotationDict in self.orderedAnnotationsList:
                     annotationDict["beat"] = intBeat(annotationDict["beat"])
