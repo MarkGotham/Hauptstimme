@@ -53,7 +53,7 @@ Files:
 - `annotations.csv`: The bar, beat, theme label and instrument of each annotation.
 - `melody.mxl` these melody segments stitched together in one single-stave files
 
-Again, please see [fourscoreandmore for images and more](https://fourscoreandmore.org/haupstimme/).
+Again, please see [fourscoreandmore for images and more](https://fourscoreandmore.org/hauptstimme/).
 
 ## Acknowledgements
 

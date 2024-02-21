@@ -640,7 +640,7 @@ def get_corpus_files(
 def updateAll(replace: bool = True) -> None:
     """
     Update the tabular and melody scores for all source files in the corpus.
-    @param replace If true and there is already an "annotations.csv" file in this
+    @param replace: If true and there is already an "annotations.csv" file in this
         directory, then replace it; otherwise continue.
     """
     for f in get_corpus_files():
