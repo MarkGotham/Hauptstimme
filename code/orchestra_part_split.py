@@ -33,7 +33,7 @@ For details of included vs not included functionality, see `split_part`.
 
 import copy
 
-from music21 import converter, instrument, key, layout, stream
+from music21 import converter, instrument, key, layout, pitch, stream
 from pathlib import Path, PurePath
 
 
@@ -86,7 +86,7 @@ def split_part(
             pitches = n.pitches
             for i in range(1, len(pitches)):
                 n.remove(pitches[i])  # remove pitch 2 to n
-        if n.lyric:
+        if n.lyric:  # should all be duplicates in this expansion.
             print(f"*** removing lyric {n.lyric} from {new_part_2.partName}, measure {n.measureNumber}")
             n.lyric = None
 
@@ -105,18 +105,22 @@ def split_part(
 
     if handle_part_name:
         i = instrument.fromString(p.partName)
-        abbrev = i.instrumentAbbreviation
-        new_part_1.partName = i.instrumentName + " 1"  # almost all cases, manual change needed for horns 3-4.
-        new_part_2.partName = i.instrumentName + " 2"
-        new_part_1.partAbbreviation = abbrev + " 1"
-        new_part_2.partAbbreviation = abbrev + " 2"
+        trans = ""
+        if i.transposition:  # Lead with "Bb Clarinet" to help MuseScore's bad instrument recognition algorithm.
+            trans = pitch.Pitch("C").transpose(i.transposition).name.replace("-", "b")
+        # NB: 1-2 numbering works in almost all cases; manual change needed for the occasional horns 3-4.
+        new_part_1.partName = f"{trans} {i.classes[0]} 1"
+        new_part_2.partName = f"{trans} {i.classes[0]} 2"
+        new_part_1.partAbbreviation = i.instrumentAbbreviation + " 1"
+        new_part_2.partAbbreviation = i.instrumentAbbreviation + " 2"
 
     return new_part_1, new_part_2
 
 
 def process_one_score(
     path: Path = REPO_PATH / "test",
-    file_name: str = "score.mxl",
+    file_name_in: str = "split_test_score_in.mxl",
+    file_name_out: str | None = None,
 ) -> None:
     """
     Take an orchestral score,
@@ -125,7 +129,7 @@ def process_one_score(
     e.g., flute but not violin),
     and run `split_part` on them to return an expanded score.
     """
-    score = converter.parse(path / file_name)
+    score = converter.parse(path / file_name_in)
 
     for p in score.parts:
         i = p.getInstrument(returnDefault=False)
@@ -159,18 +163,19 @@ def process_one_score(
     # ^^^ sic, movementName also symphony due to MuseScore display defaults
     score.metadata.movementNumber = path_parts[2]
 
-    try:
-        file_name = "_".join(
-            [
-                path_parts[0].split(",")[0],  # "<Lastname>"
-                path_parts[1].split(",_")[1],  # "Op.<number>"
-                path_parts[2]  # E.g., "<Mvt number>"
-            ]
-        ) + ".mxl"
-    except:
-        file_name = "test.mxl"
+    if not file_name_out:
+        try:
+            file_name_out = "_".join(
+                [
+                    path_parts[0].split(",")[0],  # "<Lastname>"
+                    path_parts[1].split(",_")[1],  # "Op.<number>"
+                    path_parts[2]  # E.g., "<Mvt number>"
+                ]
+            ) + ".mxl"
+        except:
+            file_name_out = "test.mxl"
 
-    score.write("mxl", path / file_name)
+    score.write("mxl", path / file_name_out)
 
 
 def transposition_check(p: stream.Part) -> None:
@@ -209,20 +214,18 @@ def clean_up(s: stream.Score):
     """
     layouts = s.recurse().getElementsByClass(layout.ScoreLayout)
     for l in layouts:
-        print("1, ", l)
         s.remove(l)
 
     for item in s.recurse():  # recurse needed? or top level only?
         if "layout" in item.classes:
-            print("2, ", item)
             s.remove(item)
         elif "Note" in item.classes:
             item.stemDirection = "unspecified"
         elif "Slur" in item.classes:
             item.placement = None
 
-    # for n in s.recurse().notes:
-    #     n.stemDirection = "unspecified"
+    for n in s.recurse().notes:
+        n.stemDirection = "unspecified"
 
     return s
 
