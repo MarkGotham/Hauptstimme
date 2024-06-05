@@ -66,15 +66,14 @@ class ScoreThemeAnnotation:
 
     def __init__(
             self,
-            in_path: Path,
-            file_name: str,
+            path_to_score: Path,
             part_for_template: int | str | instrument.Instrument | None = instrument.Violin(),
             out_format: str = "mxl",
             restrictions: list | str | None = None
     ):
 
-        path_to_score = in_path / file_name
-        self.score = converter.parse(path_to_score).toSoundingPitch()  # NB transpose
+        self.path_to_score = path_to_score
+        self.score = converter.parse(self.path_to_score).toSoundingPitch()  # NB transpose
         self.check_transposed()
 
         self.part_for_template = part_for_template
@@ -118,8 +117,11 @@ class ScoreThemeAnnotation:
 
             partName = this_part.partName
             if simplify_part_name:
-                partName = instrument.fromString(partName).instrumentAbbreviation
-                # NB: may wish to preserve violin I vs II
+                try:
+                    partName = instrument.fromString(partName).instrumentAbbreviation
+                except:
+                    pass  # No sense in crashing the whole thing for this.
+                    # NB: may wish to preserve violin I vs II
 
             if where == "lyric":
                 self.annotationsFromLyric(this_part, partName, partCount)
@@ -132,7 +134,7 @@ class ScoreThemeAnnotation:
             partCount += 1
 
         print(f"Done: retrieved {len(self.orderedAnnotationsList)} annotations")
-        self.orderedAnnotationsList.sort(key=lambda x: x["offsetInH"])
+        self.orderedAnnotationsList.sort(key=lambda x: x["qstamp"])
         self.setAnnotationEnds()
 
     def annotationsFromLyric(
@@ -157,11 +159,11 @@ class ScoreThemeAnnotation:
                                "partName": partName,
                                "partNum": partCount,
                                "label": n.lyric,
-                               "offsetInH": n.getOffsetInHierarchy(this_part),
+                               "qstamp": n.getOffsetInHierarchy(this_part),
                                "clef": n.getContextByClass("Clef"),
                                "voice": 0}  # TODO handle all as extension of the note class?
-                if n.getContextByClass("Voice"):
-                    segmentData["voice"] = n.getContextByClass("Voice").id  # NB not number
+                # if n.getContextByClass("Voice"):  # No voices. Running on one part per stave scores.
+                #     segmentData["voice"] = n.getContextByClass("Voice").id  # NB not number
 
                 self.orderedAnnotationsList.append(segmentData)
 
@@ -169,9 +171,10 @@ class ScoreThemeAnnotation:
             self, this_part: stream.Part, part_name, part_count):
         """
         See also getAnnotationsFromLyrics().
-        This is the equivalent method for getting annotations from text expressions.
+        This is the equivalent method for getting annotations from text expressions
+        (`expressions.TextExpression`).
         """
-        for te in this_part.getElementsByClass(expressions.TextExpression):
+        for te in this_part.recurse().getElementsByClass(expressions.TextExpression):
             if self.restrictions and not meets_restrictions(str(te)):
                 print(f"Excluding invalid annotation: {te}")
                 continue
@@ -182,8 +185,8 @@ class ScoreThemeAnnotation:
                            "beat": te.beat,
                            "partName": part_name,
                            "partNum": part_count,
-                           "label": te,
-                           "offsetInH": te.getOffsetInHierarchy(this_part),
+                           "label": te.content.replace(",", ""),  # TODO cut any commas to avoid csv errors.
+                           "qstamp": te.getOffsetInHierarchy(this_part),
                            "clef": te.getContextByClass("Clef"),
                            "voice": 0}  # TODO handle all as extension of the note class?
 
@@ -192,7 +195,7 @@ class ScoreThemeAnnotation:
         part_count += 1
 
         print(f"Done: {len(self.orderedAnnotationsList)} annotations")
-        self.orderedAnnotationsList.sort(key=lambda x: x["offsetInH"])
+        self.orderedAnnotationsList.sort(key=lambda x: x["qstamp"])
 
         if len(self.orderedAnnotationsList) == 0:  # No annotations, so nothing to sort.
             return
@@ -212,14 +215,14 @@ class ScoreThemeAnnotation:
 
             thisEntry["endMeasure"] = nextEntry["measure"]
             thisEntry["endOffset"] = nextEntry["offset"]  # Not to be uses for comparison (often 0)
-            thisEntry["endOffsetInH"] = nextEntry["offsetInH"]
+            thisEntry["endqstamp"] = nextEntry["qstamp"]
 
         # Special case of last melody entry.
         lastMeasure = self.score.parts[0].getElementsByClass("Measure")[-1]
         lastEntry = self.orderedAnnotationsList[-1]
         lastEntry["endMeasure"] = lastMeasure.measureNumber
         lastEntry["endOffset"] = 50  # Fake number, longer than any real bar
-        lastEntry["endOffsetInH"] = lastEntry["offsetInH"] + 10000  # Same, fake
+        lastEntry["endqstamp"] = lastEntry["qstamp"] + 10000  # Same, fake
 
     def writeAnalysis(
             self,
@@ -231,7 +234,7 @@ class ScoreThemeAnnotation:
         """
 
         if headers is None:
-            headers = ["measure", "beat", "label", "partName", "partNum"]
+            headers = ["qstamp", "measure", "beat", "label", "partName", "partNum"]
 
         if len(self.orderedAnnotationsList) == 0:
             print(f"Fail: no annotations.")
@@ -239,8 +242,8 @@ class ScoreThemeAnnotation:
 
         else:
             if not out_path:
-                out_path = self.in_path
-            pathToAnnotation = out_path / "annotations.csv"
+                out_path = self.path_to_score.parent
+            pathToAnnotation = out_path / f"{self.path_to_score.stem}_annotations.csv"
             with open(pathToAnnotation, "w") as f:
                 f.write(",".join(headers) + "\n")
                 for annotationDict in self.orderedAnnotationsList:
@@ -258,7 +261,7 @@ class ScoreThemeAnnotation:
         and not "filling with rests",
         
         Uses measure information to handle voices,
-        then offsetInH for end comparison.
+        then qstamp for end comparison.
         
         The default partForTemplate is the violin.
         This is settable at the class init with any of the following:
@@ -288,7 +291,7 @@ class ScoreThemeAnnotation:
                 # Both constraints:
                 self.transferNotes(firstmeasure_num,
                                    start_offset_constraint=thisEntry["offset"],
-                                   end_offset_constraint=thisEntry["endOffsetInH"],
+                                   end_offset_constraint=thisEntry["endqstamp"],
                                    clef_also=True,
                                    voice=thisEntry["voice"])
 
@@ -308,7 +311,7 @@ class ScoreThemeAnnotation:
 
                 # Last measure, end constraint only
                 self.transferNotes(lastmeasure_num,
-                                   end_offset_constraint=thisEntry["endOffsetInH"],
+                                   end_offset_constraint=thisEntry["endqstamp"],
                                    voice=thisEntry["voice"])
 
         # self.melody_part.makeRests(fillGaps=True, in_place=True, hideRests=False)
@@ -379,11 +382,11 @@ class ScoreThemeAnnotation:
                 continue
 
             if end_offset_constraint:
-                noteOffsetInH = n.getOffsetInHierarchy(self.transfer_part)
-                if noteOffsetInH < end_offset_constraint:  # Sic not <=
-                    if noteOffsetInH + n.quarterLength > end_offset_constraint:
+                noteqstamp = n.getOffsetInHierarchy(self.transfer_part)
+                if noteqstamp < end_offset_constraint:  # Sic not <=
+                    if noteqstamp + n.quarterLength > end_offset_constraint:
                         # Overlapping, so shorten duration:
-                        n.quarterLength = end_offset_constraint - noteOffsetInH
+                        n.quarterLength = end_offset_constraint - noteqstamp
                     # Insert, shortened where necessary
                     self.melody_part.measure(measure_num).insert(n.offset, n)
                 continue
@@ -433,15 +436,20 @@ class ScoreThemeAnnotation:
                 self.melody_part.remove(x)
             if "Note" in x.classes:
                 x.stemDirection = None  # equivalent to "unspecified"
+            # if "Beam" in x.classes:  # Alternative to the below, if special case handling. note.beam.
+
+        self.melody_part.makeBeams(inPlace=True)
 
         self.cleared_formatting = True
 
     def writeMelodyScore(
             self,
             out_path: Path | None,
-            clearFormatting=True,
-            insert_partLabels=True,
-            other_part=False):
+            clearFormatting: bool = True,
+            insert_partLabels: bool = True,
+            other_part: bool = False,
+            bass_part: bool = False
+    ):
         """
         Writes the final melody part (made using makeMelody_part).
         Call directly to both make and write.
@@ -464,29 +472,39 @@ class ScoreThemeAnnotation:
                 self.melody_part.measure(thisEntry["measure"]).insert(thisEntry["offset"], te)
 
         # Metadata: Generic placeholders or from original score
-
-        md = metadata.Metadata()
+        md = self.score.metadata
         melodyScore.insert(0, md)
 
-        md.title = "Melody Score"
-        if self.score.metadata.title:
-            md.title = ": ".join([self.score.metadata.title, md.title])
+        md.movementTitle = "Melody Score"
+        # mvt = PurePath(self.in_path).parts[-2:-1]
 
-        md.composer = "Composer unknown"
-        if self.score.metadata.composer:
-            md.composer = self.score.metadata.composer
+        if not self.score.metadata.composer:
+            md.composer = "Composer unknown"
+            # md.composer = self.score.metadata.composer
 
-        if other_part:  # default False
+        if other_part:  #
             if not self.other_part:
-                self.makeOther_part()
+                self.make_other_part()
             melodyScore.insert(0, self.other_part)
 
+        if bass_part:  #
+            if not self.other_part:
+                self.make_other_part()
+            # Chords. NB counting bottom up. TODO copied from `orchestra_part_split`. Refactor shared.
+            for n in other_part.recurse().notesAndRests:
+                if n.isChord:
+                    pitches = n.pitches
+                    for i in range(len(pitches) - 1):
+                        n.remove(pitches[i])  # remove all pitches except the last (highest) one
+
+            melodyScore.insert(0, other_part)  # altered in place. Ok in all cases. We never need the other part again.
+
         if not out_path:
-            out_path = self.in_path
-        out_path = out_path / f"melody.{self.out_format}"
+            out_path = self.path_to_score.parent
+        out_path = out_path / f"{self.path_to_score.stem}_melody.{self.out_format}"
         melodyScore.write(fmt=self.out_format, fp=out_path)
 
-    def makeOther_part(self):
+    def make_other_part(self):
         """
         Insert a second part:
         currently simply a one-stave synthesis of the full score using chordify.
@@ -590,10 +608,10 @@ def meets_restrictions(
 
 
 def process_one(
-        in_path: Path,
-        in_file: str,
-        out_path_data: Path | None,
-        out_path_score: Path | None,
+        path_to_score: Path,
+        out_path_data: Path | None = None,
+        out_path_score: Path | None = None,
+        where: str = "lyric",
         part_for_template: int | str | instrument.Instrument | None = instrument.Violin(),
 ) -> None:
     """
@@ -601,21 +619,21 @@ def process_one(
     Straightforward realisation with no restrictions, other part, etc.
     """
 
-    info = ScoreThemeAnnotation(in_path, in_file, part_for_template=part_for_template)
-    info.getAnnotations(where="lyric")
+    info = ScoreThemeAnnotation(path_to_score, part_for_template=part_for_template)
+    info.getAnnotations(where=where)
 
     if not out_path_data:
-        out_path_data = in_path
+        out_path_data = path_to_score.parent
     info.writeAnalysis(out_path_data)
 
     if not out_path_score:
-        out_path_score = in_path
+        out_path_score = path_to_score.parent
     info.writeMelodyScore(out_path_score)
 
 
 def get_corpus_files(
     sub_corpus_path: Path = CORPUS_PATH,
-    file_name: str = "score.mxl",
+    file_name: str = "Beach*.mxl",
 ) -> list[Path]:
     """
     Get and return paths to files matching conditions for the given file_name.
@@ -637,19 +655,24 @@ def get_corpus_files(
     return [x for x in sub_corpus_path.rglob(file_name)]
 
 
-def updateAll(replace: bool = True) -> None:
+def updateAll(
+        sub_corpus_path: Path = CORPUS_PATH,
+        replace: bool = True
+) -> None:
     """
     Update the tabular and melody scores for all source files in the corpus.
+    @param sub_corpus_path: The part of the corpus to run on, default to all.
     @param replace: If true and there is already an "annotations.csv" file in this
         directory, then replace it; otherwise continue.
     """
-    for f in get_corpus_files():
+    for f in get_corpus_files(sub_corpus_path):
+        print(f"Processing {f}")
         p = f.parent
         if not replace:
             annotations = p / "annotations.csv"
             if annotations.exists:
                 continue
-        process_one(p, "score.mxl", out_path_data=p, out_path_score=p)
+        process_one(f)
 
 
 # ------------------------------------------------------------------------------
