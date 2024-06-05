@@ -79,13 +79,13 @@ def split_part(
         if n.isChord:
             pitches = n.pitches
             for i in range(len(pitches) - 1):
-                n.remove(pitches[i])  # remove pitch 1 to n-1
+                n.remove(pitches[i])  # remove all pitches except the last (highest) one
 
     for n in new_part_2.recurse().notesAndRests:
         if n.isChord:
             pitches = n.pitches
             for i in range(1, len(pitches)):
-                n.remove(pitches[i])  # remove pitch 2 to n
+                n.remove(pitches[i])  # remove all pitches except the first (lowest) one
         if n.lyric:  # should all be duplicates in this expansion.
             print(f"*** removing lyric {n.lyric} from {new_part_2.partName}, measure {n.measureNumber}")
             n.lyric = None
@@ -162,14 +162,16 @@ def process_one_score(
     score.metadata.movementName = path_parts[1].replace("_", " ")
     # ^^^ sic, movementName also symphony due to MuseScore display defaults
     score.metadata.movementNumber = path_parts[2]
+    score.metadata.opusNumber = path_parts[1].split(",_")[1],  # "Op.<number>", "BWV.242", etc.
+    score.metadata.copyright = "Score: CC0 1.0 Universal; Annotations: CC-By-SA"
 
     if not file_name_out:
         try:
             file_name_out = "_".join(
                 [
-                    path_parts[0].split(",")[0],  # "<Lastname>"
-                    path_parts[1].split(",_")[1],  # "Op.<number>"
-                    path_parts[2]  # E.g., "<Mvt number>"
+                    score.metadata.composer.split(",")[0],  # "<Lastname>"
+                    score.metadata.opusNumber,
+                    score.metadata.movementNumber
                 ]
             ) + ".mxl"
         except:
