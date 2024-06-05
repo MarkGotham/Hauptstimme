@@ -23,7 +23,7 @@ This repo is about that effect, providing
   - Click anywhere else to exit the text entry mode and continue.
   - Rinse and repeat! (Copy'n'paste can be helpful here.)
 
-Please see [this explanation on fourscoreandmore](https://fourscoreandmore.org/haupstimme/) for more details and FAQs.
+Please see [this explanation on fourscoreandmore](https://fourscoreandmore.org/hauptstimme/) for more details and FAQs.
 
 ## Code
 
@@ -37,21 +37,35 @@ Please see [this explanation on fourscoreandmore](https://fourscoreandmore.org/h
 <composer>/<symphony>/<movement>/<files>
 ```
 
-Works
-(to appear soon, others to follow after):
+The full, core corpus consists of c.102 movements:
 
-- Brahms, Johannes:
-  - 4 symphonies,
-    - 16 movements
+- Bach, JS:
+  - B Minor Mass,
+    - 27 movements
+  - Brandenburg Concerto No.3 (BWV 1048)
+    - 3 movements
+  - Brandenburg Concerto No.4 (BWV 1049)
+    - 3 movements
+  - Fuga (Ricercata) a 6 voci, from *The Musical Offering*, BWV 1079, orchestrated by Anton von Webern
+    - 1 movement
 - Beach, Amy:
   - 1 symphony, the 'Gaelic',
     - 4 movements
+- Beethoven
+  - 9 symphonies
+    - 37 movements
+- Brahms, Johannes:
+  - 4 symphonies,
+    - 16 movements
+- Bruckner, Anton:
+  - 1 symphony, the 5th,
+    - 4 movements
 
-Files:
-- `score.mscz`: The annotated MuseScore file. Edit this file.
-- `score.mxl`: A conversion of the `.mscz` file.
-- `annotations.csv`: The bar, beat, theme label and instrument of each annotation.
-- `melody.mxl` these melody segments stitched together in one single-stave files
+All of these cases include the files in the format `<identifier>` plus:
+- `.mscz`: The annotated MuseScore file. Edit this file.
+- `.mxl`: A conversion of the `.mscz` file.
+- `_annotations.csv`: The qstamp, bar, beat, theme label and instrument of each annotation.
+- `_melody.mxl` these melody segments stitched together in one single-stave files
 
 Again, please see [fourscoreandmore for images and more](https://fourscoreandmore.org/hauptstimme/).
 
@@ -62,7 +76,7 @@ Many thanks to:
 - Fellow 'Beethoven X' project team members for discussions.
 - Annotators 
   - On the 'Beethoven X' project, including Nicolai Böhlefeld and many others.
-  - At Cornell, Eastman, and TU Dortmund and elsewhere
-- MuseScore users for transcribing scores and making them freely available under the CCO licence:
+  - At Cornell, Eastman, TU Dortmund, Durham, and elsewhere.
+- MuseScore users for transcribing scores and making them freely available under the CCO licence, notably:
   - Jay W: [Brahms Symphonies](https://musescore.com/user/43726/sets/5150330)
   - Mike320: [Beach Symphony](https://musescore.com/user/6105546/sets/4187216)
