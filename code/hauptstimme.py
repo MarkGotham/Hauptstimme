@@ -48,12 +48,11 @@ from music21 import converter
 from music21 import clef
 from music21 import expressions
 from music21 import instrument
-from music21 import metadata
 from music21 import stream
 
 import re
 
-from . import CORPUS_PATH
+from shared import CORPUS_PATH, get_corpus_files
 
 
 class ScoreThemeAnnotation:
@@ -412,40 +411,10 @@ class ScoreThemeAnnotation:
             self.melody_part.measure(measureNumber).insert(thisOffset, thisClef)
             self.currentClef = thisClef
 
-    def clear_formatting(self):
-        """
-        Clears formatting from orchestral score that would be inappropriate
-        in the melody-only condition.
-        
-        _possibly TODO:
-        - handle this with removeClasses within prepareTemplate.
-        - test cases for each, e.g., prev. issue with page breaks.
-        - slurs and hairpins limited: remove only if crossing Hauptstimme sections?
-        """
-
-        if self.cleared_formatting:
-            return
-
-        if not self.melody_part:
-            self.makeMelody_part()
-
-        for x in self.melody_part.recurse():
-            if any(cls in x.classes for cls in
-                   ["LayoutBase", "_pageLayout", "SystemLayout", "layout", "Slur", "DynamicWedge"]
-                   ):
-                self.melody_part.remove(x)
-            if "Note" in x.classes:
-                x.stemDirection = None  # equivalent to "unspecified"
-            # if "Beam" in x.classes:  # Alternative to the below, if special case handling. note.beam.
-
-        self.melody_part.makeBeams(inPlace=True)
-
-        self.cleared_formatting = True
-
     def writeMelodyScore(
             self,
             out_path: Path | None,
-            clearFormatting: bool = True,
+            clear_formatting: bool = True,
             insert_partLabels: bool = True,
             other_part: bool = False,
             bass_part: bool = False
@@ -458,18 +427,23 @@ class ScoreThemeAnnotation:
         if not self.melody_part:
             self.makeMelody_part()
 
-        if clearFormatting:
-            if not self.cleared_formatting:
-                self.clear_formatting()
-
-        melodyScore = stream.Score()
-        melodyScore.insert(0, self.melody_part)
-
         if insert_partLabels:
             for thisEntry in self.orderedAnnotationsList:
                 te = expressions.TextExpression(thisEntry["partName"])
                 te.placement = "above"
                 self.melody_part.measure(thisEntry["measure"]).insert(thisEntry["offset"], te)
+
+        # Chords. NB counting bottom up. TODO copied from `orchestra_part_split`. Refactor?
+        for n in self.melody_part.recurse().notesAndRests:
+            if n.isChord:
+                pitches = n.pitches
+                for i in range(len(pitches) - 1):
+                    n.remove(pitches[i])  # remove all pitches except the last (highest) one
+
+        melodyScore = stream.Score()
+        if clear_formatting:
+            self.melody_part = clear_part_formatting(self.melody_part)
+        melodyScore.insert(0, self.melody_part)
 
         # Metadata: Generic placeholders or from original score
         md = self.score.metadata
@@ -485,19 +459,25 @@ class ScoreThemeAnnotation:
         if other_part:  #
             if not self.other_part:
                 self.make_other_part()
+
+            if clear_formatting:
+                self.other_part = clear_part_formatting(self.other_part)
             melodyScore.insert(0, self.other_part)
 
         if bass_part:  #
             if not self.other_part:
                 self.make_other_part()
-            # Chords. NB counting bottom up. TODO copied from `orchestra_part_split`. Refactor shared.
-            for n in other_part.recurse().notesAndRests:
+
+            # Chords. NB counting bottom up. TODO copied from `orchestra_part_split`. Refactor?
+            for n in self.other_part.recurse().notesAndRests:
                 if n.isChord:
                     pitches = n.pitches
                     for i in range(len(pitches) - 1):
                         n.remove(pitches[i])  # remove all pitches except the last (highest) one
 
-            melodyScore.insert(0, other_part)  # altered in place. Ok in all cases. We never need the other part again.
+            if clear_formatting:
+                self.other_part = clear_part_formatting(self.other_part)
+            melodyScore.insert(0, self.other_part)
 
         if not out_path:
             out_path = self.path_to_score.parent
@@ -607,6 +587,34 @@ def meets_restrictions(
         raise TypeError("Invalid restrictions type.")
 
 
+def clear_part_formatting(
+        p: stream.Part,
+        classes_to_remove: list | None = None
+) -> stream.Part:
+    """
+    Clears formatting from orchestral score that would be inappropriate
+    in the melody-only condition.
+
+    _possibly TODO:
+    - handle this with removeClasses within prepareTemplate.
+    - test cases for each, e.g., prev. issue with page breaks.
+    - slurs and hairpins limited: remove only if crossing Hauptstimme sections?
+    """
+
+    if classes_to_remove is None:
+        classes_to_remove = ["LayoutBase", "_pageLayout", "SystemLayout", "layout", "Slur", "DynamicWedge"]
+
+    for x in p.recurse():
+        if any(cls in x.classes for cls in classes_to_remove):
+            p.remove(x)
+        if "Note" in x.classes:
+            x.stemDirection = None  # equivalent to "unspecified"
+
+    p.makeBeams(inPlace=True)
+
+    return p
+
+
 def process_one(
         path_to_score: Path,
         out_path_data: Path | None = None,
@@ -629,30 +637,6 @@ def process_one(
     if not out_path_score:
         out_path_score = path_to_score.parent
     info.writeMelodyScore(out_path_score)
-
-
-def get_corpus_files(
-    sub_corpus_path: Path = CORPUS_PATH,
-    file_name: str = "Beach*.mxl",
-) -> list[Path]:
-    """
-    Get and return paths to files matching conditions for the given file_name.
-
-    Args:
-        sub_corpus_path: the sub-corpus to run.
-            Defaults to CORPUS_PATH (all corpora).
-            Accepts any sub-path thereof.
-            Checks ensure both that the path `.exists()` and `.is_relative_to(CORPUS_FOLDER)`
-        file_name (str): select all files matching this file_name. Defaults to "score.mxl".
-        Alternatively, specify either an exact file name or
-        use the wildcard "*" to match patterns, e.g., "*.mxl" for all .mxl files
-
-    Returns: list of file paths.
-    """
-
-    assert sub_corpus_path.is_relative_to(CORPUS_PATH)
-    assert sub_corpus_path.exists()
-    return [x for x in sub_corpus_path.rglob(file_name)]
 
 
 def updateAll(
