@@ -118,8 +118,7 @@ def split_part(
 
 
 def process_one_score(
-    path: Path = REPO_PATH / "test",
-    file_name_in: str = "split_test_score_in.mxl",
+    path_to_score: Path = REPO_PATH / "test" / "split_test_score_in.mxl",
     file_name_out: str | None = None,
 ) -> None:
     """
@@ -129,7 +128,7 @@ def process_one_score(
     e.g., flute but not violin),
     and run `split_part` on them to return an expanded score.
     """
-    score = converter.parse(path / file_name_in)
+    score = converter.parse(path_to_score)
 
     for p in score.parts:
         i = p.getInstrument(returnDefault=False)
@@ -152,17 +151,21 @@ def process_one_score(
             score.insert(0, new2)
         else:
             score.remove(p)
+            # Part name here too, without transposition
+            i = instrument.fromString(p.partName)
+            p.partName = i.classes[0]
+            p.partAbbreviation = i.instrumentAbbreviation
             score.insert(0, p)
 
     score = clean_up(score)
 
-    path_parts = PurePath(path).parts[-3:]
+    path_parts = PurePath(path_to_score.parent).parts[-3:]
     score.metadata.composer = path_parts[0].replace("_", " ")
     score.metadata.title = path_parts[1].replace("_", " ")
     score.metadata.movementName = path_parts[1].replace("_", " ")
     # ^^^ sic, movementName also symphony due to MuseScore display defaults
     score.metadata.movementNumber = path_parts[2]
-    score.metadata.opusNumber = path_parts[1].split(",_")[1],  # "Op.<number>", "BWV.242", etc.
+    score.metadata.opusNumber = path_parts[1].split(",_")[1]  # "Op.<number>", "BWV.242", etc.
     score.metadata.copyright = "Score: CC0 1.0 Universal; Annotations: CC-By-SA"
 
     if not file_name_out:
@@ -177,7 +180,7 @@ def process_one_score(
         except:
             file_name_out = "test.mxl"
 
-    score.write("mxl", path / file_name_out)
+    score.write("mxl", path_to_score.parent / file_name_out)
 
 
 def transposition_check(p: stream.Part) -> None:
