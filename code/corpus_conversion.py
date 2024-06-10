@@ -106,6 +106,47 @@ def prep_conversion_by_composer(
             json.dump(out_data, json_file, indent=4, sort_keys=True)
 
 
+def make_contents():
+    """
+    Make / update a markdown tabular summary of files committed to the corpus,
+    using the path to raw file for direct download.
+    """
+
+    raw = "https://github.com/MarkGotham/Hauptstimme/raw/main/corpus/"
+
+    with open(CORPUS_PATH / "README.md", "w") as f:
+        for x in (
+                "## Corpus contents with direct download links\n",
+                "|composer|collection|movement|score|-|melody|",
+                "|---|---|---|---|---|---|"
+        ):
+            f.write(x + "\n")
+
+        out_info = []
+        for file_path in get_corpus_files(
+                CORPUS_PATH,
+                file_name="*_melody.mxl"
+        ):
+            path_to_dir = file_path.parent
+            path_parts = path_to_dir.parts[-3:]
+            composer, collection, movement = [x.replace("_", " ") for x in path_parts]
+
+            melody = str(path_to_dir).replace(str(CORPUS_PATH), raw)
+            mscz = melody.replace("_melody.mxl", ".mscz")
+            mxl = melody.replace(".mscz", ".mxl")
+
+            out_info.append(
+                "|".join(
+                    [composer, collection, movement, f"[.mscz]({mscz})", f"[.mxl]({mxl})", f"[melody.mxl]({melody})\n"]
+                )
+            )
+
+        out_info.sort()
+        for i in out_info:
+            f.write(i)
+
+
 if __name__ == "__main__":
     for c in composers:
         prep_conversion_by_composer(c)
+    make_contents()
