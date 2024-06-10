@@ -1,0 +1,126 @@
+[
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/03/Bach_BWV.232_03.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/03/Bach_BWV.232_03.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/04/Bach_BWV.232_04.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/04/Bach_BWV.232_04.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/05/Bach_BWV.232_05.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/05/Bach_BWV.232_05.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/02/Bach_BWV.232_02.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/02/Bach_BWV.232_02.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/07a/Bach_BWV.232_07a.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/07a/Bach_BWV.232_07a.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/09a/Bach_BWV.232_09a.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/09a/Bach_BWV.232_09a.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/20/Bach_BWV.232_20.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/20/Bach_BWV.232_20.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/18/Bach_BWV.232_18.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/18/Bach_BWV.232_18.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/11/Bach_BWV.232_11.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/11/Bach_BWV.232_11.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/16/Bach_BWV.232_16.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/16/Bach_BWV.232_16.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/19,21/Bach_BWV.232_19,21.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/19,21/Bach_BWV.232_19,21.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/17/Bach_BWV.232_17.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/17/Bach_BWV.232_17.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/10/Bach_BWV.232_10.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/10/Bach_BWV.232_10.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/08/Bach_BWV.232_08.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/08/Bach_BWV.232_08.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/01/Bach_BWV.232_01.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/01/Bach_BWV.232_01.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/06/Bach_BWV.232_06.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/06/Bach_BWV.232_06.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/07b/Bach_BWV.232_07b.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/07b/Bach_BWV.232_07b.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/09b/Bach_BWV.232_09b.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/09b/Bach_BWV.232_09b.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/23/Bach_BWV.232_23.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/23/Bach_BWV.232_23.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/15/Bach_BWV.232_15.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/15/Bach_BWV.232_15.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/12/Bach_BWV.232_12.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/12/Bach_BWV.232_12.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/13/Bach_BWV.232_13.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/13/Bach_BWV.232_13.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/14/Bach_BWV.232_14.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/14/Bach_BWV.232_14.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/22/Bach_BWV.232_22.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/22/Bach_BWV.232_22.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/Brandenburg_Concerto_No.3,_BWV.1048/1/Bach_BWV.1048_1.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/Brandenburg_Concerto_No.3,_BWV.1048/1/Bach_BWV.1048_1.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/Brandenburg_Concerto_No.3,_BWV.1048/3/Bach_BWV.1048_3.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/Brandenburg_Concerto_No.3,_BWV.1048/3/Bach_BWV.1048_3.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/Brandenburg_Concerto_No.3,_BWV.1048/2/Bach_BWV.1048_2.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/Brandenburg_Concerto_No.3,_BWV.1048/2/Bach_BWV.1048_2.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/Musical_Offering,_BWV.1079/Ricercata/Bach__BWV.1079_Ricercata.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/Musical_Offering,_BWV.1079/Ricercata/Bach__BWV.1079_Ricercata.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/Brandenburg_Concerto_No.4,_BWV.1049/1/Bach_BWV.1049_1.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/Brandenburg_Concerto_No.4,_BWV.1049/1/Bach_BWV.1049_1.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/Brandenburg_Concerto_No.4,_BWV.1049/3/Bach_BWV.1049_3.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/Brandenburg_Concerto_No.4,_BWV.1049/3/Bach_BWV.1049_3.mxl"
+    },
+    {
+        "in": "../corpus/Bach,_Johann_Sebastian/Brandenburg_Concerto_No.4,_BWV.1049/2/Bach_BWV.1049_2.mscz",
+        "out": "../corpus/Bach,_Johann_Sebastian/Brandenburg_Concerto_No.4,_BWV.1049/2/Bach_BWV.1049_2.mxl"
+    }
+]
