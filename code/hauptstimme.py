@@ -43,6 +43,7 @@ Possibly TODO:
 - efficiency throughout ;)
 
 """
+from copy import deepcopy
 from pathlib import Path
 from music21 import converter
 from music21 import clef
@@ -395,21 +396,30 @@ class ScoreThemeAnnotation:
 
         # Clef, after the relevant measure is done.
         if clef_also:
-            thisClef = noteList[0].getContextByClass("Clef")
-            self.possiblyAddClef(thisClef, start_offset_constraint, measure_num)
+            this_clef = deepcopy(noteList[0].getContextByClass("Clef"))
+            self.possiblyAddClef(this_clef, start_offset_constraint, measure_num)
             # Note: start_offset_constraint = offset of the span. Do not use noteList
 
     def possiblyAddClef(
             self,
-            thisClef: clef.Clef,
-            thisOffset: float | int,
-            measureNumber: int):
+            this_clef: clef.Clef,
+            this_offset: float | int,
+            measure_num: int):
         """
         Add clef to melody_part where the context changes (e.g., violin to cello).
+
+        Note on clef class equality:
+        "
+        Two Clefs are equal if
+        their class is the same,
+        their sign is the same,
+        their line is the same and
+        their octaveChange is the same.
+        "
         """
-        if thisClef != self.currentClef:
-            self.melody_part.measure(measureNumber).insert(thisOffset, thisClef)
-            self.currentClef = thisClef
+        if this_clef != self.currentClef:
+            self.melody_part.measure(measure_num).insert(this_offset, this_clef)
+            self.currentClef = this_clef
 
     def writeMelodyScore(
             self,
