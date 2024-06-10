@@ -41,7 +41,10 @@ The full, core corpus consists of c.102 movements:
 
 - Bach, JS:
   - B Minor Mass,
-    - 27 movements
+    - 27 movements (depending on how you count it).
+    - NB the movements numbered here according to NBAII (1–23) are are split by movement ...
+      - ... where possible (e.g., 7a from 7b)
+      - ... not in the case of dovetail (e.g., 4a.-b. as one with double bar line and editorial tempo marking).
   - Brandenburg Concerto No.3 (BWV 1048)
     - 3 movements
   - Brandenburg Concerto No.4 (BWV 1049)
