@@ -80,12 +80,12 @@ class ScoreThemeAnnotation:
         self.out_format = out_format
 
         self.transfer_part = None
-        self.orderedAnnotationsList = None
+        self.ordered_annotations_list = None
         self.melody_part = None
         self.other_part = None
-        self.cleared_formatting = False
-        self.currentClef = "Treble"
+        self.current_clef = "Treble"
         self.restrictions = restrictions
+        self.current_shared_annotation_data = None
 
     def check_transposed(self):
         """
@@ -109,37 +109,39 @@ class ScoreThemeAnnotation:
 
         failMessage = "This tag does not conform to the user specified restrictions for ..."
 
-        self.orderedAnnotationsList = []
+        self.ordered_annotations_list = []
 
-        partCount = 0
+        part_count = 0
 
         for this_part in self.score.parts:
 
-            partName = this_part.partName
+            part_name = this_part.partName
             if simplify_part_name:
                 try:
-                    partName = instrument.fromString(partName).instrumentAbbreviation
+                    part_name = instrument.fromString(part_name).instrumentAbbreviation
                 except:
                     pass  # No sense in crashing the whole thing for this.
                     # NB: may wish to preserve violin I vs II
 
+            self.current_shared_annotation_data = {
+                "part_name": part_name,
+                "part_num": part_count
+            }
             if where == "lyric":
-                self.annotationsFromLyric(this_part, partName, partCount)
+                self.annotations_from_lyrics(this_part)
             elif where == "te":
-                self.annotationsFromTE(this_part, partName, partCount)
+                self.annotations_from_TEs(this_part)
             else:
                 print("`where` invalid: must be `lyric` or `te`. Stopping")
                 return
 
-            partCount += 1
+            part_count += 1
 
-        print(f"Done: retrieved {len(self.orderedAnnotationsList)} annotations")
-        self.orderedAnnotationsList.sort(key=lambda x: x["qstamp"])
+        print(f"Done: retrieved {len(self.ordered_annotations_list)} annotations")
+        self.ordered_annotations_list.sort(key=lambda x: x["qstamp"])
         self.setAnnotationEnds()
 
-    def annotationsFromLyric(
-            self, this_part: stream.Part, partName, partCount):
-
+    def annotations_from_lyrics(self, this_part: stream.Part):
         for n in this_part.recurse().notesAndRests:
 
             if n.lyric:
@@ -152,25 +154,15 @@ class ScoreThemeAnnotation:
                     print(f"Excluding invalid annotation: {n.lyric}")
                     continue
 
-                # if no restrictions, and / or restriction conditions are met:
-                segmentData = {"measure": n.measureNumber,
-                               "offset": n.offset,
-                               "beat": n.beat,
-                               "partName": partName,
-                               "partNum": partCount,
-                               "label": n.lyric,
-                               "qstamp": n.getOffsetInHierarchy(this_part),
-                               "clef": n.getContextByClass("Clef"),
-                               "voice": 0}  # TODO handle all as extension of the note class?
-                # if n.getContextByClass("Voice"):  # No voices. Running on one part per stave scores.
-                #     segmentData["voice"] = n.getContextByClass("Voice").id  # NB not number
+                self.ordered_annotations_list.append(
+                    get_info_from_note_or_TE(n, this_part) | {  # main info x N
+                        "label": n.lyric.replace(",", "")  # label = type specific x 1
+                    } | self.current_shared_annotation_data  # shared x 2
+                )
 
-                self.orderedAnnotationsList.append(segmentData)
-
-    def annotationsFromTE(
-            self, this_part: stream.Part, part_name, part_count):
+    def annotations_from_TEs(self, this_part: stream.Part):
         """
-        See also getAnnotationsFromLyrics().
+        See also `annotations_from_lyrics()`.
         This is the equivalent method for getting annotations from text expressions
         (`expressions.TextExpression`).
         """
@@ -179,39 +171,22 @@ class ScoreThemeAnnotation:
                 print(f"Excluding invalid annotation: {te}")
                 continue
 
-            # if no restrictions, and / or restriction conditions are met:
-            segmentData = {"measure": te.getContextByClass(stream.Measure).number,
-                           "offset": te.offset,
-                           "beat": te.beat,
-                           "partName": part_name,
-                           "partNum": part_count,
-                           "label": te.content.replace(",", ""),  # TODO cut any commas to avoid csv errors.
-                           "qstamp": te.getOffsetInHierarchy(this_part),
-                           "clef": te.getContextByClass("Clef"),
-                           "voice": 0}  # TODO handle all as extension of the note class?
-
-            self.orderedAnnotationsList.append(segmentData)
-
-        part_count += 1
-
-        print(f"Done: {len(self.orderedAnnotationsList)} annotations")
-        self.orderedAnnotationsList.sort(key=lambda x: x["qstamp"])
-
-        if len(self.orderedAnnotationsList) == 0:  # No annotations, so nothing to sort.
-            return
-        else:
-            self.setAnnotationEnds()
+            self.ordered_annotations_list.append(
+                get_info_from_note_or_TE(te, this_part) | {  # main info x N
+                    "label": te.content.replace(",", "")  # label = type specific x 1
+                } | self.current_shared_annotation_data  # shared x 2
+            )
 
     def setAnnotationEnds(self):
         """
-        Having retrieved annotations (getAnnotationsFromLyrics), if there are any, then sort them.
-
-        TODO: more elegant solution
+        Annotations (e.g., `annotations_from_lyrics`)
+        define the starting points;
+        this method defines the ends.
         """
 
-        for index in range(len(self.orderedAnnotationsList) - 1):  # Last entry handled below.
-            thisEntry = self.orderedAnnotationsList[index]
-            nextEntry = self.orderedAnnotationsList[index + 1]
+        for index in range(len(self.ordered_annotations_list) - 1):  # Last entry handled below.
+            thisEntry = self.ordered_annotations_list[index]
+            nextEntry = self.ordered_annotations_list[index + 1]
 
             thisEntry["endMeasure"] = nextEntry["measure"]
             thisEntry["endOffset"] = nextEntry["offset"]  # Not to be uses for comparison (often 0)
@@ -219,7 +194,7 @@ class ScoreThemeAnnotation:
 
         # Special case of last melody entry.
         lastMeasure = self.score.parts[0].getElementsByClass("Measure")[-1]
-        lastEntry = self.orderedAnnotationsList[-1]
+        lastEntry = self.ordered_annotations_list[-1]
         lastEntry["endMeasure"] = lastMeasure.measureNumber
         lastEntry["endOffset"] = 50  # Fake number, longer than any real bar
         lastEntry["endqstamp"] = lastEntry["qstamp"] + 10000  # Same, fake
@@ -230,13 +205,13 @@ class ScoreThemeAnnotation:
             headers: list | None = None
     ):
         """
-        Write the analysis (self.orderedAnnotationsList) information to a csv file.
+        Write the analysis (self.ordered_annotations_list) information to a csv file.
         """
 
         if headers is None:
-            headers = ["qstamp", "measure", "beat", "label", "partName", "partNum"]
+            headers = ["qstamp", "measure", "beat", "measure_fraction", "label", "part_name", "part_num"]
 
-        if len(self.orderedAnnotationsList) == 0:
+        if len(self.ordered_annotations_list) == 0:
             print(f"Fail: no annotations.")
             return
 
@@ -246,7 +221,7 @@ class ScoreThemeAnnotation:
             pathToAnnotation = out_path / f"{self.path_to_score.stem}_annotations.csv"
             with open(pathToAnnotation, "w") as f:
                 f.write(",".join(headers) + "\n")
-                for annotationDict in self.orderedAnnotationsList:
+                for annotationDict in self.ordered_annotations_list:
                     annotationDict["beat"] = intBeat(annotationDict["beat"])
                     line = [str(annotationDict[h]) for h in headers]
                     f.write(",".join(line) + "\n")
@@ -274,13 +249,11 @@ class ScoreThemeAnnotation:
         """
         self.prepareTemplate()
 
-        self.currentClef = self.melody_part[clef.Clef].first()
+        self.current_clef = self.melody_part[clef.Clef].first()
 
-        for thisEntry in self.orderedAnnotationsList:
+        for thisEntry in self.ordered_annotations_list:
 
-            pNum = thisEntry["partNum"]
-
-            self.transfer_part = self.score.parts[pNum]
+            self.transfer_part = self.score.parts[thisEntry["part_num"]]
 
             firstmeasure_num = thisEntry["measure"]
             lastmeasure_num = thisEntry["endMeasure"]
@@ -289,30 +262,38 @@ class ScoreThemeAnnotation:
             if firstmeasure_num == lastmeasure_num:
 
                 # Both constraints:
-                self.transferNotes(firstmeasure_num,
-                                   start_offset_constraint=thisEntry["offset"],
-                                   end_offset_constraint=thisEntry["endqstamp"],
-                                   clef_also=True,
-                                   voice=thisEntry["voice"])
+                self.transferNotes(
+                    firstmeasure_num,
+                    start_offset_constraint=thisEntry["offset"],
+                    end_offset_constraint=thisEntry["endqstamp"],
+                    clef_also=True,
+                    # voice=thisEntry["voice"]
+                )
 
             else:  # Entry spans more than one measure:
 
                 # First measure, start constraint only
-                self.transferNotes(firstmeasure_num,
-                                   start_offset_constraint=thisEntry["offset"],
-                                   clef_also=True,
-                                   voice=thisEntry["voice"])
+                self.transferNotes(
+                    firstmeasure_num,
+                    start_offset_constraint=thisEntry["offset"],
+                    clef_also=True,
+                    # voice=thisEntry["voice"]
+                )
 
                 # Middle measures, no constraint
                 # (Does not run in the case of entry spanning 1 or 2 measures only.)
                 for thismeasure_num in range(firstmeasure_num + 1, lastmeasure_num):
-                    self.transferNotes(thismeasure_num,
-                                       voice=thisEntry["voice"])
+                    self.transferNotes(
+                        thismeasure_num,
+                        # voice=thisEntry["voice"]
+                    )
 
                 # Last measure, end constraint only
-                self.transferNotes(lastmeasure_num,
-                                   end_offset_constraint=thisEntry["endqstamp"],
-                                   voice=thisEntry["voice"])
+                self.transferNotes(
+                    lastmeasure_num,
+                    end_offset_constraint=thisEntry["endqstamp"],
+                    # voice=thisEntry["voice"]
+                )
 
         # self.melody_part.makeRests(fillGaps=True, in_place=True, hideRests=False)
         # TODO: currently no effect. Also unnecessary? Any regions that have no active elements.
@@ -417,9 +398,9 @@ class ScoreThemeAnnotation:
         their octaveChange is the same.
         "
         """
-        if this_clef != self.currentClef:
+        if this_clef != self.current_clef:
             self.melody_part.measure(measure_num).insert(this_offset, this_clef)
-            self.currentClef = this_clef
+            self.current_clef = this_clef
 
     def writeMelodyScore(
             self,
@@ -438,8 +419,8 @@ class ScoreThemeAnnotation:
             self.makeMelody_part()
 
         if insert_partLabels:
-            for thisEntry in self.orderedAnnotationsList:
-                te = expressions.TextExpression(thisEntry["partName"])
+            for thisEntry in self.ordered_annotations_list:
+                te = expressions.TextExpression(thisEntry["part_name"])
                 te.placement = "above"
                 self.melody_part.measure(thisEntry["measure"]).insert(thisEntry["offset"], te)
 
@@ -513,6 +494,29 @@ def intBeat(beat):
         return int(beat)
     else:
         return round(float(beat), 2)
+
+
+def get_info_from_note_or_TE(note_or_TE, this_part):
+    return {
+        "measure": note_or_TE.measureNumber,
+        "offset": note_or_TE.offset,
+        "beat": note_or_TE.beat,
+        "measure_fraction": get_measure_fraction(note_or_TE),
+        "qstamp": note_or_TE.getOffsetInHierarchy(this_part),
+        "clef": note_or_TE.getContextByClass(clef.Clef),
+        "voice": note_or_TE.getContextByClass(stream.Voice)
+    }
+
+
+def get_measure_fraction(this_note):
+    """
+    Express beat/offset position in terms of the fraction of the bar to have elapsed.
+    This provides interoperability with 3rd parties like TiLiA and Erlangen.
+    """
+    return round(
+        this_note.offset / this_note.getContextByClass("Measure").duration.quarterLength,
+        3
+    )
 
 
 def get_note_list(
@@ -636,6 +640,7 @@ def process_one(
     Update the tabular and melody scores for one source file.
     Straightforward realisation with no restrictions, other part, etc.
     """
+    print(path_to_score)
 
     info = ScoreThemeAnnotation(path_to_score, part_for_template=part_for_template)
     info.getAnnotations(where=where)
@@ -673,4 +678,5 @@ def updateAll(
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
