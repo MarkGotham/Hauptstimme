@@ -150,7 +150,7 @@ class ScoreThemeAnnotation:
                     print(f"Lyric attached to rest in measure {n.measureNumber}. Ignored.")
                     continue
 
-                if self.restrictions and not meets_restrictions(n.lyric):
+                if self.restrictions and not meets_restrictions(n.lyric, self.restrictions):
                     print(f"Excluding invalid annotation: {n.lyric}")
                     continue
 
@@ -167,8 +167,15 @@ class ScoreThemeAnnotation:
         (`expressions.TextExpression`).
         """
         for te in this_part.recurse().getElementsByClass(expressions.TextExpression):
-            if self.restrictions and not meets_restrictions(str(te)):
-                print(f"Excluding invalid annotation: {te}")
+            if self.restrictions and not meets_restrictions(
+                    str(te.content),
+                    ["a", "b", "c", "d", "e", "f", "g", "h", "i", "tr", "x", "y", "z"]
+                    # self.restrictions  # TODO hard-coded for now due to conflation of TextExpression with tempo
+            ):
+                print(f"Excluding invalid annotation: {te.content}")
+                continue
+            if "tempo" in te.classes:
+                print(f"Excluding apparent tempo marking: {te.content}")
                 continue
 
             self.ordered_annotations_list.append(
