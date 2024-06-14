@@ -35,7 +35,7 @@ import copy
 
 from music21 import converter, instrument, key, layout, pitch, stream, articulations, dynamics
 from pathlib import Path, PurePath
-
+import shared
 
 CODE_PATH = Path(__file__).parent
 REPO_PATH = CODE_PATH.parent
@@ -117,9 +117,9 @@ def split_part(
     return new_part_1, new_part_2
 
 
-def process_one_score(
-    path_to_score: Path = REPO_PATH / "test" / "split_test_score_in.mxl",
-    file_name_out: str | None = None,
+def split_one(
+        path_to_score: Path = REPO_PATH / "test" / "split_test_score_in.mxl",
+        file_name_out: str | None = None,
 ) -> None:
     """
     Take an orchestral score,
@@ -262,7 +262,22 @@ def clean_up(
     return s
 
 
+def split_corpus(
+        sub_corpus_path: Path = REPO_PATH / "corpus",
+) -> None:
+    """
+    Run `split_one` for all sub-corpus files matching the location and name criteria.
+    @param sub_corpus_path: The part of the corpus to run on, default to all.
+    """
+    for f in shared.get_corpus_files(
+            sub_corpus_path,
+            file_name="*.mxl"
+    ):
+        print(f"Processing {f}")
+        split_one(f)
+
+
 # ------------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    process_one_score()
+    split_one()
