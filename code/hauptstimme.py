@@ -167,22 +167,32 @@ class ScoreThemeAnnotation:
         (`expressions.TextExpression`).
         """
         for te in this_part.recurse().getElementsByClass(expressions.TextExpression):
-            if self.restrictions and not meets_restrictions(
-                    str(te.content),
-                    ["a", "b", "c", "d", "e", "f", "g", "h", "i", "tr", "x", "y", "z"]
-                    # self.restrictions  # TODO hard-coded for now due to conflation of TextExpression with tempo
-            ):
-                print(f"Excluding invalid annotation: {te.content}")
-                continue
-            if "tempo" in te.classes:
-                print(f"Excluding apparent tempo marking: {te.content}")
-                continue
 
-            self.ordered_annotations_list.append(
-                get_info_from_note_or_TE(te, this_part) | {  # main info x N
-                    "label": te.content.replace(",", "")  # label = type specific x 1
-                } | self.current_shared_annotation_data  # shared x 2
-            )
+            if self.restrictions is None:
+                raise ValueError(
+                    "TextExpression is often conflated with tempo in conversion,"
+                    "so use at least some restriction when taking annotations from there."
+                )
+
+            if not meets_restrictions(
+                    str(te.content),
+                    self.restrictions
+            ):
+                print("Excluding invalid annotation "
+                      f"{te.content} in b.",
+                      te.getContextByClass(stream.Measure).measureNumber
+                )
+                continue
+            # if "tempo" in te.classes:
+            #     print(f"Excluding apparent tempo marking: {te.content}")
+            #     continue
+            else:
+                print("adding: ", str(te.content))
+                self.ordered_annotations_list.append(
+                    get_info_from_note_or_TE(te, this_part) | {  # main info x N
+                        "label": te.content.replace(",", "")  # label = type specific x 1
+                    } | self.current_shared_annotation_data  # shared x 2
+                )
 
     def setAnnotationEnds(self):
         """
@@ -641,15 +651,21 @@ def process_one(
         out_path_data: Path | None = None,
         out_path_score: Path | None = None,
         where: str = "lyric",
+        restrictions: str | list = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "tr", "x", "y", "z"],
         part_for_template: int | str | instrument.Instrument | None = instrument.Violin(),
 ) -> None:
     """
     Update the tabular and melody scores for one source file.
     Straightforward realisation with no restrictions, other part, etc.
     """
-    print(path_to_score)
+    print("Processing: ", path_to_score)
 
-    info = ScoreThemeAnnotation(path_to_score, part_for_template=part_for_template)
+    info = ScoreThemeAnnotation(
+        path_to_score,
+        restrictions=restrictions,
+        part_for_template=part_for_template
+    )
+
     info.getAnnotations(where=where)
 
     if not out_path_data:
