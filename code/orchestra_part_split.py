@@ -33,7 +33,7 @@ For details of included vs not included functionality, see `split_part`.
 
 import copy
 
-from music21 import converter, instrument, key, layout, pitch, stream
+from music21 import converter, instrument, key, layout, pitch, stream, articulations, dynamics
 from pathlib import Path, PurePath
 
 
@@ -209,28 +209,55 @@ def transposition_check(p: stream.Part) -> None:
         p.getInstrument().transposition = fs
 
 
-def clean_up(s: stream.Score):
+def clean_up(
+        s: stream.Score | str | Path,
+        map_accent_to_sf: bool = False,
+        delete_moderation: bool = True,
+):
     """
     Basic layout clean up on a score.
     Remove all manual style adjustment including stem direction.
 
-    @param s: The Score.
+    TODO Others to consider:
+    Where there’s two dynamics at the same time,
+    delete one given some order of likelihood.
+
+    @param s: The Score, or a path to one.
+    @param map_accent_to_sf: hard-coded functionality for replacing accents with sf
+    @param delete_moderation: remove all cases of mp and mf (rare in specific styles and therefore editorial).
     @return: That same score, cleaned up ;)
     """
+    if type(s) != stream.Score:
+        s = converter.parse(s)
+
     layouts = s.recurse().getElementsByClass(layout.ScoreLayout)
     for l in layouts:
         s.remove(l)
 
     for item in s.recurse():  # recurse needed? or top level only?
         if "layout" in item.classes:
-            s.remove(item)
+            context = item.getContextByClass(stream.Stream)
+            context.remove(item)
         elif "Note" in item.classes:
             item.stemDirection = "unspecified"
         elif "Slur" in item.classes:
             item.placement = None
+        elif "Dynamic" in item.classes and delete_moderation:
+            if item.value in ["mp", "mf"]:
+                context = item.getContextByClass(stream.Stream)
+                context.remove(item)
 
     for n in s.recurse().notes:
         n.stemDirection = "unspecified"
+
+        if n.articulations and map_accent_to_sf:
+            for x in n.articulations:
+                if "Accent" in x.classes:
+                    n.articulations.remove(x)
+
+                    m = n.getContextByClass(stream.Measure)
+                    o = n.offset
+                    m.insert(o, dynamics.Dynamic("sf"))
 
     return s
 
