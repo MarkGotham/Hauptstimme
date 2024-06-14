@@ -99,7 +99,8 @@ class ScoreThemeAnnotation:
     def getAnnotations(
             self,
             simplify_part_name: bool = True,
-            where: str = "lyric"):
+            lyric_not_TE: bool = True
+    ):
         """
         Retrieve manually added annotations from either the lyrics or text expressions.
 
@@ -127,13 +128,10 @@ class ScoreThemeAnnotation:
                 "part_name": part_name,
                 "part_num": part_count
             }
-            if where == "lyric":
+            if lyric_not_TE:  # "lyric":
                 self.annotations_from_lyrics(this_part)
-            elif where == "te":
+            else:  # "te":
                 self.annotations_from_TEs(this_part)
-            else:
-                print("`where` invalid: must be `lyric` or `te`. Stopping")
-                return
 
             part_count += 1
 
@@ -650,7 +648,7 @@ def process_one(
         path_to_score: Path,
         out_path_data: Path | None = None,
         out_path_score: Path | None = None,
-        where: str = "lyric",
+        lyric_not_TE: bool = True,
         restrictions: str | list = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "tr", "x", "y", "z"],
         part_for_template: int | str | instrument.Instrument | None = instrument.Violin(),
 ) -> None:
@@ -666,7 +664,7 @@ def process_one(
         part_for_template=part_for_template
     )
 
-    info.getAnnotations(where=where)
+    info.getAnnotations(lyric_not_TE=lyric_not_TE)
 
     if not out_path_data:
         out_path_data = path_to_score.parent
@@ -679,10 +677,12 @@ def process_one(
 
 def updateAll(
         sub_corpus_path: Path = CORPUS_PATH,
-        replace: bool = True
+        replace: bool = True,
+        lyric_not_TE: bool = True
 ) -> None:
     """
     Update the tabular and melody scores for all source files in the corpus.
+    @param lyric_not_TE: Where are the annotations? True (default) = lyrics; false = text expression.
     @param sub_corpus_path: The part of the corpus to run on, default to all.
     @param replace: If true and there is already an "annotations.csv" file in this
         directory, then replace it; otherwise continue.
@@ -694,7 +694,7 @@ def updateAll(
             annotations = p / "annotations.csv"
             if annotations.exists:
                 continue
-        process_one(f)
+        process_one(f, lyric_not_TE=lyric_not_TE)
 
 
 # ------------------------------------------------------------------------------
