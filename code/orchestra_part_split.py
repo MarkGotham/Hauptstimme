@@ -93,8 +93,8 @@ def split_part(
     # Voices NB counting top down
     for m in new_part_1.getElementsByClass(stream.Measure):
         if m.hasVoices:  # len(m.voices) > 1
-            for i in range(1, len(m.voices)):
-                m.remove(m.voices[i])  # remove voices 2 to n
+            for i in list(range(1, len(m.voices)))[::-1]:
+                m.remove(m.voices[i])  # remove voices n down to 2
             m.flattenUnnecessaryVoices()
 
     for m in new_part_2.getElementsByClass(stream.Measure):
