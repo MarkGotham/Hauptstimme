@@ -7,7 +7,7 @@ CORPUS_PATH = REPO_PATH / "corpus"
 
 def get_corpus_files(
     sub_corpus_path: Path = CORPUS_PATH,
-    file_name: str = "Beach*.mxl",
+    file_name: str = "*.mxl",
 ) -> list[Path]:
     """
     Get and return paths to files matching conditions for the given file_name.
