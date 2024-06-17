@@ -149,7 +149,7 @@ class ScoreThemeAnnotation:
                     continue
 
                 if self.restrictions and not meets_restrictions(n.lyric, self.restrictions):
-                    print(f"Excluding invalid annotation: {n.lyric}")
+                    print(f"Excluding invalid annotation: {n.lyric} in measure {n.measureNumber}")
                     continue
 
                 self.ordered_annotations_list.append(
