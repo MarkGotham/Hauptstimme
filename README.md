@@ -6,24 +6,8 @@ This repo is about that effect, providing
 - a corpus of orchestral scores, with human analysis annotations for where they think the "main theme" is.
 - code for processing this, e.g., for creating a summative "melody score"
 
-## The Annotation Task, in Brief:
-
-- Identify where the 'main' melody is throughout an orchestral movement.
-  - Note: Clearly this is partly a subjective judgement. Do not aim for 'perfection'
-- Name those melodies.
-  - By default, simply use 'a', 'b', 'c' for each successive theme.
-  - If you prefer to use names like 'fate theme' that's fine – just be consistent.
-- Annotate the scores with a 'lyric' text below the start of each new melody in the relevant part, i.e.:
-  - Identify the start of a theme,
-  - Click on a note:
-    - the specific note where the theme starts …
-    - … in the most prominent instrument (e.g., the first violin),
-  - Press Ctrl+L (Windows) or CMD+L (Mac) to insert a 'lyrics text'
-  - Enter the theme label (e.g., 'a' for the first theme you identify) as a lyric.
-  - Click anywhere else to exit the text entry mode and continue.
-  - Rinse and repeat! (Copy'n'paste can be helpful here.)
-
-Please see [this explanation on fourscoreandmore](https://fourscoreandmore.org/hauptstimme/) for more details and FAQs.
+Please see [this explanation on fourscoreandmore](https://fourscoreandmore.org/hauptstimme/)
+for more details on the annotation method and FAQs.
 
 ## Code
 
@@ -80,6 +64,13 @@ Many thanks to:
 - Annotators 
   - On the 'Beethoven X' project, including Nicolai Böhlefeld and many others.
   - At Cornell, Eastman, TU Dortmund, Durham, and elsewhere.
-- MuseScore users for transcribing scores and making them freely available under the CCO licence, notably:
-  - Jay W: [Brahms Symphonies](https://musescore.com/user/43726/sets/5150330)
-  - Mike320: [Beach Symphony](https://musescore.com/user/6105546/sets/4187216)
+- Transcribers in our team, and the wider MuseScore community for making their transcriptions freely available under the CCO licence, notably:
+  
+## Licence 
+
+Scores: CC0 1.0 Universal; Annotations: CC-By-SA.
+
+
+## Citation
+
+To follow ;). Provisionally Martins et al. 2024.
