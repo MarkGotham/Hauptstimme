@@ -22,7 +22,7 @@ Given a score, convert main data to light-weight csv file.
 """
 
 import numpy as np
-from music21 import *
+from music21 import chord, clef, converter, expressions, meter, note, stream, tempo
 import pandas as pd
 import utils
 from collections import Counter
@@ -54,7 +54,7 @@ clef_dict = {
 }
 
 
-def convert_mxml_to_csv(s, output_file_name, qlength=None, use_default_tempo=True):
+def convert_mxml_to_csv(score, output_file_name, qlength=None, use_default_tempo=True):
     """
     Convert mxml -> csv with this format:
     qstamp | bar | beat | instrument1 | instrument2 | instrument3 | ... | instrumentN
@@ -69,8 +69,7 @@ def convert_mxml_to_csv(s, output_file_name, qlength=None, use_default_tempo=Tru
     - r to represent rest
     """
 
-    parts = s.parts.stream()
-    instruments = [part.getInstrument().instrumentName for part in parts.parts]
+    instruments = [part.getInstrument().instrumentName for part in score.parts]
 
     # give each instrument a unique name, where each duplicate is appended with a number, starting from 1
     dup = dict(Counter(instruments))
@@ -83,7 +82,7 @@ def convert_mxml_to_csv(s, output_file_name, qlength=None, use_default_tempo=Tru
     time_sigs = {}
 
     parsed_parts = []
-    for partnum, part in enumerate(parts.parts):
+    for partnum, part in enumerate(score.parts):
         part = part.toSoundingPitch()
 
         instrument_name = part.getInstrument().instrumentName
@@ -222,9 +221,9 @@ def convert_mxml_to_csv(s, output_file_name, qlength=None, use_default_tempo=Tru
         # then get time_offset
         return offset * quarter_length
 
-    curr_ts = time_sigs.get(0.0)
-    curr_bpm = tempos.get(0.0)
-    curr_time_offset = 0.0
+    curr_ts = time_sigs.get(0)
+    curr_bpm = tempos.get(0)
+    curr_time_offset = 0
     for i, row in df.iterrows():
         if row['bar'] in time_sigs:
             curr_ts = time_sigs[row['bar']]
@@ -246,10 +245,7 @@ def convert_mxml_to_csv(s, output_file_name, qlength=None, use_default_tempo=Tru
 
 
 if __name__ == '__main__':
-    filename = 'scores/Brahms_Symphony_1_first_movement.mxl'
-    score = converter.parse(filename).expandRepeats()
-
-    dataframe = convert_mxml_to_csv(score, f"{filename.split('/')[1][:-4]}.csv")
+    file_path = utils.REPO_PATH / "test" / "score.mxl"
+    score = converter.parse(file_path).expandRepeats()
+    dataframe = convert_mxml_to_csv(score, str(file_path).replace(file_path.suffix, ".csv"))
     dataframe = dataframe.set_index('qstamp')
-    print(dataframe)
-    print(dataframe.columns)
