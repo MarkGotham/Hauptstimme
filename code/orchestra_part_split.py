@@ -33,12 +33,9 @@ For details of included vs not included functionality, see `split_part`.
 
 import copy
 
-from music21 import converter, instrument, key, layout, pitch, stream, articulations, dynamics
+from music21 import converter, instrument, key, layout, pitch, stream, dynamics
 from pathlib import Path, PurePath
-import shared
-
-CODE_PATH = Path(__file__).parent
-REPO_PATH = CODE_PATH.parent
+from utils import get_corpus_files, REPO_PATH
 
 
 def split_part(
@@ -269,7 +266,7 @@ def split_corpus(
     Run `split_one` for all sub-corpus files matching the location and name criteria.
     @param sub_corpus_path: The part of the corpus to run on, default to all.
     """
-    for f in shared.get_corpus_files(
+    for f in get_corpus_files(
             sub_corpus_path,
             file_name="*.mxl"
     ):

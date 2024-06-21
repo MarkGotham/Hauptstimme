@@ -53,7 +53,7 @@ from music21 import stream
 
 import re
 
-from shared import CORPUS_PATH, get_corpus_files
+from utils import CORPUS_PATH, get_corpus_files
 
 
 class ScoreThemeAnnotation:
