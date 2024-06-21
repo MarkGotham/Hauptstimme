@@ -36,31 +36,6 @@ pd.options.display.width = 200
 pd.set_option('display.expand_frame_repr', False)
 
 
-"""
-Dictionary of valid clefs as below.
-
-string family 
-    Violin: treble 
-    Viola: treble, alto 
-    Cello (violoncello): treble, tenor, bass 
-    Double bass: bass, bass8vb 
-
-woodwind family 
-    Flute: treble 
-    Oboe: treble 
-    Clarinet: treble (yes, exclusively, even when E3) 
-    Bassoon: bass 
-
-brass family 
-    Trumpet: treble 
-    French horn: treble, bass 
-    Trombone: tenor, bass 
-    Tuba: bass 
-
-percussion family 
-    Only timpani matter for us: bass clef 
-"""
-
 clef_dict = {
     "Violin": [clef.TrebleClef(), clef.Treble8vaClef()],
     "Viola": [clef.TrebleClef(), clef.AltoClef()],
@@ -70,13 +45,13 @@ clef_dict = {
     "Flute": [clef.TrebleClef(), clef.Treble8vaClef()],
     "Oboe": [clef.TrebleClef()],
     "Clarinet": [clef.TrebleClef()],
-    "Bassoon": [clef.BassClef()],
-    "Contrabassoon": [clef.BassClef()],
+    "Bassoon": [clef.BassClef(), clef.TenorClef()],
+    "Contrabassoon": [clef.BassClef(), clef.Bass8vbClef()],
 
     "Trumpet": [clef.TrebleClef()],
     "Horn": [clef.TrebleClef(), clef.BassClef()],
     "Trombone": [clef.TenorClef(), clef.BassClef()],
-    "Tuba": [clef.BassClef()],
+    "Tuba": [clef.BassClef(), clef.Bass8vbClef()],
 
     "Timpani": [clef.BassClef()]
 }
