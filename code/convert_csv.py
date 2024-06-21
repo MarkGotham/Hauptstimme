@@ -1,3 +1,27 @@
+"""
+NAME
+===============================
+Convert CSV (convert_csv.py)
+
+
+BY
+===============================
+JamesHLS, 2024
+
+
+LICENCE:
+===============================
+Creative Commons Attribution-ShareAlike 4.0 International License
+https://creativecommons.org/licenses/by-sa/4.0/
+
+
+ABOUT:
+===============================
+Given a score, convert main data to light-weight csv file.
+
+"""
+
+
 import numpy as np
 from music21 import *
 import pandas as pd
@@ -56,7 +80,6 @@ clef_dict = {
 
     "Timpani": [clef.BassClef()]
 }
-
 
 
 def convert_mxml_to_csv(s, output_file_name, qlength=None, use_default_tempo=True):
