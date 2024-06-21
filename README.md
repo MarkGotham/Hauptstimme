@@ -52,10 +52,11 @@ Again, please see [fourscoreandmore for images and more](https://fourscoreandmor
 
 ## Score design choices
 
-- In the `.mss` style:
-  - Justify full page, max staff size to fill (but not overfill). 
+- Minimal deviations from MuseScore defaults
+- Systematic changes as defined in the `.mss` style sheet.
+  - Justify full page.
   - All present instrument showing at all time (none hidden).
-  - Import the `.mss` style file in-app or with the command line:
+  - Note: Import the `.mss` style file in-app or with the command line:
     - `mscore <before_file_name>.mscz --style <style-file-name>.mss -o <after_file_name>.mscz`.
 - Every part on a separate stave (e.g., Flute 1 separate from Flute 2) for clarity and interoperability.
   - This partly through the `orchestra_part_split` functionality.
@@ -64,6 +65,10 @@ Again, please see [fourscoreandmore for images and more](https://fourscoreandmor
   - Full part names in the format `<transposition where relevant> <instrument> <number>`, e.g., `A Clarinet 2`.
   - Abbreviated names without transposition or period character, e.g., `Cl 2`.
   - String instruments in the singular e.g., `Violin 1` (as in 'the violin 1 part')
+- Stave size. Manually set for each work to:
+	- attempt approximate consistency across multi-movement works
+	- use the largest stave size that fits within the page, including the large lyric annotations.
+
 
 ## Acknowledgements
 
