@@ -9,12 +9,6 @@ This repo is about that effect, providing
 Please see [this explanation on fourscoreandmore](https://fourscoreandmore.org/hauptstimme/)
 for more details on the annotation method and FAQs.
 
-## Code
-
-- [hauptstimme.py](./code/hauptstimme.py): the main module for extracting and processing annotations
-- [Large_red_lyrics.mss](./code/Large_red_lyrics.mss): a style sheet which makes all the lyric annotations large (font size 30) and in colour (red). To apply this style to a file in the corpus, put the `.mss` file in your MuseScore style folder and run 
-`mscore <before_file_name>.mscz --style large_red_lyrics.mss -o <after_file_name>.mscz`.
-
 ## Corpus Directory
 
 ```
@@ -56,6 +50,21 @@ All of these cases include the files in the format `<identifier>` plus:
 
 Again, please see [fourscoreandmore for images and more](https://fourscoreandmore.org/hauptstimme/).
 
+## Score design choices
+
+- In the `.mss` style:
+  - Justify full page, max staff size to fill (but not overfill). 
+  - All present instrument showing at all time (none hidden).
+  - Import the `.mss` style file in-app or with the command line:
+    - `mscore <before_file_name>.mscz --style <style-file-name>.mss -o <after_file_name>.mscz`.
+- Every part on a separate stave (e.g., Flute 1 separate from Flute 2) for clarity and interoperability.
+  - This partly through the `orchestra_part_split` functionality.
+  - Connect bar lines through those like instruments e.g., Flutes 1 and 2; Horns 1, 2, and 3.
+- Part names:
+  - Full part names in the format `<transposition where relevant> <instrument> <number>`, e.g., `A Clarinet 2`.
+  - Abbreviated names without transposition or period character, e.g., `Cl 2`.
+  - String instruments in the singular e.g., `Violin 1` (as in 'the violin 1 part')
+
 ## Acknowledgements
 
 Many thanks to:
@@ -68,7 +77,9 @@ Many thanks to:
   
 ## Licence 
 
-Scores: CC0 1.0 Universal; Annotations: CC-By-SA.
+- Scores: CC0 1.0 Universal
+- Annotations: CC-By-SA
+- Code: CC-By-SA
 
 
 ## Citation
