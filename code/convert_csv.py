@@ -54,7 +54,7 @@ clef_dict = {
 }
 
 
-def convert_mxml_to_csv(score, output_file_name, qlength=None, use_default_tempo=True):
+def convert_mxml_to_csv(score, output_file_name, qlength=None, use_default_tempo=True, output_invalid_clefs=False):
     """
     Convert mxml -> csv with this format:
     qstamp | bar | beat | instrument1 | instrument2 | instrument3 | ... | instrumentN
@@ -82,6 +82,13 @@ def convert_mxml_to_csv(score, output_file_name, qlength=None, use_default_tempo
     time_sigs = {}
 
     parsed_parts = []
+
+    invalid_clefs_dict = {
+        'instrument': [],
+        'bar': [],
+        'clef': []
+    }
+
     for partnum, part in enumerate(score.parts):
         part = part.toSoundingPitch()
 
@@ -159,6 +166,13 @@ def convert_mxml_to_csv(score, output_file_name, qlength=None, use_default_tempo
                         accepted = n in accepted_clefs
                         if not accepted:
                             print(f"Invalid clef {n} found in bar {n.measureNumber}")
+
+                            # For invalid clefs csv file
+                            if output_invalid_clefs:
+                                invalid_clefs_dict['instrument'].append(instrument_name)
+                                invalid_clefs_dict['bar'].append(n.measureNumber)
+                                invalid_clefs_dict['clef'].append(n.name)
+
                     continue
                 else:
                     continue
@@ -240,12 +254,18 @@ def convert_mxml_to_csv(score, output_file_name, qlength=None, use_default_tempo
     # time_offset column: in seconds
     df.ffill(inplace=True)  # fill NaNs with previous value
     df.to_csv(output_file_name, index=False)
-    print("saved to", output_file_name)
+    print("Score saved to", output_file_name)
+
+    if output_invalid_clefs:
+        invalid_clefs_df = pd.DataFrame(invalid_clefs_dict)
+        invalid_clefs_df.to_csv(output_file_name.replace(".csv", "_invalid_clefs.csv"), index=False)
+        print("Invalid clefs saved to", output_file_name.replace(".csv", "_invalid_clefs.csv"))
+
     return df
 
 
 if __name__ == '__main__':
-    file_path = utils.REPO_PATH / "test" / "score.mxl"
+    file_path = utils.REPO_PATH / "test" / "score_clef.mxl"
     score = converter.parse(file_path).expandRepeats()
-    dataframe = convert_mxml_to_csv(score, str(file_path).replace(file_path.suffix, ".csv"))
+    dataframe = convert_mxml_to_csv(score, str(file_path).replace(file_path.suffix, ".csv"), output_invalid_clefs=True)
     dataframe = dataframe.set_index('qstamp')
