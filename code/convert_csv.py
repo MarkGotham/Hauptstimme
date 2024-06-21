@@ -21,20 +21,17 @@ Given a score, convert main data to light-weight csv file.
 
 """
 
-
 import numpy as np
 from music21 import *
 import pandas as pd
 import utils
 from collections import Counter
 
-
 pd.options.display.max_columns = 100
 pd.options.display.max_rows = 100
 pd.options.display.max_colwidth = 100
 pd.options.display.width = 200
 pd.set_option('display.expand_frame_repr', False)
-
 
 clef_dict = {
     "Violin": [clef.TrebleClef(), clef.Treble8vaClef()],
@@ -74,19 +71,16 @@ def convert_mxml_to_csv(s, output_file_name, qlength=None, use_default_tempo=Tru
 
     parts = s.parts.stream()
     instruments = [part.getInstrument().instrumentName for part in parts.parts]
-    
+
     # give each instrument a unique name, where each duplicate is appended with a number, starting from 1
     dup = dict(Counter(instruments))
     uniques = np.unique(instruments)
-    instruments = [key if i == 0 else key + " " + str(i+1) for key in uniques for i in range(dup[key])]
-
-            
+    instruments = [key if i == 0 else key + " " + str(i + 1) for key in uniques for i in range(dup[key])]
 
     df = pd.DataFrame(columns=['qstamp', 'bar', 'beat'] + instruments)
 
     tempos = {}
     time_sigs = {}
-
 
     parsed_parts = []
     for partnum, part in enumerate(parts.parts):
@@ -101,7 +95,6 @@ def convert_mxml_to_csv(s, output_file_name, qlength=None, use_default_tempo=Tru
             x += 1
             instrument_name = part.getInstrument().instrumentName + " " + str(x)
         parsed_parts.append(instrument_name)
-        
 
         print(instrument_name)
         if True:
@@ -111,7 +104,6 @@ def convert_mxml_to_csv(s, output_file_name, qlength=None, use_default_tempo=Tru
                 print(instrument_name, "not found in clef_dict")
             elements = part.flatten()
 
- 
             current_time_sig = None
             for n in elements:  # get first time signature
                 if n.offset != 0:
@@ -153,11 +145,10 @@ def convert_mxml_to_csv(s, output_file_name, qlength=None, use_default_tempo=Tru
                                 if current_bar:
                                     current_time_sig = current_bar[0]
 
-
-                            tempos[n.measureNumber] = n.numberSounding*current_time_sig.denominator/4  
+                            tempos[n.measureNumber] = n.numberSounding * current_time_sig.denominator / 4
 
                         continue
-                
+
                 if isinstance(n, note.Note):
                     cell_input = n.nameWithOctave
                 elif isinstance(n, chord.Chord):
@@ -176,13 +167,12 @@ def convert_mxml_to_csv(s, output_file_name, qlength=None, use_default_tempo=Tru
                     df.loc[df['qstamp'] == qstamp, instrument_name] = cell_input
                 else:
                     new_row = {'qstamp': qstamp,
-                            'bar': n.measureNumber,
-                            'beat': n.beat,
-                            instrument_name: cell_input}
+                               'bar': n.measureNumber,
+                               'beat': n.beat,
+                               instrument_name: cell_input}
                     df = pd.concat([df, pd.DataFrame(new_row, index=[0])], ignore_index=True)
     df.sort_values(by=['qstamp'], inplace=True)
     df.reset_index(drop=True, inplace=True)
-
 
     # check if TempoIndication exists
     # If no TempoIndication in MusicXML, ask for user input
@@ -205,7 +195,7 @@ def convert_mxml_to_csv(s, output_file_name, qlength=None, use_default_tempo=Tru
                     if not bar_input.isdigit() or not bpm_input.isdigit():
                         print("Invalid input")
                         continue
-                    
+
                     bar_num = int(bar_input)
                     tempos[bar_num] = int(bpm_input)
                 # display tempos
@@ -221,6 +211,7 @@ def convert_mxml_to_csv(s, output_file_name, qlength=None, use_default_tempo=Tru
             """
             ts_to_bpm = lambda bar_num: time_sigs.get(max(k for k in time_sigs.keys() if k <= bar_num)).denominator * 30
             tempos = {k: ts_to_bpm(k) for k, v in time_sigs.items()}
+
     # get time_offset from tempos and time_sigs
     def get_time_offset(offset, ts, bpm):
         if qlength:
@@ -243,7 +234,7 @@ def convert_mxml_to_csv(s, output_file_name, qlength=None, use_default_tempo=Tru
         if i == 0:
             df.at[i, 'time_offset'] = 0
         else:
-            diff = row['qstamp'] - df.iloc[i-1]['qstamp']
+            diff = row['qstamp'] - df.iloc[i - 1]['qstamp']
             curr_time_offset += get_time_offset(diff, curr_ts, curr_bpm)
         df.loc[i, "time_offset"] = curr_time_offset
 
@@ -262,5 +253,3 @@ if __name__ == '__main__':
     dataframe = dataframe.set_index('qstamp')
     print(dataframe)
     print(dataframe.columns)
-
-
