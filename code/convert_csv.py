@@ -258,8 +258,11 @@ def convert_mxml_to_csv(score, output_file_name, qlength=None, use_default_tempo
 
     if output_invalid_clefs:
         invalid_clefs_df = pd.DataFrame(invalid_clefs_dict)
-        invalid_clefs_df.to_csv(output_file_name.replace(".csv", "_invalid_clefs.csv"), index=False)
-        print("Invalid clefs saved to", output_file_name.replace(".csv", "_invalid_clefs.csv"))
+        if not invalid_clefs_df.empty:
+            invalid_clefs_df.to_csv(output_file_name.replace(".csv", "_invalid_clefs.csv"), index=False)
+            print("Invalid clefs saved to", output_file_name.replace(".csv", "_invalid_clefs.csv"))
+        else:
+            print("No invalid clefs found")
 
     return df
 
