@@ -4,8 +4,8 @@
         "out": "../corpus/Bruckner,_Anton/Symphony_No.5,_WAB.105/1/Bruckner_WAB.105_1.mxl"
     },
     {
-        "in": "../corpus/Bruckner,_Anton/Symphony_No.5,_WAB.105/4/Bruckner_WAB.105_4.mscz",
-        "out": "../corpus/Bruckner,_Anton/Symphony_No.5,_WAB.105/4/Bruckner_WAB.105_4.mxl"
+        "in": "../corpus/Bruckner,_Anton/Symphony_No.5,_WAB.105/2/Bruckner_WAB.105_2.mscz",
+        "out": "../corpus/Bruckner,_Anton/Symphony_No.5,_WAB.105/2/Bruckner_WAB.105_2.mxl"
     },
     {
         "in": "../corpus/Bruckner,_Anton/Symphony_No.5,_WAB.105/3/Bruckner_WAB.105_3a_Scherzo.mscz",
@@ -16,7 +16,7 @@
         "out": "../corpus/Bruckner,_Anton/Symphony_No.5,_WAB.105/3/Bruckner_WAB.105_3b_Trio.mxl"
     },
     {
-        "in": "../corpus/Bruckner,_Anton/Symphony_No.5,_WAB.105/2/Bruckner_WAB.105_2.mscz",
-        "out": "../corpus/Bruckner,_Anton/Symphony_No.5,_WAB.105/2/Bruckner_WAB.105_2.mxl"
+        "in": "../corpus/Bruckner,_Anton/Symphony_No.5,_WAB.105/4/Bruckner_WAB.105_4.mscz",
+        "out": "../corpus/Bruckner,_Anton/Symphony_No.5,_WAB.105/4/Bruckner_WAB.105_4.mxl"
     }
 ]

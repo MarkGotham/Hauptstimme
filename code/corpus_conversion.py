@@ -55,7 +55,7 @@ https://musescore.org/en/handbook/3/command-line-options#Run_a_batch_job_convert
 """
 
 import json
-from shared import CODE_PATH, CORPUS_PATH, get_corpus_files
+from utils import CODE_PATH, CORPUS_PATH, get_corpus_files
 
 
 composers = [
@@ -103,7 +103,12 @@ def prep_conversion_by_composer(
     if write:
         out_path = CODE_PATH / f"corpus_conversion_{composer.split(',')[0]}.json"
         with open(out_path, "w") as json_file:
-            json.dump(out_data, json_file, indent=4, sort_keys=True)
+            json.dump(
+                sorted(out_data, key=lambda d: d["in"]),
+                json_file,
+                indent=4,
+                sort_keys=True
+            )
 
 
 def make_contents():

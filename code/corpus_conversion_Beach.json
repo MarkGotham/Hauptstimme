@@ -4,15 +4,15 @@
         "out": "../corpus/Beach,_Amy/Symphony_in_E_minor_(Gaelic),_Op.32/1/Beach_Op.32_1.mxl"
     },
     {
-        "in": "../corpus/Beach,_Amy/Symphony_in_E_minor_(Gaelic),_Op.32/4/Beach_Op.32_4.mscz",
-        "out": "../corpus/Beach,_Amy/Symphony_in_E_minor_(Gaelic),_Op.32/4/Beach_Op.32_4.mxl"
+        "in": "../corpus/Beach,_Amy/Symphony_in_E_minor_(Gaelic),_Op.32/2/Beach_Op.32_2.mscz",
+        "out": "../corpus/Beach,_Amy/Symphony_in_E_minor_(Gaelic),_Op.32/2/Beach_Op.32_2.mxl"
     },
     {
         "in": "../corpus/Beach,_Amy/Symphony_in_E_minor_(Gaelic),_Op.32/3/Beach_Op.32_3.mscz",
         "out": "../corpus/Beach,_Amy/Symphony_in_E_minor_(Gaelic),_Op.32/3/Beach_Op.32_3.mxl"
     },
     {
-        "in": "../corpus/Beach,_Amy/Symphony_in_E_minor_(Gaelic),_Op.32/2/Beach_Op.32_2.mscz",
-        "out": "../corpus/Beach,_Amy/Symphony_in_E_minor_(Gaelic),_Op.32/2/Beach_Op.32_2.mxl"
+        "in": "../corpus/Beach,_Amy/Symphony_in_E_minor_(Gaelic),_Op.32/4/Beach_Op.32_4.mscz",
+        "out": "../corpus/Beach,_Amy/Symphony_in_E_minor_(Gaelic),_Op.32/4/Beach_Op.32_4.mxl"
     }
 ]
