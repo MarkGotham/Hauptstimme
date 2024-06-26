@@ -1,8 +1,10 @@
 import inflect
 import re
 import numpy as np
+import pandas as pd
 p = inflect.engine()
 from pathlib import Path
+from music21 import instrument
 
 CODE_PATH = Path(__file__).parent
 REPO_PATH = CODE_PATH.parent
@@ -31,6 +33,56 @@ def get_corpus_files(
     assert sub_corpus_path.is_relative_to(CORPUS_PATH)
     assert sub_corpus_path.exists()
     return [x for x in sub_corpus_path.rglob(file_name)]
+
+
+def get_ground_truth(haupstimme_path=REPO_PATH / "test" / "annotations.csv", csvfile=REPO_PATH / "test" / "score.csv", return_type='qstamp'):
+
+    dataframe = pd.read_csv(csvfile)
+
+    haupstimme = pd.read_csv(haupstimme_path)
+    haupstimme['measure'] = haupstimme['measure'].astype(int)
+    dataframe['bar'] = dataframe['bar'].astype(int)
+    
+
+    # columns: measure,beat,label,partName,partNum
+    haupstimme_segment_qstamps = set()
+    haupstimme['beat'] = haupstimme['beat'].astype(float)
+    if dataframe['beat'].dtype == 'O':
+        dataframe['beat'] = dataframe['beat'].apply(eval)
+    dataframe.round(2)
+    haupstimme.round(2)
+
+
+    for i, row in haupstimme.iterrows():
+        samebar = dataframe[(dataframe['bar'] == row['measure'])]
+        df_closest = samebar.iloc[(samebar['beat'].astype(float)-float(row['beat'])).abs().argsort()]
+        """
+        because there can be multiple qstamps/timestamps that correspond to the same bar same beat when expandRepeats()
+        is used in music21, e.g. in bar 200, end repeat sign, we go back to bar 40, but qstamp keeps increasing
+        """
+        closest_value = df_closest['beat'].values[0]
+        df_closest = df_closest[df_closest['beat'] == closest_value]
+        for i in df_closest[return_type].values:
+            haupstimme_segment_qstamps.add(i)
+    haupstimme_segment_qstamps = list(haupstimme_segment_qstamps)
+    if isinstance(haupstimme_segment_qstamps, str):
+        haupstimme_segment_qstamps = sorted(haupstimme_segment_qstamps, key=lambda x: eval(x))
+    else:
+        haupstimme_segment_qstamps = sorted(haupstimme_segment_qstamps)
+    return haupstimme_segment_qstamps
+
+
+def get_melody_assignments(haupstimme_path=REPO_PATH / "test" / "annotations.csv", csvfile=REPO_PATH / "test" / "score.csv"):
+    score_df = pd.read_csv(csvfile)
+    haupstimme_df = pd.read_csv(haupstimme_path)
+    score_instruments = score_df.columns[3:-1]
+    score_instruments_abbr = [instrument.fromString(x).instrumentAbbreviation for x in score_instruments]
+
+    melody_assignments = [row[1]['partName'] for row in haupstimme_df.iterrows()]
+    melody_assignment_indices = [score_instruments_abbr.index(x) for x in melody_assignments]
+    return melody_assignment_indices
+
+
 
 
 def find_nearest(arr, x):
