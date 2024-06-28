@@ -317,7 +317,9 @@ class ScoreThemeAnnotation:
         """
         _prepare a template part to fill.
         Includes check that user selected (given) instrument matches one of the existing parts.
-        Note: may be replaced by __eq__ on m21 when implemented.
+        Note: this may be replaced by __eq__ on m21 when implemented.
+
+        If no such match, then use the top part.
         """
 
         part_num_to_use = 0  # for unspecified. Overwritten by user preference.
@@ -338,7 +340,7 @@ class ScoreThemeAnnotation:
                 # Run conversion to int
                 count = 0
                 for p in self.score.parts:
-                    this_instrument = instrument.fromString(p.partName)
+                    this_instrument = p.getInstrument()
                     if this_instrument.classes == self.part_for_template.classes:
                         part_num_to_use = count
                         break
@@ -649,7 +651,7 @@ def process_one(
         out_path_data: Path | None = None,
         out_path_score: Path | None = None,
         lyric_not_TE: bool = True,
-        restrictions: str | list = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "tr", "x", "y", "z"],
+        restrictions: str | list | None = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "tr", "x", "y", "z"],
         part_for_template: int | str | instrument.Instrument | None = instrument.Violin(),
 ) -> None:
     """
@@ -675,9 +677,9 @@ def process_one(
     info.writeMelodyScore(out_path_score)
 
 
-def updateAll(
+def update_all(
         sub_corpus_path: Path = CORPUS_PATH,
-        replace: bool = True,
+        replace: bool = False,
         lyric_not_TE: bool = True
 ) -> None:
     """
@@ -687,14 +689,26 @@ def updateAll(
     @param replace: If true and there is already an "annotations.csv" file in this
         directory, then replace it; otherwise continue.
     """
-    for f in get_corpus_files(sub_corpus_path):
+    for f in get_corpus_files(sub_corpus_path, file_name="*.mxl"):
         print(f"Processing {f}")
-        p = f.parent
-        if not replace:
-            annotations = p / "annotations.csv"
-            if annotations.exists:
+        if f.name.endswith("_melody.mxl"):
+            print(" ... melody score, skipping")
+            continue
+        if replace:
+            try:
+                process_one(f, lyric_not_TE=lyric_not_TE)
+            except:
+                print("... fail")
+        else:
+            annotations = f.parent / (f.name.replace(".mxl", "_annotations.csv"))
+            if annotations.exists():
+                print(" ... annotations files exists, skipping")
                 continue
-        process_one(f, lyric_not_TE=lyric_not_TE)
+            else:
+                try:
+                    process_one(f, lyric_not_TE=lyric_not_TE)
+                except:
+                    print("... fail")
 
 
 # ------------------------------------------------------------------------------
