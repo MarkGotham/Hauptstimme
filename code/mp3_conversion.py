@@ -3,7 +3,7 @@ import os
 """
 https://ms3.readthedocs.io/en/latest/install.html
 
-MusicXML -> MP3 batch conversion using ms3 parsing in command line
+MusicXML -> MP3 batch conversion using 'ms3 parsing' in command line
 
 Install via pip: 
 python3 -m pip install ms3

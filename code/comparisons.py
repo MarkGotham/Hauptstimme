@@ -97,7 +97,6 @@ class Compare:
                 else:  # one is a rest, one is a note
                     return False
 
-            # note_values = note[0] index + octave_number * 7
             note_values = [self.note_order.index(note[0]) for note in notes_pair]
             note_values.sort()
 
@@ -212,10 +211,6 @@ if __name__ == '__main__':
     filename = utils.REPO_PATH / "test" / "score.csv"
     df = pd.read_csv(filename)
 
-    # # qstamps where each bar starts as segmentation points for example
-    # segment_points = df.loc[df['beat'] == 1]['qstamp'].tolist()
-    # print('segment points at: ')
-    # print(segment_points)
 
     # qstamps where the main melody changes according to annotations.csv
     segment_points = utils.get_ground_truth()
@@ -230,59 +225,5 @@ if __name__ == '__main__':
     C = Compare(df, segment_points[0], segment_points[-1], fill_rests=True)
     summary = C.generate_score_summary(df, segment_points, melodies)
     summary.to_csv(str(filename).replace(".csv", "_relations.csv"), index=False)
-
-
-
-
-
-    # rows where flute is 'r', but only the first row if consecutive
-
-    # no_consecs = df.loc[df["Flute"] != df["Flute"].shift()]
-    # rests = no_consecs.loc[no_consecs["Flute"] == 'r']['qstamp']
-    # print(rests)
-
-
-
-
-
-
-
-
-# seg = Compare(df, 0, 3, 'Flute', 'Oboe')
-# print(seg.segment)
-# print(f"Unison: Flute and Oboe 0 to 3: {seg.is_unison()}")
-# print(f"Parallel Octave: Flute and Oboe 0 to 3: {seg.is_parallel_octave()}")
-# print(f"Parallel 3rd: Flute and Oboe 0 to 3: {seg.is_parallel_interval(3)}")
-# print("\n\n")
-#
-# seg = Compare(df, 0, 1, 'Flute', 'Timpani')
-# print(seg.segment)
-# print("Unison: Flute and Timpani 0 to 3: ", seg.is_unison())
-# print("Octave: Flute and Timpani 0 to 3: ", seg.is_parallel_octave())
-# print("Parallel 3rd: Flute and Timpani 0 to 3: ", seg.is_parallel_interval(3))
-# print("\n\n")
-#
-# seg = Compare(df, 0, 3, 'Flute', 'Bb Clarinet')
-# print(seg.segment)
-# print("Unison: Flute and Bb Clarinet 0 to 3: ", seg.is_unison())
-# print("Octave: Flute and Bb Clarinet 0 to 3: ", seg.is_parallel_octave())
-# print("Parallel 2nd: Flute and Bb Clarinet 0 to 3: ", seg.is_parallel_interval(2))
-# print("Parallel abs 2nd: Flute and Bb Clarinet 0 to 3: ", seg.is_parallel_abs_interval(2))
-# print("\n\n")
-#
-#
-# print("PARALLEL INTERVAL------------")
-# seg = Compare(df, 1.5, 2.5, "Violas", "Violoncellos")
-# print(seg.segment)
-# print("Parallel 7ths: Violas and Vioncellos 1.5 to 2.5: ", seg.is_parallel_interval(7))
-# print("Should this return true for parallel 7ths?")
-# print("\n\n")
-#
-# seg = Compare(df, 0, 3, 'Flute', 'Bassoon')
-# print(seg.segment)
-# print("Parallel-1: Flute and Bassoon 0 to 1: ", seg.is_parallel_interval(1))
-# print("Abs Parallel-1: Flute and Bassoon 0 to 1: ", seg.is_parallel_abs_interval(1))
-# # CHECK: octave jumps
-# print("^^^ confirm this case, where bassoon jumps octaves ^^^")
 
 
