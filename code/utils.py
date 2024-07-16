@@ -133,8 +133,8 @@ def compute_sm_from_audio(x, Fs=22050, L=21, H=5, L_smooth=16, tempo_rel_set=np.
                              penalty=0.0, binarize=False):
     """Compute an SSM
 
-    Notebook: C4/C4S2_SSM-Thresholding.ipynb
-    Altered from compute_sm_from_filename function to fit our purposes here
+    From Fundamentals of Music Processing (FMP) Notebook: C4/C4S2_SSM-Thresholding.ipynb
+    Slightly altered from compute_sm_from_filename function to fit our purposes here
 
     Args:
         x (str): librosa audio file

@@ -37,7 +37,7 @@ def fmp_novelty_segment(signal, Fs=22050):
 
     peaks = sig.find_peaks(nov)[0]  # find peaks in novelty function in seconds
 
-
+    # Uncomment to visualize the segmentation points on the novelty function
     # title = 'Scipy peak picking (Fs=%3.0f) for long segment from %ds to %ds ' % (Fs_X, start, end)
     # plot_function_peak_positions(nov, Fs_X, peaks, title)
     # plt.show()
