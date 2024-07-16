@@ -1,20 +1,12 @@
 from music21 import *
 import matplotlib.pyplot as plt
 import librosa
-import numpy as np
-from IPython.display import Audio, display
 import ruptures as rpt
-import pandas as pd
-from matplotlib.cbook import boxplot_stats
 import libfmp
 from scipy import signal as sig
-from scipy.ndimage import filters, median_filter, gaussian_filter1d
 import libfmp.c6
 import libfmp.c4
-import os
-from convert_csv import convert_mxml_to_csv
 from utils import *
-# from SSM import *
 
 
 def fig_ax(figsize=(15, 5), dpi=150):
