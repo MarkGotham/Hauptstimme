@@ -93,9 +93,9 @@ if __name__ == "__main__":
     peaks = fmp_novelty_segment(s, Fs=Fs)
     print('Points from FMP Novelty Segmentation:')
     print(peaks)
-    peaks = ruptures_changepoint_segment(s, Fs, target_duration=10)
-    print('Points from Ruptures Changepoint-detection Segmentation:')
-    print(peaks)
+    # peaks = ruptures_changepoint_segment(s, Fs, target_duration=10)
+    # print('Points from Ruptures Changepoint-detection Segmentation:')
+    # print(peaks)
 
 
 
