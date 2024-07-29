@@ -27,11 +27,11 @@ def plot_function_peak_positions(nov, Fs_nov, peaks, title='', figsize=(8,2)):
 
 
 
-def fmp_novelty_segment(signal, Fs=22050):
+def fmp_novelty_segment(signal, Fs=22050, mode="tempo"):
     """
     Given audio signal, return segmentation points in time (seconds) from beginning
     """
-    x, x_duration, X, Fs_X, S, I = compute_sm_from_audio(signal, Fs=Fs, L=81, H=10, L_smooth=1, thresh=1)
+    x, x_duration, X, Fs_X, S, I = compute_sm_from_audio(signal, Fs=Fs, L=81, H=10, L_smooth=1, thresh=1, mode=mode)
     L_kernel = 5  # smaller kernel size --> finer novelty function, more noise --> shorter segments
     nov = libfmp.c4.compute_novelty_ssm(S, L=L_kernel, exclude=True)
 

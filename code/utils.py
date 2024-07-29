@@ -130,11 +130,10 @@ def sort_by_pitch(all_notes):
 
 def compute_sm_from_audio(x, Fs=22050, L=21, H=5, L_smooth=16, tempo_rel_set=np.array([1]),
                              shift_set=np.array([0]), strategy='relative', scale=True, thresh=0.15,
-                             penalty=0.0, binarize=False):
+                             penalty=0.0, binarize=False, mode='tempo'):
     """Compute an SSM
 
-    From Fundamentals of Music Processing (FMP) Notebook: C4/C4S2_SSM-Thresholding.ipynb
-    Slightly altered from compute_sm_from_filename function to fit our purposes here
+    Notebook: C4/C4S2_SSM-Thresholding.ipynb
 
     Args:
         x (str): librosa audio file
@@ -162,7 +161,12 @@ def compute_sm_from_audio(x, Fs=22050, L=21, H=5, L_smooth=16, tempo_rel_set=np.
     x_duration = x.shape[0] / Fs
 
     # Chroma Feature Sequence and SSM (10 Hz)
-    C = librosa.feature.chroma_stft(y=x, sr=Fs, tuning=0, norm=2, hop_length=2205, n_fft=4410)
+    if mode == "chroma":
+        C = librosa.feature.chroma_stft(y=x, sr=Fs, tuning=0, norm=2, hop_length=2205, n_fft=4410)
+    else:
+        hop_length_tempo = 256
+        oenv = librosa.onset.onset_strength(y=x, sr=Fs, hop_length=hop_length_tempo)
+        C = librosa.feature.tempogram(onset_envelope=oenv, sr=Fs, hop_length=hop_length_tempo)
     Fs_C = Fs / 2205
 
     # Chroma Feature Sequence and SSM
