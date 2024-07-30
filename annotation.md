@@ -44,7 +44,7 @@ This task aims to capture something of that effect.
   - Some rules of thumb (all else being equal). In general, chose the part which ... :
     - ... is **fastest-moving** ... but not figuration / filler (melodies need a moment to breath between phrases!)
     - ... is **highest** ... but not "descant"-style lines above the main tune.
-    - ... **resolves voice-leading** correctly ... but not at the expense of the "true" line
+    - ... **resolves voice-leading** correctly by connecting to segments before and after in the same voice and octave (i.e., avoiding large leaps). ... but not at the expense of the "true" line
     - ... is **consistent** e.g.,:
        - In a fugue go for every entrance of the subject/answer.
         - pick out the first note however it has been altered (it's common to alter the first note of a fugue)
@@ -64,7 +64,7 @@ Here are some more rules of thumb:
   - the code ignores this information
   - we can easily retrieve this relationship between parts automatically anyway,
   - it's often useful to be made to choose the _main_ instrument, even if that's sometimes arbitrary.
-- If you find that the musical choice is completely arbitrary, then opt for solutions that solve for the criteria listed in the "More than one theme" section above, e.g., staying in the same octave as the segments before and after.
+- If you find that the musical choice is completely arbitrary, then opt for solutions that solve for the criteria listed in the "More than one theme" section above, e.g., staying in the same octave as the segments before and after (to avoid large leaps).
 
 
 **What about rests?**
