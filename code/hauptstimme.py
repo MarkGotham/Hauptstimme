@@ -56,7 +56,7 @@ import re
 from utils import CORPUS_PATH, get_corpus_files
 
 
-rounding_value = 4
+ROUNDING_VALUE = 4
 
 
 class ScoreThemeAnnotation:
@@ -240,7 +240,6 @@ class ScoreThemeAnnotation:
             with open(pathToAnnotation, "w") as f:
                 f.write(",".join(headers) + "\n")
                 for annotationDict in self.ordered_annotations_list:
-                    annotationDict["beat"] = round(float(annotationDict["beat"]), rounding_value)
                     line = [str(annotationDict[h]) for h in headers]
                     f.write(",".join(line) + "\n")
             f.close()
@@ -509,10 +508,10 @@ class ScoreThemeAnnotation:
 def get_info_from_note_or_TE(note_or_TE, this_part):
     return {
         "measure": note_or_TE.measureNumber,
-        "offset": note_or_TE.offset,
-        "beat": note_or_TE.beat,
+        "offset": round(note_or_TE.offset, ROUNDING_VALUE),
+        "beat": round(note_or_TE.beat, ROUNDING_VALUE),
         "measure_fraction": get_measure_fraction(note_or_TE),
-        "qstamp": note_or_TE.getOffsetInHierarchy(this_part),
+        "qstamp": round(note_or_TE.getOffsetInHierarchy(this_part), ROUNDING_VALUE),
         "clef": note_or_TE.getContextByClass(clef.Clef),
         "voice": note_or_TE.getContextByClass(stream.Voice)
     }
@@ -525,7 +524,7 @@ def get_measure_fraction(this_note):
     """
     return round(
         this_note.offset / this_note.getContextByClass("Measure").duration.quarterLength,
-        rounding_value
+        ROUNDING_VALUE
     )
 
 
