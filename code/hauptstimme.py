@@ -56,6 +56,9 @@ import re
 from utils import CORPUS_PATH, get_corpus_files
 
 
+rounding_value = 4
+
+
 class ScoreThemeAnnotation:
     """
     End-to-end handling of
@@ -237,7 +240,7 @@ class ScoreThemeAnnotation:
             with open(pathToAnnotation, "w") as f:
                 f.write(",".join(headers) + "\n")
                 for annotationDict in self.ordered_annotations_list:
-                    annotationDict["beat"] = intBeat(annotationDict["beat"])
+                    annotationDict["beat"] = round(float(annotationDict["beat"]), rounding_value)
                     line = [str(annotationDict[h]) for h in headers]
                     f.write(",".join(line) + "\n")
             f.close()
@@ -390,7 +393,7 @@ class ScoreThemeAnnotation:
                 continue
 
             # Otherwise:
-            self.melody_part.measure(measure_num).insert(n.offset, n)
+            self.melody_part.measure(measure_num).insert(n.offset, n)  # TODO replace unrealiable number with ID
 
         # Clef, after the relevant measure is done.
         if clef_also:
@@ -503,16 +506,6 @@ class ScoreThemeAnnotation:
         self.other_part = self.score.chordify()
 
 
-# Static
-
-def intBeat(beat):
-    """Beats as integers, or rounded decimals"""
-    if int(beat) == beat:
-        return int(beat)
-    else:
-        return round(float(beat), 2)
-
-
 def get_info_from_note_or_TE(note_or_TE, this_part):
     return {
         "measure": note_or_TE.measureNumber,
@@ -532,7 +525,7 @@ def get_measure_fraction(this_note):
     """
     return round(
         this_note.offset / this_note.getContextByClass("Measure").duration.quarterLength,
-        3
+        rounding_value
     )
 
 
@@ -679,7 +672,7 @@ def process_one(
 
 def update_all(
         sub_corpus_path: Path = CORPUS_PATH,
-        replace: bool = False,
+        replace: bool = True,
         lyric_not_TE: bool = True
 ) -> None:
     """
@@ -690,7 +683,6 @@ def update_all(
         directory, then replace it; otherwise continue.
     """
     for f in get_corpus_files(sub_corpus_path, file_name="*.mxl"):
-        print(f"Processing {f}")
         if f.name.endswith("_melody.mxl"):
             print(" ... melody score, skipping")
             continue
