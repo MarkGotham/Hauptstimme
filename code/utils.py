@@ -5,6 +5,8 @@ import pandas as pd
 p = inflect.engine()
 from pathlib import Path
 from music21 import instrument
+import librosa
+import libfmp.c4, libfmp.c6
 
 CODE_PATH = Path(__file__).parent
 REPO_PATH = CODE_PATH.parent
@@ -124,3 +126,55 @@ def sort_by_pitch(all_notes):
 
     return sorted_notes
     # TODO: edit lambda function so this is not necessary
+
+
+def compute_sm_from_audio(x, Fs=22050, L=21, H=5, L_smooth=16, tempo_rel_set=np.array([1]),
+                             shift_set=np.array([0]), strategy='relative', scale=True, thresh=0.15,
+                             penalty=0.0, binarize=False, mode='tempo'):
+    """Compute an SSM
+
+    Notebook: C4/C4S2_SSM-Thresholding.ipynb
+
+    Args:
+        x (str): librosa audio file
+        L (int): Length of smoothing filter (Default value = 21)
+        H (int): Downsampling factor (Default value = 5)
+        L_smooth (int): Length of filter (Default value = 16)
+        tempo_rel_set (np.ndarray):  Set of relative tempo values (Default value = np.array([1]))
+        shift_set (np.ndarray): Set of shift indices (Default value = np.array([0]))
+        strategy (str): Thresholding strategy (see :func:`libfmp.c4.c4s2_ssm.compute_sm_ti`)
+            (Default value = 'relative')
+        scale (bool): If scale=True, then scaling of positive values to range [0,1] (Default value = True)
+        thresh (float): Treshold (meaning depends on strategy) (Default value = 0.15)
+        penalty (float): Set values below treshold to value specified (Default value = 0.0)
+        binarize (bool): Binarizes final matrix (positive: 1; otherwise: 0) (Default value = False)
+
+    Returns:
+        x (np.ndarray): Audio signal
+        x_duration (float): Duration of audio signal (seconds)
+        X (np.ndarray): Feature sequence
+        Fs_feature (scalar): Feature rate
+        S_thresh (np.ndarray): SSM
+        I (np.ndarray): Index matrix
+    """
+    # Waveform
+    x_duration = x.shape[0] / Fs
+
+    # Chroma Feature Sequence and SSM (10 Hz)
+    if mode == "chroma":
+        C = librosa.feature.chroma_stft(y=x, sr=Fs, tuning=0, norm=2, hop_length=2205, n_fft=4410)
+    else:
+        hop_length_tempo = 256
+        oenv = librosa.onset.onset_strength(y=x, sr=Fs, hop_length=hop_length_tempo)
+        C = librosa.feature.tempogram(onset_envelope=oenv, sr=Fs, hop_length=hop_length_tempo)
+    Fs_C = Fs / 2205
+
+    # Chroma Feature Sequence and SSM
+    X, Fs_feature = libfmp.c3.smooth_downsample_feature_sequence(C, Fs_C, filt_len=L, down_sampling=H)
+    X = libfmp.c3.normalize_feature_sequence(X, norm='2', threshold=0.001)
+
+    # Compute SSM
+    S, I = libfmp.c4.compute_sm_ti(X, X, L=L_smooth, tempo_rel_set=tempo_rel_set, shift_set=shift_set, direction=2)
+    S_thresh = libfmp.c4.threshold_matrix(S, thresh=thresh, strategy=strategy,
+                                          scale=scale, penalty=penalty, binarize=binarize)
+    return x, x_duration, X, Fs_feature, S_thresh, I
