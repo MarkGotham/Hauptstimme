@@ -2,24 +2,35 @@
 
 When listening to music, our attention is drawn back and forth between different elements.
 Often this is guided by following the main, most prominent melodic line: the _hauptstimme_.
-This repo is about that effect, providing
+This repo is about that effect, providing:
 - a corpus of orchestral scores, with human analysis annotations for where they think the "main theme" is.
 - code for processing this, e.g., for creating a summative "melody score"
 
-Please see [this explanation on fourscoreandmore](https://fourscoreandmore.org/hauptstimme/)
+
+## Annotation task
+
+Please see [this explanation](./annotation.md)
 for more details on the annotation method and FAQs.
 
-## Corpus Directory
+
+## Score design choices
+
+Apart from the annotations, the scores themselves are introduced here for the first time.
+As such, we also explain the [stylistic design criteria here](./score_design.md)
+(Note: This content may move to the [OpenScore GitHub](https://github.com/openscore))
+
+
+## Corpus Summary
 
 ```
 <composer>/<symphony>/<movement>/<files>
 ```
 
-The full, core corpus consists of c.102 movements:
+The full, core corpus consists of over 100 movements:
 
 - Bach, JS:
   - B Minor Mass,
-    - 27 movements (depending on how you count it).
+    - 27 movements (ish ... depending on how you count it).
     - NB the movements numbered here according to NBAII (1–23) are are split by movement ...
       - ... where possible (e.g., 7a from 7b)
       - ... not in the case of dovetail (e.g., 4a.-b. as one with double bar line and editorial tempo marking).
@@ -27,8 +38,6 @@ The full, core corpus consists of c.102 movements:
     - 3 movements
   - Brandenburg Concerto No.4 (BWV 1049)
     - 3 movements
-  - Fuga (Ricercata) a 6 voci, from *The Musical Offering*, BWV 1079, orchestrated by Anton von Webern
-    - 1 movement
 - Beach, Amy:
   - 1 symphony, the 'Gaelic',
     - 4 movements
@@ -48,27 +57,6 @@ All of these cases include the files in the format `<identifier>` plus:
 - `_annotations.csv`: The qstamp, bar, beat, theme label and instrument of each annotation.
 - `_melody.mxl` these melody segments stitched together in one single-stave files
 
-Again, please see [fourscoreandmore for images and more](https://fourscoreandmore.org/hauptstimme/).
-
-## Score design choices
-
-- Minimal deviations from MuseScore defaults
-- Systematic changes as defined in the `.mss` style sheet.
-  - Justify full page.
-  - All present instrument showing at all time (none hidden).
-  - Note: Import the `.mss` style file in-app or with the command line:
-    - `mscore <before_file_name>.mscz --style <style-file-name>.mss -o <after_file_name>.mscz`.
-- Every part on a separate stave (e.g., Flute 1 separate from Flute 2) for clarity and interoperability.
-  - This partly through the `orchestra_part_split` functionality.
-  - Connect bar lines through those like instruments e.g., Flutes 1 and 2; Horns 1, 2, and 3.
-- Part names:
-  - Full part names in the format `<transposition where relevant> <instrument> <number>`, e.g., `A Clarinet 2`.
-  - Abbreviated names without transposition or period character, e.g., `Cl 2`.
-  - String instruments in the singular e.g., `Violin 1` (as in 'the violin 1 part')
-- Stave size. Manually set for each work to:
-	- attempt approximate consistency across multi-movement works
-	- use the largest stave size that fits within the page, including the large lyric annotations.
-
 
 ## Acknowledgements
 
@@ -78,13 +66,21 @@ Many thanks to:
 - Annotators 
   - On the 'Beethoven X' project, including Nicolai Böhlefeld and many others.
   - At Cornell, Eastman, TU Dortmund, Durham, and elsewhere.
-- Transcribers in our team, and the wider MuseScore community for making their transcriptions freely available under the CCO licence, notably:
-  
+- Transcribers, both:
+  - in our immediate team, and 
+  - more widely across the MuseScore community, members who made transcriptions freely available under the CCO licence and named their source edition.
+
+
 ## Licence 
 
 - Scores: CC0 1.0 Universal
 - Annotations: CC-By-SA
 - Code: CC-By-SA
+
+All scores have been copied from clearly identified and unequivocally public source editions on IMSLP.
+Transcribers have committed to making these transcriptions using that public source edition, and working from scratch.
+We have confidence in our team and their work but obviously cannot make any guarantees.
+If you see anything that we ought to review, please let us know.
 
 
 ## Citation
