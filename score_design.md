@@ -32,7 +32,7 @@ Please see [this list of score stylistic design criteria](./score_design.md)
   - attempt approximate consistency across multi-movement works
   - use the largest stave size that fits within the page, including the large lyric annotations. 
     - ... within reason. As MuseScore does not allow variable stave size per page, we accept the occasional overflow to make the majority of pages plausible.
-  - Again, is anyone uses these scores in performance, they may wish to adjust. 
+  - Again, if anyone uses these scores in performance, they may wish to adjust. 
   - More formally:
     - Strong preference for not overfilling page. 
     - Medium preference for avoiding under-fill. 
@@ -69,5 +69,5 @@ Please see [this list of score stylistic design criteria](./score_design.md)
       - We therefore avoid such _manual_ changes and (attempt) to fix them automatically from the measure map.
     - Example issues: anacruses, first/second time bars, split bars.
     - This includes continuing the count in written out repeats (which again do not export well)
-      - In future iterations of this corpus, when da cpo structures can be reliably exported, we may delete these duplicate bars.
+      - In future iterations of this corpus, when da capo structures can be reliably exported, we may delete these duplicate bars.
  
