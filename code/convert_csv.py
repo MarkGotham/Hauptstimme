@@ -6,7 +6,7 @@ Convert CSV (convert_csv.py)
 
 BY
 ===============================
-JamesHLS, 2024
+JamesHLS and Matt Blessing, 2024
 
 
 LICENCE:
@@ -17,21 +17,23 @@ https://creativecommons.org/licenses/by-sa/4.0/
 
 ABOUT:
 ===============================
-Given a score, convert main data to light-weight csv file.
+Convert a score to a lightweight csv file.
+
+TODO: CLEAN THIS UP
 
 """
 
 import numpy as np
-from music21 import chord, clef, converter, expressions, meter, note, stream, tempo
 import pandas as pd
 import utils
 from collections import Counter
+from music21 import chord, clef, converter, expressions, meter, note, stream, tempo
 
 pd.options.display.max_columns = 100
 pd.options.display.max_rows = 100
 pd.options.display.max_colwidth = 100
 pd.options.display.width = 200
-pd.set_option('display.expand_frame_repr', False)
+pd.set_option("display.expand_frame_repr", False)
 
 clef_dict = {
     "Violin": [clef.TrebleClef(), clef.Treble8vaClef()],
@@ -54,7 +56,7 @@ clef_dict = {
 }
 
 
-def convert_mxml_to_csv(score, output_file_name, qlength=None, use_default_tempo=True, output_invalid_clefs=False):
+def convert_mxml_to_csv(score, output_file_name, output_invalid_clefs=False):
     """
     Convert mxml -> csv with this format:
     qstamp | bar | beat | instrument1 | instrument2 | instrument3 | ... | instrumentN
@@ -74,9 +76,10 @@ def convert_mxml_to_csv(score, output_file_name, qlength=None, use_default_tempo
     # give each instrument a unique name, where each duplicate is appended with a number, starting from 1
     dup = dict(Counter(instruments))
     uniques = np.unique(instruments)
-    instruments = [key if i == 0 else key + " " + str(i + 1) for key in uniques for i in range(dup[key])]
+    instruments = [key if i == 0 else key + " " +
+                   str(i + 1) for key in uniques for i in range(dup[key])]
 
-    df = pd.DataFrame(columns=['qstamp', 'bar', 'beat'] + instruments)
+    df = pd.DataFrame(columns=["qstamp", "bar", "beat"] + instruments)
 
     tempos = {}
     time_sigs = {}
@@ -84,9 +87,9 @@ def convert_mxml_to_csv(score, output_file_name, qlength=None, use_default_tempo
     parsed_parts = []
 
     invalid_clefs_dict = {
-        'instrument': [],
-        'bar': [],
-        'clef': []
+        "instrument": [],
+        "bar": [],
+        "clef": []
     }
 
     for partnum, part in enumerate(score.parts):
@@ -110,146 +113,113 @@ def convert_mxml_to_csv(score, output_file_name, qlength=None, use_default_tempo
                 print(instrument_name, "not found in clef_dict")
             elements = part.flatten()
 
-            current_time_sig = None
+            curr_time_sig = None
             for n in elements:  # get first time signature
                 if n.offset != 0:
                     break
                 if isinstance(n, meter.TimeSignature):
                     time_sigs[n.measureNumber] = n
-                    current_time_sig = n
+                    curr_time_sig = n
                     break
+
             for n in elements:
                 qstamp = n.offset
+
                 if isinstance(elements, stream.Measure):
                     qstamp += elements.offset
+
                 if partnum == 0:
                     if isinstance(n, meter.TimeSignature):
                         time_sigs[n.measureNumber] = n
-                        current_time_sig = n
+                        curr_time_sig = n
                         continue
 
-                    # Tempo texts
-                    elif isinstance(n, expressions.TextExpression):
-                        mm = tempo.defaultTempoValues.get(n.content.lower())
-                        if mm is not None:
-                            tempos[n.measureNumber] = mm
+                    # If a tempo marking written as a text expression (e.g., Adagio)
+                    if isinstance(n, expressions.TextExpression):
+                        # Get default bpm for this tempo
+                        bpm = tempo.defaultTempoValues.get(n.content.lower())
+                        if bpm:
+                            # Convert bpm to quarter note bpm
+                            quarter_bpm = bpm * curr_time_sig.denominator / 4
+                            tempos[n.measureNumber] = quarter_bpm
                         continue
-                    # Different types of TempoIndications
-                    elif isinstance(n, tempo.TempoIndication):
-                        if isinstance(n, tempo.MetricModulation):
-                            if n.oldMetronome.number:
-                                tempos[n.measureNumber] = n.oldMetronome.number
-                        elif n.number:
-                            tempos[n.measureNumber] = n.number
-                        elif n.numberSounding:
-                            # numberSounding gets number of Metronome that is used but not displayed, meaning bpm in quarter notes
-
-                            # search current bar for time signature, if not found, use previous time signature
-                            current_bar = [x for x in elements if x.measureNumber == n.measureNumber]
-                            if current_bar:
-                                current_bar = [x for x in current_bar if isinstance(x, meter.TimeSignature)]
-                                if current_bar:
-                                    current_time_sig = current_bar[0]
-
-                            tempos[n.measureNumber] = n.numberSounding * current_time_sig.denominator / 4
-
+                    elif isinstance(n, tempo.MetronomeMark):
+                        # Get quarter note bpm
+                        tempos[n.measureNumber] = n.getQuarterBPM()
                         continue
 
                 if isinstance(n, note.Note):
                     cell_input = n.nameWithOctave
                 elif isinstance(n, chord.Chord):
-                    cell_input = [chord_note.nameWithOctave for chord_note in n][-1]
+                    cell_input = [
+                        chord_note.nameWithOctave for chord_note in n][-1]
                 elif isinstance(n, note.Rest):
-                    cell_input = 'r'
+                    cell_input = "r"
                 elif "Clef" in n.classes:
                     if not accepted_clefs is None:
                         accepted = n in accepted_clefs
                         if not accepted:
-                            print(f"Invalid clef {n} found in bar {n.measureNumber}")
+                            print(
+                                f"Invalid clef {n} found in bar {n.measureNumber}")
 
                             # For invalid clefs csv file
                             if output_invalid_clefs:
-                                invalid_clefs_dict['instrument'].append(instrument_name)
-                                invalid_clefs_dict['bar'].append(n.measureNumber)
-                                invalid_clefs_dict['clef'].append(n.name)
+                                invalid_clefs_dict["instrument"].append(
+                                    instrument_name)
+                                invalid_clefs_dict["bar"].append(
+                                    n.measureNumber)
+                                invalid_clefs_dict["clef"].append(n.name)
+                    continue
+                else:
+                    continue
 
-                    continue
+                if qstamp in df["qstamp"].values:
+                    df.loc[df["qstamp"] == qstamp,
+                           instrument_name] = cell_input
                 else:
-                    continue
-                if qstamp in df['qstamp'].values:
-                    df.loc[df['qstamp'] == qstamp, instrument_name] = cell_input
-                else:
-                    new_row = {'qstamp': qstamp,
-                               'bar': n.measureNumber,
-                               'beat': n.beat,
+                    new_row = {"qstamp": qstamp,
+                               "bar": n.measureNumber,
+                               "beat": n.beat,
                                instrument_name: cell_input}
-                    df = pd.concat([df, pd.DataFrame(new_row, index=[0])], ignore_index=True)
-    df.sort_values(by=['qstamp'], inplace=True)
+                    df = pd.concat(
+                        [df, pd.DataFrame(new_row, index=[0])], ignore_index=True)
+
+    df.sort_values(by=["qstamp"], inplace=True)
     df.reset_index(drop=True, inplace=True)
 
-    # check if TempoIndication exists
-    # If no TempoIndication in MusicXML, ask for user input
-    if not tempos:
-        if not use_default_tempo:
-            print("No TempoIndication found, would you like to input tempos? (y/n)")
-            user_input = input()
-            if user_input.lower() == 'y':
-                """
-                user input: bar, bpm ('q' when finished, if empty use default)        
-                """
-                tempos = {}
-                while True:
-                    bar_input = input("bar: (q to finish)")
-                    if bar_input == 'q':
-                        break
-                    bpm_input = input(f"bpm from bar {bar_input}: ")
-                    if bpm_input == 'q':
-                        break
-                    if not bar_input.isdigit() or not bpm_input.isdigit():
-                        print("Invalid input")
-                        continue
+    # If no tempo info then use default of 120bpm
+    if 1 not in tempos:
+        tempos = {1: 120.0}  #  bar numbering should always start at 1
 
-                    bar_num = int(bar_input)
-                    tempos[bar_num] = int(bpm_input)
-                # display tempos
+    # Determine the tempo at each measure
+    max_measure = df["bar"].max()
+    tempo_marking_measures = sorted(tempos.keys())
+    curr_tempo_marking_index = 0
+    curr_tempo = tempos.get(1)
+    for measure in range(1, max_measure + 1):
+        # Check if there is a tempo change at the current measure
+        if curr_tempo_marking_index < len(tempo_marking_measures) and measure == tempo_marking_measures[curr_tempo_marking_index]:
+            # Update the current tempo
+            curr_tempo = tempos[measure]
+            curr_tempo_marking_index += 1
+        # Assign the current tempo to the current measure
+        tempos[measure] = curr_tempo
 
-        # if no user input, use default
-        if not tempos:
-            print("Using default")
-            """
-               default assign
-               X/2: halfnote=60BPM; 
-               X/4 = q=120BPM etc.
-               time_sig base * 30 = bpm
-            """
-            ts_to_bpm = lambda bar_num: time_sigs.get(max(k for k in time_sigs.keys() if k <= bar_num)).denominator * 30
-            tempos = {k: ts_to_bpm(k) for k, v in time_sigs.items()}
-
-    # get time_offset from tempos and time_sigs
-    def get_time_offset(offset, ts, bpm):
-        if qlength:
-            quarter_length = qlength
-        else:
-            quarter_length = 60 / (bpm / (ts.denominator / 4))
-        # quarter_length = 60 / bpm
-        # then get time_offset
-        return offset * quarter_length
-
-    curr_ts = time_sigs.get(0)
-    curr_bpm = tempos.get(0)
-    curr_time_offset = 0
+    max_qstamp = df["qstamp"].max()
+    next_tstamp = 0.
     for i, row in df.iterrows():
-        if row['bar'] in time_sigs:
-            curr_ts = time_sigs[row['bar']]
-        if row['bar'] in tempos:
-            curr_bpm = tempos[row['bar']]
-        # curr_time_offset += difference between current and next qstamp
-        if i == 0:
-            df.at[i, 'time_offset'] = 0
-        else:
-            diff = row['qstamp'] - df.iloc[i - 1]['qstamp']
-            curr_time_offset += get_time_offset(diff, curr_ts, curr_bpm)
-        df.loc[i, "time_offset"] = curr_time_offset
+        # Get current quarter note BPM
+        curr_quarter_bpm = tempos[row["bar"]]
+        # Get current length of a quarter note
+        curr_quarter_length = 60 / curr_quarter_bpm
+
+        # Get the timestamp
+        df.loc[i, "time_offset"] = next_tstamp
+
+        if row["qstamp"] != max_qstamp:
+            # Calculate the timestamp for the next note event
+            diff = df.loc[i + 1]["qstamp"] - row["qstamp"]
+            next_tstamp += diff * curr_quarter_length
 
     # time_offset column: in seconds
     df.ffill(inplace=True)  # fill NaNs with previous value
@@ -259,16 +229,19 @@ def convert_mxml_to_csv(score, output_file_name, qlength=None, use_default_tempo
     if output_invalid_clefs:
         invalid_clefs_df = pd.DataFrame(invalid_clefs_dict)
         if not invalid_clefs_df.empty:
-            invalid_clefs_df.to_csv(output_file_name.replace(".csv", "_invalid_clefs.csv"), index=False)
-            print("Invalid clefs saved to", output_file_name.replace(".csv", "_invalid_clefs.csv"))
+            invalid_clefs_df.to_csv(output_file_name.replace(
+                ".csv", "_invalid_clefs.csv"), index=False)
+            print("Invalid clefs saved to", output_file_name.replace(
+                ".csv", "_invalid_clefs.csv"))
         else:
             print("No invalid clefs found")
 
     return df
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     file_path = utils.REPO_PATH / "test" / "score_clef.mxl"
     score = converter.parse(file_path).expandRepeats()
-    dataframe = convert_mxml_to_csv(score, str(file_path).replace(file_path.suffix, ".csv"), output_invalid_clefs=True)
-    dataframe = dataframe.set_index('qstamp')
+    dataframe = convert_mxml_to_csv(score, str(file_path).replace(
+        file_path.suffix, ".csv"), output_invalid_clefs=True)
+    dataframe = dataframe.set_index("qstamp")
