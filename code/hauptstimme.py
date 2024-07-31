@@ -1,7 +1,7 @@
 """
 NAME
 ===============================
-HAUPTSTIMME (hauptstimme.py)
+Hauptstimme (hauptstimme.py)
 
 
 BY
@@ -118,18 +118,19 @@ class ScoreThemeAnnotation:
         part_count = 0
 
         for this_part in self.score.parts:
-
+            
             part_name = this_part.partName
+            part_abbrev = this_part.partAbbreviation
             if simplify_part_name:
                 try:
                     part_name = instrument.fromString(part_name).instrumentAbbreviation
                 except:
-                    pass  # No sense in crashing the whole thing for this.
-                    # NB: may wish to preserve violin I vs II
+                    part_name = part_abbrev  # set part_name = full_part_name
 
             self.current_shared_annotation_data = {
                 "part_name": part_name,
-                "part_num": part_count
+                "part_num": part_count,
+                "full_part_name": part_abbrev
             }
             if lyric_not_TE:  # "lyric":
                 self.annotations_from_lyrics(this_part)
@@ -227,7 +228,7 @@ class ScoreThemeAnnotation:
         """
 
         if headers is None:
-            headers = ["qstamp", "measure", "beat", "measure_fraction", "label", "part_name", "part_num"]
+            headers = ["qstamp", "measure", "beat", "measure_fraction", "label", "part_name", "part_num", "full_part_name"]
 
         if len(self.ordered_annotations_list) == 0:
             print(f"Fail: no annotations.")
