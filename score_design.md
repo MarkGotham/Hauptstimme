@@ -39,7 +39,6 @@ Please see [this list of score stylistic design criteria](./score_design.md)
     - Medium preference for same number of staves on each page and weak preference that this include the last page.
 - Copy the named (public domain) source edition exactly except in limited cases like:
   - some variation in "crescendo" vs "cresc." vs "hairpin" etc.
-  - some written out repeats. For instance, we follow Eulenberg editions of Beethoven except when there are complex repeats liable to fail when exported (e.g., 4/iii, 9/ii).
   - stave and page breaks mostly follow MuseScore defaults.
     - Given the stylistic choices above, we make no attempt for page breaks to follow the source
       - E.g., using Eulenberg for the Beethoven means a very different page size.
@@ -58,7 +57,7 @@ Please see [this list of score stylistic design criteria](./score_design.md)
     - Note that original scores use annotations like `a2` where there are two parts on one stave.
       - We have split those parts so don't striclty need them
       - All the same, we include them where it might plausibly help clarify solos and the moves to/from unison.
-  - `System text` for non-tempo comments that apply to all parts e.g., in Beethoven 9/ii, `ritmo de ...` and `[Written out reprise]`.
+  - `System text` for non-tempo comments that apply to all parts e.g., in Beethoven 9/ii, `ritmo de ...`.
 - Bar (Measure) counting. 
   - This is a perennially complex issue, and one often broken by export change of format.
   - Please see [our recent paper about this topic with a proposed solution here](https://dl.acm.org/doi/10.1145/3625135.3625136). 

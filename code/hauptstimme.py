@@ -1,7 +1,7 @@
 """
 NAME
 ===============================
-HAUPTSTIMME (hauptstimme.py)
+Hauptstimme (hauptstimme.py)
 
 
 BY
@@ -56,7 +56,7 @@ import re
 from utils import CORPUS_PATH, get_corpus_files
 
 
-rounding_value = 4
+ROUNDING_VALUE = 4
 
 
 class ScoreThemeAnnotation:
@@ -118,18 +118,19 @@ class ScoreThemeAnnotation:
         part_count = 0
 
         for this_part in self.score.parts:
-
+            
             part_name = this_part.partName
+            part_abbrev = this_part.partAbbreviation
             if simplify_part_name:
                 try:
                     part_name = instrument.fromString(part_name).instrumentAbbreviation
                 except:
-                    pass  # No sense in crashing the whole thing for this.
-                    # NB: may wish to preserve violin I vs II
+                    part_name = part_abbrev  # set part_name = full_part_name
 
             self.current_shared_annotation_data = {
                 "part_name": part_name,
-                "part_num": part_count
+                "part_num": part_count,
+                "full_part_name": part_abbrev
             }
             if lyric_not_TE:  # "lyric":
                 self.annotations_from_lyrics(this_part)
@@ -227,7 +228,7 @@ class ScoreThemeAnnotation:
         """
 
         if headers is None:
-            headers = ["qstamp", "measure", "beat", "measure_fraction", "label", "part_name", "part_num"]
+            headers = ["qstamp", "measure", "beat", "measure_fraction", "label", "part_name", "part_num", "full_part_name"]
 
         if len(self.ordered_annotations_list) == 0:
             print(f"Fail: no annotations.")
@@ -240,7 +241,6 @@ class ScoreThemeAnnotation:
             with open(pathToAnnotation, "w") as f:
                 f.write(",".join(headers) + "\n")
                 for annotationDict in self.ordered_annotations_list:
-                    annotationDict["beat"] = round(float(annotationDict["beat"]), rounding_value)
                     line = [str(annotationDict[h]) for h in headers]
                     f.write(",".join(line) + "\n")
             f.close()
@@ -509,10 +509,10 @@ class ScoreThemeAnnotation:
 def get_info_from_note_or_TE(note_or_TE, this_part):
     return {
         "measure": note_or_TE.measureNumber,
-        "offset": note_or_TE.offset,
-        "beat": note_or_TE.beat,
+        "offset": round(note_or_TE.offset, ROUNDING_VALUE),
+        "beat": round(note_or_TE.beat, ROUNDING_VALUE),
         "measure_fraction": get_measure_fraction(note_or_TE),
-        "qstamp": note_or_TE.getOffsetInHierarchy(this_part),
+        "qstamp": round(note_or_TE.getOffsetInHierarchy(this_part), ROUNDING_VALUE),
         "clef": note_or_TE.getContextByClass(clef.Clef),
         "voice": note_or_TE.getContextByClass(stream.Voice)
     }
@@ -525,7 +525,7 @@ def get_measure_fraction(this_note):
     """
     return round(
         this_note.offset / this_note.getContextByClass("Measure").duration.quarterLength,
-        rounding_value
+        ROUNDING_VALUE
     )
 
 
