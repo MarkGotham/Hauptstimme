@@ -71,22 +71,6 @@ def split_part(
     new_part_1 = copy.deepcopy(p)
     new_part_2 = copy.deepcopy(p)
 
-    # Chords. NB counting bottom up
-    for n in new_part_1.recurse().notesAndRests:
-        if n.isChord:
-            pitches = n.pitches
-            for i in range(len(pitches) - 1):
-                n.remove(pitches[i])  # remove all pitches except the last (highest) one
-
-    for n in new_part_2.recurse().notesAndRests:
-        if n.isChord:
-            pitches = n.pitches
-            for i in range(1, len(pitches)):
-                n.remove(pitches[i])  # remove all pitches except the first (lowest) one
-        if n.lyric:  # should all be duplicates in this expansion.
-            print(f"*** removing lyric {n.lyric} from {new_part_2.partName}, measure {n.measureNumber}")
-            n.lyric = None
-
     # Voices NB counting top down
     for m in new_part_1.getElementsByClass(stream.Measure):
         if m.hasVoices:  # len(m.voices) > 1
@@ -100,16 +84,41 @@ def split_part(
                 m.remove(m.voices[i])  # remove voices 1 to n-1
             m.flattenUnnecessaryVoices()
 
+    # Chords. NB counting bottom up
+    for n in new_part_1.recurse().notesAndRests:
+        if n.isChord:
+            pitches = n.pitches
+            for i in range(len(pitches) - 1):
+                n.remove(pitches[i])  # remove all pitches except the last (highest) one
+        # elif "Rest" in n.classes:  # TODO, should be able to check rests here
+
+    for n in new_part_2.recurse().notesAndRests:
+        if n.isChord:
+            pitches = n.pitches
+            for i in range(1, len(pitches)):
+                n.remove(pitches[i])  # remove all pitches except the first (lowest) one
+        if n.lyric:  # should all be duplicates in this expansion.
+            print(f"*** removing lyric {n.lyric} from {new_part_2.partName}, measure {n.measureNumber}")
+            n.lyric = None
+        # elif "Rest" in n.classes:  # TODO as above
+
     if handle_part_name:
-        i = instrument.fromString(p.partName)
-        trans = ""
-        if i.transposition:  # Lead with "Bb Clarinet" to help MuseScore's bad instrument recognition algorithm.
-            trans = pitch.Pitch("C").transpose(i.transposition).name.replace("-", "b")
-        # NB: 1-2 numbering works in almost all cases; manual change needed for the occasional horns 3-4.
-        new_part_1.partName = f"{trans} {i.classes[0]} 1"
-        new_part_2.partName = f"{trans} {i.classes[0]} 2"
-        new_part_1.partAbbreviation = i.instrumentAbbreviation + " 1"
-        new_part_2.partAbbreviation = i.instrumentAbbreviation + " 2"
+        try:
+            i = instrument.fromString(p.partName)
+            trans = ""
+            if i.transposition:  # Lead with "Bb Clarinet" to help MuseScore's bad instrument recognition algorithm.
+                trans = pitch.Pitch("C").transpose(i.transposition).name.replace("-", "b")
+            # NB: 1-2 numbering works in almost all cases; manual change needed for the occasional horns 3-4.
+            new_part_1.partName = f"{trans} {i.classes[0]} 1"
+            new_part_2.partName = f"{trans} {i.classes[0]} 2"
+            new_part_1.partAbbreviation = i.instrumentAbbreviation + " 1"
+            new_part_2.partAbbreviation = i.instrumentAbbreviation + " 2"
+            # TODO, assing proper XML IDs ~ .instrumentId = "wind.reed.clarinet.bflat" to improve MS4 parsing.
+        except:
+            pass
+
+    for p in [new_part_1, new_part_2]:
+        p.makeRests(fillGaps=False, inPlace=True, hideRests=False)
 
     return new_part_1, new_part_2
 
@@ -129,6 +138,8 @@ def split_one(
 
     for p in score.parts:
         i = p.getInstrument(returnDefault=False)
+        if i is None:
+            continue
         if "BrassInstrument" in i.classes:
             transposition_check(p)
             # ^^ NB transposition check alternative:
@@ -149,21 +160,28 @@ def split_one(
         else:
             score.remove(p)
             # Part name here too, without transposition
-            i = instrument.fromString(p.partName)
-            p.partName = i.classes[0]
-            p.partAbbreviation = i.instrumentAbbreviation
+            try:
+                i = instrument.fromString(p.partName)
+                p.partName = i.classes[0]
+                p.partAbbreviation = i.instrumentAbbreviation
+            except:
+                pass
+                print(f"Could not parse instrument name {p.partName}, skipping")
             score.insert(0, p)
 
     score = clean_up(score)
 
-    path_parts = PurePath(path_to_score.parent).parts[-3:]
-    score.metadata.composer = path_parts[0].replace("_", " ")
-    score.metadata.title = path_parts[1].replace("_", " ")
-    score.metadata.movementName = path_parts[1].replace("_", " ")
-    # ^^^ sic, movementName also symphony due to MuseScore display defaults
-    score.metadata.movementNumber = path_parts[2]
-    score.metadata.opusNumber = path_parts[1].split(",_")[1]  # "Op.<number>", "BWV.242", etc.
-    score.metadata.copyright = "Score: CC0 1.0 Universal; Annotations: CC-By-SA"
+    try:
+        path_parts = PurePath(path_to_score.parent).parts[-3:]
+        score.metadata.composer = path_parts[0].replace("_", " ")
+        score.metadata.title = path_parts[1].replace("_", " ")
+        score.metadata.movementName = path_parts[1].replace("_", " ")
+        # ^^^ sic, movementName also symphony due to MuseScore display defaults
+        score.metadata.movementNumber = path_parts[2]
+        score.metadata.opusNumber = path_parts[1].split(",_")[1]  # "Op.<number>", "BWV.242", etc.
+        score.metadata.copyright = "Score: CC0 1.0 Universal; Annotations: CC-By-SA"
+    except:
+        print("Metadata fail, skipping.")
 
     if not file_name_out:
         try:
@@ -191,11 +209,15 @@ def transposition_check(p: stream.Part) -> None:
     @param p: a part in a score.
     @return: None
     """
-    fs = instrument.fromString(p.partName).transposition
+    try:
+        fs = instrument.fromString(p.partName).transposition
+    except:
+        print(f"Could not parse instrument name {p.partName}, skipping")
+        return
 
     if fs is None:
         print(p, "is non-transposing")
-        return None
+        return
 
     if fs == p.getInstrument().transposition:
         print(p, "is transposing and the interval matches")
@@ -206,22 +228,40 @@ def transposition_check(p: stream.Part) -> None:
         p.getInstrument().transposition = fs
 
 
+rest_template = "Removing a rest with the same start time as a note in "
+
+
+# def rest_check(n: note.Note):  # TODO refactor to here, may need class structure
+#     """
+#     Check if a rest occurs at the same time as a note in the same voice.
+#     If so remove (always an error).
+#     """
+#
+#     rest_template = "Removing a rest start at the same offset time as a note in "
+#     if "Rest" not in n.previous().classes:
+#     ... etc. as in `clean_up`
+
+
 def clean_up(
         s: stream.Score | str | Path,
         map_accent_to_sf: bool = False,
         delete_moderation: bool = True,
+        do_measure_length: bool = False,
 ):
     """
     Basic layout clean up on a score.
     Remove all manual style adjustment including stem direction.
 
     TODO Others to consider:
-    Where there’s two dynamics at the same time,
-    delete one given some order of likelihood.
+    Where there’s two dynamics at the same time, delete one given some order of likelihood;
+    where there’s a dynamic without a note, delete.
 
     @param s: The Score, or a path to one.
     @param map_accent_to_sf: hard-coded functionality for replacing accents with sf
     @param delete_moderation: remove all cases of mp and mf (rare in specific styles and therefore editorial).
+    @param do_measure_length: Check and correct for measure length: shorter is fine (anacruses); longer is always wrong.
+    Warning: This is a nice idea, but slow and ineffective ;)
+
     @return: That same score, cleaned up ;)
     """
     if type(s) != stream.Score:
@@ -244,17 +284,52 @@ def clean_up(
                 context = item.getContextByClass(stream.Stream)
                 context.remove(item)
 
-    for n in s.recurse().notes:
-        n.stemDirection = "unspecified"
+    for p in s.parts:
 
-        if n.articulations and map_accent_to_sf:
-            for x in n.articulations:
-                if "Accent" in x.classes:
-                    n.articulations.remove(x)
+        # To avoid rests and notes at the same position (always wrong)
+        for n in p.recurse().notesAndRests:  # TODO should be able to rest check more locally, as above
+            if "Rest" in n.classes:
+                m = n.getContextByClass(stream.Measure)
+                if "Rest" not in n.previous().classes:
+                    if n.offset == n.previous().offset:
+                        m.remove(n)
+                        print(rest_template + f"m.{n.measureNumber} (rest listed after).")
+                if n.next() and ("Rest" not in n.next().classes):
+                    if n.offset == n.next().offset:
+                        m.remove(n)
+                        print(rest_template + f"m.{n.measureNumber} (rest listed before).")
 
-                    m = n.getContextByClass(stream.Measure)
-                    o = n.offset
-                    m.insert(o, dynamics.Dynamic("sf"))
+            n.stemDirection = None  # "unspecified"
+
+            if n.articulations and map_accent_to_sf:
+                for x in n.articulations:
+                    if "Accent" in x.classes:
+                        n.articulations.remove(x)
+
+                        m = n.getContextByClass(stream.Measure)
+                        o = n.offset
+                        m.insert(o, dynamics.Dynamic("sf"))
+
+        p.makeRests()  # recurse()?
+
+        # If there's still a bar duration warping ...
+        if do_measure_length:
+            current_ts_duration = 10
+            for measure in p.getElementsByClass(stream.Measure):
+                ts = measure.timeSignature
+                if ts:
+                    current_ts_duration = ts.barDuration.quarterLength  # sic, checked
+                    print(f"New time signature duration = {current_ts_duration}")
+                if measure.duration.quarterLength > current_ts_duration:
+                    print(
+                        "Corrected overlong measure length from ",
+                        measure.duration.quarterLength,
+                        "to ",
+                        current_ts_duration,
+                        "in bar ",
+                        measure.measureNumber
+                    )
+                    measure.duration.quarterLength = current_ts_duration
 
     return s
 
@@ -277,4 +352,4 @@ def split_corpus(
 # ------------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    split_one()
+    split_one(file_name_out="split_test_score_out.mxl")
