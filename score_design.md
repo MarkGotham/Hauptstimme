@@ -25,9 +25,12 @@ Please see [this list of score stylistic design criteria](./score_design.md)
         - `Cl.` for `Clarinet` is fine
         - but `Vln` for `Violin` is not.
   - String instruments in the singular e.g., `Violin 1` (as in 'the violin 1 part')
-    - Transpositions as in the original except no mid-movement transpositions.
-      - For example the Beethoven symphonies do this in the horn parts (4/ii, 5/iii 4 bars before the end), and clarinets 9/iv.
-      - This does not convert reliably, and adding a new part creates its own problems.
+    - Transpositions as in the original except:
+      - no mid-movement transpositions:
+        - For example the Beethoven symphonies do this in the horn parts (4/ii, 5/iii 4 bars before the end), and clarinets 9/iv.
+        - This does not convert reliably, and adding a new part creates its own problems.
+      - where that is not possible in MS4 a manual workaround is required.
+        - Brahms 1/iii has horns and trumpets in B _natural_, which means setting the transposition manually.
 - Stave size. Manually set for each work to:
   - attempt approximate consistency across multi-movement works
   - use the largest stave size that fits within the page, including the large lyric annotations. 
