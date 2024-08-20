@@ -17,12 +17,6 @@ https://creativecommons.org/licenses/by-sa/4.0/
 
 ABOUT:
 ===============================
-This script compares automatic segmentation points to the Hauptstimme
-points to see how well they align. The automatic segmentation points
-include changepoint detection-based segmentation points and 
-novelty-based segmentation points using tempogram and chromagram 
-features.
-
 This script produces a part relationship summary for a score, which
 compares each instrument part to the 'main' melody part as well as
 each other in each Hauptstimme annotation block.
