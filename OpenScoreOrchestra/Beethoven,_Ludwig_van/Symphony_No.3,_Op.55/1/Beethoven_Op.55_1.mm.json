@@ -1,0 +1,138 @@
+[
+  {
+    "ID": "1",
+    "count": 1,
+    "qstamp": 0.0,
+    "number": 1,
+    "name": "1",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      2
+    ]
+  },
+  {
+    "ID": "151",
+    "count": 151,
+    "qstamp": 450.0,
+    "number": 151,
+    "name": "151",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      152,
+      156
+    ]
+  },
+  {
+    "ID": "152",
+    "count": 152,
+    "qstamp": 453.0,
+    "number": 152,
+    "name": "152a",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      153
+    ]
+  },
+  {
+    "ID": "153",
+    "count": 153,
+    "qstamp": 456.0,
+    "number": 153,
+    "name": "153a",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      154
+    ]
+  },
+  {
+    "ID": "154",
+    "count": 154,
+    "qstamp": 459.0,
+    "number": 154,
+    "name": "154a",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      155
+    ]
+  },
+  {
+    "ID": "155",
+    "count": 155,
+    "qstamp": 462.0,
+    "number": 155,
+    "name": "155a",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": true,
+    "next": [
+      1
+    ]
+  },
+  {
+    "ID": "156",
+    "count": 156,
+    "qstamp": 465.0,
+    "number": 156,
+    "name": "156b",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      157
+    ]
+  },
+  {
+    "ID": "157",
+    "count": 157,
+    "qstamp": 468.0,
+    "number": 157,
+    "name": "157b",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      158
+    ]
+  },
+  {
+    "ID": "695",
+    "count": 695,
+    "qstamp": 2082.0,
+    "number": 695,
+    "name": "695",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      -1
+    ]
+  }
+]

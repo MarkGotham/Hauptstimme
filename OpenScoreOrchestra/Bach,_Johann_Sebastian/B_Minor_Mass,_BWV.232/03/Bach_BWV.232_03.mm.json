@@ -1,0 +1,32 @@
+[
+  {
+    "ID": "1",
+    "count": 1,
+    "qstamp": 0.0,
+    "number": 1,
+    "name": "1",
+    "time_signature": "4/2",
+    "nominal_length": 8.0,
+    "actual_length": 8.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      2
+    ]
+  },
+  {
+    "ID": "59",
+    "count": 59,
+    "qstamp": 464.0,
+    "number": 59,
+    "name": "59",
+    "time_signature": "4/2",
+    "nominal_length": 8.0,
+    "actual_length": 8.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      -1
+    ]
+  }
+]
