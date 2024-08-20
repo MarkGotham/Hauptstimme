@@ -1,0 +1,142 @@
+[
+  {
+    "ID": "1",
+    "count": 1,
+    "qstamp": 0.0,
+    "number": 1,
+    "name": "1",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 1.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      2
+    ]
+  },
+  {
+    "ID": "2",
+    "count": 2,
+    "qstamp": 1.0,
+    "number": 0,
+    "name": "0",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      3
+    ]
+  },
+  {
+    "ID": "9",
+    "count": 9,
+    "qstamp": 22.0,
+    "number": 7,
+    "name": "7",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": true,
+    "next": [
+      1,
+      10
+    ]
+  },
+  {
+    "ID": "10",
+    "count": 10,
+    "qstamp": 24.0,
+    "number": 8,
+    "name": "8",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 1.0,
+    "start_repeat": true,
+    "end_repeat": false,
+    "next": [
+      11
+    ]
+  },
+  {
+    "ID": "81",
+    "count": 81,
+    "qstamp": 235.0,
+    "number": 79,
+    "name": "79",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": true,
+    "next": [
+      10,
+      82,
+      -1
+    ]
+  },
+  {
+    "ID": "82",
+    "count": 82,
+    "qstamp": 237.0,
+    "number": 80,
+    "name": "80",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 1.0,
+    "start_repeat": true,
+    "end_repeat": false,
+    "next": [
+      83
+    ]
+  },
+  {
+    "ID": "106",
+    "count": 106,
+    "qstamp": 307.0,
+    "number": 104,
+    "name": "104",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": true,
+    "next": [
+      82,
+      107
+    ]
+  },
+  {
+    "ID": "107",
+    "count": 107,
+    "qstamp": 309.0,
+    "number": 105,
+    "name": "105",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 1.0,
+    "start_repeat": true,
+    "end_repeat": false,
+    "next": [
+      108
+    ]
+  },
+  {
+    "ID": "141",
+    "count": 141,
+    "qstamp": 409.0,
+    "number": 139,
+    "name": "139",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": true,
+    "next": [
+      107,
+      1
+    ]
+  }
+]

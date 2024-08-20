@@ -1,0 +1,153 @@
+[
+  {
+    "ID": "1",
+    "count": 1,
+    "qstamp": 0.0,
+    "number": 1,
+    "name": "1",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 0.125,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      2
+    ]
+  },
+  {
+    "ID": "35",
+    "count": 35,
+    "qstamp": 99.125,
+    "number": 35,
+    "name": "35",
+    "time_signature": "4/4",
+    "nominal_length": 4.0,
+    "actual_length": 4.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      36
+    ]
+  },
+  {
+    "ID": "36",
+    "count": 36,
+    "qstamp": 103.125,
+    "number": 36,
+    "name": "36",
+    "time_signature": "4/4",
+    "nominal_length": 4.0,
+    "actual_length": 4.0,
+    "start_repeat": true,
+    "end_repeat": false,
+    "next": [
+      37
+    ]
+  },
+  {
+    "ID": "132",
+    "count": 132,
+    "qstamp": 487.125,
+    "number": 132,
+    "name": "132",
+    "time_signature": "4/4",
+    "nominal_length": 4.0,
+    "actual_length": 4.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      133,
+      136
+    ]
+  },
+  {
+    "ID": "133",
+    "count": 133,
+    "qstamp": 491.125,
+    "number": 133,
+    "name": "133a",
+    "time_signature": "4/4",
+    "nominal_length": 4.0,
+    "actual_length": 4.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      134
+    ]
+  },
+  {
+    "ID": "134",
+    "count": 134,
+    "qstamp": 495.125,
+    "number": 134,
+    "name": "134a",
+    "time_signature": "4/4",
+    "nominal_length": 4.0,
+    "actual_length": 4.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      135
+    ]
+  },
+  {
+    "ID": "135",
+    "count": 135,
+    "qstamp": 499.125,
+    "number": 135,
+    "name": "135a",
+    "time_signature": "4/4",
+    "nominal_length": 4.0,
+    "actual_length": 4.0,
+    "start_repeat": false,
+    "end_repeat": true,
+    "next": [
+      36
+    ]
+  },
+  {
+    "ID": "136",
+    "count": 136,
+    "qstamp": 503.125,
+    "number": 136,
+    "name": "136b",
+    "time_signature": "4/4",
+    "nominal_length": 4.0,
+    "actual_length": 4.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      137
+    ]
+  },
+  {
+    "ID": "137",
+    "count": 137,
+    "qstamp": 507.125,
+    "number": 137,
+    "name": "137b",
+    "time_signature": "4/4",
+    "nominal_length": 4.0,
+    "actual_length": 4.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      138
+    ]
+  },
+  {
+    "ID": "364",
+    "count": 364,
+    "qstamp": 1415.125,
+    "number": 364,
+    "name": "364",
+    "time_signature": "4/4",
+    "nominal_length": 4.0,
+    "actual_length": 4.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      -1
+    ]
+  }
+]

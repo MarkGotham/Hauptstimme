@@ -1,0 +1,122 @@
+[
+  {
+    "ID": "1",
+    "count": 1,
+    "qstamp": 0.0,
+    "number": 1,
+    "name": "1",
+    "time_signature": "6/8",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      2
+    ]
+  },
+  {
+    "ID": "70",
+    "count": 70,
+    "qstamp": 207.0,
+    "number": 70,
+    "name": "70",
+    "time_signature": "2/2",
+    "nominal_length": 4.0,
+    "actual_length": 4.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      71
+    ]
+  },
+  {
+    "ID": "71",
+    "count": 71,
+    "qstamp": 211.0,
+    "number": 71,
+    "name": "71",
+    "time_signature": "6/8",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      72
+    ]
+  },
+  {
+    "ID": "366",
+    "count": 366,
+    "qstamp": 1096.0,
+    "number": 366,
+    "name": "366",
+    "time_signature": "2/2",
+    "nominal_length": 4.0,
+    "actual_length": 4.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      367
+    ]
+  },
+  {
+    "ID": "367",
+    "count": 367,
+    "qstamp": 1100.0,
+    "number": 367,
+    "name": "367",
+    "time_signature": "6/8",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      368
+    ]
+  },
+  {
+    "ID": "539",
+    "count": 539,
+    "qstamp": 1616.0,
+    "number": 539,
+    "name": "539",
+    "time_signature": "2/2",
+    "nominal_length": 4.0,
+    "actual_length": 4.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      540
+    ]
+  },
+  {
+    "ID": "547",
+    "count": 547,
+    "qstamp": 1648.0,
+    "number": 547,
+    "name": "547",
+    "time_signature": "6/8",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      548
+    ]
+  },
+  {
+    "ID": "556",
+    "count": 556,
+    "qstamp": 1675.0,
+    "number": 556,
+    "name": "556",
+    "time_signature": "6/8",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      -1
+    ]
+  }
+]

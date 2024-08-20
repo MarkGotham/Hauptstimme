@@ -1,0 +1,123 @@
+[
+  {
+    "ID": "1",
+    "count": 1,
+    "qstamp": 0.0,
+    "number": 1,
+    "name": "1",
+    "time_signature": "2/4",
+    "nominal_length": 2.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      2
+    ]
+  },
+  {
+    "ID": "99",
+    "count": 99,
+    "qstamp": 196.0,
+    "number": 99,
+    "name": "99",
+    "time_signature": "2/4",
+    "nominal_length": 2.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      100,
+      104
+    ]
+  },
+  {
+    "ID": "100",
+    "count": 100,
+    "qstamp": 198.0,
+    "number": 100,
+    "name": "100a",
+    "time_signature": "2/4",
+    "nominal_length": 2.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      101
+    ]
+  },
+  {
+    "ID": "101",
+    "count": 101,
+    "qstamp": 200.0,
+    "number": 101,
+    "name": "101a",
+    "time_signature": "2/4",
+    "nominal_length": 2.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      102
+    ]
+  },
+  {
+    "ID": "102",
+    "count": 102,
+    "qstamp": 202.0,
+    "number": 102,
+    "name": "102a",
+    "time_signature": "2/4",
+    "nominal_length": 2.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      103
+    ]
+  },
+  {
+    "ID": "103",
+    "count": 103,
+    "qstamp": 204.0,
+    "number": 103,
+    "name": "103a",
+    "time_signature": "2/4",
+    "nominal_length": 2.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": true,
+    "next": [
+      1
+    ]
+  },
+  {
+    "ID": "104",
+    "count": 104,
+    "qstamp": 206.0,
+    "number": 104,
+    "name": "104b",
+    "time_signature": "2/4",
+    "nominal_length": 2.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      105
+    ]
+  },
+  {
+    "ID": "359",
+    "count": 359,
+    "qstamp": 716.0,
+    "number": 359,
+    "name": "359",
+    "time_signature": "2/4",
+    "nominal_length": 2.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      -1
+    ]
+  }
+]
