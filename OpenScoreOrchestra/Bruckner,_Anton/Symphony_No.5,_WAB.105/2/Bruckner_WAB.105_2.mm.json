@@ -1,0 +1,47 @@
+[
+  {
+    "ID": "1",
+    "count": 1,
+    "qstamp": 0.0,
+    "number": 1,
+    "name": "1",
+    "time_signature": "2/2",
+    "nominal_length": 4.0,
+    "actual_length": 4.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      2
+    ]
+  },
+  {
+    "ID": "162",
+    "count": 162,
+    "qstamp": 644.0,
+    "number": 162,
+    "name": "162",
+    "time_signature": "4/4",
+    "nominal_length": 4.0,
+    "actual_length": 4.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      163
+    ]
+  },
+  {
+    "ID": "211",
+    "count": 211,
+    "qstamp": 840.0,
+    "number": 211,
+    "name": "211",
+    "time_signature": "4/4",
+    "nominal_length": 4.0,
+    "actual_length": 4.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      -1
+    ]
+  }
+]

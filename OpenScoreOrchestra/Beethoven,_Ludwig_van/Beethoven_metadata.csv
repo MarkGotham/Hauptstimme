@@ -1,0 +1,47 @@
+Symphony number,Opus,Movement number,Movement type (where different),Movement name/tempo,Symphony key,Movement key
+1,Op.21,1,,Adagio molto - Allegro con brio,C,C
+1,Op.21,2,,Andante cantabile con moto,C,F
+1,Op.21,3,,Menuetto: Allegro molto e vivace,C,C
+1,Op.21,3,,Trio,C,C
+1,Op.21,4,,Adagio - Allegro molto e vivace,C,C
+2,Op.36,1,,Adagio molto - Allegro con brio,D,D
+2,Op.36,2,,Larghetto,D,A
+2,Op.36,3,,Scherzo: Allegro,D,D
+2,Op.36,3,,Trio,D,D
+2,Op.36,4,,Allegro molto,D,D
+3,Op.55,1,,Allegro con brio,Eb,Eb
+3,Op.55,2,,Marcia funebre. Adagio assai,Eb,c minor
+3,Op.55,3,,Scherzo. Allegro vivace,Eb,Eb
+3,Op.55,3,,Trio,Eb,Eb
+3,Op.55,4,,Finale. Allegro molto- Poco andante- Presto,Eb,Eb
+4,Op.60,1,,Adagio- Allegro vivace,Bb,Bb
+4,Op.60,2,,Adagio,Bb,Eb
+4,Op.60,3,,Menuetto: Allegro vivace,Bb,Bb
+4,Op.60,3,,Trio,Bb,Bb
+4,Op.60,4,,Allegro ma non troppo,Bb,Bb
+5,Op.67,1,,Allegro con brio,c minor,c minor
+5,Op.67,2,,Andante con moto,c minor,Ab
+5,Op.67,3,,Scherzo. Allegro,c minor,c minor
+5,Op.67,3,,Trio,c minor,C
+5,Op.67,4,,Allegro,c minor,C
+6,Op.68,1,,Allegro ma non troppo,F,F
+6,Op.68,2,,Andante molto mosso,F,Bb
+6,Op.68,3,,Allegro,F,F
+6,Op.68,3,,Trio,F,F
+6,Op.68,4,,Allegro,F,F
+6,Op.68,5,2,Allegretto,F,F
+7,Op.92,1,,Poco sostenuto - Vivace,A,A
+7,Op.92,2,,Allegretto,A,a minor
+7,Op.92,3,,Presto - Assai meno presto,A,F
+7,Op.92,3,,Trio,A,D
+7,Op.92,4,,Allegro con brio,A,A
+8,Op.93,1,,Allegro vivace e con brio,F,F
+8,Op.93,2,,Allegretto scherzando,F,Bb
+8,Op.93,3,,Tempo di menuetto,F,F
+8,Op.93,3,,Trio,F,F
+8,Op.93,4,,Allegro vivace,F,F
+9,Op.125,1,,Allegro ma non troppo,d minor,d minor
+9,Op.125,2,3,Molto vivace,d minor,d minor
+9,Op.125,2,3,Trio,d minor,D
+9,Op.125,3,2,Adagio molto e cantabile,d minor,Bb
+9,Op.125,4,,Presto,d minor,D

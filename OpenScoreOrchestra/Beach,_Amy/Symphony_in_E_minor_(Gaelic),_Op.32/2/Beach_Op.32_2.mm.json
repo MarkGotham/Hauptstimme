@@ -1,0 +1,183 @@
+[
+  {
+    "ID": "1",
+    "count": 1,
+    "qstamp": 0.0,
+    "number": 1,
+    "name": "1",
+    "time_signature": "12/8",
+    "nominal_length": 6.0,
+    "actual_length": 0.5,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      2
+    ]
+  },
+  {
+    "ID": "20",
+    "count": 20,
+    "qstamp": 108.5,
+    "number": 20,
+    "name": "20",
+    "time_signature": "2/4",
+    "nominal_length": 2.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      21
+    ]
+  },
+  {
+    "ID": "37",
+    "count": 37,
+    "qstamp": 142.5,
+    "number": 37,
+    "name": "37",
+    "time_signature": "2/4",
+    "nominal_length": 2.0,
+    "actual_length": 2.0,
+    "start_repeat": true,
+    "end_repeat": false,
+    "next": [
+      38
+    ]
+  },
+  {
+    "ID": "53",
+    "count": 53,
+    "qstamp": 174.5,
+    "number": 53,
+    "name": "53",
+    "time_signature": "2/4",
+    "nominal_length": 2.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      54,
+      57
+    ]
+  },
+  {
+    "ID": "54",
+    "count": 54,
+    "qstamp": 176.5,
+    "number": 54,
+    "name": "54a",
+    "time_signature": "2/4",
+    "nominal_length": 2.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      55
+    ]
+  },
+  {
+    "ID": "55",
+    "count": 55,
+    "qstamp": 178.5,
+    "number": 55,
+    "name": "55a",
+    "time_signature": "2/4",
+    "nominal_length": 2.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      56
+    ]
+  },
+  {
+    "ID": "56",
+    "count": 56,
+    "qstamp": 180.5,
+    "number": 56,
+    "name": "56a",
+    "time_signature": "2/4",
+    "nominal_length": 2.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": true,
+    "next": [
+      37
+    ]
+  },
+  {
+    "ID": "57",
+    "count": 57,
+    "qstamp": 182.5,
+    "number": 57,
+    "name": "57b",
+    "time_signature": "2/4",
+    "nominal_length": 2.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      58
+    ]
+  },
+  {
+    "ID": "58",
+    "count": 58,
+    "qstamp": 184.5,
+    "number": 58,
+    "name": "58b",
+    "time_signature": "2/4",
+    "nominal_length": 2.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      59
+    ]
+  },
+  {
+    "ID": "169",
+    "count": 169,
+    "qstamp": 406.5,
+    "number": 169,
+    "name": "169",
+    "time_signature": "12/8",
+    "nominal_length": 6.0,
+    "actual_length": 6.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      170
+    ]
+  },
+  {
+    "ID": "196",
+    "count": 196,
+    "qstamp": 568.5,
+    "number": 196,
+    "name": "196",
+    "time_signature": "2/4",
+    "nominal_length": 2.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      197
+    ]
+  },
+  {
+    "ID": "214",
+    "count": 214,
+    "qstamp": 604.5,
+    "number": 214,
+    "name": "214",
+    "time_signature": "2/4",
+    "nominal_length": 2.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      -1
+    ]
+  }
+]
