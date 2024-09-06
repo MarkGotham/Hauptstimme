@@ -6,7 +6,7 @@ Align Score Audios (align_score_audios.py)
 
 BY
 ===============================
-Matt Blessing, 2024
+Matthew Blessing
 
 
 LICENCE:
@@ -19,281 +19,253 @@ ABOUT:
 ===============================
 This script aligns a set of audio files to a score.
 
-It requires a score's .mscz and .mxl file, as well as (optionally) the
-score's (compressed) measure map and a set of audio files (.mp3 or 
-.wav).
+It requires a score's MuseScore or MusicXML file and a set of audio 
+files (.mp3, .wav, or .flac).
 
-There are a few ways to provide arguments when running this script from
+There are two ways to provide arguments when running this script from
 the command line:
-1.  Providing the score files and audio files:
-    'python3 align_score_audios.py -s score.mscz score.mxl 
-    -a audio1.mp3 audio2.mp3 {...}'
-2.  Providing the score files, measure map, and audio files:
-    'python3 align_score_audios.py -s score.mscz score.mxl 
-    -m score.mm.json -a audio1.mp3 audio2.mp3 {...}'
-3.  Providing a file paths file containing the score files,
-    (optionally) the measure map, and info about the audio files. 
-    Specifically, the info includes, e.g. 'filenames.txt':
+1.  Providing audio file paths with -a:
+    'python3 align_score_audios.py {score file} -a {audio file 1} ...'
+2.  Providing audio file data with -f:
+    'python3 align_score_audios.py {score file} -f {audio data file}',
+    where the audio data file contains, e.g.:
     '''
-    score.mscz
-    score.mxl
-    score.mm.json
     UK ldn_symph_orc.mp3   00:00:07    00:05:50
     US ptsbrg_symph_orc.mp3
     GER brln_symph_orc.mp3  00:12:23
     '''
     Notes:
-        The audio file info is separated by tabs.
-        Audio files can either have no specified time range (e.g., US), 
-        start and end timestamps (e.g., UK), or only a start timestamp
-        (e.g., GER).
-    Then running:
-    'python3 score_audio_alignment.py -f filenames.txt'
+        Each line contains audio info separated by tabs.
+        Audio files have:
+        - A unique ID for the alignment table.
+        - A file path or URL.
+        - (Optional) A start timestamp.
+        - (Optional) An end timestamp.
+        Audio files can either have no specified time range (e.g., US
+        in the above example), only a start timestamp (e.g., GER), or
+        both start and end timestamps (e.g., UK).
 """
+from __future__ import annotations
+
 import argparse
 import time
-from datetime import datetime
+import datetime
+from pathlib import Path
 from hauptstimme.alignment.score_audio_alignment import *
-from hauptstimme.utils import get_compressed_measure_map
+from hauptstimme.utils import get_compressed_measure_map, ms3_convert
+from hauptstimme.types import AudioData
+from typing import Tuple, List
 
 
-def get_arg_mode(args):
+def validate_args(
+    args: argparse.Namespace
+) -> Tuple[Path, Path, Path, List[AudioData]]:
     """
-    Determine the 'argument mode' based on which arguments were passed.
+    Validate the arguments parsed from the command line.
 
     Args:
-        args (argparse.Namespace): An object holding the values parsed
-            from the command line arguments.
+        args: An object holding the arguments parsed from the command 
+            line.
 
     Returns:
-        mode (str): Either 'regular' if the -s and -a arguments were 
-            passed and no -f argument was passed, or 'file_path_file' 
-            if the -f argument was passed and no -s and -a arguments 
-            were passed.
-
-    Raises:
-        ValueError: If neither: the -s and -a arguments are provided
-            with no -f argument or the -f argument is provided with no
-            -s and -a arguments.
-    """
-    if args.score_files and args.audios and args.file_paths is None:
-        mode = "regular"
-    elif args.score_files is None and args.audios is None and args.file_paths:
-        mode = "file_path_file"
-    else:
-        raise ValueError(
-            "Error: An invalid set of arguments were provided. Either " +
-            "provide the score files and audio files, or provide all file " +
-            "paths in a .txt file.")
-
-    return mode
-
-
-def validate_args(args, mode):
-    """
-    Validate the argument values parsed from the command line.
-
-    Args:
-        args (argparse.Namespace): An object holding the values parsed
-            from the command line arguments.
-        mode (str): The 'argument mode' indicating which arguments were
-            given.
-
-    Returns:
-        score_mscz (str): The score's MuseScore file path.
-        score_mxl (str): The score's MusicXML file path.
-        score_mm (str): The score's measure map file path.
-        audios (list): A 2D list containing a list for each audio
+        score_mscz: The score's MuseScore file path.
+        score_mxl: The score's MusicXML file path.
+        score_mm: The score's measure map file path.
+        audios: A 2D list containing a list for each audio
             file that contains:
-                audio_id (str): An identifier for the audio file.
-                audio_filename (str): Its local filename or URL.
-                A time range to extract from the audio file for 
+                audio_id: An identifier for the audio file.
+                audio_path: The path to or URL for the audio file.
+                A time range to extract from the audio file for
                     alignment, specified by:
-                    start (datetime.time): A start timestamp.
-                    end (datetime.time): An end timestamp.
-                desc (str): A description of which portion of the audio
-                        is to be used.
+                    start: A start timestamp.
+                    end: An end timestamp.
+                desc: A description of which portion of the audio is to
+                    be used.
 
     Raises:
-        ValueError: If the start timestamp for an audio file is not 
+        ValueError. If the score file provided is not a .mscz or .mxl 
+            file.
+        ValueError: If both the -a and -f arguments are missing.
+        ValueError: If the start timestamp for an audio file is not
             given in hh:mm:ss format.
-        ValueError: If no MuseScore file was provided.
-        ValueError: If no MusicXML file was provided.
         ValueError: If no audio files were provided.
     """
-    score_mscz = None
-    score_mxl = None
-    score_mm = None
+    score_file = args.score
+    score_file = validate_path(score_file)
+    score_file_dir = score_file.parent
+
+    if score_file.suffix == ".mscz":
+        score_mscz = score_file
+        # Get MusicXML file
+        score_mxl = score_file.with_suffix(".mxl")
+        if not score_mxl.exists():
+            print("Warning: The provided score has no MusicXML file.")
+            print("Creating MusicXML file...")
+            ms3_convert(
+                score_file_dir, "mscz", "mxl", score_file.stem
+            )
+    elif score_file.suffix == ".mxl":
+        score_mxl = score_file
+        # Get MuseScore file
+        score_mscz = score_file.with_suffix(".mscz")
+        if not score_mscz.exists():
+            print("Warning: The provided score has no MuseScore file.")
+            print("Creating MuseScore file...")
+            ms3_convert(
+                score_file_dir, "mxl", "mscz", score_file.stem
+            )
+    else:
+        raise ValueError("Error: The score file provided requires a " +
+                         ".mscz or .mxl extension.")
+
+    # Get measure map
+    score_mm = score_file.with_suffix(".mm.json")
+    if not score_mm.exists():
+        print("Warning: The provided score has no measure map.")
+        print("Creating measure map...")
+        get_compressed_measure_map(score_mscz)
+
     audios = []
 
-    if mode == "regular":
-        print("\nValidating the provided file paths...")
-        file_paths = args.score_files + args.audios
-        if args.measure_map:
-            file_paths += [args.measure_map]
-    elif mode == "file_path_file":
-        print("\nValidating the provided file of file paths...")
-        file = open(args.file_paths, "r")
-        file_paths = file.readlines()
+    if args.audios:
+        audios_data = args.audios
+    elif args.audios_file:
+        audios_file = open(args.audios_file, "r")
+        audios_data = audios_file.readlines()
+    else:
+        raise ValueError("Error: Both the -a and -f arguments are missing.")
 
-    for file_path in file_paths:
-        file_path = file_path.strip()
-        file_path_line_split = file_path.split("\t")
-        num_args = len(file_path_line_split)
-        # If file_path contains strings separated by tabs, then it is
-        # likely information for an audio file
-        if num_args > 1:
-            audio_id = file_path_line_split[0]
-            file_path = file_path_line_split[1]
-            if not Path(file_path).exists():
-                print(f"Warning: Excluding '{file_path}' as it doesn't exist.")
-                continue
-            start = None
-            end = None
-            if file_path.endswith(".mp3") or file_path.endswith(".wav"):
-                if num_args >= 3:
-                    # The third value is always going to be the start
-                    # timestamp
-                    start = file_path_line_split[2]
+    for audio_data in audios_data:
+        audio_data = audio_data.strip()
+
+        # Audio data from -f will contain info separated by tabs
+        audio_data = audio_data.split("\t")
+        num_args = len(audio_data)
+
+        ignore = False
+        audio_id = None
+        start = None
+        end = None
+        if num_args == 1:
+            audio_path = audio_data[0]
+            desc = "full audio"
+        elif num_args == 2:
+            audio_id, audio_path = audio_data
+            desc = "full audio"
+        elif num_args >= 3:
+            audio_id, audio_path, start = audio_data[:3]
+            desc = f"{start} onwards"
+            if num_args == 4:
+                end = audio_data[3]
+                desc = f"{start}-{end}"
+        else:
+            ignore = True
+
+        if ignore:
+            print(f"Warning: Excluding '{audio_path}' due to invalid data" +
+                  f"in '{args.audios_file}'. Please run with argument -h " +
+                  "for more information.")
+        else:
+            if audio_path.endswith((".mp3", ".wav", ".flac")):
+                if audio_id is None:
+                    # Audio has no identifier, but this is needed
+                    audio_id = input("Enter a string to represent the " +
+                                     f"audio file '{audio_path}' in the " +
+                                     "alignment table (e.g., 'Ldn_Symph_Orc'" +
+                                     " or 'Karajan1950').\n")
+                if start is not None:
                     try:
-                        start = datetime.strptime(start, "%H:%M:%S").time()
+                        start = datetime.datetime.strptime(
+                            start, "%H:%M:%S"
+                        ).time()
                     except ValueError:
                         raise ValueError(
                             f"Error: {start} is not in hh:mm:ss format."
                         )
-                    if num_args == 4:
-                        # If there is a fourth value, it is the end
-                        # timestamp
-                        end = file_path_line_split[3]
-                        try:
-                            end = datetime.strptime(end, "%H:%M:%S").time()
-                        except ValueError:
-                            raise ValueError(
-                                f"Error: {end} is not in hh:mm:ss format."
-                            )
-                    if end:
-                        desc = f"{start}-{end}"
-                    else:
-                        desc = f"{start} onwards"
-                else:
-                    desc = "full audio"
-                audios.append([audio_id, file_path, start, end, desc])
-        else:
-            if not Path(file_path).exists():
-                print(f"Warning: Excluding '{file_path}' as it doesn't exist.")
-                continue
-            if file_path.endswith(".mscz"):
-                score_mscz = file_path
-            elif file_path.endswith(".mxl"):
-                score_mxl = file_path
-            elif file_path.endswith(".json") or file_path.endswith(".csv"):
-                score_mm = file_path
-            elif file_path.endswith(".mp3") or file_path.endswith(".wav"):
-                # Audio has no identifier, but this is needed
-                audio_id = input("Enter a string to represent the audio " +
-                                 f"file '{file_path}' in the alignment " +
-                                 "table (e.g., 'Ldn_Symph_Orc' or " +
-                                 "'Karajan1950').\n")
-                audios.append([audio_id, file_path, None, None, "full audio"])
-            else:
-                print(f"Warning: Excluding '{file_path}' as it is not a " +
-                      ".mscz, .mxl, .mp3 or .wav file.")
+                if end is not None:
+                    try:
+                        end = datetime.datetime.strptime(
+                            end, "%H:%M:%S"
+                        ).time()
+                    except ValueError:
+                        raise ValueError(
+                            f"Error: {end} is not in hh:mm:ss format."
+                        )
 
-    if score_mscz is None:
-        raise ValueError("Error: No MuseScore file provided.")
-    elif score_mxl is None:
-        raise ValueError("Error: No MusicXML file provided.")
-    elif len(audios) == 0:
+                audios.append([audio_id, audio_path, start, end, desc])
+            else:
+                print(f"Warning: Excluding '{audio_path}' as it is not a " +
+                      ".mp3, .wav or .flac file.")
+
+    if len(audios) == 0:
         raise ValueError("Error: No valid audio files were provided.")
 
     audios_string = ", ".join(
-        [f"{audio[0]} - '{audio[1]}' ({audio[3]})" for audio in audios]
+        [f"{audio[0]} - '{audio[1]}' ({audio[4]})" for audio in audios]
     )
-    if score_mm:
-        print(
-            f"Validation complete.\nMuseScore file: '{score_mscz}', \n" +
-            f"MusicXML file: '{score_mxl}', \n" +
-            f"Measure map file: '{score_mm}', \n" +
-            f"Audio files: {audios_string}.")
-    else:
-        print(
-            f"Validation complete.\nMuseScore file: '{score_mscz}', \n" +
-            f"MusicXML file: '{score_mxl}', \n" +
-            f"Audio files: {audios_string}.")
-        # Get the score's measure map
-        score_mm = get_compressed_measure_map(score_mscz)
+    print(f"MuseScore file: '{score_mscz}', \n" +
+          f"MusicXML file: '{score_mxl}', \n" +
+          f"Measure map file: '{score_mm}', \n" +
+          f"Audio files: {audios_string}.")
 
     time.sleep(1)
 
     return score_mscz, score_mxl, score_mm, audios
 
 
-def get_args():
+def get_args() -> Tuple[Path, Path, Path, List[AudioData]]:
     """
-    Obtain the validated set of arguments passed in the command line.
+    Obtain the validated set of arguments parsed from the command line.
 
     Returns:
-        score_mscz (str): The score's MuseScore file path.
-        score_mxl (str): The score's MusicXML file path.
-        score_mm (str): The score's measure map file path.
-        audios (list): A 2D list containing a list for each audio
-            file that contains:
-                audio_id (str): An identifier for the audio file.
-                audio_filename (str): Its local filename or URL.
-                A time range to extract from the audio file for 
+        score_mscz: The score's MuseScore file path.
+        score_mxl: The score's MusicXML file path.
+        score_mm: The score's measure map file path.
+        audios: A 2D list containing a list for each audio file that
+            contains:
+                audio_id: An identifier for the audio file.
+                audio_path: The path to or URL for the audio file.
+                A time range to extract from the audio file for
                     alignment, specified by:
-                    start (datetime.time): A start timestamp.
-                    end (datetime.time): An end timestamp.
-                desc (str): A description of which portion of the audio
-                        is to be used.
+                    start: A start timestamp.
+                    end: An end timestamp.
+                desc: A description of which portion of the audio is to
+                    be used.
     """
     parser = argparse.ArgumentParser(
-        description=("Align one or more audio files to a score.\n" +
-                     "Either provide the -s, -m (optional), -a arguments, " +
-                     "or just provide the -f argument."),
+        description=("Align one or more audio files to a score, producing " +
+                     "an alignment table.\nMust provide the score's " +
+                     "MuseScore file (.mszc) or MusicXML (.mxl) file, as " +
+                     "well as either the -a or -f argument."),
         formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument(
-        "-s",
-        "--score-files",
-        nargs=2,
-        help=("The relative path to both the MuseScore file and MusicXML " +
-              "file for the score that the audio files will be aligned to.")
-    )
-    parser.add_argument(
-        "-m",
-        "--measure-map",
-        help=("The measure map for the score that the audio files will be " +
-              "aligned to. If not provided it will be created and saved.")
+        "score",
+        help=("The path to the score's MuseScore file (.mscz) or MusicXML" +
+              "file (.mxl).")
     )
     parser.add_argument(
         "-a",
         "--audios",
         nargs="+",
-        help=("The relative paths (or URLs) to the audio files to align to " +
-              "the score. Must be .mp3 or .wav files.")
+        help=("The paths (or URLs) to the audio files to align to the score" +
+              ". Either .mp3, .wav or .flac.")
     )
     parser.add_argument(
         "-f",
-        "--file_paths",
-        help=("The relative path to a .txt file containing (each on a " +
-              "separate line):\n" +
-              "- the score's MuseScore file path\n" +
-              "- the score's MusicXML file path\n" +
-              "- (optional) the score's measure map file path\n" +
-              "- for each audio file (with each audio file on a separate " +
-              "line and the data for each audio file on one line separated " +
-              "by tabs):\n" +
-              "  * a unique string to identify the audio file in the " +
-              "alignment table (e.g., 'Ldn_Symph_Orc' or 'Karajan1950')\n" +
-              "  * the audio file path\n" +
-              "  * (optional) start and end timestamps (hh:mm:ss) " +
-              "indicating to align a subset of the audio to the score\n" +
-              "    (either only start, or both start and end)\n")
+        "--audios_file",
+        help=("The path to a .txt file containing the following information" +
+              " for each audio file on a separate line:\n" +
+              "- A unique string to identify the audio file in the " +
+              "alignment table (e.g., 'Ldn_Symph_Orc' or 'Karajan1950').\n" +
+              "- The audio file path or URL.\n" +
+              "- (Optional) Start and end timestamps (hh:mm:ss) " +
+              "indicating alignment a subset of the audio to the score. " +
+              "Either only the start timestamp should be provided, or both " +
+              "the start and end.")
     )
 
     args = parser.parse_args()
-    mode = get_arg_mode(args)
-    score_mscz, score_mxl, score_mm, audios = validate_args(args, mode)
+    score_mscz, score_mxl, score_mm, audios = validate_args(args)
 
     return score_mscz, score_mxl, score_mm, audios
 

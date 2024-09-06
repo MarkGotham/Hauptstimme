@@ -43,7 +43,6 @@ qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
 228.0,58,1.0,0.0,a,Fl 1,0,Fl
 232.0,59,1.0,0.0,a,Vln 1,19,Vln
 248.0,63,1.0,0.0,a,Vln 1,19,Vln
-264.0,67,1.0,0.0,a,Hn 1,8,Hn
 264.0,67,1.0,0.0,a,Vln 1,19,Vln
 280.0,71,1.0,0.0,a,Vln 1,19,Vln
 288.0,73,1.0,0.0,a,Vln 1,19,Vln
@@ -73,7 +72,7 @@ qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
 528.0,133,1.0,0.0,b,Vln 1,19,Vln
 552.0,139,1.0,0.0,b,Vln 1,19,Vln
 584.0,147,1.0,0.0,b,Vln 1,19,Vln
-604.0,152,1.0,0.0,b,Tbn 1,14,Trb
+604.0,152,1.0,0.0,b,Trb 1,14,Trb
 632.0,159,1.0,0.0,a,Fl 1,0,Fl
 648.0,163,1.0,0.0,a,Vln 1,19,Vln
 656.0,165,1.0,0.0,a,Vln 1,19,Vln
@@ -85,7 +84,7 @@ qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
 681.5,171,1.75,0.375,a,Vln 1,19,Vln
 696.0,175,1.0,0.0,a,Vln 1,19,Vln
 712.0,179,1.0,0.0,a,Vln 1,19,Vln
-728.0,183,1.0,0.0,b,Tbn 1,14,Trb
+728.0,183,1.0,0.0,b,Trb 1,14,Trb
 736.0,185,1.0,0.0,b,Fl 1,0,Fl
 744.0,187,1.0,0.0,b,Vln 1,19,Vln
 756.0,190,1.0,0.0,b,Tpt 2,13,Tpt
@@ -109,7 +108,7 @@ qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
 906.0,227,2.0,0.5,b,Vc,22,Vc
 912.0,229,1.0,0.0,b,Tpt 1,12,Tpt
 914.0,229,2.0,0.5,b,Vln 1,19,Vln
-920.0,231,1.0,0.0,b,B.Tbn,16,BTrb
+920.0,231,1.0,0.0,b,B Trb,16,BTrb
 924.0,232,1.0,0.0,a,Vc,22,Vc
 928.0,233,1.0,0.0,a,Vln 1,19,Vln
 936.0,235,1.0,0.0,a,Vln 1,19,Vln
@@ -127,7 +126,7 @@ qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
 992.0,249,1.0,0.0,a,Vln 1,19,Vln
 996.0,250,1.0,0.0,a,Vln 1,19,Vln
 1000.0,251,1.0,0.0,a,Hn 1,8,Hn
-1008.0,253,1.0,0.0,a,Tbn 1,14,Trb
+1008.0,253,1.0,0.0,a,Trb 1,14,Trb
 1012.0,254,1.0,0.0,a,Vc,22,Vc
 1016.0,255,1.0,0.0,b,Vln 1,19,Vln
 1020.0,256,1.0,0.0,b,Tpt 2,13,Tpt
@@ -137,11 +136,11 @@ qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
 1042.0,261,2.0,0.5,b,Vln 1,19,Vln
 1048.0,263,1.0,0.0,a,Vln 1,19,Vln
 1056.0,265,1.0,0.0,a,Ob 1,2,Ob
-1064.0,267,1.0,0.0,a,Tbn 1,14,Trb
+1064.0,267,1.0,0.0,a,Trb 1,14,Trb
 1072.0,269,1.0,0.0,a,Hn 1,8,Hn
-1080.0,271,1.0,0.0,a,Tbn 2,15,Trb
+1080.0,271,1.0,0.0,a,Trb 2,15,Trb
 1088.0,273,1.0,0.0,a,Ob 1,2,Ob
-1096.0,275,1.0,0.0,a,B.Tbn,16,BTrb
+1096.0,275,1.0,0.0,a,B Trb,16,BTrb
 1122.0,281,2.0,0.5,a,Hn 3,10,Hn
 1125.0,282,1.5,0.25,a,Hn 1,8,Hn
 1138.0,285,2.0,0.5,b,Cl 1,4,Cl
@@ -211,8 +210,7 @@ qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
 1702.0,426,2.0,0.5,a,Ob 1,2,Ob
 1712.0,429,1.0,0.0,a,Vln 1,19,Vln
 1728.0,433,1.0,0.0,a,Tpt 1,12,Tpt
-1728.0,433,1.0,0.0,a,Vln 1,19,Vln
-1744.0,437,1.0,0.0,a,B.Tbn,16,BTrb
+1744.0,437,1.0,0.0,a,B Trb,16,BTrb
 1748.0,438,1.0,0.0,a,Cl 1,4,Cl
 1760.0,441,1.0,0.0,a,Fl 1,0,Fl
 1762.0,441,2.0,0.5,a,Ob 1,2,Ob
@@ -243,9 +241,9 @@ qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
 1919.0,480,2.5,0.75,b,Hn 1,8,Hn
 1928.0,483,1.0,0.0,b,Vln 1,19,Vln
 1932.0,484,1.0,0.0,b,Fl 1,0,Fl
-1942.0,486,2.0,0.5,b,Tbn 1,14,Trb
+1942.0,486,2.0,0.5,b,Trb 1,14,Trb
 1952.0,489,1.0,0.0,b,Vln 1,19,Vln
-1964.0,492,1.0,0.0,b,Tbn 1,14,Trb
+1964.0,492,1.0,0.0,b,Trb 1,14,Trb
 1976.0,495,1.0,0.0,b,Vln 1,19,Vln
 1988.0,498,1.0,0.0,b,Vln 1,19,Vln
 1992.0,499,1.0,0.0,b,Fl 1,0,Fl
@@ -277,7 +275,7 @@ qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
 2176.0,545,1.0,0.0,b,Tpt 1,12,Tpt
 2188.0,548,1.0,0.0,a,Tpt 1,12,Tpt
 2196.0,550,1.0,0.0,a,Tpt 1,12,Tpt
-2200.0,551,1.0,0.0,b,Tbn 2,15,Trb
-2240.0,561,1.0,0.0,b,Tbn 1,14,Trb
-2244.0,562,1.0,0.0,b,Tbn 1,14,Trb
-2248.0,563,1.0,0.0,b,Tbn 1,14,Trb
+2200.0,551,1.0,0.0,b,Trb 2,15,Trb
+2240.0,561,1.0,0.0,b,Trb 1,14,Trb
+2244.0,562,1.0,0.0,b,Trb 1,14,Trb
+2248.0,563,1.0,0.0,b,Trb 1,14,Trb

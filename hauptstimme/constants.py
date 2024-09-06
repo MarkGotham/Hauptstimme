@@ -1,12 +1,11 @@
+from __future__ import annotations
+
 import pathlib
 import numpy as np
 
-code_path = pathlib.Path(__file__).parent
-repo_path = code_path.parent
-corpus_path = repo_path / "OpenScoreOrchestra"
-CODE_PATH = code_path.as_posix()
-REPO_PATH = repo_path.as_posix()
-CORPUS_PATH = corpus_path.as_posix()
+CODE_PATH = pathlib.Path(__file__).parent
+REPO_PATH = CODE_PATH.parent
+CORPUS_PATH = REPO_PATH / "OpenScoreOrchestra"
 
 SAMPLE_RATE = 22050
 FEATURE_RATE = 50

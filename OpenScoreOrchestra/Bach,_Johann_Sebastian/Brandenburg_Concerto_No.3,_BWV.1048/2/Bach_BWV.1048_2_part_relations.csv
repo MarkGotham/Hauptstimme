@@ -1,0 +1,2 @@
+qstamp_start,qstamp_end,Violin 1,Violin 2,Violin 3,Viola 1,Viola 2,Viola 3,Violoncello 1,Violoncello 2,Violoncello 3,Violone,Harpsichord
+0.0,2.0,Main Part,P4(Main),,,,,U(Violoncello 2)&U(Violoncello 3)&P8(Violone)&U(Harpsichord),U(Violoncello 1)&U(Violoncello 3)&P8(Violone)&U(Harpsichord),U(Violoncello 1)&U(Violoncello 2)&P8(Violone)&U(Harpsichord),P8(Violoncello 1)&P8(Violoncello 2)&P8(Violoncello 3)&P8(Harpsichord),U(Violoncello 1)&U(Violoncello 2)&U(Violoncello 3)&P8(Violone)

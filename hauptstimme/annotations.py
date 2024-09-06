@@ -1,12 +1,13 @@
 """
 NAME
 ===============================
-Hauptstimme (hauptstimme.py)
+Annotations (annotations.py)
 
 
 BY
 ===============================
-Mark Gotham and Matt Blessing, 2024
+Mark Gotham
+Matthew Blessing
 
 
 LICENCE:
@@ -27,11 +28,12 @@ Notes:
 3.  Each annotation is for a specific voice within a part (e.g. Flute 1
     instead of 1 and 2).
 
-Possibly TODO:
-- test robustness / flexibility with settable voices
-- additional functionality to extract <all> or <first_instance> of theme
-- remove `other_part` stuff?
+Possible Future TODOs:
+- Test robustness/flexibility with settable voices
+- Additional functionality to extract <all> or <first_instance> of theme
 """
+from __future__ import annotations
+
 import re
 import pandas as pd
 from math import inf
@@ -39,44 +41,61 @@ from fractions import Fraction
 from copy import deepcopy
 from pathlib import Path
 from music21 import (
-    converter, clef, expressions, instrument, stream, chord, tempo, spanner,
-    dynamics, note, meter, exceptions21
+    converter, clef, expressions, chord, tempo, spanner, dynamics, note, base
 )
-from hauptstimme.utils import get_corpus_files
+from music21.stream.base import Score, Part, Measure
+from music21.meter.base import TimeSignature
+from hauptstimme.utils import (
+    get_corpus_files, validate_path, check_measure_exists
+)
 from hauptstimme.constants import CORPUS_PATH, ROUNDING_VALUE
+from hauptstimme.types import Scalar
+from typing import cast, Union, Dict, Optional, List
 
 
-def get_measure_fraction(element):
+def get_measure_fraction(
+    element: base.Music21Object
+) -> Union[float, Fraction]:
     """
     Get offset in terms of the fraction of the measure to have elapsed.
     Provides interoperability with TiLiA and Erlangen.
 
     Args:
         element: A Music21 object to compute the measure fraction for.
-            Likely a note.
 
     Returns:
         The measure fraction.
+
+    Raises:
+        ValueError: If `element` belongs to no measure.
     """
-    return (element.offset /
-            element.getContextByClass("Measure").duration.quarterLength)
+    measure = element.getContextByClass("Measure")
+
+    if measure is None:
+        raise ValueError(
+            f"Error: The element {element} belongs to no measure."
+        )
+    else:
+        return element.offset / measure.duration.quarterLength
 
 
-def get_annotation_info(n, part, curr_time_sig):
+def get_annotation_info(
+    n: base.Music21Object,
+    part: Part,
+    curr_time_sig: TimeSignature
+) -> Dict[str, Union[Scalar, Fraction]]:
     """
     Get relevant information for the note or text expression containing
-    a Hauptstimme annotation.
+    a hauptstimme annotation.
 
     Args:
-        n: A Music21 object to compute the information for. Here, n is
-            either a note or text expression.
-        part (music21.stream.Stream): The score part containing `n`.
-        curr_time_sig (music21.meter.TimeSignature): The current time
-            signature.
+        n: A Music21 object to compute the information for.
+        part: The score part containing `n`.
+        curr_time_sig: The current time signature.
 
     Returns:
-        info (dict): The qstamp, measure, beat, measure fraction, and
-            offset for `n`.
+        info: The qstamp, measure, beat, measure fraction, and offset 
+            for `n`.
     """
     info = {
         "qstamp": n.getOffsetInHierarchy(part),
@@ -87,30 +106,32 @@ def get_annotation_info(n, part, curr_time_sig):
     }
 
     if info["measure"] is not None:
-        # Deal with issue with beats when there are multiple voices
+        # Deal with beats issue when there are multiple voices
         # Manually calculate beat
-        measure_obj = part.measure(info["measure"])
+        measure_obj = cast(Measure, part.measure(info["measure"]))
         num_voices = len(measure_obj.voices)
         if num_voices > 0:
-            info["beat"] = (1 + (n.offset - measure_obj.offset) /
-                            curr_time_sig.beatDuration.quarterLength)
+            info["beat"] = (
+                1 + (n.offset - measure_obj.offset) /
+                curr_time_sig.beatDuration.quarterLength
+            )
 
     return info
 
 
 def hauptstimme_round(value):
     """
-    A custom rounding function for the Hauptstimme annotations data.
+    A custom rounding function for the hauptstimme annotations data.
 
     Notes:
         Sometimes qstamps, beats, and more can be expressed as
         fractions, so we want to convert these to floats for
         consistency.
-        We only do this when creating the Hauptstimme annotations
+        We only do this when creating the hauptstimme annotations
         .csv file.
 
     Args:
-        value (any): A value in the Hauptstimme annotations data.
+        value: A value in the hauptstimme annotations data.
 
     Returns:
         If value is a Fraction: the rounded value as a float.
@@ -126,15 +147,15 @@ def hauptstimme_round(value):
 
 class HauptstimmeAnnotations:
     """
-    A class to extract the Hauptstimme annotations from a score and
+    A class to extract the hauptstimme annotations from a score and
     create the annotations file and melody score.
     """
 
     def __init__(
         self,
-        score_mxl: str,
+        score_mxl: Union[str, Path],
         lyrics_not_text: bool = True,
-        annotation_restrictions: list | str | None = None,
+        annotation_restrictions: Optional[Union[list, str]] = None,
         melody_score_format: str = "mxl",
         instrument_labels: bool = True,
         add_slurs: bool = True,
@@ -149,10 +170,7 @@ class HauptstimmeAnnotations:
                 labels. They may be expressed either one of two ways:
                 1.  A list of allowed values,
                     e.g., ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
-                2.  A regex that requires a full match,
-                    e.g., '\w', which is equivalent to '[a-zA-Z0-9_]'
-                    and matches any single letter, numeric digit, or
-                    underscore character.
+                2.  A regex that requires a full match.
                 Default = None.
             melody_score_format: The file type for the melody score.
                 Default = 'mxl'.
@@ -163,9 +181,21 @@ class HauptstimmeAnnotations:
                 adjusted. Default = True.
             add_dynamics: Whether to include dynamic markings including
                 hairpins in the melody score or not. Default = True.
+
+        Raises:
+            ValueError: If the score does not get converted to a 
+                'Score' type.
+            ValueError: If `lyrics_not_text` is False and 
+                `annotation_restrictions` is None.
         """
-        self.score_path = Path(score_mxl)
-        self.score = converter.parse(score_mxl)
+        score_mxl = validate_path(score_mxl)
+        self.score_path = score_mxl
+        score = converter.parse(score_mxl)
+        if not isinstance(score, Score):
+            raise ValueError(
+                "Error: Score is not of type 'music21.stream.Score'."
+            )
+        self.score = score
 
         self.lyrics_not_text = lyrics_not_text
         self.annotation_restrictions = annotation_restrictions
@@ -195,6 +225,9 @@ class HauptstimmeAnnotations:
 
         Args:
             annotation_label: The annotation label.
+
+        Raises:
+            TypeError: If the restrictions are of an invalid type.
         """
         # If no restrictions
         if self.annotation_restrictions is None:
@@ -215,37 +248,64 @@ class HauptstimmeAnnotations:
         else:
             raise TypeError("Error: Invalid restrictions type.")
 
-    def annotations_from_lyrics(self, part: stream.Part, part_info: dict):
+    def annotations_from_lyrics(
+        self,
+        part: Part,
+        part_info: Dict[str, str]
+    ) -> List[Dict[str, Union[str, Scalar, Fraction]]]:
         """
-        Extract the annotations from the lyrics in a particular part of the
-        score.
+        Extract the annotations from the lyrics in a particular part of 
+        the score.
 
         Args:
             part: A part of the score.
             part_info: The part name, number, and instrument name.
+
+        Raises:
+            ValueError: If the note has no associated time signature.
         """
         annotations = []
 
         for n in part.recurse().notesAndRests:
             if n.lyric:
+                lyric = n.lyric
+                measure = n.measureNumber
                 if n.isRest:
-                    print(f"Warning: Measure {n.measureNumber} contains a " +
-                          "lyric attached to a rest. Ignoring this lyric.")
-                elif not self.meets_restrictions(n.lyric):
-                    print(f"Warning: Ignoring annotation '{n.lyric}' in " +
-                          f"measure {n.measureNumber} as it does not meet " +
-                          "the annotation restrictions.")
+                    print(f"Warning: Measure {measure} contains a lyric " +
+                          "attached to a rest. Ignoring this lyric.")
+                elif not self.meets_restrictions(lyric):
+                    print(f"Warning: Ignoring annotation '{lyric}' in " +
+                          f"measure {measure} as it does not meet the " +
+                          "annotation restrictions.")
                 else:
-                    curr_time_sig = n.getContextByClass(meter.TimeSignature)
+                    curr_time_sig = n.getContextByClass(TimeSignature)
+                    if curr_time_sig is None:
+                        # Sometimes the time signature is defined after
+                        # the notes in the first measure
+                        if measure == 1:
+                            curr_time_sig = next(
+                                part.recurse()
+                                .getElementsByClass(TimeSignature)
+                            )
+                        if curr_time_sig is None:
+                            raise ValueError(
+                                f"Error: The elements in measure {measure} " +
+                                "have no associated time signature."
+                            )
+
                     note_info = get_annotation_info(n, part, curr_time_sig)
                     annotation = part_info | note_info | {
-                        "label": n.lyric.replace(",", "")
+                        "label": lyric.replace(",", "")
                     }
                     annotations.append(annotation)
 
         return annotations
 
-    def annotations_from_text(self, part: stream.Part, part_info: dict):
+    def annotations_from_text(
+        self,
+        part: Part,
+        part_info: Dict[str, str]
+    ) -> List[Dict[str, Union[str, Scalar, Fraction]]]:
         """
         Extract the annotations from the text expressions in a
         particular part of the score.
@@ -253,15 +313,36 @@ class HauptstimmeAnnotations:
         Args:
             part: A part of the score.
             part_info: The part name, number, and instrument name.
+
+        Raises:
+            ValueError: If the text expression has no associated time
+                signature.
         """
         annotations = []
 
         for t in part.recurse().getElementsByClass(
-                expressions.TextExpression):
+            expressions.TextExpression
+        ):
             label = str(t.content)
+            measure = t.measureNumber
 
             if self.meets_restrictions(label):
-                curr_time_sig = t.getContextByClass(meter.TimeSignature)
+                curr_time_sig = (
+                    part.measure(measure)
+                    .getContextByClass(TimeSignature)  # type: ignore
+                )
+                if curr_time_sig is None:
+                    # Sometimes the time signature is defined after the
+                    #  notes in the first measure
+                    if measure == 1:
+                        curr_time_sig = next(
+                            part.recurse().getElementsByClass(TimeSignature)
+                        )
+                    if curr_time_sig is None:
+                        raise ValueError(
+                            f"Error: Measure {measure} has no associated " +
+                            "time signature."
+                        )
                 text_info = get_annotation_info(t, part, curr_time_sig)
                 annotation = part_info | text_info | {
                     "label": label.replace(",", "")
@@ -269,12 +350,14 @@ class HauptstimmeAnnotations:
                 annotations.append(annotation)
             else:
                 print(f"Warning: Excluding invalid annotation {label} in " +
-                      "measure",
-                      t.getContextByClass(stream.Measure).measureNumber)
+                      f"measure {measure}")
 
         return annotations
 
-    def set_annotation_ends(self, annotations: list):
+    def set_annotation_ends(
+        self,
+        annotations: List[Dict[str, Union[str, Scalar, Fraction]]]
+    ) -> List[Dict[str, Union[str, Scalar, Fraction]]]:
         """
         Define the end of each annotation.
 
@@ -298,7 +381,9 @@ class HauptstimmeAnnotations:
 
         return annotations
 
-    def get_annotations(self):
+    def get_annotations(
+        self
+    ) -> List[Dict[str, Union[str, Scalar, Fraction]]]:
         """
         Retrieve the Hauptstimme annotations from either the lyrics or
         text expressions.
@@ -306,29 +391,15 @@ class HauptstimmeAnnotations:
         annotations = []
 
         for part_count, part in enumerate(self.score.parts):
-            part = part.toSoundingPitch()
+            part = cast(Part, part.toSoundingPitch())
             # Get an abbreviation of the part name (e.g., 'Vln 1')
             part_abbrev = part.partAbbreviation
             # Get an abbreviation of the instrument name (e.g., 'Vln')
-            try:
-                part_instrument = instrument.fromString(part.partName)
-            except exceptions21.InstrumentException as e:
-                part_instrument = part.getInstrument()
-                # # This fails if the instrument can't be found
-                # print(f"Warning: {e} (it could not be found in " +
-                #         "Music21's database). Please manually enter " +
-                #         "another version of the instrument name (see " +
-                #         "https://github.com/cuthbertLab/music21/blob/" +
-                #         "204e9d0b9eec2f2d6ff8d8d3b13c41f912050604/" +
-                #         "music21/languageExcerpts/instrumentLookup.py).")
-                # # If so, the user must input a valid instrument name
-                # part_instrument = None
-                # while part_instrument is None:
-                #     user_input = input()
-                #     try:
-                #         part_instrument = instrument.fromString(user_input)
-                #     except Exception as e:
-                #         print("Same issue - try again.")
+            part_instrument = part.getInstrument()
+            if not part_instrument:
+                raise ValueError(
+                    f"Error: Part {part_count} has no instrument object."
+                )
             instrument_abbrev = part_instrument.instrumentAbbreviation
 
             # Get annotation info that only depends on the part
@@ -341,10 +412,12 @@ class HauptstimmeAnnotations:
             # Get the annotations in this part
             if self.lyrics_not_text:
                 part_annotations = self.annotations_from_lyrics(
-                    part, part_info)
+                    part, part_info
+                )
             else:
                 part_annotations = self.annotations_from_text(
-                    part, part_info)
+                    part, part_info
+                )
 
             annotations += part_annotations
 
@@ -354,14 +427,26 @@ class HauptstimmeAnnotations:
 
         return annotations
 
-    def write_annotations_file(self, out_dir: str | None = None):
+    def write_annotations_file(
+        self,
+        out_dir: Optional[Union[str, Path]] = None
+    ):
         """
         Write the Hauptstimme annotations to a .csv file.
 
         Args:
             out_dir: The path to the directory in which the annotations
                 file will be saved. Default = None.
+
+        Raises:
+            ValueError: If there are multiple annotations at a 
+                particular qstamp.
         """
+        if out_dir is None:
+            out_dir = self.score_path.parent
+        else:
+            out_dir = validate_path(out_dir, dir=True)
+
         columns = ["qstamp", "measure", "beat", "measure_fraction",
                    "label", "part", "part_num", "instrument"]
 
@@ -369,24 +454,38 @@ class HauptstimmeAnnotations:
             print("Error: Score has no annotations.")
         else:
             # Get annotations .csv filename
-            if out_dir is None:
-                csv_file = (self.score_path.parent /
-                            f"{self.score_path.stem}_annotations.csv")
-            else:
-                out_dir_path = Path(out_dir)
-                csv_file = (out_dir_path /
-                            f"{self.score_path.stem}_annotations.csv")
+            csv_file = out_dir / f"{self.score_path.stem}_annotations.csv"
 
             # Convert Fractions to floats and round entries
             annotations = []
             for annotation in self.annotations:
-                annotations.append({k: hauptstimme_round(v)
-                                    for k, v in annotation.items()})
+                annotations.append({
+                    k: hauptstimme_round(v) for k, v in annotation.items()
+                })
 
             df_annotations = pd.DataFrame(annotations, columns=columns)
+
+            # Test if each qstamp has a unique annotation
+            annotations_test = (
+                df_annotations.groupby("qstamp")
+                ["instrument"]
+                .apply(pd.Series.nunique)
+            )
+            if (annotations_test > 1).any():
+                issue_qstamps = annotations_test[annotations_test > 1].index
+                issue_measures = df_annotations.loc[
+                    df_annotations["qstamp"].isin(issue_qstamps),
+                    "measure"
+                ].unique()
+                raise ValueError(
+                    "Error: There are multiple annotations at the same " +
+                    "qstamp in measure" +
+                    f"{'s' if len(issue_measures) > 1 else ''} " +
+                    f"{', '.join([str(m) for m in issue_measures])}.")
+
             df_annotations.to_csv(csv_file, index=False)
 
-    def init_melody_part(self):
+    def init_melody_part(self) -> Part:
         """
         Initialise the melody part with the first part in the score
         since this will contain the score's tempo information.
@@ -405,7 +504,7 @@ class HauptstimmeAnnotations:
 
         # Only keep the last tempo marking in each measure (the one
         # that is actually used in playback)
-        for measure in melody_part.getElementsByClass(stream.Measure):
+        for measure in melody_part.getElementsByClass(Measure):
             tempos = measure.getElementsByClass(tempo.MetronomeMark)
             if tempos:
                 for tempo_mark in tempos[:-1]:
@@ -416,7 +515,7 @@ class HauptstimmeAnnotations:
     def add_clef(
         self,
         new_clef: clef.Clef,
-        offset: float | int,
+        offset: Union[float, int],
         measure_num: int
     ):
         """
@@ -435,15 +534,16 @@ class HauptstimmeAnnotations:
             measure_num: The measure number.
         """
         if new_clef != self.current_clef:
-            self.melody_part.measure(measure_num).insert(offset, new_clef)
+            measure = check_measure_exists(self.melody_part, measure_num)
+            measure.insert(offset, new_clef)
             self.current_clef = new_clef
 
     def add_label(
-            self,
-            label: str,
-            offset: float | int,
-            measure_num: int,
-            placement: str = "above"
+        self,
+        label: str,
+        offset: Union[float, int],
+        measure_num: int,
+        placement: str = "above"
     ):
         """
         Add a label to the melody part where there is an annotation.
@@ -459,13 +559,14 @@ class HauptstimmeAnnotations:
             placement: Where the label should be placed.
         """
         t = expressions.TextExpression(label)
-        t.placement = placement
-        self.melody_part.measure(measure_num).insert(offset, t)
+        t.placement = placement  # type: ignore
+        measure = check_measure_exists(self.melody_part, measure_num)
+        measure.insert(offset, t)
 
     def transfer_from_measure(
         self,
-        annotation_part: stream.Part,
-        annotation: dict,
+        annotation_part: Part,
+        annotation: Dict[str, Union[str, Scalar, Fraction]],
         measure_num: int,
         first_measure: bool = False
     ):
@@ -485,10 +586,10 @@ class HauptstimmeAnnotations:
             first_measure: Whether measure `measure_num` is the first
                 measure of the annotation block.
         """
-        measure = annotation_part.measure(measure_num)
+        measure = check_measure_exists(annotation_part, measure_num)
 
-        start_qstamp = annotation["qstamp"]
-        end_qstamp = annotation["end_qstamp"]
+        start_qstamp = cast(Scalar, annotation["qstamp"])
+        end_qstamp = cast(Scalar, annotation["end_qstamp"])
 
         # Only include notes and rests from first voice
         num_voices = len(measure.voices)
@@ -509,7 +610,6 @@ class HauptstimmeAnnotations:
                     new_n.addLyric(lyric.text)
                     new_n.lyrics[-1].style.color = lyric.style.color
                 n = new_n
-                # TODO: Adjust this in orchestra_split
 
             if start_qstamp:
                 if qstamp < start_qstamp:
@@ -532,23 +632,36 @@ class HauptstimmeAnnotations:
                     )
 
             # Insert note into melody part
-            self.melody_part.measure(measure_num).insert(n.offset, n)
+            measure = check_measure_exists(self.melody_part, measure_num)
+            measure.insert(n.offset, n)
 
         if first_measure:
-            start_offset = annotation["offset"]
+            start_offset = cast(Scalar, annotation["offset"])
             # Get clef for the measure
             new_clef = deepcopy(notes_rests[0].getContextByClass(clef.Clef))
-            self.add_clef(new_clef, start_offset, measure_num)
-
+            if new_clef:
+                self.add_clef(new_clef, start_offset, measure_num)
+            else:
+                print(
+                    f"Warning: The notes in measure {measure_num} have no " +
+                    "associated time signature."
+                )
             if self.instrument_labels:
-                self.add_label(annotation_part.partAbbreviation,
-                               start_offset, measure_num)
+                self.add_label(
+                    annotation_part.partAbbreviation,
+                    start_offset,
+                    measure_num
+                )
 
             # If annotations are text expressions, add annotation
             if not self.lyrics_not_text:
-                label = annotation["label"]
-                self.add_label(label, start_offset,
-                               measure_num, placement="below")
+                label = cast(str, annotation["label"])
+                self.add_label(
+                    label,
+                    start_offset,
+                    measure_num,
+                    placement="below"
+                )
 
         if self.add_dynamics:
             # Add dynamics markings
@@ -562,7 +675,8 @@ class HauptstimmeAnnotations:
                     if qstamp >= end_qstamp:
                         continue
 
-                self.melody_part.measure(measure_num).insert(d.offset, d)
+                measure = check_measure_exists(self.melody_part, measure_num)
+                measure.insert(d.offset, d)
 
     def make_melody_part(self):
         """
@@ -570,9 +684,11 @@ class HauptstimmeAnnotations:
         extracted from the Hauptstimme annotations.
         """
         for annotation in self.annotations:
-            annotation_part = self.score.parts[annotation["part_num"]]
-            start_measure = annotation["measure"]
-            end_measure = annotation["end_measure"]
+            part_num = cast(int, annotation["part_num"])
+            annotation_part = self.score.parts[part_num]
+
+            start_measure = cast(int, annotation["measure"])
+            end_measure = cast(int, annotation["end_measure"])
 
             # If whole annotation block is in one measure
             if start_measure == end_measure:
@@ -679,29 +795,26 @@ class HauptstimmeAnnotations:
                 self.melody_part.insert(0, new_hairpin)
 
         self.melody_part.makeBeams(inPlace=True)
-        # self.melody_part.makeRests(fillGaps=True, in_place=True, hideRests=False)
-        # TODO: currently no effect. Also unnecessary? Any regions that have no active elements.
-
-    # def make_other_part(self):
-    #     """
-    #     Insert a second part:
-    #     currently simply a one-stave synthesis of the full score using chordify.
-    #     TODO:
-    #     - remove duplicated (if this note in melody_part then ignore)
-    #     - possibly "bass line" alternative (lowest somewhat more reliable than highest for melody)
-    #     """
-    #     self.other_part = self.score.chordify()
 
     def write_melody_score(
             self,
-            out_dir: str | None = None,
-            other_part: bool = False,
-            bass_part: bool = False
+            out_dir: Optional[Union[str, Path]] = None,
+            add_bass_part: bool = False
     ):
         """
         Write the melody score file.
+
+        Args:
+            out_dir: A path to the directory to write the melody score 
+                to. Default = None.
+            add_bass_part: Whether to add a bass part to the melody 
+                score or not. Default = False.
         """
-        melody_score = stream.Score()
+        if out_dir is None:
+            out_dir = self.score_path.parent
+        out_dir = validate_path(out_dir, dir=True)
+
+        melody_score = Score()
         melody_score.append(self.melody_part)
 
         # Metadata
@@ -710,45 +823,36 @@ class HauptstimmeAnnotations:
         md.composer = self.score.metadata.composer
         melody_score.metadata = md
 
-        # if other_part:  #
-        #     if not self.other_part:
-        #         self.make_other_part()
+        if add_bass_part:
+            # Initialise bass part with a chordal reduction of score
+            bass_part = self.score.chordify()
 
-        #     melody_score.insert(0, self.other_part)
+            # Keep bottom note from each chord
+            for n in bass_part.recurse().notesAndRests:
+                # Replace chords with the top note
+                if isinstance(n, chord.Chord):
+                    new_n = n.notes[-1]
+                    new_n.offset = n.offset
+                    for lyric in n.lyrics:
+                        new_n.addLyric(lyric.text)
+                        new_n.lyrics[-1].style.color = lyric.style.color
+                    n = new_n
 
-        # if bass_part:  #
-        #     if not self.other_part:
-        #         self.make_other_part()
+            melody_score.append(bass_part)
 
-        #     # Chords. NB counting bottom up. TODO copied from `orchestra_part_split`. Refactor?
-        #     for n in self.other_part.recurse().notesAndRests:
-        #         if n.isChord:
-        #             pitches = n.pitches
-        #             for i in range(len(pitches) - 1):
-        #                 # remove all pitches except the last (highest) one
-        #                 n.remove(pitches[i])
+        melody_score_path = (
+            out_dir /
+            f"{self.score_path.stem}_melody.{self.melody_score_format}"
+        )
 
-        #     melody_score.insert(0, self.other_part)
-
-        if out_dir is None:
-            melody_score_file = (
-                self.score_path.parent /
-                f"{self.score_path.stem}_melody.{self.melody_score_format}"
-            )
-        else:
-            out_dir_path = Path(out_dir)
-            melody_score_file = (out_dir_path /
-                                 (f"{self.score_path.stem}_melody." +
-                                  f"{self.melody_score_format}"))
-
-        melody_score.write(fmt=self.melody_score_format, fp=melody_score_file)
+        melody_score.write(fmt=self.melody_score_format, fp=melody_score_path)
 
 
 def get_annotations_and_melody_score(
-    score_mxl: str,
-    out_dir: str | None = None,
+    score_mxl: Union[str, Path],
+    out_dir: Optional[Union[str, Path]] = None,
     lyrics_not_text: bool = True,
-    annotation_restrictions: list | str | None = "[a-zA-Z]'?",
+    annotation_restrictions: Optional[Union[list, str]] = "[a-zA-Z]'?",
     melody_score_format: str = "mxl",
     instrument_labels: bool = True,
     add_slurs: bool = True,
@@ -768,12 +872,8 @@ def get_annotations_and_melody_score(
             labels. They may be expressed either one of two ways:
             1.  A list of allowed values,
                 e.g., ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
-            2.  A regex that requires a full match,
-                e.g., '\w', which is equivalent to '[a-zA-Z0-9_]'
-                and matches any single letter, numeric digit, or
-                underscore character.
-            Default = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
-            'tr', 'x', 'y', 'z'].
+            2.  A regex that requires a full match.
+            Default = "[a-zA-Z]'?".
         melody_score_format: The file type for the melody score.
             Default = 'mxl'.
         instrument_labels: Whether to include instrument labels in
@@ -799,11 +899,11 @@ def get_annotations_and_melody_score(
 
 
 def get_annotations_and_melody_scores(
-    corpus_sub_dir: str = CORPUS_PATH,
+    corpus_sub_dir: Union[str, Path] = CORPUS_PATH,
     replace: bool = True,
     lyrics_not_text: bool = True,
-    annotation_restrictions: list | str | None = "(\w|\w')"
-) -> None:
+    annotation_restrictions: Optional[Union[list, str]] = "[a-zA-Z]'?"
+):
     """
     Get the Hauptstimme annotations file and melody score for all
     scores in the corpus, with the option to do for a sub section of
@@ -820,16 +920,13 @@ def get_annotations_and_melody_scores(
             labels. They may be expressed either one of two ways:
             1.  A list of allowed values,
                 e.g., ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
-            2.  A regex that requires a full match,
-                e.g., '\w', which is equivalent to '[a-zA-Z0-9_]'
-                and matches any single letter, numeric digit, or
-                underscore character.
-            Default = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
-            'tr', 'x', 'y', 'z'].
+            2.  A regex that requires a full match.
+            Default = "[a-zA-Z]'?".
     """
-    for file in get_corpus_files(corpus_sub_dir, filename="*.mxl"):
-        file_path = Path(file)
-
+    for file_path in get_corpus_files(
+        corpus_sub_dir, file_path="*.mxl", pathlib=True
+    ):
+        file_path = cast(Path, file_path)
         if file_path.name.endswith("_melody.mxl"):
             # Ignore melody scores
             continue
@@ -839,22 +936,28 @@ def get_annotations_and_melody_scores(
         if replace:
             try:
                 get_annotations_and_melody_score(
-                    file, lyrics_not_text=lyrics_not_text,
+                    file_path,
+                    lyrics_not_text=lyrics_not_text,
                     annotation_restrictions=annotation_restrictions
                 )
             except Exception as e:
-                print("Warning: Failed to get annotations file and melody " +
-                      f"score for '{file_path.name}' due to error: {e}.")
+                print(
+                    "Warning: Failed to get annotations file and melody " +
+                    f"score for '{file_path.name}' due to error: {e}")
         else:
-            annotations_file = (file_path.parent /
-                                f"{file_path.stem}_annotations.csv")
+            annotations_file = (
+                file_path.parent / f"{file_path.stem}_annotations.csv"
+            )
             if annotations_file.exists():
                 print(f"Skipping '{file_path.name}' since it already has " +
                       "an annotations file and melody score.")
             else:
                 try:
                     get_annotations_and_melody_score(
-                        file, lyrics_not_text=lyrics_not_text)
+                        file_path,
+                        lyrics_not_text=lyrics_not_text,
+                        annotation_restrictions=annotation_restrictions
+                    )
                 except Exception as e:
                     print("Warning: Failed to get annotations file and " +
                           f"melody score for '{file_path.name}'due to " +

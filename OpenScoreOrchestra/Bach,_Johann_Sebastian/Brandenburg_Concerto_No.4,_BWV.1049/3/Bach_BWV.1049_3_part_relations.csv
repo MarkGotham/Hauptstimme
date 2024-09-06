@@ -1,0 +1,104 @@
+qstamp_start,qstamp_end,Principal Violin,Flute 1,Flute 2,Violin 1,Violin 2,Viola,Violoncello,Violone,Continuo
+0.0,16.0,,,,,,Main Part,U(Continuo),,U(Violoncello)
+16.0,40.0,U(Violin 1),,,U(Principal Violin),Main Part,,U(Continuo),,U(Violoncello)
+40.0,56.0,Main Part,,,U(Main),,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+56.0,60.0,U(Violin 1),,,U(Principal Violin),,,Main Part,P8(Main)&P8(Continuo),U(Main)&P8(Violone)
+60.0,73.0,U(Violin 1),,,U(Principal Violin),Main Part,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+73.0,88.0,Main Part,U(Flute 2),U(Flute 1),U(Main),,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+88.0,107.0,U(Violin 1),Main Part,U(Main),U(Principal Violin),,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+107.0,122.0,U(Violin 1),Main Part,U(Main),U(Principal Violin),,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+122.0,137.0,Main Part,U(Flute 2),U(Flute 1),U(Main),,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+137.0,140.0,U(Violin 1),Main Part,U(Main),U(Principal Violin),,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+140.0,160.0,U(Violin 1),Main Part,U(Main),U(Principal Violin),,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+160.0,168.0,Main Part,,P8(Violin 1)&P4(Violin 2)&P3(Viola)&P8(Violoncello)&P8(Violone)&P8(Continuo),P8(Flute 2)&P4(Violin 2)&P3(Viola)&P8(Violoncello)&P8(Violone)&P8(Continuo),P4(Flute 2)&P4(Violin 1)&P6(Viola)&P4(Violoncello)&P4(Violone)&P4(Continuo),P3(Flute 2)&P3(Violin 1)&P6(Violin 2)&P3(Violoncello)&P3(Violone)&P3(Continuo),P8(Flute 2)&P8(Violin 1)&P4(Violin 2)&P3(Viola)&P8(Violone)&U(Continuo),P8(Flute 2)&P8(Violin 1)&P4(Violin 2)&P3(Viola)&P8(Violoncello)&P8(Continuo),P8(Flute 2)&P8(Violin 1)&P4(Violin 2)&P3(Viola)&U(Violoncello)&P8(Violone)
+168.0,176.0,,Main Part,,,,,,,
+176.0,184.0,,,Main Part,,,,,,
+184.0,208.0,Main Part,,,,,,,,
+208.0,216.0,,,Main Part,,,,,,
+216.0,224.0,,Main Part,,,,,,,
+224.0,249.0,Main Part,,,,,,,,
+249.0,257.0,Main Part,,,U(Main),,,,,
+257.0,264.0,U(Violin 1),U(Flute 2),U(Flute 1),U(Principal Violin),Main Part,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+264.0,280.0,U(Violin 1),U(Flute 2),U(Flute 1),U(Principal Violin),,,Main Part,P8(Main)&P8(Continuo),U(Main)&P8(Violone)
+280.0,296.0,U(Violin 1),U(Flute 2),U(Flute 1),U(Principal Violin),,Main Part,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+296.0,304.0,U(Violin 1),U(Flute 2),U(Flute 1),U(Principal Violin),Main Part,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+304.0,312.0,U(Violin 1),U(Flute 2),U(Flute 1),U(Principal Violin),,Main Part,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+312.0,320.0,Main Part,U(Flute 2),U(Flute 1),U(Main),,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+320.0,344.5,,Main Part,U(Main),,,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+344.5,360.0,Main Part,U(Flute 2)&U(Violin 1)&P3(Violin 2)&P5(Viola)&P8(Violone),U(Flute 1)&U(Violin 1)&P3(Violin 2)&P5(Viola)&P8(Violone),U(Flute 1)&U(Flute 2)&P3(Violin 2)&P5(Viola)&P8(Violone),P3(Flute 1)&P3(Flute 2)&P3(Violin 1)&P3(Viola)&P3(Violone),P5(Flute 1)&P5(Flute 2)&P5(Violin 1)&P3(Violin 2)&P5(Violone),U(Continuo),P8(Flute 1)&P8(Flute 2)&P8(Violin 1)&P3(Violin 2)&P5(Viola),U(Violoncello)
+360.0,368.0,Main Part,,,,,,U(Continuo),,U(Violoncello)
+368.0,376.5,Main Part,,,,,,U(Continuo),,U(Violoncello)
+376.5,400.5,Main Part,,,,,,U(Continuo),,U(Violoncello)
+400.5,416.0,Main Part,P4(Flute 2)&P4(Viola),P4(Flute 1)&P8(Viola),,,P4(Flute 1)&P8(Flute 2),U(Continuo),,U(Violoncello)
+416.0,425.0,,,,Main Part,,,U(Continuo),,U(Violoncello)
+425.0,429.0,,,,,Main Part,,U(Continuo),,U(Violoncello)
+429.0,433.0,,,,Main Part,,,U(Continuo),,U(Violoncello)
+433.0,437.0,,,,,Main Part,,U(Continuo),,U(Violoncello)
+437.0,441.0,,,,Main Part,,,U(Continuo),,U(Violoncello)
+441.0,445.0,,,,,Main Part,,U(Continuo),,U(Violoncello)
+445.0,448.0,,,,Main Part,,,U(Continuo),,U(Violoncello)
+448.0,476.0,Main Part,,,P3(Violin 2),P3(Violin 1),,U(Continuo),,U(Violoncello)
+476.0,504.0,Main Part,,,,,,U(Continuo),,U(Violoncello)
+504.0,520.0,,U(Flute 2),U(Flute 1),Main Part,,,U(Continuo),,U(Violoncello)
+520.0,531.0,U(Violin 1),Main Part,U(Main),U(Principal Violin),,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+531.0,536.0,Main Part,U(Flute 2),U(Flute 1),U(Main),,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+536.0,548.0,U(Violin 1),U(Flute 2),U(Flute 1),U(Principal Violin),,,Main Part,P8(Main)&P8(Continuo),U(Main)&P8(Violone)
+548.0,552.0,U(Violin 1),U(Flute 2),U(Flute 1),U(Principal Violin),Main Part,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+552.0,556.0,U(Violin 1),U(Flute 2),U(Flute 1),U(Principal Violin),,Main Part,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+556.0,560.0,U(Violin 1),U(Flute 2),U(Flute 1),U(Principal Violin),Main Part,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+560.0,564.0,U(Violin 1),U(Flute 2),U(Flute 1),U(Principal Violin),,Main Part,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+564.0,568.0,U(Violin 1),U(Flute 2),U(Flute 1),U(Principal Violin),Main Part,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+568.0,572.0,U(Violin 1),U(Flute 2),U(Flute 1),U(Principal Violin),,Main Part,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+572.0,576.0,U(Violin 1),U(Flute 2),U(Flute 1),U(Principal Violin),Main Part,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+576.0,580.0,U(Violin 1),U(Flute 2),U(Flute 1),U(Principal Violin),,Main Part,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+580.0,584.0,U(Violin 1),U(Flute 2),U(Flute 1),U(Principal Violin),Main Part,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+584.0,588.5,U(Violin 1),,,U(Principal Violin),,Main Part,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+588.5,596.5,U(Violin 1),,,U(Principal Violin),Main Part,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+596.5,604.0,U(Violin 1),U(Flute 2),U(Flute 1),U(Principal Violin),,Main Part,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+604.0,612.0,,Main Part,,,,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+612.0,617.0,Main Part,,,,,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+617.0,620.0,P8(Violin 1),Main Part,,P8(Principal Violin),,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+620.0,629.0,Main Part,,,,,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+629.0,632.5,,Main Part,,,,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+632.5,634.5,,Main Part,,P2(Violin 2)&P6(Violone),P2(Violin 1)&P5(Violone),,,P6(Violin 1)&P5(Violin 2),
+634.5,636.5,,,Main Part,,,,,,
+636.5,638.5,,Main Part,,,,,,,
+638.5,644.5,,,Main Part,,,,,,
+644.5,646.5,,Main Part,,,,,,,
+646.5,648.5,,,Main Part,,,,,,
+648.5,650.5,,Main Part,,,,,,,
+650.5,652.5,,,Main Part,,,,,,
+652.5,654.5,,Main Part,,,,,,,
+654.5,660.5,,,Main Part,,,,,,
+660.5,672.5,,Main Part,,,,,,,
+672.5,674.5,,,Main Part,,,,U(Continuo),,U(Violoncello)
+674.5,676.5,,Main Part,,,,,U(Continuo),,U(Violoncello)
+676.5,678.5,,,Main Part,,,,U(Continuo),,U(Violoncello)
+678.5,680.5,,Main Part,,,,,U(Continuo),,U(Violoncello)
+680.5,684.5,,,Main Part,,,,U(Continuo),,U(Violoncello)
+684.5,688.5,,Main Part,,,,,U(Continuo),,U(Violoncello)
+688.5,696.0,U(Violin 1)&P3(Violin 2)&P8(Violone),,Main Part,U(Principal Violin)&P3(Violin 2)&P8(Violone),P3(Principal Violin)&P3(Violin 1)&P3(Violone),,U(Continuo),P8(Principal Violin)&P8(Violin 1)&P3(Violin 2),U(Violoncello)
+696.0,712.0,Main Part,,,U(Main),,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+712.0,720.0,,Main Part,,,,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+720.0,728.0,,,Main Part,,,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+728.0,752.0,Main Part,,,,,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+752.0,768.0,Main Part,,,U(Main),,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+768.0,776.0,,,Main Part,,,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+776.0,784.0,,Main Part,,,,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+784.0,809.0,Main Part,,,,P8(Viola)&P4(Violoncello)&P4(Violone)&P4(Continuo),P8(Violin 2)&P4(Violoncello)&P4(Violone)&P4(Continuo),P4(Violin 2)&P4(Viola)&P8(Violone)&U(Continuo),P4(Violin 2)&P4(Viola)&P8(Violoncello)&P8(Continuo),P4(Violin 2)&P4(Viola)&U(Violoncello)&P8(Violone)
+809.0,817.0,Main Part,,,U(Main),,,,,
+817.0,824.0,U(Violin 1),U(Flute 2),U(Flute 1),U(Principal Violin),Main Part,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+824.0,832.0,U(Violin 1),U(Flute 2),U(Flute 1),U(Principal Violin),,,Main Part,P8(Main)&P8(Continuo),U(Main)&P8(Violone)
+832.0,840.0,U(Violin 1),U(Flute 2),U(Flute 1),U(Principal Violin),,Main Part,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+840.0,856.0,U(Violin 1),U(Flute 2),U(Flute 1),U(Principal Violin),Main Part,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+856.0,864.0,U(Violin 1),U(Flute 2),U(Flute 1),U(Principal Violin),,Main Part,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+864.0,873.0,,,,,Main Part,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+873.0,881.0,,Main Part,,,,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+881.0,889.0,,,,Main Part,,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+889.0,896.0,,Main Part,,,,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+896.0,898.0,Main Part,,P3(Violin 2)&P8(Viola),,P3(Flute 2)&P3(Viola),P8(Flute 2)&P3(Violin 2),P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+898.0,917.0,U(Violin 1),Main Part,,U(Principal Violin),,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+917.0,925.0,Main Part,,,U(Main),,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+925.0,933.0,Main Part,U(Flute 2),U(Flute 1),U(Main),,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+933.0,952.0,Main Part,U(Flute 2),U(Flute 1),U(Main),,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)
+952.0,972.0,U(Violin 1),Main Part,U(Main),U(Principal Violin),,,P8(Violone)&U(Continuo),P8(Violoncello)&P8(Continuo),U(Violoncello)&P8(Violone)

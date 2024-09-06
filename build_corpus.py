@@ -6,7 +6,7 @@ Build Corpus (build_corpus.py)
 
 BY
 ===============================
-Matt Blessing, 2024
+Matthew Blessing
 
 
 LICENCE:
@@ -28,25 +28,20 @@ For each file:
 Then, create the rest of the metadata files from the finished
 'sets.tsv' and 'composers.tsv' files.
 """
+from __future__ import annotations
+
 import os
+from pathlib import Path
 from hauptstimme.score_conversion import score_to_lightweight_df
 from hauptstimme.metadata import *
 from hauptstimme.utils import (
-    ms3_convert, get_corpus_files, get_compressed_measure_map,
-    get_compressed_measure_map_given_measures
+    ms3_convert, get_corpus_files, get_compressed_measure_map_given_measures
 )
-from hauptstimme.annotations import get_annotations_and_melody_scores, get_annotations_and_melody_score
+from hauptstimme.annotations import get_annotations_and_melody_scores
+from hauptstimme.part_relations import get_part_relationship_summary
+from hauptstimme.alignment.score_audio_alignment import align_score_audios
 from hauptstimme.constants import CORPUS_PATH
-
-
-def get_compressed_measure_maps():
-    """
-    Get a compressed measure map for every score in the corpus.
-    """
-    mscz_files = get_corpus_files(filename="*.mscz")
-
-    for mscz_file in mscz_files:
-        get_compressed_measure_map(mscz_file, verbose=False)
+from typing import cast, List
 
 
 def get_corpus_measure_maps():
@@ -67,25 +62,135 @@ def get_corpus_measure_maps():
         # Rename the file
         os.rename(old_file_path, new_file_path)
 
-    mscz_files = get_corpus_files(filename="*.mscz")
+    mscz_files = get_corpus_files(file_path="*.mscz", pathlib=True)
+    mscz_files = cast(List[Path], mscz_files)
 
     for mscz_file in mscz_files:
-        mscz_file_path = Path(mscz_file)
-        measures_file = f".temp/{mscz_file_path.with_suffix('.tsv').name}"
-        get_compressed_measure_map_given_measures(mscz_file, measures_file,
-                                                  verbose=False)
+        measures_file = f".temp/{mscz_file.with_suffix('.tsv').name}"
+        get_compressed_measure_map_given_measures(
+            mscz_file, measures_file, verbose=False
+        )
 
     os.system("rm -rf .temp")
 
 
-def get_lightweight_scores():
+def get_corpus_annotations_and_melody_scores():
     """
-    Get a lightweight score .csv for every score in the corpus.
+    Get an annotation file and melody score for all scores in the 
+    corpus.
     """
-    mxl_files = get_corpus_files(filename="*.mxl")
+    bach_path = CORPUS_PATH / "Bach,_Johann_Sebastian"
+    get_annotations_and_melody_scores(
+        f"{bach_path}/B_Minor_Mass,_BWV.232",
+        lyrics_not_text=False,
+        annotation_restrictions="[a-zA-Z]"
+    )
+    get_annotations_and_melody_scores(
+        f"{bach_path}/Brandenburg_Concerto_No.3,_BWV.1048"
+    )
+    get_annotations_and_melody_scores(
+        f"{bach_path}/Brandenburg_Concerto_No.4,_BWV.1049"
+    )
+
+    beach_path = CORPUS_PATH / "Beach,_Amy"
+    get_annotations_and_melody_scores(
+        beach_path,
+        annotation_restrictions=(
+            r"([a-zA-Z]([a-zA-Z]|('+|!))?)|([a-zA-Z]\+[a-zA-Z])|cad\.|trans"
+        )
+    )
+
+    beethoven_path = CORPUS_PATH / "Beethoven,_Ludwig_van"
+    get_annotations_and_melody_scores(
+        beethoven_path,
+        annotation_restrictions="([a-zA-Z]('+|!)?)|tr.?"
+    )
+    get_annotations_and_melody_scores(
+        f"{beethoven_path}/Symphony_No.9,_Op.125/4",
+        lyrics_not_text=False,
+        annotation_restrictions="([a-zA-Z]('+|!)?)|tr.?"
+    )
+
+    brahms_path = CORPUS_PATH / "Brahms,_Johannes"
+    get_annotations_and_melody_scores(
+        brahms_path,
+        annotation_restrictions="[a-zA-Z]'?"
+    )
+    get_annotations_and_melody_scores(
+        f"{brahms_path}/Ein_Deutsches_Requiem,_Op.45",
+        lyrics_not_text=False,
+        annotation_restrictions="[a-zA-Z]'?"
+    )
+
+    bruckner_path = CORPUS_PATH / "Bruckner,_Anton"
+    get_annotations_and_melody_scores(
+        bruckner_path,
+        annotation_restrictions="[a-zA-Z]'?"
+    )
+
+
+def get_corpus_lightweight_scores():
+    """
+    Get a lightweight score file for every score in the corpus.
+    """
+    mxl_files = get_corpus_files(file_path="*.mxl", pathlib=True)
 
     for mxl_file in mxl_files:
-        score_to_lightweight_df(mxl_file)
+        mxl_file = cast(Path, mxl_file)
+        if mxl_file.as_posix().endswith("_melody.mxl"):
+            pass
+        else:
+            mm_file = mxl_file.with_suffix(".mm.json")
+            score_to_lightweight_df(mxl_file, mm_file)
+
+
+def get_corpus_part_relations():
+    """
+    Get a part relationships summary for every score in the corpus.
+    """
+    mscz_files = get_corpus_files(file_path="*.mscz", pathlib=True)
+
+    for mscz_file in mscz_files:
+        mscz_file = cast(Path, mscz_file)
+        mxl_file = mscz_file.with_suffix(".mxl")
+        lw_file = mscz_file.with_suffix(".csv")
+        annotations_file = (
+            mscz_file.parent / f"{mscz_file.stem}_annotations.csv"
+        )
+        df_summary = get_part_relationship_summary(
+            mxl_file, lw_file, annotations_file
+        )
+        csv_file = mscz_file.parent / f"{mscz_file.stem}_part_relations.csv"
+        df_summary.to_csv(csv_file, index=False)
+
+
+def get_corpus_alignment_tables():
+    """
+    Get an alignment for every score in the corpus with at least one
+    public domain/open license recording on IMSLP.
+    """
+    mscz_files = get_corpus_files(file_path="*.mscz", pathlib=True)
+    audios = pd.read_csv(CORPUS_PATH / "audios.tsv", sep="\t")
+    scores = pd.read_csv(CORPUS_PATH / "scores.tsv", sep="\t")
+
+    for mscz_file in mscz_files:
+        mscz_file = cast(Path, mscz_file)
+        score_path = mscz_file.relative_to(CORPUS_PATH).parent.as_posix()
+        score_info = scores[scores["path"] == score_path]
+        score_audios = audios[audios["score_id"] == score_info["id"].item()]
+        if not score_audios.empty:
+            audio_files = []
+            for _, audio in score_audios.iterrows():
+                audio_file = [
+                    audio["imslp_number"], audio["imslp_link"], None, None,
+                    "full audio"
+                ]
+                audio_files.append(audio_file)
+            mxl_file = mscz_file.with_suffix(".mxl")
+            mm_file = mscz_file.with_suffix(".mm.json")
+            align_score_audios(
+                mxl_file, mm_file, audio_files, out_dir=mscz_file.parent
+            )
 
 
 if __name__ == "__main__":
@@ -95,50 +200,17 @@ if __name__ == "__main__":
     # Get compressed measure maps
     get_corpus_measure_maps()
 
-    # Get annotations file and melody score for all - NEED TO SORT SO ONES WITH LYRICS AND TEXT ARE SEPARATED!
-    get_annotations_and_melody_scores(
-        f"{CORPUS_PATH}/Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232",
-        lyrics_not_text=False,
-        annotation_restrictions="[a-zA-Z]"
-    )
-    get_annotations_and_melody_scores(
-        f"{CORPUS_PATH}/Bach,_Johann_Sebastian/Brandenburg_Concerto_No.3,_BWV.1048"
-    )
-    get_annotations_and_melody_scores(
-        f"{CORPUS_PATH}/Bach,_Johann_Sebastian/Brandenburg_Concerto_No.4,_BWV.1049"
-    )
-    get_annotations_and_melody_scores(
-        f"{CORPUS_PATH}/Beach,_Amy",
-        annotation_restrictions=r"([a-zA-Z]([a-zA-Z]|('+|!))?)|([a-zA-Z]\+[a-zA-Z])|cad\.|trans"
-    )
-    get_annotations_and_melody_scores(
-        f"{CORPUS_PATH}/Beethoven,_Ludwig_van",
-        annotation_restrictions="([a-zA-Z]('+|!)?)|tr.?"
-    )
-    get_annotations_and_melody_score(
-        f"{CORPUS_PATH}/Beethoven,_Ludwig_van/Symphony_No.9,_Op.125/4/Beethoven_Op.125_4.mxl",
-        lyrics_not_text=False,
-        annotation_restrictions=["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
-                                 "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "tr", "tr.", "c'"]
-    )
-    get_annotations_and_melody_scores(
-        f"{CORPUS_PATH}/Brahms,_Johannes",
-        annotation_restrictions="[a-zA-Z]'?"
-    )
-    get_annotations_and_melody_scores(
-        f"{CORPUS_PATH}/Brahms,_Johannes/Ein_Deutsches_Requiem,_Op.45",
-        lyrics_not_text=False,
-        annotation_restrictions="[a-zA-Z]'?"
-    )
-    get_annotations_and_melody_scores(
-        f"{CORPUS_PATH}/Bruckner,_Anton",
-        annotation_restrictions="[a-zA-Z]'?"
-    )
+    # Get annotations files and melody scores
+    get_corpus_annotations_and_melody_scores()
 
-    # Get lightweight csv?
-    get_lightweight_scores()
+    # Get lightweight score .csv files
+    get_corpus_lightweight_scores()
 
-    # Get alignment table?
+    # Get part relationship summaries
+    get_corpus_part_relations()
+
+    # Get alignment tables
+    get_corpus_alignment_tables()
 
     user_region = "EU"
     create_audio_metadata(user_region)
@@ -146,5 +218,5 @@ if __name__ == "__main__":
     match_audios_to_scores()
     get_yaml_files()
     make_contents()
-    # What will be needed here is to sort the ID column of each metadata file
-    # And manual cleanup for score names and audio-score matching
+    # Manual cleanup for score names and audio-score matching will be
+    # required
