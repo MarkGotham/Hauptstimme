@@ -58,7 +58,7 @@ qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
 408.0,69,1.0,0.0,a,Cl 1,4,Cl
 431.0,72,4.3333,0.8333,a,Cl 1,4,Cl
 444.0,75,1.0,0.0,a,Cl 1,4,Cl
-458.5,77,2.6667,0.4167,b,Solo Vc,13,Vc
+458.5,77,2.6667,0.4167,b,Vc solo,13,Vc
 461.5,77,4.6667,0.9167,b,Vln 2,11,Vln
 464.5,78,2.6667,0.4167,b,Vln 1,10,Vln
 468.0,79,1.0,0.0,a,Vln 1,10,Vln

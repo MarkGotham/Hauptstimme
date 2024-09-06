@@ -6,7 +6,7 @@ Metadata (metadata.py)
 
 BY
 ===============================
-Matt Blessing, 2024
+Matthew Blessing
 
 
 LICENCE:
@@ -36,17 +36,20 @@ audio to be updated.
 `make_contents` produces the 'README.md' for the corpus. This is a 
 tabular summary with raw file links to enable direct download.
 """
+from __future__ import annotations
+
 import pandas as pd
 import json
 import re
 import pathlib
-from pathlib import Path
 from hauptstimme.utils import csv_to_yaml
-from hauptstimme.alignment.scraping import get_imslp_audio_files, get_github_repo_files
+from hauptstimme.alignment.scraping import (
+    get_imslp_audio_files, get_github_repo_files
+)
 from hauptstimme.constants import CORPUS_PATH
 
 
-def create_audio_metadata(user_region):
+def create_audio_metadata(user_region: str):
     """
     Create a JSON audio metadata file 'audios.json' and initialise the 
     'audios.tsv' metadata file for the IMSLP recording files used for 
@@ -56,16 +59,18 @@ def create_audio_metadata(user_region):
         Requires 'sets.tsv' and 'composers.tsv' to be complete.
 
     Args:
-        user_region (str): The user region (e.g., EU, US).
+        user_region: The user region (e.g., EU, US).
     """
-    sets = pd.read_csv(f"{CORPUS_PATH}/sets.tsv", sep="\t")
-    composers = pd.read_csv(f"{CORPUS_PATH}/composers.tsv", sep="\t")
+    sets = pd.read_csv(CORPUS_PATH / "sets.tsv", sep="\t")
+    composers = pd.read_csv(CORPUS_PATH / "composers.tsv", sep="\t")
 
     metadata = []
     for _, composer_row in composers.iterrows():
         print(composer_row["name"], end=" - ")
-        composer_metadata = {"composer": composer_row["name"],
-                             "compositions": []}
+        composer_metadata = {
+            "composer": composer_row["name"],
+            "compositions": []
+        }
         # Get the composer's sets in the corpus
         composer_sets = (
             sets[sets["composer_id"] == composer_row["id"]]
@@ -79,8 +84,10 @@ def create_audio_metadata(user_region):
                 set_row["imslp_link"],
                 user_region
             )
-            set_metadata = {"title": set_row["name"],
-                            "recordings": recordings_metadata}
+            set_metadata = {
+                "title": set_row["name"],
+                "recordings": recordings_metadata
+            }
             composer_metadata["compositions"].append(set_metadata)
             if j == num_sets - 1:
                 print(f"({len(recordings_metadata)} recordings)")
@@ -89,7 +96,7 @@ def create_audio_metadata(user_region):
         metadata.append(composer_metadata)
 
     # Write 'audios.json'
-    with open(f"{CORPUS_PATH}/audios.json", "w") as json_file:
+    with open(CORPUS_PATH / "audios.json", "w") as json_file:
         json.dump(metadata, json_file, indent=2)
 
     # Write this metadata to 'audios.tsv'
@@ -111,15 +118,17 @@ def create_audio_metadata(user_region):
                     i += 1
     audios_df = pd.DataFrame(
         audios,
-        columns=["id", "performers", "publisher", "year",
-                 "imslp_number", "imslp_link", "score_id"]
+        columns=[
+            "id", "performers", "publisher", "year",
+            "imslp_number", "imslp_link", "score_id"
+        ]
     )
     # Int64 enforces the values being integers despite there being
     # missing values
     audios_df["year"] = audios_df["year"].astype("Int64")
 
     # Write 'audios.tsv'
-    audios_df.to_csv(f"{CORPUS_PATH}/audios.tsv", sep="\t", index=False)
+    audios_df.to_csv(CORPUS_PATH / "audios.tsv", sep="\t", index=False)
 
 
 def create_score_metadata():
@@ -127,10 +136,10 @@ def create_score_metadata():
     Initialise the 'scores.tsv' metadata file for the corpus.
     """
     mscz_file_urls = get_github_repo_files(
-        "MarkGotham", "Hauptstimme", ".mscz", Path(CORPUS_PATH).name
+        "MarkGotham", "Hauptstimme", ".mscz", CORPUS_PATH.name
     )
 
-    sets = pd.read_csv(f"{CORPUS_PATH}/sets.tsv", sep="\t")
+    sets = pd.read_csv(CORPUS_PATH / "sets.tsv", sep="\t")
 
     # Get all score paths
     scores = []
@@ -150,10 +159,19 @@ def create_score_metadata():
     scores_df = pd.DataFrame(
         scores, columns=["id", "path", "name", "set_id"])
 
-    scores_df.to_csv(f"{CORPUS_PATH}/scores.tsv", sep="\t", index=False)
+    scores_df.to_csv(CORPUS_PATH / "scores.tsv", sep="\t", index=False)
 
 
-def roman_to_int(roman):
+def roman_to_int(roman: str) -> int:
+    """
+    Convert a roman numeral string into an integer.
+
+    Args:
+        roman: The roman numeral.
+
+    Returns:
+        total: The integer value.
+    """
     roman_values = {
         "I": 1,
         "V": 5,
@@ -187,11 +205,11 @@ def match_audios_to_scores():
         their 'name' field in the metadata.
         The rest have to be done manually.
     """
-    audios_metadata = json.load(open(f"{CORPUS_PATH}/audios.json"))
+    audios_metadata = json.load(open(CORPUS_PATH / "audios.json"))
 
-    sets = pd.read_csv(f"{CORPUS_PATH}/sets.tsv", sep="\t")
-    scores = pd.read_csv(f"{CORPUS_PATH}/scores.tsv", sep="\t")
-    audios = pd.read_csv(f"{CORPUS_PATH}/audios.tsv", sep="\t")
+    sets = pd.read_csv(CORPUS_PATH / "sets.tsv", sep="\t")
+    scores = pd.read_csv(CORPUS_PATH / "scores.tsv", sep="\t")
+    audios = pd.read_csv(CORPUS_PATH / "audios.tsv", sep="\t")
 
     for composer in audios_metadata:
         for work in composer["compositions"]:
@@ -212,9 +230,11 @@ def match_audios_to_scores():
                         if number_match:
                             number = number_match.group(1)
                             # If number is in roman numerals
-                            if re.match(r"^[IVXLCDM]+$",
-                                        number,
-                                        flags=re.IGNORECASE):
+                            if re.match(
+                                r"^[IVXLCDM]+$",
+                                number,
+                                flags=re.IGNORECASE
+                            ):
                                 number = roman_to_int(number.upper())
                             else:
                                 number = int(number)
@@ -238,8 +258,8 @@ def match_audios_to_scores():
                             )
                             audios.loc[audios_bool, "score_id"] = score_id
 
-    audios.to_csv(f"{CORPUS_PATH}/audios.tsv", sep="\t", index=False)
-    scores.to_csv(f"{CORPUS_PATH}/scores.tsv", sep="\t", index=False)
+    audios.to_csv(CORPUS_PATH / "audios.tsv", sep="\t", index=False)
+    scores.to_csv(CORPUS_PATH / "scores.tsv", sep="\t", index=False)
 
 
 def get_yaml_files():
@@ -249,7 +269,7 @@ def get_yaml_files():
     meta_files = ["sets", "scores", "audios", "composers"]
 
     for meta_file in meta_files:
-        csv_to_yaml(f"{CORPUS_PATH}/{meta_file}.tsv", "\t")
+        csv_to_yaml(CORPUS_PATH / f"{meta_file}.tsv", "\t")
 
 
 def make_contents():
@@ -257,8 +277,7 @@ def make_contents():
     Produce a tabular summary of files committed to the corpus with raw
     file links to enable direct download. This is the 'README.md'.
     """
-    corpus_path = Path(CORPUS_PATH)
-    with open(corpus_path / "/README.md", "w") as f:
+    with open(CORPUS_PATH / "README.md", "w") as f:
         f.write("## Corpus contents with direct download links\n")
         f.write("|composer|collection|movement|score|-|melody|\n")
         f.write("|---|---|---|---|---|---|\n")
@@ -266,7 +285,7 @@ def make_contents():
         contents = []
 
         mscz_files = get_github_repo_files(
-            "MarkGotham", "Hauptstimme", ".mscz", corpus_path.name)
+            "MarkGotham", "Hauptstimme", ".mscz", CORPUS_PATH.name)
 
         num_scores = len(mscz_files)
 
@@ -278,11 +297,14 @@ def make_contents():
             ]
 
             mxl_file = mscz_file.with_suffix(".mxl")
-            melody_file = mscz_file.with_suffix("_melody.mxl")
+            melody_file = mscz_file.parent / f"{mscz_file.stem}_melody.mxl"
 
-            line = [composer, collection, movement,
-                    f"[.mscz]({mscz_file})", f"[.mxl]({mxl_file})",
-                    f"[melody.mxl]({melody_file})\n"]
+            line = [
+                composer, collection, movement,
+                f"[.mscz]({mscz_file.as_posix()})",
+                f"[.mxl]({mxl_file.as_posix()})",
+                f"[melody.mxl]({melody_file.as_posix()})\n"
+            ]
 
             contents.append("|".join(line))
 

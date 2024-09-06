@@ -49,7 +49,6 @@ qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
 282.0,142,1.0,0.0,b,Bsn 1,6,Bsn
 299.25,150,2.25,0.625,b,Vln 1,13,Vln
 322.0,162,1.0,0.0,b,Fl 1,0,Fl
-322.0,162,1.0,0.0,b,Bsn 2,7,Bsn
 327.25,164,2.25,0.625,b,Vln 1,13,Vln
 343.5,172,2.5,0.75,b,Vln 1,13,Vln
 359.5,180,2.5,0.75,b,Bsn 1,6,Bsn

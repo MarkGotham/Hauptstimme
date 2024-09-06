@@ -6,7 +6,7 @@ Score Conversion (score_conversion.py)
 
 BY
 ===============================
-Matt Blessing, 2024
+Matthew Blessing
 
 
 LICENCE:
@@ -36,15 +36,23 @@ for each note event, contains:
 lightweight overview of the score, which is used for comparing
 instrument usage. It also saves this as a .csv.
 """
+from __future__ import annotations
+
 import pandas as pd
-from music21 import (
-    converter, chord, expressions, note, stream, tempo, meter, pitch
-)
+import numpy as np
+from music21 import converter, chord, note, tempo, pitch, instrument
+from music21.stream.base import Score, Part, Measure
+from music21.meter.base import TimeSignature
 from pathlib import Path
+from hauptstimme.utils import validate_path
 from hauptstimme.constants import ROUNDING_VALUE
+from typing import cast, Union, Optional
 
 
-def score_measure_map_to_df(score, measure_map):
+def score_measure_map_to_df(
+    score: Score,
+    measure_map: pd.DataFrame
+) -> pd.DataFrame:
     """
     Convert a score and measure map into a data frame containing
     information about all note events.
@@ -56,11 +64,11 @@ def score_measure_map_to_df(score, measure_map):
         All float columns are rounded to 4 d.p.
 
     Args:
-        score (music21.stream.Score): A music21 score.
-        measure_map (pd.DataFrame): A measure map for the score.
+        score: A music21 score.
+        measure_map: A measure map for the score.
 
     Returns:
-        df_score (pd.DataFrame): A data frame containing information
+        df_score: A data frame containing information
             for each note event.
             Columns:
                 score_qstamp (float): The note's time offset in quarter
@@ -79,95 +87,69 @@ def score_measure_map_to_df(score, measure_map):
                 duration (float): The note's duration in seconds.
                 pitch (int): The note's MIDI note number.
                 velocity (float): The note's velocity.
+
+    Raises:
+        ValueError: If a particular measure has no associated time 
+            signature.
+        ValueError: If an instrument has unpitched notes but isn't of 
+            type 'UnpitchedPercussion'.
     """
     print("\nConverting score to a data frame containing all note events...")
 
     df_score = pd.DataFrame(
-        columns=["score_qstamp", "qstamp", "tstamp", "measure", "beat",
-                 "instrument", "duration_quarter", "duration", "pitch",
-                 "velocity"]
+        columns=[
+            "score_qstamp", "qstamp", "tstamp", "measure", "beat",
+            "instrument", "duration_quarter", "duration", "pitch", "velocity"
+        ]
     )
 
     tempos = {}
-    time_sigs = {}
-
-    # Get initial time signature
-    # This is needed now in case the initial tempo is defined as a text
-    # expression before the time signature is defined
-    curr_time_sig = None
-    for n in score.parts[0].flatten():
-        if isinstance(n, meter.TimeSignature):
-            time_sigs[n.measureNumber] = n
-            curr_time_sig = n
-            break
 
     for part_num, part in enumerate(score.parts):
-        part = part.toSoundingPitch()
+        part = cast(Part, part.toSoundingPitch())
         instrument_name = part.partName
         elements = part.flatten()
 
         for n in elements:
             score_qstamp = round(float(n.offset), ROUNDING_VALUE)
             measure = n.measureNumber
-            beat = round(float(n.beat), ROUNDING_VALUE)
-
-            # Skips things like instrument etc.
             if n.measureNumber is None:
                 continue
+            beat = round(float(n.beat), ROUNDING_VALUE)
 
-            # Deal with issue with beats when there are multiple voices
+            curr_time_sig = n.getContextByClass(TimeSignature)
+            if curr_time_sig is None:
+                # Sometimes the time signature is defined after the
+                # notes in the first measure, so it isn't picked up by
+                # `getContextByClass`
+                if measure == 1:
+                    curr_time_sig = next(
+                        part.recurse()
+                        .getElementsByClass(TimeSignature)
+                    )
+                if curr_time_sig is None:
+                    raise ValueError(
+                        f"Error: The elements in measure {measure} " +
+                        "have no associated time signature."
+                    )
+
+            # Deal with beats issue when there are multiple voices
             # Manually calculate beat
-            measure_obj = part.measure(measure)
+            measure_obj = n.getContextByClass(Measure)
             num_voices = len(measure_obj.voices)
-            if num_voices > 0:
-                beat = (1 + (n.offset - measure_obj.offset) /
-                        curr_time_sig.beatDuration.quarterLength)
+            if num_voices > 1:
+                beat = (
+                    1 + (n.offset - measure_obj.offset) /
+                    curr_time_sig.beatDuration.quarterLength
+                )
                 beat = round(float(beat), ROUNDING_VALUE)
 
-            ################################################
-            # Don't think this is needed
-            if isinstance(elements, stream.Measure):
-                print("MEASURE", elements)
-                score_qstamp += elements.offset
-            ################################################
-
             if part_num == 0:
-                if isinstance(n, meter.TimeSignature):
-                    time_sigs[measure] = n
-                    curr_time_sig = n
-                    continue
-
                 if isinstance(n, tempo.MetronomeMark):
                     # Get quarter note BPM directly from tempo marking
                     tempos[measure] = n.getQuarterBPM()
-                    print("TEMPO1", tempos[measure], measure)
+                    print(f"Tempo in measure {measure}: {tempos[measure]}")
                     continue
-                # If a tempo marking is written as a text expression
-                # (e.g., 'Adagio')
-                elif isinstance(n, expressions.TextExpression):
-                    # Get tempo's default BPM
-                    bpm = tempo.defaultTempoValues.get(n.content.lower())
-                    if bpm:
-                        # Convert BPM to quarter note BPM
-                        quarter_bpm = bpm * curr_time_sig.denominator / 4
-                        tempos[measure] = quarter_bpm
-                        print("TEMPO2", tempos[measure], measure)
-                    continue
-
-                ################################################
-                # Don't think I need these
-                elif isinstance(n, tempo.TempoIndication):
-                    if isinstance(n, tempo.MetricModulation):
-                        if n.oldMetronome.number:
-                            tempos[measure] = n.oldMetronome.number
-                            print("TEMPO3", tempos[measure], measure)
-                    elif n.number:
-                        tempos[measure] = n.number
-                        print("TEMPO4", tempos[measure], measure)
-                    elif n.numberSounding:
-                        tempos[measure] = n.numberSounding
-                        print("TEMPO5", tempos[measure], measure)
-                ################################################
 
             if isinstance(n, note.Note):
                 # Ignore grace notes (they have duration 0)
@@ -185,26 +167,60 @@ def score_measure_map_to_df(score, measure_map):
                         "velocity": round(n.volume.realized, ROUNDING_VALUE)
                     }
                     df_score = pd.concat(
-                        [df_score, pd.DataFrame(row, index=[0])])
+                        [df_score, pd.DataFrame(row, index=[0])]
+                    )
             elif isinstance(n, chord.Chord):
                 # Add row for each note in chord
                 for chord_note in n:
+                    chord_note = cast(note.Note, chord_note)
+                    # Ignore grace notes (they have duration 0)
+                    if not chord_note.duration.isGrace:
+                        row = {
+                            "score_qstamp": score_qstamp,
+                            "measure": measure,
+                            "beat": beat,
+                            "instrument": instrument_name,
+                            "duration_quarter": round(
+                                float(chord_note.duration.quarterLength),
+                                ROUNDING_VALUE
+                            ),
+                            "pitch": chord_note.pitch.midi,
+                            "velocity": round(
+                                chord_note.volume.realized, ROUNDING_VALUE
+                            )
+                        }
+                        df_score = pd.concat(
+                            [df_score, pd.DataFrame(row, index=[0])]
+                        )
+            elif isinstance(n, note.Unpitched):
+                # Ignore grace notes (they have duration 0)
+                if not n.duration.isGrace:
+                    instr = n.getContextByClass(
+                        instrument.UnpitchedPercussion
+                    )
+                    if instr is not None:
+                        pitch = instr.percMapPitch
+                    else:
+                        raise ValueError(
+                            f"Error: Part '{instrument_name}' contains " +
+                            "unpitched notes but it isn't an " +
+                            "'UnpitchedPercussion' instrument."
+                        )
+                    # Add row for note
                     row = {
                         "score_qstamp": score_qstamp,
                         "measure": measure,
                         "beat": beat,
                         "instrument": instrument_name,
                         "duration_quarter": round(
-                            float(chord_note.duration.quarterLength),
-                            ROUNDING_VALUE
+                            float(n.duration.quarterLength), ROUNDING_VALUE
                         ),
-                        "pitch": chord_note.pitch.midi,
-                        "velocity": round(
-                            chord_note.volume.realized, ROUNDING_VALUE
-                        )
+                        "pitch": pitch,
+                        "velocity": round(n.volume.realized, ROUNDING_VALUE)
                     }
                     df_score = pd.concat(
-                        [df_score, pd.DataFrame(row, index=[0])])
+                        [df_score, pd.DataFrame(row, index=[0])]
+                    )
 
     df_score.sort_values("qstamp", inplace=True)
     df_score.reset_index(drop=True, inplace=True)
@@ -216,7 +232,7 @@ def score_measure_map_to_df(score, measure_map):
     # Get a list indicating the order in which the measures are played
     # when expanding repeats
     measures = []
-    curr_id = int(measure_map.iloc[0, 0])
+    curr_id = int(measure_map.iloc[0, 0])  # type: ignore
     while curr_id != -1:
         measure_map_row = measure_map[measure_map["ID"] == curr_id]
         if len(measure_map_row) == 0:
@@ -247,7 +263,7 @@ def score_measure_map_to_df(score, measure_map):
             curr_tempo = tempos[measure]
             curr_tempo_marking_index += 1
         # Assign the current tempo to the current measure
-        tempos[measure] = curr_tempo
+        tempos[measure] = cast(float, curr_tempo)
 
     df_score["qstamp"] = [list() for _ in range(len(df_score))]
     df_score["tstamp"] = [list() for _ in range(len(df_score))]
@@ -258,54 +274,75 @@ def score_measure_map_to_df(score, measure_map):
         .reset_index()
         .rename(columns={0: "indices"})
     )
-    max_score_qstamp = df_score["score_qstamp"].max()
-    next_qstamp = 0
-    next_tstamp = 0.
+    qstamp = 0
+    tstamp = 0.
     for measure in measures:
         # Get current quarter note BPM
         curr_quarter_bpm = tempos[measure]
         # Get current length of a quarter note
         curr_quarter_length = 60 / curr_quarter_bpm
 
+        # Get measure start and end score qstamps
+        measure_obj = cast(Measure, score.parts[0].measure(measure))
+        measure_start = round(float(measure_obj.offset), ROUNDING_VALUE)
+        measure_end = round(
+            float(measure_start + measure_obj.duration.quarterLength),
+            ROUNDING_VALUE
+        )
+
+        # Initialise previous score qstamp with the start of the measure
+        prev_score_qstamp = measure_start
+
         # Iterate through all note events in the measure
         df_measure_notes = df_score_qstamp_measure[
             df_score_qstamp_measure["measure"] == measure
         ]
-        for i, row in df_measure_notes.iterrows():
+        for _, row in df_measure_notes.iterrows():
             # Get the note duration in seconds
-            dur = df_score.loc[row["indices"], "duration_quarter"]
-            df_score.loc[row["indices"], "duration"] = round(
+            dur = cast(
+                pd.Series, df_score.loc[row["indices"], "duration_quarter"]
+            )
+            df_score.loc[row["indices"], "duration"] = np.round(
                 dur * curr_quarter_length,
                 ROUNDING_VALUE
             )
 
+            # Calculate the timestamp for this note event
+            diff = row["score_qstamp"] - prev_score_qstamp
+            qstamp += diff
+            tstamp += diff * curr_quarter_length
+
             # Get a list of qstamps and tstamps for each note
             # There can be more than one due to repeats
             for index in row["indices"]:
-                df_score.loc[index, "qstamp"].append(next_qstamp)
-                df_score.loc[index, "tstamp"].append(round(next_tstamp,
-                                                           ROUNDING_VALUE))
+                df_score.at[index, "qstamp"].append(qstamp)
+                df_score.at[index, "tstamp"].append(
+                    round(tstamp, ROUNDING_VALUE)
+                )
 
-            if row["score_qstamp"] != max_score_qstamp:
-                # Calculate the timestamp for the next note event
-                diff = (df_score_qstamp_measure.iloc[i + 1]["score_qstamp"]
-                        - row["score_qstamp"])
-                next_qstamp += diff
-                next_tstamp += diff*curr_quarter_length
+            prev_score_qstamp = row["score_qstamp"]
+
+        # Get qstamp for end of the measure
+        diff = measure_end - row["score_qstamp"]
+        qstamp += diff
+        tstamp += diff*curr_quarter_length
 
     # Convert rows containing lists into multiple rows
     df_score = df_score.explode(["qstamp", "tstamp"]).apply(
-        pd.to_numeric, errors="ignore").reset_index(drop=True)
+        pd.to_numeric, errors="ignore"
+    )
+    df_score.sort_values("qstamp", inplace=True)
+    df_score.reset_index(drop=True, inplace=True)
 
     print("Conversion successful.")
 
     return df_score
 
 
-def score_to_df(score):
+def score_to_df(score: Score) -> pd.DataFrame:
     """
-    Convert a score into a data frame containing information about all note
-    events.
+    Convert a score into a data frame containing information about all 
+    note events.
 
     Notes:
         Doesn't take into account fermatas, accelerandos, ritardandos,
@@ -316,11 +353,11 @@ def score_to_df(score):
         column.
 
     Args:
-        score (music21.stream.Score): A music21 score.
+        score: A music21 score.
 
     Returns:
-        df_score (pd.DataFrame): A data frame containing information
-            for each note event.
+        df_score: A data frame containing information for each note 
+            event.
             Columns:
                 qstamp (float): The note's time offset in quarter notes
                     with repeats expanded.
@@ -336,97 +373,69 @@ def score_to_df(score):
                 duration (float): The note's duration in seconds.
                 pitch (int): The note's MIDI note number.
                 velocity (float): The note's velocity.
+
+    Raises:
+        ValueError: If a particular measure has no associated time 
+            signature.
+        ValueError: If an instrument has unpitched notes but isn't of 
+            type 'UnpitchedInstrument'.
     """
     print("\nConverting score to a data frame containing all note events...")
 
     df_score = pd.DataFrame(
-        columns=["qstamp", "tstamp", "measure", "beat", "instrument",
-                 "duration_quarter", "duration", "pitch", "velocity"]
+        columns=[
+            "qstamp", "tstamp", "measure", "beat", "instrument",
+            "duration_quarter", "duration", "pitch", "velocity"
+        ]
     )
 
     tempos = {}
-    time_sigs = {}
-
-    # Get initial time signature
-    # This is needed now in case the initial tempo is defined as a text
-    # expression before the time signature is defined
-    curr_time_sig = None
-    for n in score.parts[0].flatten():
-        if isinstance(n, meter.TimeSignature):
-            time_sigs[n.measureNumber] = n
-            curr_time_sig = n
-            break
 
     for part_num, part in enumerate(score.parts):
-        part = part.toSoundingPitch()
+        part = cast(Part, part.toSoundingPitch())
         instrument_name = part.partName
         elements = part.flatten()
 
         for n in elements:
             qstamp = round(float(n.offset), ROUNDING_VALUE)
             measure = n.measureNumber
-            beat = round(float(n.beat), ROUNDING_VALUE)
-
-            # Skips things like instrument etc.
             if n.measureNumber is None:
                 continue
+            beat = round(float(n.beat), ROUNDING_VALUE)
 
-            # Deal with issue with beats when there are multiple voices
+            curr_time_sig = n.getContextByClass(TimeSignature)
+            if curr_time_sig is None:
+                # Sometimes the time signature is defined after the
+                # notes in the first measure, so it isn't picked up by
+                # `getContextByClass`
+                if measure == 1:
+                    curr_time_sig = next(
+                        part.recurse()
+                        .getElementsByClass(TimeSignature)
+                    )
+                if curr_time_sig is None:
+                    raise ValueError(
+                        f"Error: The elements in measure {measure} " +
+                        "have no associated time signature."
+                    )
+
+            # Deal with beats issue when there are multiple voices
             # Manually calculate beat
-            measure_obj = part.measure(measure)
+            measure_obj = n.getContextByClass(Measure)
             num_voices = len(measure_obj.voices)
-            if num_voices > 0:
-                beat = (1 + (n.offset - measure_obj.offset) /
-                        curr_time_sig.beatDuration.quarterLength)
+            if num_voices > 1:
+                beat = (
+                    1 + (n.offset - measure_obj.offset) /
+                    curr_time_sig.beatDuration.quarterLength
+                )
                 beat = round(float(beat), ROUNDING_VALUE)
 
-            ################################################
-            # Don't think this is needed
-            if isinstance(elements, stream.Measure):
-                print("MEASURE", elements)
-                qstamp += elements.offset
-            ################################################
-
             if part_num == 0:
-                if isinstance(n, meter.TimeSignature):
-                    time_sigs[measure] = n
-                    curr_time_sig = n
-                    continue
-
                 if isinstance(n, tempo.MetronomeMark):
                     # Get quarter note BPM directly from tempo marking
                     tempos[measure] = n.getQuarterBPM()
-                    print("TEMPO1", tempos[measure], measure)
-                    curr_tempo = tempos[measure]
+                    print(f"Tempo in measure {measure}: {tempos[measure]}")
                     continue
-                # If a tempo marking is written as a text expression
-                # (e.g., 'Adagio')
-                elif isinstance(n, expressions.TextExpression):
-                    # Get tempo's default BPM
-                    bpm = tempo.defaultTempoValues.get(n.content.lower())
-                    if bpm:
-                        # Convert BPM to quarter note BPM
-                        quarter_bpm = (
-                            bpm * curr_time_sig.beatDuration.quarterLength
-                        )
-                        tempos[measure] = quarter_bpm
-                        print("TEMPO2", tempos[measure], measure)
-                    continue
-
-                ################################################
-                # Don't think I need these
-                elif isinstance(n, tempo.TempoIndication):
-                    if isinstance(n, tempo.MetricModulation):
-                        if n.oldMetronome.number:
-                            tempos[measure] = n.oldMetronome.number
-                            print("TEMPO3", tempos[measure], measure)
-                    elif n.number:
-                        tempos[measure] = n.number
-                        print("TEMPO4", tempos[measure], measure)
-                    elif n.numberSounding:
-                        tempos[measure] = n.numberSounding
-                        print("TEMPO5", tempos[measure], measure)
-                ################################################
 
             if isinstance(n, note.Note):
                 # Ignore grace notes (they have duration 0)
@@ -444,26 +453,60 @@ def score_to_df(score):
                         "velocity": round(n.volume.realized, ROUNDING_VALUE)
                     }
                     df_score = pd.concat(
-                        [df_score, pd.DataFrame(row, index=[0])])
+                        [df_score, pd.DataFrame(row, index=[0])]
+                    )
             elif isinstance(n, chord.Chord):
                 # Add row for each note in chord
                 for chord_note in n:
+                    chord_note = cast(note.Note, chord_note)
+                    # Ignore grace notes (they have duration 0)
+                    if not chord_note.duration.isGrace:
+                        row = {
+                            "qstamp": qstamp,
+                            "measure": measure,
+                            "beat": beat,
+                            "instrument": instrument_name,
+                            "duration_quarter": round(
+                                float(chord_note.duration.quarterLength),
+                                ROUNDING_VALUE
+                            ),
+                            "pitch": chord_note.pitch.midi,
+                            "velocity": round(
+                                chord_note.volume.realized, ROUNDING_VALUE
+                            )
+                        }
+                        df_score = pd.concat(
+                            [df_score, pd.DataFrame(row, index=[0])]
+                        )
+            elif isinstance(n, note.Unpitched):
+                # Ignore grace notes (they have duration 0)
+                if not n.duration.isGrace:
+                    instr = n.getContextByClass(
+                        instrument.UnpitchedPercussion
+                    )
+                    if instr is not None:
+                        pitch = instr.percMapPitch
+                    else:
+                        raise ValueError(
+                            f"Error: Part '{instrument_name}' contains " +
+                            "unpitched notes but it isn't an " +
+                            "'UnpitchedPercussion' instrument."
+                        )
+                    # Add row for note
                     row = {
                         "qstamp": qstamp,
                         "measure": measure,
                         "beat": beat,
                         "instrument": instrument_name,
                         "duration_quarter": round(
-                            float(chord_note.duration.quarterLength),
-                            ROUNDING_VALUE
+                            float(n.duration.quarterLength), ROUNDING_VALUE
                         ),
-                        "pitch": chord_note.pitch.midi,
-                        "velocity": round(
-                            chord_note.volume.realized, ROUNDING_VALUE
-                        )
+                        "pitch": pitch,
+                        "velocity": round(n.volume.realized, ROUNDING_VALUE)
                     }
                     df_score = pd.concat(
-                        [df_score, pd.DataFrame(row, index=[0])])
+                        [df_score, pd.DataFrame(row, index=[0])]
+                    )
 
     df_score.sort_values("qstamp", inplace=True)
     df_score.reset_index(drop=True, inplace=True)
@@ -485,26 +528,28 @@ def score_to_df(score):
             curr_tempo = tempos[measure]
             curr_tempo_marking_index += 1
         # Assign the current tempo to the current measure
-        tempos[measure] = curr_tempo
+        tempos[measure] = cast(float, curr_tempo)
 
     max_qstamp = df_score["qstamp"].max()
     next_tstamp = 0.
     for i, row in df_score.iterrows():
+        i = cast(int, i)
         # Get current quarter note BPM
         curr_quarter_bpm = tempos[row["measure"]]
         # Get current length of a quarter note
         curr_quarter_length = 60 / curr_quarter_bpm
 
         # Get the note duration in seconds
-        df_score.loc[i, "duration"] = round(
-            row["duration_quarter"]*curr_quarter_length, ROUNDING_VALUE)
+        df_score.at[i, "duration"] = round(
+            row["duration_quarter"] * curr_quarter_length, ROUNDING_VALUE
+        )
 
         # Get the timestamp
-        df_score.loc[i, "tstamp"] = round(next_tstamp, ROUNDING_VALUE)
+        df_score.at[i, "tstamp"] = round(next_tstamp, ROUNDING_VALUE)
 
         if row["qstamp"] != max_qstamp:
             # Calculate the timestamp for the next note event
-            diff = df_score.loc[i + 1]["qstamp"] - row["qstamp"]
+            diff = df_score.loc[i + 1, "qstamp"] - row["qstamp"]
             next_tstamp += diff*curr_quarter_length
 
     print("Conversion successful.")
@@ -512,13 +557,20 @@ def score_to_df(score):
     return df_score
 
 
-def score_to_lightweight_df(score_file):
+def score_to_lightweight_df(
+    score_file: Union[str, Path],
+    mm_file: Optional[Union[str, Path]] = None
+) -> pd.DataFrame:
     """
     Convert a score into a 'lightweight' data frame that summarises the
     score (which instruments are playing at each point in time) and
     save as a .csv file.
 
     Notes:
+        It is highly preferred that the measure map is used to
+        produce the lightweight data frame since Music21's 
+        '.expandRepeats()' seems to not expand repeats with voltas
+        for the first stave in some scores.
         Each cell in an instrument column indicates the highest pitch
         being played at that time, or "r" if no pitch playing.
         Pitches are given in Scientific Pitch Notation instead of MIDI
@@ -529,12 +581,13 @@ def score_to_lightweight_df(score_file):
         All float columns are rounded to 4 d.p.
 
     Args:
-        score_file (str): The local filename of the score as a MusicXML
-            file.
+        score_file: The path to the score's MusicXML file.
+        mm_file: The path to the score's measure map file. Default = 
+            None.
 
     Returns:
-        df_score_lw (pd.DataFrame): A data frame containing
-            'lightweight' information for each qstamp.
+        df_score_lw: A data frame containing 'lightweight' information 
+            for each qstamp.
             Columns:
                 qstamp (float): The time offset in quarter notes with
                     repeats expanded.
@@ -555,23 +608,43 @@ def score_to_lightweight_df(score_file):
             measure number and beat value only.
     """
     # Load in MusicXML file for score
+    score_file = validate_path(score_file)
     score = converter.parse(score_file)
+    if not isinstance(score, Score):
+        raise ValueError(
+            "Error: Score is not of type 'music21.Score'."
+        )
+    score = cast(Score, score)
 
-    df_score = score_to_df(score.expandRepeats())
-    score_file_path = Path(score_file)
-    csv_file = score_file_path.with_suffix(".full.csv")
-    df_score.to_csv(csv_file, index=False)
+    if mm_file:
+        # Load in measure map file for score
+        mm_file = validate_path(mm_file)
+        measure_map = pd.read_json(mm_file)
+        df_score = score_measure_map_to_df(score, measure_map)
+    else:
+        df_score = score_to_df(score.expandRepeats())
 
     # Test if each qstamp has a unique beat value
     # This should always be the case but Music21 has some bugs
     beat_test = (
         df_score.groupby("qstamp")["beat"]
-        .apply(lambda x: len(x.unique()))
+        .apply(pd.Series.nunique)
         .reset_index()
     )
-    if (beat_test["beat"] != 1).any():
-        raise ValueError("Error: There are notes at a particular qstamp " +
-                         "with different beat values.")
+    beat_test_bool = beat_test["beat"] != 1
+    if beat_test_bool.any():
+        csv_file = score_file.with_suffix(".csv")
+        df_score.to_csv(csv_file, index=False)
+        raise ValueError(
+            "Error: There are notes at qstamp(s) " +
+            ", ".join([
+                str(q) for q in
+                beat_test.loc[beat_test_bool, "qstamp"].unique()
+            ]) +
+            " with different beat values.\nSaving full score data frame at '" +
+            csv_file.as_posix() +
+            "' for inspection."
+        )
 
     # Get a list of pitches for each instrument at each qstamp
     df_score_lw = (
@@ -589,19 +662,24 @@ def score_to_lightweight_df(score_file):
     )
     df_score_lw.columns = df_score_lw.columns.values
 
-    # Reorder the columns based on appearance in the score
+    # Add columns for instruments with no notes and reorder the columns
+    # based on appearance in the score
     columns = ["qstamp", "tstamp", "measure", "beat"]
     for part in score.parts:
         part_name = part.partName
-        if part_name in df_score_lw.columns and part_name not in columns:
+        if part_name not in df_score_lw.columns:
+            df_score_lw[part_name] = np.nan
+        if part_name not in columns:
             columns.append(part_name)
     df_score_lw = df_score_lw[columns]
 
     # Get the highest pitch for each cell containing multiple pitches
     for col in df_score_lw.columns[4:]:
         df_score_lw[col] = df_score_lw[col].apply(
-            lambda x: max(x) if isinstance(x, list) else x)
+            lambda x: max(x) if isinstance(x, list) else x
+        )
 
+    final_index = df_score_lw.index[-1]
     # Iterate through the instruments
     for instrument in df_score_lw.columns[4:]:
         done = False
@@ -609,7 +687,7 @@ def score_to_lightweight_df(score_file):
         while not done:
             row = df_score_lw.loc[i, :]
             # Get the highest pitch being played by the instrument
-            note_mnn = row[instrument]
+            note_mnn = cast(int, row[instrument])
             if pd.isna(note_mnn):
                 # If no highest pitch, then there is a rest
                 df_score_lw.loc[i, instrument] = "r"
@@ -618,28 +696,31 @@ def score_to_lightweight_df(score_file):
                 note_spn = pitch.Pitch(note_mnn).nameWithOctave
                 df_score_lw.loc[i, instrument] = note_spn
                 # Get note duration in quarter notes
-                note_dur_quarter = df_score.loc[(
-                    (df_score["qstamp"] == row["qstamp"]) &
-                    (df_score["instrument"] == instrument) &
-                    (df_score["pitch"] == note_mnn)), "duration_quarter"]
+                note_dur_quarter = df_score.loc[
+                    ((df_score["qstamp"] == row["qstamp"]) &
+                     (df_score["instrument"] == instrument) &
+                     (df_score["pitch"] == note_mnn)),
+                    "duration_quarter"
+                ]
                 if len(note_dur_quarter) != 0:
                     note_dur_quarter = note_dur_quarter.unique()[0].item()
                     # Get qstamp that note ends on
                     note_end_qstamp = row["qstamp"] + note_dur_quarter
-                    if i < df_score_lw.index[-1]:
+                    if i < final_index:
                         j = i + 1
                         # Fill the cells up until this qstamp with this
                         # note, so missing values indicate rests
                         while df_score_lw.loc[j, "qstamp"] < note_end_qstamp:
                             df_score_lw.loc[j, instrument] = note_spn
                             j += 1
+                            if j > final_index:
+                                break
             i += 1
             if i > df_score_lw.index[-1]:
                 done = True
 
     # Create .csv file
-    score_file_path = Path(score_file)
-    csv_file = score_file_path.with_suffix(".csv")
+    csv_file = score_file.with_suffix(".csv")
     df_score_lw.to_csv(csv_file, index=False)
 
     print(f"\nThe lightweight .csv was saved to '{csv_file}'.")

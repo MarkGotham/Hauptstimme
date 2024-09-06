@@ -40,7 +40,6 @@ qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
 165.5,111,1.3333,0.3333,e,Ob 1,2,Ob
 167.0,112,1.3333,0.3333,e,Vla,12,Vla
 168.0,113,1.0,0.0,e,Fl 1,0,Fl
-168.0,113,1.0,0.0,e,Vln 1,10,Vln
 176.0,118,1.3333,0.3333,e,Bsn 1,6,Bsn
 177.5,119,1.3333,0.3333,e,Fl 1,0,Fl
 179.0,120,1.3333,0.3333,e,Bsn 1,6,Bsn
@@ -116,4 +115,3 @@ qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
 405.0,271,1.0,0.0,a,Cl 1,4,Cl
 405.25,271,1.1667,0.1667,a,Fl 1,0,Fl
 406.5,272,1.0,0.0,a,Cl 1,4,Cl
-406.5,272,1.0,0.0,a,Hn 1,8,Hn

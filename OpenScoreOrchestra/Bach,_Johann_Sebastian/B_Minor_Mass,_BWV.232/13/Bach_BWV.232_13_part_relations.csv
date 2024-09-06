@@ -1,0 +1,28 @@
+qstamp_start,qstamp_end,Violin 1,Violin 2,Soprano 1,Soprano 2,Alto,Tenor,Bass,Continuo
+0.5,9.0,Main Part,U(Main),,,,,,
+9.0,12.0,U(Violin 2),U(Violin 1),,,Main Part,,,
+12.0,15.0,U(Violin 2),U(Violin 1),,Main Part,,,,
+15.0,18.0,U(Violin 2),U(Violin 1),Main Part,P5(Continuo),,,,P5(Soprano 2)
+18.0,21.0,U(Violin 2),U(Violin 1),,,,Main Part,,
+21.0,37.0,U(Violin 2),U(Violin 1),,,,,Main Part,
+37.0,40.0,U(Violin 2),U(Violin 1),Main Part,,,,,
+40.0,49.0,U(Violin 2),U(Violin 1),,,Main Part,,P8(Continuo),P8(Bass)
+49.0,57.5,U(Violin 2),U(Violin 1),Main Part,,,,P8(Continuo),P8(Bass)
+57.5,66.0,Main Part,U(Main),P3(Soprano 2)&P3(Alto)&P3(Bass),P3(Soprano 1)&U(Alto)&P8(Bass),P3(Soprano 1)&U(Soprano 2)&P8(Bass),,P3(Soprano 1)&P8(Soprano 2)&P8(Alto),
+66.0,69.0,U(Violin 2),U(Violin 1),,,,Main Part,,
+69.0,72.0,U(Violin 2),U(Violin 1),,,Main Part,,,
+72.0,75.0,U(Violin 2),U(Violin 1),,Main Part,P4(Continuo),,,P4(Alto)
+75.0,78.0,U(Violin 2),U(Violin 1),Main Part,,,,,
+78.0,94.0,U(Violin 2),U(Violin 1),,,,,Main Part,
+94.0,97.0,U(Violin 2),U(Violin 1),P3(Tenor)&P6(Bass),Main Part,,P3(Soprano 1)&P4(Bass),P6(Soprano 1)&P4(Tenor),
+97.0,109.0,U(Violin 2),U(Violin 1),,,,Main Part,P8(Continuo),P8(Bass)
+109.0,114.5,U(Violin 2),U(Violin 1),Main Part,,,,P8(Continuo),P8(Bass)
+114.5,122.0,Main Part,U(Main),,,P3(Tenor)&P6(Bass),P3(Alto)&P4(Bass),P6(Alto)&P4(Tenor),
+122.0,123.0,U(Violin 2),U(Violin 1),Main Part,,,,,
+123.0,124.0,U(Violin 2),U(Violin 1),P6(Soprano 2),P6(Soprano 1),,,Main Part,U(Main)
+124.0,125.0,U(Violin 2),U(Violin 1),,,Main Part,,P3(Main)&U(Continuo),P3(Main)&U(Bass)
+125.0,132.0,U(Violin 2),U(Violin 1),,,,Main Part,U(Continuo),U(Bass)
+132.0,133.0,U(Violin 2),U(Violin 1),Main Part,,,P8(Bass),P8(Tenor),
+133.0,134.0,,,P3(Main),Main Part,,P8(Bass),P8(Tenor),
+134.0,142.0,,,,,Main Part,,,
+142.0,144.0,U(Violin 2),U(Violin 1),,P5(Bass)&P5(Continuo),,Main Part,P5(Soprano 2)&U(Continuo),P5(Soprano 2)&U(Bass)

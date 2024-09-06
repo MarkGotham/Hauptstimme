@@ -1,75 +1,66 @@
 # Hauptstimme: Score design choices
 
-Please see [this list of score stylistic design criteria](./score_design.md)
-
 - Minimal deviations from MuseScore defaults
-- Most systematic changes as defined in the `.mss` style sheet.
-  - Justify full page
-  - All present instrument showing at all time (none hidden).
-    - Note, this applies _except for_ in some extreme cases such as Beethoven 9:
-      - Movement 2: the ATB trombones rest for 500 bars
+- Most systematic changes as defined in the `.mss` style sheet:
+  - Justify full page.
+  - All present instruments showing at all times (none hidden).
+    - Note, this applies _except for_ in some extreme cases such as Beethoven No.9:
+      - Movement 2: the ATB trombones rest for 500 bars.
       - Movement 4: trombones, solo voices, chorus, and percussion.
-    - Naturally hidden from display can easily be adapted by the user and does not affect the retrieval.
-    - Note that "all present instruments" refers to the _movement_ (i.e., "tacet" from the movement = absent from the score)
+    - Naturally, whether instruments are hidden from display or not can easily be adapted by the user and does not affect the retrieval.
+    - Note that "all present instruments" refers to the _movement_ (i.e., "tacet" from the movement = absent from the score).
   - Note: Import the `.mss` style file in-app or with the command line:
     - `mscore <before_file_name>.mscz --style <style-file-name>.mss -o <after_file_name>.mscz`.
 - Every part on a separate stave (e.g., Flute 1 separate from Flute 2) for clarity and interoperability.
   - Note that this is a unique feature of this corpus, making it much more usable for both part extraction and MIR tasks.  
-  - This is achieved partly through the `orchestra_part_split` functionality.
   - Connect bar lines through those like instruments e.g., Flutes 1 and 2; Horns 1, 2, and 3.
 - Parts and part names:
   - Full part names in the format `<transposition where relevant> <instrument> <number>`, e.g., `A Clarinet 2`.
   - Abbreviated names without transposition or period character, e.g., `Cl 2`.
-    - This deviates from common practice, but (for what it's worth) that musical practice is often wrong.
-      - Periods should stand for incomplete works without the final letter, so then:
+    - This deviates from common practice, but (for what it's worth) that musical practice is often wrong:
+      - Periods should stand for incomplete words without the final letter, so then:
         - `Cl.` for `Clarinet` is fine
         - but `Vln` for `Violin` is not.
-  - String instruments in the singular e.g., `Violin 1` (as in 'the violin 1 part')
-    - Transpositions as in the original except:
-      - no mid-movement transpositions:
-        - For example the Beethoven symphonies do this in the horn parts (4/ii, 5/iii 4 bars before the end), and clarinets 9/iv.
-        - This does not convert reliably, and adding a new part creates its own problems.
-      - where that is not possible in MS4 a manual workaround is required.
-        - Brahms 1/iii has horns and trumpets in B _natural_, which means setting the transposition manually.
+  - String instruments in the singular, e.g., `Violin 1` as in 'the violin 1 part'.
+    - Transpositions as in the original, except no mid-movement transpositions:
+      - For example, the Beethoven symphonies do this in the horn parts (4/ii, 5/iii 4 bars before the end), and clarinets (9/iv).
+      - This does not convert reliably, and adding a new part creates its own problems.
+    - Where that is not possible in MS4, a manual workaround is required.
+      - Brahms 1/iii has horns and trumpets in B _natural_, which means setting the transposition manually.
 - Stave size. Manually set for each work to:
-  - attempt approximate consistency across multi-movement works
-  - use the largest stave size that fits within the page, including the large lyric annotations. 
-    - ... within reason. As MuseScore does not allow variable stave size per page, we accept the occasional overflow to make the majority of pages plausible.
+  - Attempt approximate consistency across multi-movement works.
+  - Use the largest stave size that fits within the page, including the large lyric annotations ... within reason.
+    - As MuseScore does not allow variable stave size per page, we accept the occasional overflow to make the majority of pages plausible.
   - Again, if anyone uses these scores in performance, they may wish to adjust. 
   - More formally:
     - Strong preference for not overfilling page. 
     - Medium preference for avoiding under-fill. 
-    - Medium preference for same number of staves on each page and weak preference that this include the last page.
-- Copy the named (public domain) source edition exactly except in limited cases like:
-  - some variation in "crescendo" vs "cresc." vs "hairpin" etc.
-  - stave and page breaks mostly follow MuseScore defaults.
-    - Given the stylistic choices above, we make no attempt for page breaks to follow the source
+    - Medium preference for the same number of staves on each page and weak preference that this includes the last page.
+- Copy the named (public domain) source edition exactly, except in limited cases like:
+  - Some variation in "crescendo" vs "cresc." vs "hairpin" etc.
+  - Stave and page breaks mostly follow MuseScore defaults.
+    - Given the stylistic choices above, we make no attempt for page breaks to follow the source.
       - E.g., using Eulenberg for the Beethoven means a very different page size.
-    - notable exceptions include Brahms 4/iv which is in a completely regular 8-bar phrasing
-      - we set this out with page breaks every 4 or 8 bars depending on the note density.
+    - Notable exceptions include Brahms 4/iv, which is in a completely regular 8-bar phrasing.
+      - We set this out with page breaks every 4 or 8 bars depending on the note density.
     - Tempo markings:
-      - Tempos etc. exactly as in the source and properly encoded in MuseScore (mostly successful in conversion)
+      - Tempos etc. exactly as in the source and properly encoded in MuseScore (mostly successful in conversion).
         - Tempo text (e.g., `Allegro`) is only ever included if present in the original source.
-        - Tempo in metronome mark is:
-          - ... included if present in the original source 
-          - ... included in square brackets where clarification is needed (e.g., `tempo 1` is often not enough)
-      - Here as elsewhere, avoid any "hidden" markings.
-- Non-tempo textual markings
+        - Tempo in metronome mark is included
+          - If present in the original source 
+          - In square brackets where clarification is needed (e.g., `Tempo I` is often not enough).
+      - Here, as elsewhere, avoid any "hidden" markings.
+- Non-tempo textual markings:
   - Haupstimme annotations usually as lyrics, as described in [this explanation doc](./annotation.md).
   - `Stave text` for instrument-specific markings like `arco`.
     - Note that original scores use annotations like `a2` where there are two parts on one stave.
-      - We have split those parts so don't striclty need them
+      - We have split those parts, so don't strictly need these annotations.
       - All the same, we include them where it might plausibly help clarify solos and the moves to/from unison.
   - `System text` for non-tempo comments that apply to all parts e.g., in Beethoven 9/ii, `ritmo de ...`.
-- Bar (Measure) counting. 
+- Bar (measure) counting. 
   - This is a perennially complex issue, and one often broken by export change of format.
   - Please see [our recent paper about this topic with a proposed solution here](https://dl.acm.org/doi/10.1145/3625135.3625136). 
   - For now, on MuseScore files we leave the default measure count (1, 2, 3, ...):
-    - MuseScore offers some functionality to 'exclude bars from the measure count'
-      - This can lead to improved layout in the app,
-      - But experimentation shows that it does not convert well.
+    - MuseScore offers some functionality to 'exclude bars from the measure count'. This can lead to improved layout in the app, but experimentation shows that it does not convert well.
       - We therefore avoid such _manual_ changes and (attempt) to fix them automatically from the measure map.
     - Example issues: anacruses, first/second time bars, split bars.
-    - This includes continuing the count in written out repeats (which again do not export well)
-      - In future iterations of this corpus, when da capo structures can be reliably exported, we may delete these duplicate bars.
- 

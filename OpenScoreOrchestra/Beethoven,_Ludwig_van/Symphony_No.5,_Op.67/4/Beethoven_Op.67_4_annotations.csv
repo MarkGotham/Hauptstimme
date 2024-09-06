@@ -1,13 +1,13 @@
 qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
-0.0,1,1.0,0.0,a,Picc.,0,Picc
-15.0,4,4.0,0.75,a,Picc.,0,Picc
-30.5,8,3.5,0.625,a,Picc.,0,Picc
-38.5,10,3.5,0.625,a,Picc.,0,Picc
-47.0,12,4.0,0.75,a,Picc.,0,Picc
-55.0,14,4.0,0.75,a,Picc.,0,Picc
-63.0,16,4.0,0.75,a,Picc.,0,Picc
-68.0,18,1.0,0.0,a,Picc.,0,Picc
-76.0,20,1.0,0.0,a,Picc.,0,Picc
+0.0,1,1.0,0.0,a,Picc,0,Picc
+15.0,4,4.0,0.75,a,Picc,0,Picc
+30.5,8,3.5,0.625,a,Picc,0,Picc
+38.5,10,3.5,0.625,a,Picc,0,Picc
+47.0,12,4.0,0.75,a,Picc,0,Picc
+55.0,14,4.0,0.75,a,Picc,0,Picc
+63.0,16,4.0,0.75,a,Picc,0,Picc
+68.0,18,1.0,0.0,a,Picc,0,Picc
+76.0,20,1.0,0.0,a,Picc,0,Picc
 84.5,22,1.5,0.125,a,Vln 1,18,Vln
 100.0,26,1.0,0.0,b,Hn 1,10,Hn
 116.0,30,1.0,0.0,b,Hn 1,10,Hn
@@ -16,11 +16,11 @@ qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
 160.0,41,1.0,0.0,a,Vln 1,18,Vln
 168.5,43,1.5,0.125,a,Bsn 1,7,Bsn
 170.5,43,3.5,0.625,a,Vln 1,18,Vln
-172.5,44,1.5,0.125,a,Cbsn,9,C Bsn
+172.5,44,1.5,0.125,a,C Bsn,9,C Bsn
 175.0,44,4.0,0.75,c,Vln 1,18,Vln
-181.0,46,2.0,0.25,c,Cbsn,9,C Bsn
+181.0,46,2.0,0.25,c,C Bsn,9,C Bsn
 183.0,46,4.0,0.75,c,Vln 1,18,Vln
-191.0,48,4.0,0.75,c,Picc.,0,Picc
+191.0,48,4.0,0.75,c,Picc,0,Picc
 197.0,50,2.0,0.25,c,Vln 1,18,Vln
 199.0,50,4.0,0.75,c,Vln 1,18,Vln
 205.0,52,2.0,0.25,c,Vln 2,19,Vln
@@ -37,7 +37,7 @@ qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
 316.0,80,1.0,0.0,d,Vln 1,18,Vln
 324.0,82,1.0,0.0,d,Fl 1,1,Fl
 340.0,86,1.0,0.0,a,Vln 1,18,Vln
-344.0,87,1.0,0.0,a,Picc.,0,Picc
+344.0,87,1.0,0.0,a,Picc,0,Picc
 364.0,92,1.0,0.0,c,Vln 1,18,Vln
 371.0,93,4.0,0.75,c,Vln 1,18,Vln
 379.0,95,4.0,0.75,c,Vln 1,18,Vln
@@ -55,7 +55,6 @@ qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
 455.0,114,4.0,0.75,c,Bsn 1,7,Bsn
 460.0,116,1.0,0.0,c,Vln 1,18,Vln
 465.0,117,2.0,0.25,c,Vla,20,Vla
-467.0,117,4.0,0.75,c,Bsn 1,7,Bsn
 467.0,117,4.0,0.75,c,Vc,21,Vc
 473.0,119,2.0,0.25,c,Vln 1,18,Vln
 477.0,120,2.0,0.25,c,Vla,20,Vla
@@ -69,10 +68,9 @@ qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
 532.0,134,1.0,0.0,c,Fl 1,1,Fl
 551.0,138,4.0,0.75,c,Fl 1,1,Fl
 564.0,142,1.0,0.0,c,Fl 1,1,Fl
-573.0,144,2.0,0.25,c,Picc.,0,Picc
-588.0,148,1.0,0.0,c,Picc.,0,Picc
-604.0,152,1.0,0.0,c,Picc.,0,Picc
-604.0,152,1.0,0.0,c,Vln 1,18,Vln
+573.0,144,2.0,0.25,c,Picc,0,Picc
+588.0,148,1.0,0.0,c,Picc,0,Picc
+604.0,152,1.0,0.0,c,Picc,0,Picc
 616.0,155,1.0,0.0,d,Vln 1,18,Vln
 628.0,159,1.0,0.0,d,Vln 1,18,Vln
 640.0,163,1.0,0.0,d,Vln 2,19,Vln
@@ -87,15 +85,15 @@ qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
 745.0,198,1.0,0.0,d,Fl 1,1,Fl
 757.0,202,1.0,0.0,d,Fl 1,1,Fl
 769.0,206,1.0,0.0,d,Fl 1,1,Fl
-778.0,209,1.0,0.0,a,Picc.,0,Picc
-793.0,212,4.0,0.75,a,Picc.,0,Picc
-808.5,216,3.5,0.625,a,Picc.,0,Picc
-816.5,218,3.5,0.625,a,Picc.,0,Picc
-825.0,220,4.0,0.75,a,Picc.,0,Picc
-833.0,222,4.0,0.75,a,Picc.,0,Picc
-841.0,224,4.0,0.75,a,Picc.,0,Picc
-849.0,226,4.0,0.75,a,Picc.,0,Picc
-854.0,228,1.0,0.0,a,Picc.,0,Picc
+778.0,209,1.0,0.0,a,Picc,0,Picc
+793.0,212,4.0,0.75,a,Picc,0,Picc
+808.5,216,3.5,0.625,a,Picc,0,Picc
+816.5,218,3.5,0.625,a,Picc,0,Picc
+825.0,220,4.0,0.75,a,Picc,0,Picc
+833.0,222,4.0,0.75,a,Picc,0,Picc
+841.0,224,4.0,0.75,a,Picc,0,Picc
+849.0,226,4.0,0.75,a,Picc,0,Picc
+854.0,228,1.0,0.0,a,Picc,0,Picc
 862.5,230,1.5,0.125,a,Vln 1,18,Vln
 878.0,234,1.0,0.0,b,Ob 1,3,Ob
 894.0,238,1.0,0.0,b,Ob 1,3,Ob
@@ -105,7 +103,6 @@ qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
 952.5,252,3.5,0.625,b,Vln 1,18,Vln
 965.0,255,4.0,0.75,c,Vln 1,18,Vln
 973.0,257,4.0,0.75,c,Vln 1,18,Vln
-981.0,259,4.0,0.75,c,Picc.,0,Picc
 981.0,259,4.0,0.75,c,Tpt 1,12,Tpt
 987.0,261,2.0,0.25,c,Vln 1,18,Vln
 989.0,261,4.0,0.75,c,Vln 1,18,Vln
@@ -114,7 +111,7 @@ qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
 1003.0,265,2.0,0.25,c,Vln 2,19,Vln
 1005.0,265,4.0,0.75,c,Vln 1,18,Vln
 1018.0,269,1.0,0.0,c,Vln 1,18,Vln
-1024.5,270,3.5,0.625,c,Picc.,0,Picc
+1024.5,270,3.5,0.625,c,Picc,0,Picc
 1042.0,275,1.0,0.0,d,Ob 1,3,Ob
 1058.0,279,1.0,0.0,d,Ob 1,3,Ob
 1074.0,283,1.0,0.0,d,Fl 1,1,Fl
@@ -129,11 +126,11 @@ qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
 1221.0,319,4.0,0.75,b,Bsn 1,7,Bsn
 1229.0,321,4.0,0.75,b,Hn 1,10,Hn
 1237.0,323,4.0,0.75,b,Fl 1,1,Fl
-1253.0,327,4.0,0.75,b,Picc.,0,Picc
+1253.0,327,4.0,0.75,b,Picc,0,Picc
 1266.0,331,1.0,0.0,b,Fl 1,1,Fl
 1282.0,335,1.0,0.0,b,Fl 1,1,Fl
-1289.0,336,4.0,0.75,b,Cbsn,9,C Bsn
-1297.0,338,4.0,0.75,b,Picc.,0,Picc
+1289.0,336,4.0,0.75,b,C Bsn,9,C Bsn
+1297.0,338,4.0,0.75,b,Picc,0,Picc
 1305.0,340,4.0,0.75,b,Vln 1,18,Vln
 1321.0,344,4.0,0.75,b,Vln 1,18,Vln
 1326.0,346,1.0,0.0,b,Vln 1,18,Vln

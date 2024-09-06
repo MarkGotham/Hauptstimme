@@ -52,7 +52,6 @@ qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
 299.5,151,2.0,0.5,b,Vln 1,14,Vln
 306.5,155,1.0,0.0,a,Vln 1,14,Vln
 316.5,160,1.0,0.0,a,Hn 1,8,Hn
-326.5,165,1.0,0.0,a,Hn 1,8,Hn
 326.5,165,1.0,0.0,a,Vc,17,Vc
 327.5,165,2.0,0.5,a,Vln 2,15,Vln
 328.5,166,1.0,0.0,a,Vln 1,14,Vln

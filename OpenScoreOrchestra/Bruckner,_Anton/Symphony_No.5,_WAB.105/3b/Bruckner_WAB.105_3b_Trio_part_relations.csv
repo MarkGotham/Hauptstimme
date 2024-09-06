@@ -1,0 +1,105 @@
+qstamp_start,qstamp_end,Flute 1,Flute 2,Oboe 1,Oboe 2,Bb Clarinet 1,Bb Clarinet 2,Bassoon 1,Bassoon 2,F Horn 1,F Horn 2,F Horn 3,F Horn 4,F Trumpet 1,F Trumpet 2,F Trumpet 3,Alto Trombone,Tenor Trombone,Bass Trombone,Bass Tuba,Timpani,Violin 1,Violin 2,Viola,Violoncello,Contrabass
+0.0,3.0,P8(Oboe 1)&P8(Bb Clarinet 1),,P8(Flute 1)&U(Bb Clarinet 1),,P8(Flute 1)&U(Oboe 1),,,,Main Part,,,,,,,,,,,,,,,,
+3.0,12.0,P8(Bb Clarinet 1),,,,P8(Flute 1),,,,Main Part,,,,,,,,,,,,,,,,
+12.0,15.0,Main Part,,P8(Main)&U(Bb Clarinet 1),,P8(Main)&U(Oboe 1),,,,,,,,,,,,,,,,,,,,
+15.0,24.0,Main Part,,,,P8(Main),,,,,,,,,,,,,,,,,,,,
+24.0,27.0,P8(Oboe 1)&P8(Bb Clarinet 1),,P8(Flute 1)&U(Bb Clarinet 1),,P8(Flute 1)&U(Oboe 1),,,,Main Part,,,,,,,,,,,,,,,,
+27.0,34.5,,,,,,,,,Main Part,,,,,,,,,,,,,,,,
+34.5,36.0,Main Part,,,,P8(F Horn 1),,,,P8(Bb Clarinet 1),,,,,,,,,,,,,,,,
+36.0,40.0,Main Part,,,,,,,,,,,,,,,,,,,,,P7(Viola),P7(Violin 2),,
+40.0,43.0,,,,,,,,,Main Part,,,,,,,,,,,,P7(Violin 2)&P8(Viola),P7(Violin 1)&P7(Viola),P8(Violin 1)&P7(Violin 2),P8(Contrabass),P8(Violoncello)
+43.0,68.0,,,U(Oboe 2),U(Oboe 1),,,,,Main Part,,,,,,,,,,,,,,,P8(Contrabass),P8(Violoncello)
+68.0,80.0,U(Flute 2),U(Flute 1),,,Main Part,,,,,,,,,,,,,,,,,,,P8(Contrabass),P8(Violoncello)
+80.0,89.0,,,,,Main Part,U(Main)&U(Bassoon 1)&U(Bassoon 2),U(Main)&U(Bb Clarinet 2)&U(Bassoon 2),U(Main)&U(Bb Clarinet 2)&U(Bassoon 1),,,,,,,,,,,,,,,,,
+89.0,101.0,Main Part,,,,U(Bb Clarinet 2)&U(Bassoon 1)&U(Bassoon 2),U(Bb Clarinet 1)&U(Bassoon 1)&U(Bassoon 2),U(Bb Clarinet 1)&U(Bb Clarinet 2)&U(Bassoon 2),U(Bb Clarinet 1)&U(Bb Clarinet 2)&U(Bassoon 1),,,,,,,,,,,,,,,,,
+101.0,109.0,Main Part,,,,,,,,,,,,,,,,,,,,,,,,
+109.0,114.0,,,,,,,,,,,,,,,,,,,,,Main Part,,,,
+114.0,121.0,P4(Flute 2),P4(Flute 1),,,,,,,,,,,,,,,,,,,Main Part,,,,
+121.0,125.0,,,,,,,,,,,,,,,,,,,,,Main Part,,,,
+125.0,129.0,P4(Flute 2),P4(Flute 1),,,,,,,U(F Horn 2),U(F Horn 1),,,,,,,,,,,Main Part,,,,
+129.0,136.0,,,,,,,,,,,,,,,,,,,,,,,,Main Part,
+136.0,141.0,,,P8(Oboe 2)&P8(Bb Clarinet 1)&P8(Bb Clarinet 2)&P8(Violin 2),P8(Oboe 1)&U(Bb Clarinet 1)&U(Bb Clarinet 2)&U(Violin 2),P8(Oboe 1)&U(Oboe 2)&U(Bb Clarinet 2)&U(Violin 2),P8(Oboe 1)&U(Oboe 2)&U(Bb Clarinet 1)&U(Violin 2),P3(Bassoon 2)&P3(F Horn 1)&P5(F Horn 2),P3(Bassoon 1)&P8(F Horn 1)&P3(F Horn 2),P3(Bassoon 1)&P8(Bassoon 2)&P3(F Horn 2),P5(Bassoon 1)&P3(Bassoon 2)&P3(F Horn 1),,,,,,,,,,,,P8(Oboe 1)&U(Oboe 2)&U(Bb Clarinet 1)&U(Bb Clarinet 2),,Main Part,
+141.0,148.5,,,Main Part,P8(Main),U(Bb Clarinet 2)&U(Violin 2),U(Bb Clarinet 1)&U(Violin 2),,,P2(F Horn 2)&P8(F Horn 3),P2(F Horn 1)&P2(F Horn 3),P8(F Horn 1)&P2(F Horn 2),,,,,,,,,,,U(Bb Clarinet 1)&U(Bb Clarinet 2),,,
+148.5,150.0,,,Main Part,,U(Bb Clarinet 2),U(Bb Clarinet 1),,,P2(F Horn 2)&P8(F Horn 3),P2(F Horn 1)&P2(F Horn 3),P8(F Horn 1)&P2(F Horn 2),,,,,,,,,,P8(Viola),,P8(Violin 1),,
+150.0,152.5,Main Part,,,,,,,,P2(F Horn 2)&P8(F Horn 3),P2(F Horn 1)&P2(F Horn 3),P8(F Horn 1)&P2(F Horn 2),,,,,,,,,,P8(Viola),,P8(Violin 1),,
+152.5,154.0,Main Part,,,,,,,,P2(F Horn 2)&P8(F Horn 3),P2(F Horn 1)&P2(F Horn 3),P8(F Horn 1)&P2(F Horn 2),,,,,,,,,,P8(Viola),,P8(Violin 1),,
+154.0,156.5,,,,,Main Part,,,,P2(F Horn 2)&P8(F Horn 3),P2(F Horn 1)&P2(F Horn 3),P8(F Horn 1)&P2(F Horn 2),,,,,,,,,,P8(Viola),,P8(Violin 1),,
+156.5,158.5,,,,,Main Part,,,,P2(F Horn 2)&P8(F Horn 3)&P2(Violin 2),P2(F Horn 1)&P2(F Horn 3)&P8(Violin 2),P8(F Horn 1)&P2(F Horn 2)&P2(Violin 2),,,,,,,,,,P8(Viola),P2(F Horn 1)&P8(F Horn 2)&P2(F Horn 3),P8(Violin 1),,
+158.5,160.5,,,,,,,,,P2(F Horn 2)&P2(Violin 2),P2(F Horn 1)&P8(Violin 2),,,,,,,,,,,P8(Main),P2(F Horn 1)&P8(F Horn 2),Main Part,,
+160.5,172.0,,,,,,,,,,P8(Violin 2),,,,,,,,,,,P8(Main),P8(F Horn 2),Main Part,,
+172.0,175.0,P8(Oboe 1)&P8(Bb Clarinet 1),,P8(Flute 1)&U(Bb Clarinet 1),,P8(Flute 1)&U(Oboe 1),,,,,,,,,,,,,,,,,Main Part,,,
+175.0,184.0,P8(Bb Clarinet 1),,,,P8(Flute 1),,,,,,,,,,,,,,,,,Main Part,,,
+184.0,187.0,P8(Main)&P8(Bb Clarinet 1),,Main Part,,P8(Flute 1)&U(Main),,,,,,,,,,,,,,,,,,,,
+187.0,196.0,P8(Bb Clarinet 1),,Main Part,,P8(Flute 1),,,,,,,,,,,,,,,,,,,,
+196.0,199.0,Main Part,,P8(Main)&U(Bb Clarinet 1),,P8(Main)&U(Oboe 1),,,,,,,,,,,,,,,,,,,,
+199.0,206.5,Main Part,,,,,,,,,,,,,,,,,,,,,,,,
+206.5,208.0,,,,,P8(F Horn 1),,,,P8(Bb Clarinet 1),,,,,,,,,,,,Main Part,,,,
+208.0,212.0,,,,,,,,,,,,,P7(F Trumpet 2)&P8(F Trumpet 3)&P7(Alto Trombone)&P8(Tenor Trombone)&P4(Bass Trombone)&P7(Violin 2)&P8(Viola),P7(F Trumpet 1)&P7(F Trumpet 3)&P8(Alto Trombone)&P7(Tenor Trombone)&P4(Bass Trombone)&P8(Violin 2)&P7(Viola),P8(F Trumpet 1)&P7(F Trumpet 2)&P7(Alto Trombone)&P8(Tenor Trombone)&P4(Bass Trombone)&P7(Violin 2)&U(Viola),P7(F Trumpet 1)&P8(F Trumpet 2)&P7(F Trumpet 3)&P7(Tenor Trombone)&P4(Bass Trombone)&P8(Violin 2)&P7(Viola),P8(F Trumpet 1)&P7(F Trumpet 2)&P8(F Trumpet 3)&P7(Alto Trombone)&P4(Bass Trombone)&P7(Violin 2)&P8(Viola),P4(F Trumpet 1)&P4(F Trumpet 2)&P4(F Trumpet 3)&P4(Alto Trombone)&P4(Tenor Trombone)&P4(Violin 2)&P4(Viola),,,Main Part,P7(F Trumpet 1)&P8(F Trumpet 2)&P7(F Trumpet 3)&P8(Alto Trombone)&P7(Tenor Trombone)&P4(Bass Trombone)&P7(Viola),P8(F Trumpet 1)&P7(F Trumpet 2)&U(F Trumpet 3)&P7(Alto Trombone)&P8(Tenor Trombone)&P4(Bass Trombone)&P7(Violin 2),,
+212.0,215.0,,,,,,,,,Main Part,,,,P7(F Trumpet 2)&P8(F Trumpet 3)&P4(Bass Trombone)&P8(Violin 1)&P7(Violin 2)&P8(Viola),P7(F Trumpet 1)&P7(F Trumpet 3)&P4(Bass Trombone)&P7(Violin 1)&P8(Violin 2)&P7(Viola),P8(F Trumpet 1)&P7(F Trumpet 2)&P4(Bass Trombone)&P8(Violin 1)&P7(Violin 2)&U(Viola),,,P4(F Trumpet 1)&P4(F Trumpet 2)&P4(F Trumpet 3)&P4(Violin 1)&P4(Violin 2)&P4(Viola),,,P8(F Trumpet 1)&P7(F Trumpet 2)&P8(F Trumpet 3)&P4(Bass Trombone)&P7(Violin 2)&P8(Viola),P7(F Trumpet 1)&P8(F Trumpet 2)&P7(F Trumpet 3)&P4(Bass Trombone)&P7(Violin 1)&P7(Viola),P8(F Trumpet 1)&P7(F Trumpet 2)&U(F Trumpet 3)&P4(Bass Trombone)&P8(Violin 1)&P7(Violin 2),P8(Contrabass),P8(Violoncello)
+215.0,217.0,,,,,,,,,Main Part,U(Main)&U(F Horn 3)&U(F Horn 4),U(Main)&U(F Horn 2)&U(F Horn 4),U(Main)&U(F Horn 2)&U(F Horn 3),P7(F Trumpet 2)&P8(F Trumpet 3),P7(F Trumpet 1)&P7(F Trumpet 3),P8(F Trumpet 1)&P7(F Trumpet 2),P8(Tenor Trombone)&P8(Bass Trombone)&P4(Violin 1)&P4(Violin 2)&P4(Viola)&P8(Violoncello)&P8(Contrabass),P8(Alto Trombone)&U(Bass Trombone)&P4(Violin 1)&P4(Violin 2)&P4(Viola)&U(Violoncello)&P8(Contrabass),P8(Alto Trombone)&U(Tenor Trombone)&P4(Violin 1)&P4(Violin 2)&P4(Viola)&U(Violoncello)&P8(Contrabass),,,P4(Alto Trombone)&P4(Tenor Trombone)&P4(Bass Trombone)&P7(Violin 2)&P8(Viola)&P4(Violoncello)&P4(Contrabass),P4(Alto Trombone)&P4(Tenor Trombone)&P4(Bass Trombone)&P7(Violin 1)&P7(Viola)&P4(Violoncello)&P4(Contrabass),P4(Alto Trombone)&P4(Tenor Trombone)&P4(Bass Trombone)&P8(Violin 1)&P7(Violin 2)&P4(Violoncello)&P4(Contrabass),P8(Alto Trombone)&U(Tenor Trombone)&U(Bass Trombone)&P4(Violin 1)&P4(Violin 2)&P4(Viola)&P8(Contrabass),P8(Alto Trombone)&P8(Tenor Trombone)&P8(Bass Trombone)&P4(Violin 1)&P4(Violin 2)&P4(Viola)&P8(Violoncello)
+217.0,224.0,,,,,,,,,U(F Horn 2)&U(F Horn 3)&U(F Horn 4),U(F Horn 1)&U(F Horn 3)&U(F Horn 4),U(F Horn 1)&U(F Horn 2)&U(F Horn 4),U(F Horn 1)&U(F Horn 2)&U(F Horn 3),P3(F Trumpet 2)&P8(F Trumpet 3),P3(F Trumpet 1)&P3(F Trumpet 3),P8(F Trumpet 1)&P3(F Trumpet 2),,,,,,Main Part,,P8(Main),P8(Contrabass),P8(Violoncello)
+224.0,227.0,,,,,,,,,,,,,P3(F Trumpet 2)&P8(F Trumpet 3)&P4(Bass Trombone)&P8(Main)&P3(Violin 2)&P8(Viola),P3(F Trumpet 1)&P3(F Trumpet 3)&P6(Bass Trombone)&P3(Main)&P8(Violin 2)&P3(Viola),P8(F Trumpet 1)&P3(F Trumpet 2)&P4(Bass Trombone)&P8(Main)&P3(Violin 2)&U(Viola),,,P4(F Trumpet 1)&P6(F Trumpet 2)&P4(F Trumpet 3)&P4(Main)&P6(Violin 2)&P4(Viola),,,Main Part,P3(F Trumpet 1)&P8(F Trumpet 2)&P3(F Trumpet 3)&P6(Bass Trombone)&P3(Main)&P3(Viola),P8(F Trumpet 1)&P3(F Trumpet 2)&U(F Trumpet 3)&P4(Bass Trombone)&P8(Main)&P3(Violin 2),P8(Contrabass),P8(Violoncello)
+227.0,229.0,,,,,Main Part,,,,U(F Horn 2)&U(F Horn 3)&U(F Horn 4),U(F Horn 1)&U(F Horn 3)&U(F Horn 4),U(F Horn 1)&U(F Horn 2)&U(F Horn 4),U(F Horn 1)&U(F Horn 2)&U(F Horn 3),P3(F Trumpet 2)&P8(F Trumpet 3),P3(F Trumpet 1)&P3(F Trumpet 3),P8(F Trumpet 1)&P3(F Trumpet 2),P8(Tenor Trombone)&P8(Bass Trombone)&P8(Violoncello)&P8(Contrabass),P8(Alto Trombone)&U(Bass Trombone)&U(Violoncello)&P8(Contrabass),P8(Alto Trombone)&U(Tenor Trombone)&U(Violoncello)&P8(Contrabass),,,P3(Violin 2)&P8(Viola),P3(Violin 1)&P3(Viola),P8(Violin 1)&P3(Violin 2),P8(Alto Trombone)&U(Tenor Trombone)&U(Bass Trombone)&P8(Contrabass),P8(Alto Trombone)&P8(Tenor Trombone)&P8(Bass Trombone)&P8(Violoncello)
+229.0,236.0,,,,,Main Part,,,,U(F Horn 2)&U(F Horn 3)&U(F Horn 4),U(F Horn 1)&U(F Horn 3)&U(F Horn 4),U(F Horn 1)&U(F Horn 2)&U(F Horn 4),U(F Horn 1)&U(F Horn 2)&U(F Horn 3),,,,P8(Tenor Trombone)&P8(Bass Trombone),P8(Alto Trombone)&U(Bass Trombone),P8(Alto Trombone)&U(Tenor Trombone),,,P3(Violin 2)&P8(Viola),P3(Violin 1)&P3(Viola),P8(Violin 1)&P3(Violin 2),P8(Contrabass),P8(Violoncello)
+236.0,238.0,,,,,,,,,U(F Horn 2),U(F Horn 1),,,,,,,,,,,Main Part,P3(Main)&P3(Viola),P8(Main)&P3(Violin 2),P8(Contrabass),P8(Violoncello)
+238.0,240.0,,,,,,,,,U(F Horn 2),U(F Horn 1),,,,,,,,,,,Main Part,,,P8(Contrabass),P8(Violoncello)
+240.0,242.0,,,,,,,,,U(F Horn 2),U(F Horn 1),,,,,,,,,,,,Main Part,,P8(Contrabass),P8(Violoncello)
+242.0,244.0,,,,,,,,,U(F Horn 2),U(F Horn 1),,,,,,,,,,,,Main Part,,P8(Contrabass),P8(Violoncello)
+244.0,246.0,,,,,,,,,U(F Horn 2),U(F Horn 1),,,,,,,,,,,Main Part,,,P8(Contrabass),P8(Violoncello)
+246.0,251.0,P8(Oboe 1)&P8(Oboe 2)&P3(Bb Clarinet 1)&P4(Bb Clarinet 2),,P8(Flute 1)&U(Oboe 2)&P3(Bb Clarinet 1)&P4(Bb Clarinet 2),P8(Flute 1)&U(Oboe 1)&P3(Bb Clarinet 1)&P4(Bb Clarinet 2),P3(Flute 1)&P3(Oboe 1)&P3(Oboe 2)&P6(Bb Clarinet 2),P4(Flute 1)&P4(Oboe 1)&P4(Oboe 2)&P6(Bb Clarinet 1),,,U(F Horn 2),U(F Horn 1),,,,,,,,,,,Main Part,P3(Main)&P6(Violoncello)&P6(Contrabass),,P4(Main)&P6(Violin 2)&P8(Contrabass),P4(Main)&P6(Violin 2)&P8(Violoncello)
+251.0,257.0,,,U(Oboe 2),U(Oboe 1),,,,,P3(F Horn 2)&P8(F Horn 3)&P4(F Horn 4)&P4(Violoncello)&P4(Contrabass),P3(F Horn 1)&P3(F Horn 3)&P6(F Horn 4)&P6(Violoncello)&P6(Contrabass),P8(F Horn 1)&P3(F Horn 2)&P4(F Horn 4)&P4(Violoncello)&P4(Contrabass),P4(F Horn 1)&P6(F Horn 2)&P4(F Horn 3)&P8(Violoncello)&P8(Contrabass),,,,,,,,,,Main Part,,P4(F Horn 1)&P6(F Horn 2)&P4(F Horn 3)&P8(F Horn 4)&P8(Contrabass),P4(F Horn 1)&P6(F Horn 2)&P4(F Horn 3)&P8(F Horn 4)&P8(Violoncello)
+257.0,273.0,P4(Oboe 1)&P4(Oboe 2)&P6(Bb Clarinet 2),,P4(Flute 1)&U(Oboe 2)&P3(Bb Clarinet 2),P4(Flute 1)&U(Oboe 1)&P3(Bb Clarinet 2),,P6(Flute 1)&P3(Oboe 1)&P3(Oboe 2),,,,,,,,,,,,,,,,Main Part,,P8(Contrabass),P8(Violoncello)
+273.0,276.0,,,,,,,,,P6(F Horn 4),P2(F Horn 3),P2(F Horn 2),P6(F Horn 1),,,,,,,,,Main Part,,,,
+276.0,297.0,,,,,,,,,,,,,,,,,,,,,Main Part,,,,
+297.0,300.0,P8(Oboe 1)&P8(Bb Clarinet 1),,P8(Flute 1)&U(Bb Clarinet 1),,P8(Flute 1)&U(Oboe 1),,,,,,,,,,,,,,,,Main Part,,,,
+300.0,309.0,P8(Bb Clarinet 1),,,,P8(Flute 1),,,,,,,,,,,,,,,,Main Part,,,,
+309.0,312.0,P8(Oboe 1)&P8(Bb Clarinet 1),,P8(Flute 1)&U(Bb Clarinet 1),,P8(Flute 1)&U(Oboe 1),,,,,,,,,,,,,,,,Main Part,,,,
+312.0,321.0,P8(Bb Clarinet 1),,,,P8(Flute 1),,,,,,,,,,,,,,,,Main Part,,,,
+321.0,324.0,P8(Oboe 1)&P8(Bb Clarinet 1),,P8(Flute 1)&U(Bb Clarinet 1),,P8(Flute 1)&U(Oboe 1),,,,Main Part,,,,,,,,,,,,,,,,
+324.0,331.5,,,,,,,,,Main Part,,,,,,,,,,,,,,,,
+331.5,333.0,Main Part,,,,P8(F Horn 1),,,,P8(Bb Clarinet 1),,,,,,,,,,,,,,,,
+333.0,337.0,Main Part,,,,,,,,,,,,,,,,,,,,,P7(Viola),P7(Violin 2),,
+337.0,340.0,,,,,,,,,Main Part,,,,,,,,,,,,P7(Violin 2)&P8(Viola),P7(Violin 1)&P7(Viola),P8(Violin 1)&P7(Violin 2),P8(Contrabass),P8(Violoncello)
+340.0,365.0,,,U(Oboe 2),U(Oboe 1),,,,,Main Part,,,,,,,,,,,,,,,P8(Contrabass),P8(Violoncello)
+365.0,377.0,Main Part,U(Main),,,,,,,,,,,,,,,,,,,,,,P8(Contrabass),P8(Violoncello)
+377.0,386.0,Main Part,,,,U(Bb Clarinet 2)&U(Bassoon 1)&U(Bassoon 2),U(Bb Clarinet 1)&U(Bassoon 1)&U(Bassoon 2),U(Bb Clarinet 1)&U(Bb Clarinet 2)&U(Bassoon 2),U(Bb Clarinet 1)&U(Bb Clarinet 2)&U(Bassoon 1),,,,,,,,,,,,,,,,,
+386.0,398.0,,,,,U(Bb Clarinet 2)&U(Bassoon 1)&U(Bassoon 2),U(Bb Clarinet 1)&U(Bassoon 1)&U(Bassoon 2),U(Bb Clarinet 1)&U(Bb Clarinet 2)&U(Bassoon 2),U(Bb Clarinet 1)&U(Bb Clarinet 2)&U(Bassoon 1),Main Part,,,,,,,,,,,,,,,,
+398.0,406.0,,,,,,,,,Main Part,,,,,,,,,,,,,,,,
+406.0,411.0,,,,,Main Part,,,,,,,,,,,,,,,,,,,,
+411.0,418.0,P4(Flute 2),P4(Flute 1),,,Main Part,,,,,,,,,,,,,,,,,,,,
+418.0,422.0,Main Part,,,,,,,,,,,,,,,,,,,,,,,,
+422.0,426.0,Main Part,P4(Main),,,,,,,U(F Horn 2),U(F Horn 1),,,,,,,,,,,,,,,
+426.0,433.0,,,,,,,,,,,,,,,,,,,,,Main Part,,,,
+433.0,438.0,,,P8(Oboe 2)&P8(Bb Clarinet 1)&P8(Bb Clarinet 2)&P8(Violin 2),P8(Oboe 1)&U(Bb Clarinet 1)&U(Bb Clarinet 2)&U(Violin 2),P8(Oboe 1)&U(Oboe 2)&U(Bb Clarinet 2)&U(Violin 2),P8(Oboe 1)&U(Oboe 2)&U(Bb Clarinet 1)&U(Violin 2),P3(Bassoon 2)&P3(F Horn 1)&P5(F Horn 2),P3(Bassoon 1)&P8(F Horn 1)&P3(F Horn 2),P3(Bassoon 1)&P8(Bassoon 2)&P3(F Horn 2),P5(Bassoon 1)&P3(Bassoon 2)&P3(F Horn 1),,,,,,,,,,,Main Part,P8(Oboe 1)&U(Oboe 2)&U(Bb Clarinet 1)&U(Bb Clarinet 2),,,
+438.0,445.5,,,P8(Oboe 2),P8(Oboe 1),U(Bb Clarinet 2)&U(Violin 2),U(Bb Clarinet 1)&U(Violin 2),,,P2(F Horn 2)&P8(F Horn 3),P2(F Horn 1)&P2(F Horn 3),P8(F Horn 1)&P2(F Horn 2),,Main Part,,,,,,,,,U(Bb Clarinet 1)&U(Bb Clarinet 2),,,
+445.5,447.0,,,,,U(Bb Clarinet 2),U(Bb Clarinet 1),,,P2(F Horn 2)&P8(F Horn 3),P2(F Horn 1)&P2(F Horn 3),P8(F Horn 1)&P2(F Horn 2),,Main Part,,,,,,,,P8(Viola),,P8(Violin 1),,
+447.0,449.5,,,,,,,,,P2(F Horn 2)&P8(F Horn 3),P2(F Horn 1)&P2(F Horn 3),P8(F Horn 1)&P2(F Horn 2),,,,,Main Part,,,,,P8(Viola),,P8(Violin 1),,
+449.5,451.0,,,,,,,,,P2(F Horn 2)&P8(F Horn 3),P2(F Horn 1)&P2(F Horn 3),P8(F Horn 1)&P2(F Horn 2),,,,,Main Part,,,,,P8(Viola),,P8(Violin 1),,
+451.0,453.5,,,,,,,,,Main Part,P2(Main)&P2(F Horn 3),P8(Main)&P2(F Horn 2),,,,,,,,,,P8(Viola),,P8(Violin 1),,
+453.5,455.5,,,,,,,,,Main Part,P2(Main)&P2(F Horn 3)&P8(Violin 2),P8(Main)&P2(F Horn 2)&P2(Violin 2),,,,,,,,,,P8(Viola),P2(Main)&P8(F Horn 2)&P2(F Horn 3),P8(Violin 1),,
+455.5,457.5,,,,,,,,,P2(F Horn 2)&P2(Violin 2),P2(F Horn 1)&P8(Violin 2),,,Main Part,,,,,,,,P8(Viola),P2(F Horn 1)&P8(F Horn 2),P8(Violin 1),,
+457.5,469.0,,,,,,,,,,P8(Violin 2),,,Main Part,,,,,,,,P8(Viola),P8(F Horn 2),P8(Violin 1),,
+469.0,472.0,P8(Oboe 1)&P8(Bb Clarinet 1),,P8(Flute 1)&U(Bb Clarinet 1),,P8(Flute 1)&U(Oboe 1),,,,,,,,,,,Main Part,,,,,,,,,
+472.0,481.0,P8(Bb Clarinet 1),,,,P8(Flute 1),,,,,,,,,,,Main Part,,,,,,,,,
+481.0,484.0,P8(Oboe 1)&P8(Bb Clarinet 1),,P8(Flute 1)&U(Bb Clarinet 1),,P8(Flute 1)&U(Oboe 1),,,,Main Part,,,,,,,,,,,,,,,,
+484.0,493.0,P8(Bb Clarinet 1),,,,P8(Flute 1),,,,Main Part,,,,,,,,,,,,,,,,
+493.0,496.0,P8(Oboe 1)&P8(Bb Clarinet 1),,P8(Flute 1)&U(Bb Clarinet 1),,P8(Flute 1)&U(Oboe 1),,,,,,,,,,,,,,,,,,,Main Part,
+496.0,503.5,,,,,,,,,,,,,,,,,,,,,,,,Main Part,
+503.5,505.0,,,,,P8(Main),,,,Main Part,,,,,,,,,,,,,,,,
+505.0,509.0,,,,,,,,,Main Part,,,,P7(F Trumpet 2)&P8(F Trumpet 3)&P7(Alto Trombone)&P8(Tenor Trombone)&P4(Bass Trombone)&P7(Violin 2)&P8(Viola),P7(F Trumpet 1)&P7(F Trumpet 3)&P8(Alto Trombone)&P7(Tenor Trombone)&P4(Bass Trombone)&P8(Violin 2)&P7(Viola),P8(F Trumpet 1)&P7(F Trumpet 2)&P7(Alto Trombone)&P8(Tenor Trombone)&P4(Bass Trombone)&P7(Violin 2)&U(Viola),P7(F Trumpet 1)&P8(F Trumpet 2)&P7(F Trumpet 3)&P7(Tenor Trombone)&P4(Bass Trombone)&P8(Violin 2)&P7(Viola),P8(F Trumpet 1)&P7(F Trumpet 2)&P8(F Trumpet 3)&P7(Alto Trombone)&P4(Bass Trombone)&P7(Violin 2)&P8(Viola),P4(F Trumpet 1)&P4(F Trumpet 2)&P4(F Trumpet 3)&P4(Alto Trombone)&P4(Tenor Trombone)&P4(Violin 2)&P4(Viola),,,,P7(F Trumpet 1)&P8(F Trumpet 2)&P7(F Trumpet 3)&P8(Alto Trombone)&P7(Tenor Trombone)&P4(Bass Trombone)&P7(Viola),P8(F Trumpet 1)&P7(F Trumpet 2)&U(F Trumpet 3)&P7(Alto Trombone)&P8(Tenor Trombone)&P4(Bass Trombone)&P7(Violin 2),,
+509.0,512.0,,,,,,,,,,,,,P7(F Trumpet 2)&P8(F Trumpet 3)&P4(Bass Trombone)&P8(Violin 1)&P7(Violin 2)&P8(Viola),P7(F Trumpet 1)&P7(F Trumpet 3)&P4(Bass Trombone)&P7(Violin 1)&P8(Violin 2)&P7(Viola),P8(F Trumpet 1)&P7(F Trumpet 2)&P4(Bass Trombone)&P8(Violin 1)&P7(Violin 2)&U(Viola),,,P4(F Trumpet 1)&P4(F Trumpet 2)&P4(F Trumpet 3)&P4(Violin 1)&P4(Violin 2)&P4(Viola),,,P8(F Trumpet 1)&P7(F Trumpet 2)&P8(F Trumpet 3)&P4(Bass Trombone)&P7(Violin 2)&P8(Viola),P7(F Trumpet 1)&P8(F Trumpet 2)&P7(F Trumpet 3)&P4(Bass Trombone)&P7(Violin 1)&P7(Viola),P8(F Trumpet 1)&P7(F Trumpet 2)&U(F Trumpet 3)&P4(Bass Trombone)&P8(Violin 1)&P7(Violin 2),Main Part,P8(Main)
+512.0,514.0,,,,,,,,,U(F Horn 2)&U(F Horn 3)&U(F Horn 4),U(F Horn 1)&U(F Horn 3)&U(F Horn 4),U(F Horn 1)&U(F Horn 2)&U(F Horn 4),U(F Horn 1)&U(F Horn 2)&U(F Horn 3),P7(F Trumpet 2)&P8(F Trumpet 3),P7(F Trumpet 1)&P7(F Trumpet 3),P8(F Trumpet 1)&P7(F Trumpet 2),P8(Tenor Trombone)&P8(Bass Trombone)&P4(Violin 1)&P4(Violin 2)&P4(Viola)&P8(Main)&P8(Contrabass),P8(Alto Trombone)&U(Bass Trombone)&P4(Violin 1)&P4(Violin 2)&P4(Viola)&U(Main)&P8(Contrabass),P8(Alto Trombone)&U(Tenor Trombone)&P4(Violin 1)&P4(Violin 2)&P4(Viola)&U(Main)&P8(Contrabass),,,P4(Alto Trombone)&P4(Tenor Trombone)&P4(Bass Trombone)&P7(Violin 2)&P8(Viola)&P4(Main)&P4(Contrabass),P4(Alto Trombone)&P4(Tenor Trombone)&P4(Bass Trombone)&P7(Violin 1)&P7(Viola)&P4(Main)&P4(Contrabass),P4(Alto Trombone)&P4(Tenor Trombone)&P4(Bass Trombone)&P8(Violin 1)&P7(Violin 2)&P4(Main)&P4(Contrabass),Main Part,P8(Alto Trombone)&P8(Tenor Trombone)&P8(Bass Trombone)&P4(Violin 1)&P4(Violin 2)&P4(Viola)&P8(Main)
+514.0,521.0,,,,,,,,,Main Part,U(Main)&U(F Horn 3)&U(F Horn 4),U(Main)&U(F Horn 2)&U(F Horn 4),U(Main)&U(F Horn 2)&U(F Horn 3),P3(F Trumpet 2)&P8(F Trumpet 3),P3(F Trumpet 1)&P3(F Trumpet 3),P8(F Trumpet 1)&P3(F Trumpet 2),,,,,,P8(Viola),,P8(Violin 1),P8(Contrabass),P8(Violoncello)
+521.0,524.0,,,,,,,,,Main Part,,,,P3(F Trumpet 2)&P8(F Trumpet 3)&P4(Bass Trombone)&P8(Violin 1)&P3(Violin 2)&P8(Viola),P3(F Trumpet 1)&P3(F Trumpet 3)&P6(Bass Trombone)&P3(Violin 1)&P8(Violin 2)&P3(Viola),P8(F Trumpet 1)&P3(F Trumpet 2)&P4(Bass Trombone)&P8(Violin 1)&P3(Violin 2)&U(Viola),,,P4(F Trumpet 1)&P6(F Trumpet 2)&P4(F Trumpet 3)&P4(Violin 1)&P6(Violin 2)&P4(Viola),,,P8(F Trumpet 1)&P3(F Trumpet 2)&P8(F Trumpet 3)&P4(Bass Trombone)&P3(Violin 2)&P8(Viola),P3(F Trumpet 1)&P8(F Trumpet 2)&P3(F Trumpet 3)&P6(Bass Trombone)&P3(Violin 1)&P3(Viola),P8(F Trumpet 1)&P3(F Trumpet 2)&U(F Trumpet 3)&P4(Bass Trombone)&P8(Violin 1)&P3(Violin 2),P8(Contrabass),P8(Violoncello)
+524.0,526.0,,,,,,,,,U(F Horn 2)&U(F Horn 3)&U(F Horn 4),U(F Horn 1)&U(F Horn 3)&U(F Horn 4),U(F Horn 1)&U(F Horn 2)&U(F Horn 4),U(F Horn 1)&U(F Horn 2)&U(F Horn 3),P3(F Trumpet 2)&P8(F Trumpet 3),P3(F Trumpet 1)&P3(F Trumpet 3),P8(F Trumpet 1)&P3(F Trumpet 2),P8(Tenor Trombone)&P8(Bass Trombone)&P8(Main)&P8(Contrabass),P8(Alto Trombone)&U(Bass Trombone)&U(Main)&P8(Contrabass),P8(Alto Trombone)&U(Tenor Trombone)&U(Main)&P8(Contrabass),,,P3(Violin 2)&P8(Viola),P3(Violin 1)&P3(Viola),P8(Violin 1)&P3(Violin 2),Main Part,P8(Alto Trombone)&P8(Tenor Trombone)&P8(Bass Trombone)&P8(Main)
+526.0,533.0,,,,,,,,,U(F Horn 2)&U(F Horn 3)&U(F Horn 4),U(F Horn 1)&U(F Horn 3)&U(F Horn 4),U(F Horn 1)&U(F Horn 2)&U(F Horn 4),U(F Horn 1)&U(F Horn 2)&U(F Horn 3),,,,P8(Tenor Trombone)&P8(Bass Trombone),P8(Alto Trombone)&U(Bass Trombone),P8(Alto Trombone)&U(Tenor Trombone),,,P3(Violin 2)&P8(Viola),P3(Violin 1)&P3(Viola),P8(Violin 1)&P3(Violin 2),Main Part,P8(Main)
+533.0,535.0,,,,,,,,,Main Part,U(Main),,,,,,,,,,,P3(Violin 2)&P8(Viola),P3(Violin 1)&P3(Viola),P8(Violin 1)&P3(Violin 2),P8(Contrabass),P8(Violoncello)
+535.0,537.0,,,,,,,,,Main Part,U(Main),,,,,,,,,,,,,,P8(Contrabass),P8(Violoncello)
+537.0,539.0,Main Part,,,,,,,,U(F Horn 2),U(F Horn 1),,,,,,,,,,,,,,P8(Contrabass),P8(Violoncello)
+539.0,541.0,Main Part,,,,,,,,U(F Horn 2),U(F Horn 1),,,,,,,,,,,,,,P8(Contrabass),P8(Violoncello)
+541.0,543.0,,,,,,,,,Main Part,U(Main),,,,,,,,,,,,,,P8(Contrabass),P8(Violoncello)
+543.0,548.0,P8(Oboe 1)&P8(Oboe 2)&P3(Bb Clarinet 1)&P4(Bb Clarinet 2),,P8(Flute 1)&U(Oboe 2)&P3(Bb Clarinet 1)&P4(Bb Clarinet 2),P8(Flute 1)&U(Oboe 1)&P3(Bb Clarinet 1)&P4(Bb Clarinet 2),P3(Flute 1)&P3(Oboe 1)&P3(Oboe 2)&P6(Bb Clarinet 2),P4(Flute 1)&P4(Oboe 1)&P4(Oboe 2)&P6(Bb Clarinet 1),,,Main Part,U(Main),,,,,,,,,,,P3(Violin 2)&P4(Violoncello)&P4(Contrabass),P3(Violin 1)&P6(Violoncello)&P6(Contrabass),,P4(Violin 1)&P6(Violin 2)&P8(Contrabass),P4(Violin 1)&P6(Violin 2)&P8(Violoncello)
+548.0,554.0,,,U(Oboe 2),U(Oboe 1),,,,,Main Part,P3(Main)&P3(F Horn 3)&P6(F Horn 4)&P6(Violoncello)&P6(Contrabass),P8(Main)&P3(F Horn 2)&P4(F Horn 4)&P4(Violoncello)&P4(Contrabass),P4(Main)&P6(F Horn 2)&P4(F Horn 3)&P8(Violoncello)&P8(Contrabass),,,,,,,,,,,,P4(Main)&P6(F Horn 2)&P4(F Horn 3)&P8(F Horn 4)&P8(Contrabass),P4(Main)&P6(F Horn 2)&P4(F Horn 3)&P8(F Horn 4)&P8(Violoncello)
+554.0,570.0,P4(Oboe 1)&P4(Oboe 2)&P6(Bb Clarinet 2),,P4(Flute 1)&U(Oboe 2)&P3(Bb Clarinet 2),P4(Flute 1)&U(Oboe 1)&P3(Bb Clarinet 2),,P6(Flute 1)&P3(Oboe 1)&P3(Oboe 2),,,Main Part,,,,,,,,,,,,,,,P8(Contrabass),P8(Violoncello)
+570.0,573.0,,,,,,,,,P6(F Horn 4),P2(F Horn 3),P2(F Horn 2),P6(F Horn 1),,,,,,,,,Main Part,,,,
+573.0,592.0,,,,,,,,,,,,,,,,,,,,,Main Part,,,,

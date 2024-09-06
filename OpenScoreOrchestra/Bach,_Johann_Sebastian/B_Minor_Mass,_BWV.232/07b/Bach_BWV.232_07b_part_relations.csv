@@ -1,0 +1,46 @@
+qstamp_start,qstamp_end,Traverso 1,Traverso 2,Violin 1,Violin 2,Viola,Soprano,Alto,Tenor,Bass,Violoncello,Continuo
+0.0,3.0,,,P4(Violin 2),P4(Violin 1),,,Main Part,,P2(Continuo),,P2(Bass)
+3.0,18.0,,,,,,,,Main Part,,,
+18.0,19.0,P4(Continuo),,,,,Main Part,,,,P4(Main),P4(Traverso 1)
+19.0,20.0,Main Part,,P4(Soprano),,,P4(Violin 1)&P3(Tenor)&P4(Violoncello),,P3(Soprano)&P6(Violoncello),,P4(Soprano)&P6(Tenor),
+20.0,22.0,,P4(Continuo),,,,P4(Violoncello),Main Part,,,P4(Soprano),P4(Traverso 2)
+22.0,25.25,,Main Part,P6(Soprano)&P3(Alto),,,P6(Violin 1)&P4(Alto),P3(Violin 1)&P4(Soprano),,P3(Violoncello),P3(Bass),
+25.25,28.25,Main Part,,,,,,,P3(Bass),P3(Tenor),,
+28.25,34.0,,Main Part,,,,,,,,,
+34.0,37.0,Main Part,,,,,,,,,,
+37.0,40.0,P3(Continuo),Main Part,,,,,,,,,P3(Traverso 1)
+40.0,42.0,Main Part,P3(Continuo),,,,P3(Violoncello),,,,P3(Soprano),P3(Traverso 2)
+42.0,45.0,,,,,,,Main Part,,,,
+45.0,48.0,P3(Traverso 2),P3(Traverso 1),,,,,,Main Part,,,
+48.0,52.25,U(Violin 2),,,U(Traverso 1),,,,,Main Part,,
+52.25,55.25,,Main Part,P3(Violin 2)&P7(Viola)&P5(Bass),P3(Violin 1)&P5(Viola)&P3(Bass),P7(Violin 1)&P5(Violin 2)&P3(Bass),,,,P5(Violin 1)&P3(Violin 2)&P3(Viola),,
+55.25,61.25,Main Part,,,,,,,,,,
+61.25,64.25,,Main Part,P3(Viola)&P3(Alto),P3(Viola)&P8(Soprano)&P3(Alto)&P5(Violoncello),P3(Violin 1)&P3(Violin 2)&P3(Soprano)&P8(Alto)&P3(Violoncello),P8(Violin 2)&P3(Viola)&P3(Alto)&P5(Violoncello),P3(Violin 1)&P3(Violin 2)&P8(Viola)&P3(Soprano)&P3(Violoncello),,,P5(Violin 2)&P3(Viola)&P5(Soprano)&P3(Alto),
+64.25,67.25,Main Part,,,,,,,,,,
+67.25,73.25,,Main Part,,,,,,,,,
+73.25,76.0,Main Part,,,U(Alto),U(Tenor),,U(Violin 2),U(Viola),U(Violoncello)&U(Continuo),U(Bass)&U(Continuo),U(Bass)&U(Violoncello)
+76.0,81.0,,Main Part,U(Soprano),U(Alto),U(Tenor),U(Violin 1),U(Violin 2),U(Viola),,U(Continuo),U(Violoncello)
+81.0,84.0,,,,,,,,,Main Part,,
+84.0,87.0,,,,,,,,Main Part,,,
+87.0,90.0,,,,,,,Main Part,,,,
+90.0,94.25,,,,,,Main Part,,,,,
+94.25,100.0,Main Part,,,,,,,,,,
+100.0,103.25,,Main Part,P6(Viola),P8(Violoncello),P6(Violin 1),,,,,P8(Violin 2),
+103.25,104.0,Main Part,P6(Violin 1)&P3(Violin 2)&P8(Viola)&P8(Tenor)&P6(Bass)&P3(Violoncello),P6(Traverso 2)&P4(Violin 2)&P6(Viola)&P6(Tenor)&P8(Bass)&P4(Violoncello),P3(Traverso 2)&P4(Violin 1)&P3(Viola)&P3(Tenor)&P4(Bass)&P8(Violoncello),P8(Traverso 2)&P6(Violin 1)&P3(Violin 2)&U(Tenor)&P6(Bass)&P3(Violoncello),,,P8(Traverso 2)&P6(Violin 1)&P3(Violin 2)&U(Viola)&P6(Bass)&P3(Violoncello),P6(Traverso 2)&P8(Violin 1)&P4(Violin 2)&P6(Viola)&P6(Tenor)&P4(Violoncello),P3(Traverso 2)&P4(Violin 1)&P8(Violin 2)&P3(Viola)&P3(Tenor)&P4(Bass),
+104.0,106.25,,,P6(Viola)&P6(Tenor)&P8(Bass)&P4(Violoncello),,P6(Violin 1)&U(Tenor)&P6(Bass)&P3(Violoncello),Main Part,,P6(Violin 1)&U(Viola)&P6(Bass)&P3(Violoncello),P8(Violin 1)&P6(Viola)&P6(Tenor)&P4(Violoncello),P4(Violin 1)&P3(Viola)&P3(Tenor)&P4(Bass),
+106.25,109.25,,Main Part,,,,,,,,,
+109.25,116.0,Main Part,,,,,,,,,,
+116.0,116.25,,,P4(Violin 2)&P8(Viola)&U(Soprano)&P4(Alto)&P8(Tenor)&P8(Main)&P3(Violoncello)&P3(Continuo),P4(Violin 1)&P4(Viola)&P4(Soprano)&U(Alto)&P4(Tenor)&P4(Main)&P6(Violoncello)&P6(Continuo),P8(Violin 1)&P4(Violin 2)&P8(Soprano)&P4(Alto)&U(Tenor)&P8(Main)&P3(Violoncello)&P3(Continuo),U(Violin 1)&P4(Violin 2)&P8(Viola)&P4(Alto)&P8(Tenor)&P8(Main)&P3(Violoncello)&P3(Continuo),P4(Violin 1)&U(Violin 2)&P4(Viola)&P4(Soprano)&P4(Tenor)&P4(Main)&P6(Violoncello)&P6(Continuo),P8(Violin 1)&P4(Violin 2)&U(Viola)&P8(Soprano)&P4(Alto)&P8(Main)&P3(Violoncello)&P3(Continuo),Main Part,P3(Violin 1)&P6(Violin 2)&P3(Viola)&P3(Soprano)&P6(Alto)&P3(Tenor)&P3(Main)&U(Continuo),P3(Violin 1)&P6(Violin 2)&P3(Viola)&P3(Soprano)&P6(Alto)&P3(Tenor)&P3(Main)&U(Violoncello)
+116.25,118.25,,Main Part,U(Soprano),U(Alto),U(Tenor),U(Violin 1),U(Violin 2),U(Viola),,U(Continuo),U(Violoncello)
+118.25,119.0,Main Part,P4(Main)&P8(Violin 2)&P8(Alto),U(Soprano),P4(Main)&P8(Traverso 2)&U(Alto),U(Tenor),U(Violin 1),P4(Main)&P8(Traverso 2)&U(Violin 2),U(Viola),P3(Violoncello)&P3(Continuo),P3(Bass)&U(Continuo),P3(Bass)&U(Violoncello)
+119.0,121.25,,,,U(Alto),U(Tenor),Main Part,U(Violin 2),U(Viola),,U(Continuo),U(Violoncello)
+121.25,122.25,,Main Part,,P5(Viola)&P5(Soprano)&U(Alto)&P5(Tenor),P5(Violin 2)&P5(Alto)&U(Tenor),P5(Violin 2)&P5(Alto),U(Violin 2)&P5(Viola)&P5(Soprano)&P5(Tenor),P5(Violin 2)&U(Viola)&P5(Alto),,U(Continuo),U(Violoncello)
+122.25,124.5,Main Part,,,U(Alto),,,U(Violin 2),,,U(Continuo),U(Violoncello)
+124.5,127.25,Main Part,,,,,,,,,,
+127.25,130.25,P4(Violin 1),Main Part,P4(Traverso 1),,,,,,,,
+130.25,133.25,Main Part,,,P6(Soprano),,P6(Violin 2),P4(Violoncello),,,P4(Alto),
+133.25,136.25,,Main Part,,,,,,,P8(Violoncello),P8(Bass),
+136.25,139.25,Main Part,,,,,P6(Tenor)&P3(Bass),,P6(Soprano)&P4(Bass),P3(Soprano)&P4(Tenor),,
+139.25,142.0,,Main Part,,,,,,,,,
+142.0,144.25,,Main Part,,P8(Alto),,,P8(Violin 2),,U(Violoncello)&U(Continuo),U(Bass)&U(Continuo),U(Bass)&U(Violoncello)
+144.25,148.0,Main Part,,,,,,,,P8(Violoncello)&P8(Continuo),P8(Bass)&U(Continuo),P8(Bass)&U(Violoncello)

@@ -1,0 +1,2718 @@
+[
+  {
+    "composer": "Johann Sebastian Bach",
+    "compositions": [
+      {
+        "title": "Mass in B minor, BMV 232",
+        "recordings": [
+          {
+            "performers": "Maria Stader (soprano), Hertha T\u00f6pper (alto), Ernst Haefliger (tenor), Dietrich Fischer-Dieskau (bass) M\u00fcnchener Bach-Choir, M\u00fcnchener Bach-Orchester, Karl Richter (conductor)",
+            "publisher": "Archiv Produktion.",
+            "year": "1962",
+            "recording_files": [
+              {
+                "name": "1. Kyrie",
+                "imslp_number": 519313,
+                "imslp_link": "https://imslp.org/images/f/fc/PMLP4197-Mass_in_B_minor%2C_BWV_232_-Kyrie-_%28Johann_Sebastian_Bach%29_Archiv_Produktion_1962.mp3"
+              },
+              {
+                "name": "2. Gloria",
+                "imslp_number": 519314,
+                "imslp_link": "https://imslp.org/images/5/58/PMLP4197-Mass_in_B_minor%2C_BWV_232_-Gloria-_%28Johann_Sebastian_Bach%29_Archiv_Produktion_1962.mp3"
+              },
+              {
+                "name": "3. Credo",
+                "imslp_number": 519315,
+                "imslp_link": "https://imslp.org/images/f/f1/PMLP4197-Mass_in_B_minor%2C_BWV_232_-Credo-_%28Johann_Sebastian_Bach%29_Archiv_Produktion_1962.mp3"
+              },
+              {
+                "name": "4. Sanctus & Benedictus",
+                "imslp_number": 519316,
+                "imslp_link": "https://imslp.org/images/6/62/PMLP4197-Mass_in_B_minor%2C_BWV_232_-Sanctus-_%28Johann_Sebastian_Bach%29_Archiv_Produktion_1962.mp3"
+              },
+              {
+                "name": "5. Agnus Dei",
+                "imslp_number": 519317,
+                "imslp_link": "https://imslp.org/images/8/86/PMLP4197-Mass_in_B_minor%2C_BWV_232_-Agnus_Dei-_%28Johann_Sebastian_Bach%29_Archiv_Produktion_1962.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Friederike Sailer, soprano - Margarethe Bence, contralto - Der Schwaebische Singkreis - Orchestre du 35\u00e8me Festival J. S. Bach en Allemagne - dir. Hans Grischkat",
+            "publisher": "Club nationale du disque CND 547.",
+            "year": "1962",
+            "recording_files": [
+              {
+                "name": "Side 1: Kyrie",
+                "imslp_number": 598882,
+                "imslp_link": "https://imslp.org/images/2/21/PMLP04197-Bach_J.S.%2C_Messe_en_si_mineur_BWV_232%2C_Kyrie_-_dir._Hans_Grischkat_-_CND_547_%281962%29.mp3"
+              },
+              {
+                "name": "Side 2: Gloria",
+                "imslp_number": 598883,
+                "imslp_link": "https://imslp.org/images/7/77/PMLP04197-Bach_J.S.%2C_Messe_en_si_mineur_BWV_232%2C_Gloria_-_dir._Hans_Grischkat_-_CND_547_%281962%29.mp3"
+              },
+              {
+                "name": "Side 3: Gloria End",
+                "imslp_number": 598884,
+                "imslp_link": "https://imslp.org/images/b/b8/PMLP04197-Bach_J.S.%2C_Messe_en_si_mineur_BWV_232%2C_Gloria_fin_-_dir._Hans_Grischkat_-_CND_547_%281962%29.mp3"
+              },
+              {
+                "name": "Side 4: Credo",
+                "imslp_number": 598886,
+                "imslp_link": "https://imslp.org/images/f/fa/PMLP04197-Bach_J.S.%2C_Messe_en_si_mineur_BWV_232%2C_Credo_-_dir._Hans_Grischkat_-_CND_547_%281962%29.mp3"
+              },
+              {
+                "name": "Side 5: Credo End",
+                "imslp_number": 598887,
+                "imslp_link": "https://imslp.org/images/4/49/PMLP04197-Bach_J.S.%2C_Messe_en_si_mineur_BWV_232%2C_Credo_fin_-_dir._Hans_Grischkat_-_CND_547_%281962%29.mp3"
+              },
+              {
+                "name": "Side 6: Sanctus - Agnus Dei",
+                "imslp_number": 598888,
+                "imslp_link": "https://imslp.org/images/6/64/PMLP04197-Bach_J.S.%2C_Messe_en_si_mineur_BWV_232%2C_Sanctus%2C_Agnus_Dei_-_dir._Hans_Grischkat_-_CND_547_%281962%29.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Eugen Jochum, Bavarian Radio Symphony Orchestra, Kurt Prestel, Lois Marshall, Hertha T\u00f6pper, Peter Pears, Kim Borg, Hans Braun, Rudolf Koeckert, Karl Bobzien, Kurt Kalmus, Wilhelm @oboist^ Grimm, Kurt Richter, Karl Benzinger, Margarethe Scharitzer, Anton Nowakowski, Josef Merz, Franz H\u00f6ger",
+            "publisher": "Epic.",
+            "year": "1958",
+            "recording_files": [
+              {
+                "name": "Kyrie eleison",
+                "imslp_number": 819839,
+                "imslp_link": "https://imslp.org/images/a/a4/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_01_-_Kyrie_eleison.flac"
+              },
+              {
+                "name": "Christe eleison",
+                "imslp_number": 819840,
+                "imslp_link": "https://imslp.org/images/1/13/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_02_-_Christe_eleison.flac"
+              },
+              {
+                "name": "Kyrie eleison",
+                "imslp_number": 819841,
+                "imslp_link": "https://imslp.org/images/b/b8/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_03_-_Kyrie_eleison.flac"
+              },
+              {
+                "name": "Gloria in excelsis Deo",
+                "imslp_number": 819842,
+                "imslp_link": "https://imslp.org/images/d/d8/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_04_-_Gloria_in_excelsis_Deo.flac"
+              },
+              {
+                "name": "Et in terra pax",
+                "imslp_number": 819843,
+                "imslp_link": "https://imslp.org/images/e/ed/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_05_-_Et_in_terra_pax.flac"
+              },
+              {
+                "name": "Laudamus te",
+                "imslp_number": 819844,
+                "imslp_link": "https://imslp.org/images/7/71/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_06_-_Laudamus_te.flac"
+              },
+              {
+                "name": "Gratias agimus tibi",
+                "imslp_number": 819845,
+                "imslp_link": "https://imslp.org/images/8/85/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_07_-_Gratias_agimus_tibi.flac"
+              },
+              {
+                "name": "Domine Deus",
+                "imslp_number": 819846,
+                "imslp_link": "https://imslp.org/images/a/a8/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_08_-_Domine_Deus.flac"
+              },
+              {
+                "name": "Qui tollis peccata mundi",
+                "imslp_number": 819847,
+                "imslp_link": "https://imslp.org/images/1/1d/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_09_-_Qui_tollis_peccata_mundi.flac"
+              },
+              {
+                "name": "Qui sedes ad dexteram Patris",
+                "imslp_number": 819848,
+                "imslp_link": "https://imslp.org/images/e/ea/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_10_-_Qui_sedes_ad_dexteram_Patris.flac"
+              },
+              {
+                "name": "Quoniam tu solus sanctus",
+                "imslp_number": 819849,
+                "imslp_link": "https://imslp.org/images/c/c0/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_11_-_Quoniam_tu_solus_sanctus.flac"
+              },
+              {
+                "name": "Cum Sancto Spiritu",
+                "imslp_number": 819855,
+                "imslp_link": "https://imslp.org/images/1/14/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_12_-_Cum_Sancto_Spiritu.flac"
+              },
+              {
+                "name": "Credo in unum Deum",
+                "imslp_number": 819856,
+                "imslp_link": "https://imslp.org/images/5/5d/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_13_-_Credo_in_unum_Deum.flac"
+              },
+              {
+                "name": "Patrem omnipotentem",
+                "imslp_number": 819857,
+                "imslp_link": "https://imslp.org/images/b/bf/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_14_-_Patrem_omnipotentem.flac"
+              },
+              {
+                "name": "Et in unum Dominum",
+                "imslp_number": 819858,
+                "imslp_link": "https://imslp.org/images/3/31/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_15_-_Et_in_unum_Dominum.flac"
+              },
+              {
+                "name": "Et incarnatus est",
+                "imslp_number": 819859,
+                "imslp_link": "https://imslp.org/images/c/c7/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_16_-_Et_incarnatus_est.flac"
+              },
+              {
+                "name": "Crucifixus",
+                "imslp_number": 819860,
+                "imslp_link": "https://imslp.org/images/c/c6/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_17_-_Crucifixus.flac"
+              },
+              {
+                "name": "Et resurrexit",
+                "imslp_number": 819861,
+                "imslp_link": "https://imslp.org/images/f/f1/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_18_-_Et_resurrexit.flac"
+              },
+              {
+                "name": "Et in Spiritum Sanctum",
+                "imslp_number": 819862,
+                "imslp_link": "https://imslp.org/images/f/fe/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_19_-_Et_in_Spiritum_Sanctum.flac"
+              },
+              {
+                "name": "Confiteor",
+                "imslp_number": 819863,
+                "imslp_link": "https://imslp.org/images/1/1f/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_20_-_Confiteor.flac"
+              },
+              {
+                "name": "Et exspecto ressurectionem",
+                "imslp_number": 819864,
+                "imslp_link": "https://imslp.org/images/f/f0/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_21_-_Et_exspecto_ressurectionem.flac"
+              },
+              {
+                "name": "Sanctus",
+                "imslp_number": 819865,
+                "imslp_link": "https://imslp.org/images/6/62/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_22_-_Sanctus.flac"
+              },
+              {
+                "name": "Osanna in excelsis",
+                "imslp_number": 819866,
+                "imslp_link": "https://imslp.org/images/2/2c/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_23_-_Osanna_in_excelsis.flac"
+              },
+              {
+                "name": "Benedictus",
+                "imslp_number": 819867,
+                "imslp_link": "https://imslp.org/images/0/0c/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_24_-_Benedictus.flac"
+              },
+              {
+                "name": "Osanna in excelsis",
+                "imslp_number": 819868,
+                "imslp_link": "https://imslp.org/images/f/fd/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_25_-_Osanna_in_excelsis.flac"
+              },
+              {
+                "name": "Agnus Dei",
+                "imslp_number": 819869,
+                "imslp_link": "https://imslp.org/images/4/4a/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_26_-_Agnus_Dei.flac"
+              },
+              {
+                "name": "Dona nobis pacem",
+                "imslp_number": 819870,
+                "imslp_link": "https://imslp.org/images/4/41/PMLP04197-Jochum_-_Mass_in_B_minor_%281958%29_-_27_-_Dona_nobis_pacem.flac"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Brandenburg Concerto No.3 in G major, BMV 1048",
+        "recordings": [
+          {
+            "performers": "Advent Chamber Orchestra",
+            "publisher": "Pandora Records/Al Goldstein Archive",
+            "year": null,
+            "recording_files": [
+              {
+                "name": "I. Allegro",
+                "imslp_number": 83284,
+                "imslp_link": "https://imslp.org/images/b/bf/PMLP82079-3Bach1.mp3"
+              },
+              {
+                "name": "II. Adagio",
+                "imslp_number": 83285,
+                "imslp_link": "https://imslp.org/images/0/03/PMLP82079-4Bach2.mp3"
+              },
+              {
+                "name": "III. Allegro assai",
+                "imslp_number": 83286,
+                "imslp_link": "https://imslp.org/images/1/17/PMLP82079-5Bach3.mp3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Brandenburg Concerto No.4 in G major, BMV 1049",
+        "recordings": []
+      }
+    ]
+  },
+  {
+    "composer": "Amy Beach",
+    "compositions": [
+      {
+        "title": "Symphony in E minor, Op. 32 \"Gaelic\"",
+        "recordings": []
+      }
+    ]
+  },
+  {
+    "composer": "Ludwig van Beethoven",
+    "compositions": [
+      {
+        "title": "Symphony No.1, Op.21",
+        "recordings": [
+          {
+            "performers": "United States Marine Band",
+            "publisher": "Washington, DC: United States Marine Band.",
+            "year": "2019",
+            "recording_files": [
+              {
+                "name": "1. Adagio molto \u2013 Allegro con brio",
+                "imslp_number": 589444,
+                "imslp_link": "https://imslp.org/images/f/fa/PMLP01582-BEETHOVEN_Symphony_No._1_in_C%2C_Opus_21_Mvt._1_-_Marine_Chamber_Orchestra.mp3"
+              },
+              {
+                "name": "2. Andante cantabile con moto",
+                "imslp_number": 589445,
+                "imslp_link": "https://imslp.org/images/7/79/PMLP01582-BEETHOVEN_Symphony_No._1_in_C%2C_Opus_21_Mvt._2_-_Marine_Chamber_Orchestra.mp3"
+              },
+              {
+                "name": "3. Minuet. Allegro molto e vivace - Trio",
+                "imslp_number": 589446,
+                "imslp_link": "https://imslp.org/images/3/3b/PMLP01582-BEETHOVEN_Symphony_No._1_in_C%2C_Opus_21_Mvt._3_-_Marine_Chamber_Orchestra.mp3"
+              },
+              {
+                "name": "4. Finale. Adagio \u2013 Allegro molto e vivace",
+                "imslp_number": 589447,
+                "imslp_link": "https://imslp.org/images/7/75/PMLP01582-BEETHOVEN_Symphony_No._1_in_C%2C_Opus_21_Mvt._4_-_Marine_Chamber_Orchestra.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Pittsburgh Symphony Orchestra, William Steinberg",
+            "publisher": "Command. CC 11024 SD.",
+            "year": "1964",
+            "recording_files": [
+              {
+                "name": "1. Adagio molto \u2013 Allegro con brio",
+                "imslp_number": 736426,
+                "imslp_link": "https://imslp.org/images/1/14/PMLP1582-01.01._Symphony_No._1_In_C_Major%2C_Opus_21-_Adagio_Molto%2C_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Andante cantabile con moto",
+                "imslp_number": 736427,
+                "imslp_link": "https://imslp.org/images/3/31/PMLP1582-01.02._Symphony_No._1_In_C_Major%2C_Opus_21-_Andante_Cantabile_Con_Moto.mp3"
+              },
+              {
+                "name": "3. Minuet. Allegro molto e vivace - Trio",
+                "imslp_number": 736428,
+                "imslp_link": "https://imslp.org/images/2/24/PMLP1582-01.03._Symphony_No._1_In_C_Major%2C_Opus_21-_Menuetto-_Allegro_Molto_E_Vivace.mp3"
+              },
+              {
+                "name": "4. Finale. Adagio \u2013 Allegro molto e vivace",
+                "imslp_number": 736429,
+                "imslp_link": "https://imslp.org/images/4/4a/PMLP1582-01.04._Symphony_No._1_In_C_Major%2C_Opus_21-_Adagio%2C_Allegro_Molto_E_Vivace.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "London Symphony Orchestra, Josef Krips",
+            "publisher": "Everest. SDBR 3089.",
+            "year": "1962",
+            "recording_files": [
+              {
+                "name": "1. Adagio molto \u2013 Allegro con brio",
+                "imslp_number": 736431,
+                "imslp_link": "https://imslp.org/images/4/47/PMLP1582-aa01.01._Symphony_No._1_In_C_Major%2C_Op._21_1st_Movement_-_Adagio_Molto%3B_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Andante cantabile con moto",
+                "imslp_number": 736433,
+                "imslp_link": "https://imslp.org/images/9/96/PMLP1582-aa01.02._Symphony_No._1_In_C_Major%2C_Op._21_2nd_Movement_-_Andante_Cantabile_Con_Moto.mp3"
+              },
+              {
+                "name": "3. Minuet. Allegro molto e vivace - Trio",
+                "imslp_number": 736434,
+                "imslp_link": "https://imslp.org/images/0/09/PMLP1582-aa01.03._Symphony_No._1_In_C_Major%2C_Op._21_3rd_Movement_-_Menuetto%3B_Allegro_Molto_E_Vivace%3B_Trio.mp3"
+              },
+              {
+                "name": "4. Finale. Adagio \u2013 Allegro molto e vivace",
+                "imslp_number": 736435,
+                "imslp_link": "https://imslp.org/images/1/17/PMLP1582-aa01.04._Symphony_No._1_In_C_Major%2C_Op._21_4th_Movement_-_Adagio%3B_Allegro_Molto_E_Vivace.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Royal Philharmonic Orchestra, Ren\u00e9 Leibowitz",
+            "publisher": "Reader's Digest. RDA-6 (1-7).",
+            "year": "1961",
+            "recording_files": [
+              {
+                "name": "1. Adagio molto \u2013 Allegro con brio",
+                "imslp_number": 729155,
+                "imslp_link": "https://imslp.org/images/1/1c/PMLP1582-01.01._Symphony_No._1_In_C_Major%2C_Op._21-_1st_Movement_-_Adagio_Molto%3B_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Andante cantabile con moto",
+                "imslp_number": 729156,
+                "imslp_link": "https://imslp.org/images/5/54/PMLP1582-01.02._Symphony_No._1_In_C_Major%2C_Op._21-_2nd_Movement_-_Andante_Cantabile_Con_Moto.mp3"
+              },
+              {
+                "name": "3. Minuet. Allegro molto e vivace - Trio",
+                "imslp_number": 729157,
+                "imslp_link": "https://imslp.org/images/c/ce/PMLP1582-01.03._Symphony_No._1_In_C_Major%2C_Op._21-_3rd_Movement_-_Menuetto%3B_Allegro_Molto_E_Vivace%3B_Trio.mp3"
+              },
+              {
+                "name": "4. Finale. Adagio \u2013 Allegro molto e vivace",
+                "imslp_number": 729158,
+                "imslp_link": "https://imslp.org/images/6/6e/PMLP1582-01.04._Symphony_No._1_In_C_Major%2C_Op._21-_4th_Movement_-_Adagio%3B_Allegro_Molto_E_Vivace.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Detroit Symphony Orchestra, Paul Paray",
+            "publisher": "Mercury. MG50205.",
+            "year": "1959",
+            "recording_files": [
+              {
+                "name": "1. Adagio molto \u2013 Allegro con brio",
+                "imslp_number": 711703,
+                "imslp_link": "https://imslp.org/images/d/d0/PMLP1582-02.02._Adagio_Molto_-_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Andante cantabile con moto",
+                "imslp_number": 711704,
+                "imslp_link": "https://imslp.org/images/c/c5/PMLP1582-02.03._Andante_Cantabile_Con_Molto.mp3"
+              },
+              {
+                "name": "3. Minuet. Allegro molto e vivace - Trio",
+                "imslp_number": 711705,
+                "imslp_link": "https://imslp.org/images/d/dc/PMLP1582-02.04._Menuetto_%28Allegro_Molto_E_Vivace%29.mp3"
+              },
+              {
+                "name": "4. Finale. Adagio \u2013 Allegro molto e vivace",
+                "imslp_number": 711706,
+                "imslp_link": "https://imslp.org/images/3/3d/PMLP1582-02.05._Adagio_-_Allegro_Molto_E_Vivace.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Columbia Symphony Orchestra, Bruno Walter",
+            "publisher": "CBS. BRG 72056.",
+            "year": "1959",
+            "recording_files": [
+              {
+                "name": "1. Adagio molto \u2013 Allegro con brio",
+                "imslp_number": 723417,
+                "imslp_link": "https://imslp.org/images/5/5f/PMLP1582-02.02._Symphony_No._1_In_C_Major%2C_Op._21-_1st_Movt-_Adagio_Molto_-_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Andante cantabile con moto",
+                "imslp_number": 723418,
+                "imslp_link": "https://imslp.org/images/9/90/PMLP1582-02.03._Symphony_No._1_In_C_Major%2C_Op._21-_2nd_Movt-_Andante_Cantabile_Con_Moto.mp3"
+              },
+              {
+                "name": "3. Minuet. Allegro molto e vivace - Trio",
+                "imslp_number": 723419,
+                "imslp_link": "https://imslp.org/images/1/19/PMLP1582-02.04._Symphony_No._1_In_C_Major%2C_Op._21-_3rd_Movt-_Menuetto.mp3"
+              },
+              {
+                "name": "4. Finale. Adagio \u2013 Allegro molto e vivace",
+                "imslp_number": 723420,
+                "imslp_link": "https://imslp.org/images/c/cf/PMLP1582-02.05._Symphony_No._1_In_C_Major%2C_Op._21-_4th_Movt-_Adagio_-_Allegro_Molto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Orchestre de la Suisse Romande, Ernest Ansermet",
+            "publisher": "London Records. STS 15032.",
+            "year": "1956",
+            "recording_files": [
+              {
+                "name": "1. Adagio molto \u2013 Allegro con brio",
+                "imslp_number": 735781,
+                "imslp_link": "https://imslp.org/images/5/59/PMLP1582-01.01._Beethoven-_Symphony_No._1_In_C%2C_Op._21-_Adagio_molto_._._._Allegro_con_brio.mp3"
+              },
+              {
+                "name": "2. Andante cantabile con moto",
+                "imslp_number": 735782,
+                "imslp_link": "https://imslp.org/images/7/75/PMLP1582-01.02._Beethoven-_Symphony_No._1_In_C%2C_Op._21-_Andante_cantabile.mp3"
+              },
+              {
+                "name": "3. Minuet. Allegro molto e vivace - Trio",
+                "imslp_number": 735783,
+                "imslp_link": "https://imslp.org/images/c/cf/PMLP1582-01.03._Beethoven-_Symphony_No._1_In_C%2C_Op._21-_Menuetto.mp3"
+              },
+              {
+                "name": "4. Finale. Adagio \u2013 Allegro molto e vivace",
+                "imslp_number": 735784,
+                "imslp_link": "https://imslp.org/images/9/90/PMLP1582-01.04._Beethoven-_Symphony_No._1_In_C%2C_Op._21-_Adagio_._._._Allegro_molto_e_vivace.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Wiener Symphoniker, Hermann Scherchen",
+            "publisher": "Westminster. WN 18034.",
+            "year": "1955",
+            "recording_files": [
+              {
+                "name": "1. Adagio molto \u2013 Allegro con brio",
+                "imslp_number": 736410,
+                "imslp_link": "https://imslp.org/images/5/5f/PMLP1582-01.01._Symphony_No._1_In_C_Major%2C_Op._21_-_Adagio_Molto_-_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Andante cantabile con moto",
+                "imslp_number": 736411,
+                "imslp_link": "https://imslp.org/images/e/e2/PMLP1582-01.02._Symphony_No._1_In_C_Major%2C_Op._21_-_Andante_Cantabile_Con_Moto.mp3"
+              },
+              {
+                "name": "3. Minuet. Allegro molto e vivace - Trio",
+                "imslp_number": 736412,
+                "imslp_link": "https://imslp.org/images/b/b1/PMLP1582-01.03._Symphony_No._1_In_C_Major%2C_Op._21_-_Minuetto_-_Allegro_Molto_E_Vivace.mp3"
+              },
+              {
+                "name": "4. Finale. Adagio \u2013 Allegro molto e vivace",
+                "imslp_number": 736413,
+                "imslp_link": "https://imslp.org/images/9/93/PMLP1582-01.04._Symphony_No._1_In_C_Major%2C_Op._21_-_Adagio_-_Allegro_Molto.mp3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Symphony No.2, Op.36",
+        "recordings": [
+          {
+            "performers": "Pittsburgh Symphony Orchestra, William Steinberg",
+            "publisher": "Command. CC 11024 SD.",
+            "year": "1964",
+            "recording_files": [
+              {
+                "name": "1. Adagio molto \u2014 Allegro con brio",
+                "imslp_number": 736441,
+                "imslp_link": "https://imslp.org/images/8/83/PMLP2580-02.01._Symphony_No._2_In_D_Major%2C_Opus_36-_Adagio_Molto%2C_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Larghetto",
+                "imslp_number": 736442,
+                "imslp_link": "https://imslp.org/images/a/a6/PMLP2580-02.02._Symphony_No._2_In_D_Major%2C_Opus_36-_Larghetto.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro vivo",
+                "imslp_number": 736443,
+                "imslp_link": "https://imslp.org/images/f/f2/PMLP2580-02.03._Symphony_No._2_In_D_Major%2C_Opus_36-_Scherzo-_Allegro.mp3"
+              },
+              {
+                "name": "4. Allegro molto",
+                "imslp_number": 736444,
+                "imslp_link": "https://imslp.org/images/6/64/PMLP2580-02.04._Symphony_No._2_In_D_Major%2C_Opus_36-_Allegro_Molto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Royal Philharmonic Orchestra, Ren\u00e9 Leibowitz",
+            "publisher": "Reader's Digest. RDA-6 (1-7).",
+            "year": "1961",
+            "recording_files": [
+              {
+                "name": "1. Adagio molto \u2014 Allegro con brio",
+                "imslp_number": 729167,
+                "imslp_link": "https://imslp.org/images/c/c3/PMLP2580-02.01._Symphony_No._2_In_D_Major%2C_Op._36-_First_Movement_-_Adagio_Molto%3B_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Larghetto",
+                "imslp_number": 729168,
+                "imslp_link": "https://imslp.org/images/9/97/PMLP2580-02.02._Symphony_No._2_In_D_Major%2C_Op._36-_Second_Movement_-_Larghetto.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro vivo",
+                "imslp_number": 729169,
+                "imslp_link": "https://imslp.org/images/1/12/PMLP2580-02.03._Symphony_No._2_In_D_Major%2C_Op._36-_Third_Movement_-_Scherzo.mp3"
+              },
+              {
+                "name": "4. Allegro molto",
+                "imslp_number": 729170,
+                "imslp_link": "https://imslp.org/images/4/4c/PMLP2580-02.04._Symphony_No._2_In_D_Major%2C_Op._36-_Fourth_Movement_-_Allegro_Molto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Detroit Symphony Orchestra, Paul Paray",
+            "publisher": "Mercury. MG50205.",
+            "year": "1959",
+            "recording_files": [
+              {
+                "name": "1. Adagio molto \u2014 Allegro con brio",
+                "imslp_number": 711707,
+                "imslp_link": "https://imslp.org/images/a/a9/PMLP2580-01.01._Adagio_Molto_-_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Larghetto",
+                "imslp_number": 711708,
+                "imslp_link": "https://imslp.org/images/e/ea/PMLP2580-01.02._Larghetto.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro vivo",
+                "imslp_number": 711709,
+                "imslp_link": "https://imslp.org/images/c/cc/PMLP2580-01.03._Scherzo_%28Allegro%29.mp3"
+              },
+              {
+                "name": "4. Allegro molto",
+                "imslp_number": 711710,
+                "imslp_link": "https://imslp.org/images/f/f8/PMLP2580-02.01._Allegro_Molto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Columbia Symphony Orchestra, Bruno Walter",
+            "publisher": "CBS. BRG 72056.",
+            "year": "1959",
+            "recording_files": [
+              {
+                "name": "1. Adagio molto \u2014 Allegro con brio",
+                "imslp_number": 723421,
+                "imslp_link": "https://imslp.org/images/6/6f/PMLP2580-01.01._Symphony_No._2_In_D_Major%2C_Op._36-_1st_Movt-_Adagio_Molto_-_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Larghetto",
+                "imslp_number": 723422,
+                "imslp_link": "https://imslp.org/images/0/08/PMLP2580-01.02._Symphony_No._2_In_D_Major%2C_Op._36-_2nd_Movt-_Larghetto.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro vivo",
+                "imslp_number": 723423,
+                "imslp_link": "https://imslp.org/images/f/f3/PMLP2580-01.03._Symphony_No._2_In_D_Major%2C_Op._36-_3rd_Movt-_Scherzo_%28Allegro%29.mp3"
+              },
+              {
+                "name": "4. Allegro molto",
+                "imslp_number": 723424,
+                "imslp_link": "https://imslp.org/images/e/e9/PMLP2580-02.01._Symphony_No._2_In_D_Major%2C_Op._36-_4th_Movt-_Allegro_Molto.mp3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Symphony No.3, Op.55",
+        "recordings": [
+          {
+            "performers": "Czech National Symphony Orchestra",
+            "publisher": "Palo Alto: Musopen.",
+            "year": "2012",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 246970,
+                "imslp_link": "https://imslp.org/images/6/6a/PMLP02581-Symphony_No._3_in_E_Flat_Major_Eroica%2C_Op._55_-_I._Allegro_con_brio.mp3"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai",
+                "imslp_number": 246971,
+                "imslp_link": "https://imslp.org/images/8/80/PMLP02581-Symphony_No._3_in_E_Flat_Major_Eroica%2C_Op._55_-_II._Marcia_funebre_Adagio_assai.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro vivace \u2013 Trio",
+                "imslp_number": 246972,
+                "imslp_link": "https://imslp.org/images/5/53/PMLP02581-Symphony_No._3_in_E_Flat_Major_Eroica%2C_Op._55_-_III._Scherzo_Allegro_vivace.mp3"
+              },
+              {
+                "name": "4. Finale. Allegro molto",
+                "imslp_number": 246973,
+                "imslp_link": "https://imslp.org/images/7/75/PMLP02581-Symphony_No._3_in_E_Flat_Major_Eroica%2C_Op._55_-_IV._Finale_Allegro_molto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Czech National Symphony Orchestra",
+            "publisher": "Palo Alto: Musopen.",
+            "year": "2012",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 831988,
+                "imslp_link": "https://imslp.org/images/7/7d/PMLP2581-Symphony_No._3_in_E_Flat_Major_Eroica%2C_Op._55_-_1._Allegro_con_brio.flac"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai",
+                "imslp_number": 831987,
+                "imslp_link": "https://imslp.org/images/5/54/PMLP2581-Symphony_No._3_in_E_Flat_Major_Eroica%2C_Op._55_-_2._Marcia_funebre_Adagio_assai.flac"
+              },
+              {
+                "name": "3. Scherzo. Allegro vivace \u2013 Trio",
+                "imslp_number": 831985,
+                "imslp_link": "https://imslp.org/images/e/ec/PMLP2581-Symphony_No._3_in_E_Flat_Major_Eroica%2C_Op._55_-_3._Scherzo_Allegro_vivace.flac"
+              },
+              {
+                "name": "4. Finale. Allegro molto",
+                "imslp_number": 831986,
+                "imslp_link": "https://imslp.org/images/c/c2/PMLP2581-Symphony_No._3_in_E_Flat_Major_Eroica%2C_Op._55_-_4._Finale_Allegro_molto.flac"
+              }
+            ]
+          },
+          {
+            "performers": "Pittsburgh Symphony Orchestra, William Steinberg",
+            "publisher": "Command. CC 11019 SD.",
+            "year": "1963",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 728900,
+                "imslp_link": "https://imslp.org/images/9/9b/PMLP2581-01.01._Symphony_No._3_In_E_Flat%2C_Op._55_%28%22Eroica%22%29-_First_Movement-_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai (part 1)",
+                "imslp_number": 728901,
+                "imslp_link": "https://imslp.org/images/b/be/PMLP2581-01.02._Symphony_No._3_In_E_Flat%2C_Op._55_%28%22Eroica%22%29-_Second_Movement-_Marcia_Funebre_-_Adagio_Assai.mp3"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai (conclusion)",
+                "imslp_number": 728902,
+                "imslp_link": "https://imslp.org/images/9/9f/PMLP2581-02.01._Symphony_No._3_In_E_Flat%2C_Op._55_%28%22Eroica%22%29-_Second_Movement-_Marcia_Funebre_-_Adagio_Assai_%28Concluded%29.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro vivace \u2013 Trio",
+                "imslp_number": 728903,
+                "imslp_link": "https://imslp.org/images/0/0e/PMLP2581-02.02._Symphony_No._3_In_E_Flat%2C_Op._55_%28%22Eroica%22%29-_Third_Movement-_Scherzo_-_Allegro_Vivace.mp3"
+              },
+              {
+                "name": "4. Finale. Allegro molto",
+                "imslp_number": 728904,
+                "imslp_link": "https://imslp.org/images/2/26/PMLP2581-02.03._Symphony_No._3_In_E_Flat%2C_Op._55_%28%22Eroica%22%29-_Fourth_Movement-_Finale_-_Allegro_Molto%2C_Poco_Andante%2C_Presto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Wiener Philharmoniker, Pierre Monteux",
+            "publisher": "RCA Victrola Red Seal. VICS 1036.",
+            "year": "1963",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 728913,
+                "imslp_link": "https://imslp.org/images/a/a5/PMLP2581-01.01._Symphony_No.3_In_E_Flat%2C_%28Op.55%29_%28%22Eroica%22%29-_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai (part 1)",
+                "imslp_number": 728914,
+                "imslp_link": "https://imslp.org/images/9/93/PMLP2581-01.02._Symphony_No.3_In_E_Flat%2C_%28Op.55%29_%28%22Eroica%22%29-_Marcia_Funebre-_Adagio_Assai.mp3"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai (conclusion)",
+                "imslp_number": 728915,
+                "imslp_link": "https://imslp.org/images/5/5e/PMLP2581-02.01._Symphony_No._3_In_E-Flat%2C_Op._55_%28%22Eroica%22%29-_Second_Movement-_Marcia_Funebre_Adagio_Assai_%28Concluded%29.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro vivace \u2013 Trio",
+                "imslp_number": 728916,
+                "imslp_link": "https://imslp.org/images/f/fa/PMLP2581-02.02._Symphony_No._3_In_E-Flat%2C_Op._55_%28%22Eroica%22%29-_Third_Movement-_Scherzo-_Allegro_Vivace.mp3"
+              },
+              {
+                "name": "4. Finale. Allegro molto",
+                "imslp_number": 728917,
+                "imslp_link": "https://imslp.org/images/5/5b/PMLP2581-02.03._Symphony_No._3_In_E-Flat%2C_Op._55_%28%22Eroica%22%29-_Fourth_Movement-_Finale-_Allegro_Molto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Berliner Philharmoniker, Herbert von Karajan",
+            "publisher": "Deutsche Grammophon. 2535 302.",
+            "year": "1962",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 728891,
+                "imslp_link": "https://imslp.org/images/3/38/PMLP2581-01.01._1._Satz-_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai",
+                "imslp_number": 728892,
+                "imslp_link": "https://imslp.org/images/e/e2/PMLP2581-01.02._2._Satz-_Marcia_Funebre-_Adagio_Assai.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro vivace \u2013 Trio",
+                "imslp_number": 728893,
+                "imslp_link": "https://imslp.org/images/0/03/PMLP2581-02.01._3._Satz-_Scherzo-_Allegro_Vivace.mp3"
+              },
+              {
+                "name": "4. Finale. Allegro molto",
+                "imslp_number": 728894,
+                "imslp_link": "https://imslp.org/images/8/86/PMLP2581-02.02._4._Satz-_Finale-_Allegro_Molto_-_Poco_Andante_-_Presto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "London Philharmonic, Adrian Boult",
+            "publisher": "Alshire. ASC 814.",
+            "year": "1962",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 728895,
+                "imslp_link": "https://imslp.org/images/f/f2/PMLP2581-01.01._Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai (part 1)",
+                "imslp_number": 728896,
+                "imslp_link": "https://imslp.org/images/5/5e/PMLP2581-01.02._Marcia_Funebre%2C_Adagio_assai.mp3"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai (conclusion)",
+                "imslp_number": 728897,
+                "imslp_link": "https://imslp.org/images/a/a7/PMLP2581-02.01._Marcia_Funebre%2C_Adagio_assai_%28continued%29.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro vivace \u2013 Trio",
+                "imslp_number": 728898,
+                "imslp_link": "https://imslp.org/images/0/08/PMLP2581-02.02._Scherzo%2C_Allegro_vivace.mp3"
+              },
+              {
+                "name": "4. Finale. Allegro molto",
+                "imslp_number": 728899,
+                "imslp_link": "https://imslp.org/images/2/2b/PMLP2581-02.03._Finale%2C_Allegro_molto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Royal Philharmonic Orchestra, Ren\u00e9 Leibowitz",
+            "publisher": "Reader's Digest. RDA-6 (1-7).",
+            "year": "1961",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 729159,
+                "imslp_link": "https://imslp.org/images/4/42/PMLP2581-03.01._Symphony_No._3_In_E-Flat_Major%2C_Op._55_%28%22Eroica%22%29-_First_Movement_-_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai",
+                "imslp_number": 729160,
+                "imslp_link": "https://imslp.org/images/d/dc/PMLP2581-03.02._Symphony_No._3_In_E-Flat_Major%2C_Op._55_%28%22Eroica%22%29-_Second_Movement_-_Marcia_Funebre-_Adagio_Assai.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro vivace \u2013 Trio",
+                "imslp_number": 729161,
+                "imslp_link": "https://imslp.org/images/5/53/PMLP2581-04.01._Symphony_No._3_In_E-Flat_Major%2C_Op._55_%28%22Eroica%22%29-_Third_Movement_-_Scherzo-_Allegro_Vivace%3B_Trio.mp3"
+              },
+              {
+                "name": "4. Finale. Allegro molto",
+                "imslp_number": 729162,
+                "imslp_link": "https://imslp.org/images/5/57/PMLP2581-04.02._Symphony_No._3_In_E-Flat_Major%2C_Op._55_%28%22Eroica%22%29-_Fourth_Movement_-_Allegro_Molto%3B_Poco_Andante%3B_Presto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Philadelphia Orchestra, Eugene Ormandy",
+            "publisher": "Columbia Masterworks. MS 6266.",
+            "year": "1961",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 728920,
+                "imslp_link": "https://imslp.org/images/6/61/PMLP2581-01.01._Symphony_No._3%2C_in_E-Flat_Major%2C_Op._55_%28%22Eroica%22%29-_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai (part 1)",
+                "imslp_number": 728921,
+                "imslp_link": "https://imslp.org/images/a/a8/PMLP2581-01.02._Symphony_No._3%2C_in_E-Flat_Major%2C_Op._55_%28%22Eroica%22%29-_Marcia_Funebre-_Adagio_Assai_%28Beginning%29.mp3"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai (conclusion)",
+                "imslp_number": 728922,
+                "imslp_link": "https://imslp.org/images/e/ee/PMLP2581-02.01._Symphony_No._3%2C_in_E-Flat_Major%2C_Op._55_%28%22Eroica%22%29-_Marcia_Funebre-_Adagio_Assai_%28Conclusion%29_.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro vivace \u2013 Trio",
+                "imslp_number": 728923,
+                "imslp_link": "https://imslp.org/images/9/99/PMLP2581-02.02._Symphony_No._3%2C_in_E-Flat_Major%2C_Op._55_%28%22Eroica%22%29-_Scherzo-_Allegro_Vivace.mp3"
+              },
+              {
+                "name": "4. Finale. Allegro molto",
+                "imslp_number": 728924,
+                "imslp_link": "https://imslp.org/images/6/6e/PMLP2581-02.03._Symphony_No._3%2C_in_E-Flat_Major%2C_Op._55_%28%22Eroica%22%29-_Finale-_Allegro_Molto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Philharmonia Orchestra, Otto Klemperer",
+            "publisher": "Angel Records.",
+            "year": "1961",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 736745,
+                "imslp_link": "https://imslp.org/images/0/07/PMLP2581-01.01._First_Movement-_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai (Part 1)",
+                "imslp_number": 736746,
+                "imslp_link": "https://imslp.org/images/f/f7/PMLP2581-01.02._Second_Movement%2C_Part_1-_Marcia_Funebre-_Adagio_Assai.mp3"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai (Conclusion)",
+                "imslp_number": 736747,
+                "imslp_link": "https://imslp.org/images/0/07/PMLP2581-02.01._Second_Movementm_Conclusion-_Marcia_Funebre-_Adagio_Assai.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro vivace",
+                "imslp_number": 736748,
+                "imslp_link": "https://imslp.org/images/2/2d/PMLP2581-02.02._Third_Movement-_Scherzo-_Allegro_Vivace%3B_Trio.mp3"
+              },
+              {
+                "name": "4. Finale. Allegro molto",
+                "imslp_number": 736749,
+                "imslp_link": "https://imslp.org/images/f/fa/PMLP2581-02.03._Fourth_Movement-_Allegro_Molto_-_Poco_Andante_-_Presto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Orchestre de la Suisse Romande, Ernest Ansermet",
+            "publisher": "London Records. STS 15069.",
+            "year": "1958",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 728955,
+                "imslp_link": "https://imslp.org/images/c/ca/PMLP2581-Suisse_Romande_-_1958_-_01.01._Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai",
+                "imslp_number": 728930,
+                "imslp_link": "https://imslp.org/images/3/39/PMLP2581-01.02._Marcia_Funebre_-_Adagio.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro vivace \u2013 Trio",
+                "imslp_number": 728931,
+                "imslp_link": "https://imslp.org/images/6/6a/PMLP2581-02.01._Scherzo-_Allegro_Vivace.mp3"
+              },
+              {
+                "name": "4. Finale. Allegro molto",
+                "imslp_number": 728932,
+                "imslp_link": "https://imslp.org/images/1/13/PMLP2581-02.02._Finale-_Allegro_Molto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Boston Symphony Orchestra, Charles Munch",
+            "publisher": "RCA Victrola. VICS 1626.",
+            "year": "1958",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 728954,
+                "imslp_link": "https://imslp.org/images/0/04/PMLP2581-Boston_-_1958_-_01.01._Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai (part 1)",
+                "imslp_number": 728938,
+                "imslp_link": "https://imslp.org/images/7/74/PMLP2581-01.02._Marcia_Funebre_-_Adagio_Assai_%28Part_1%29.mp3"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai (conclusion)",
+                "imslp_number": 728939,
+                "imslp_link": "https://imslp.org/images/7/7e/PMLP2581-02.01._Marcia_Funebre_-_Adagio_Assai_%28Part_2%29.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro vivace \u2013 Trio",
+                "imslp_number": 728940,
+                "imslp_link": "https://imslp.org/images/5/5a/PMLP2581-02.02._Scherzo._Allegro_Vivace.mp3"
+              },
+              {
+                "name": "4. Finale. Allegro molto",
+                "imslp_number": 728941,
+                "imslp_link": "https://imslp.org/images/1/11/PMLP2581-02.03._Finale._Allegro_Molto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Symphony of the Air, Igor Markevitch",
+            "publisher": "Decca. DL 9912.",
+            "year": "1957",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 728933,
+                "imslp_link": "https://imslp.org/images/0/03/PMLP2581-01.01._1st_Movement-_Allegro_con_brio.mp3"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai",
+                "imslp_number": 728934,
+                "imslp_link": "https://imslp.org/images/9/9f/PMLP2581-01.02._2nd_Movement-_Marcia_funebre-_Adagio_assai.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro vivace \u2013 Trio",
+                "imslp_number": 728935,
+                "imslp_link": "https://imslp.org/images/b/b3/PMLP2581-02.01._3rd_Movement-_Scherzo-_Allegro_vivace.mp3"
+              },
+              {
+                "name": "4. Finale. Allegro molto",
+                "imslp_number": 728936,
+                "imslp_link": "https://imslp.org/images/c/c1/PMLP2581-02.02._4th_Movement-_Finale-_Allegro_molto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Berliner Philharmoniker, Eugen Jochum",
+            "publisher": "Decca. DL 9865.",
+            "year": "1955",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 728925,
+                "imslp_link": "https://imslp.org/images/9/91/PMLP2581-01.01._1st_Movement-_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai",
+                "imslp_number": 728926,
+                "imslp_link": "https://imslp.org/images/f/f3/PMLP2581-01.02._2nd_Movement-_Marcia_Funebre_%28Adagio_Assai%29.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro vivace \u2013 Trio",
+                "imslp_number": 728927,
+                "imslp_link": "https://imslp.org/images/b/b4/PMLP2581-02.01._3rd_Movement-_Scherzo_%28Allegro_Vivace%29.mp3"
+              },
+              {
+                "name": "4. Finale. Allegro molto",
+                "imslp_number": 728928,
+                "imslp_link": "https://imslp.org/images/c/cf/PMLP2581-02.02._4th_Movement-_Finale_%28Allegro_Molto%29.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Pittsburgh Symphony Orchestra, William Steinberg",
+            "publisher": "Capitol Records. P 8334.",
+            "year": "1955",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 728905,
+                "imslp_link": "https://imslp.org/images/f/fa/PMLP2581-01.01._First_Movement_-_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai",
+                "imslp_number": 728906,
+                "imslp_link": "https://imslp.org/images/5/52/PMLP2581-01.02._Second_Movement_-_Marcia_Fun%C3%A8bre-_Adagio_Assai.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro vivace \u2013 Trio",
+                "imslp_number": 728907,
+                "imslp_link": "https://imslp.org/images/7/7b/PMLP2581-02.01._Third_Movement_-_Scherzo-_Allegro_Vivace.mp3"
+              },
+              {
+                "name": "4. Finale. Allegro molto",
+                "imslp_number": 728908,
+                "imslp_link": "https://imslp.org/images/9/9a/PMLP2581-02.02._Fourth_Movement_-_Finale-_Allegro_Motto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "New York Philharmonic, Bruno Walter",
+            "publisher": "Columbia Masterworks. ML 4228.",
+            "year": "1949",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 728909,
+                "imslp_link": "https://imslp.org/images/7/70/PMLP2581-01.01._Symphony_No._3_In_E-Flat_Major%2C_Op._55_%28%22Eroica%22%29-_Band_No._1-_First_Movement-_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai",
+                "imslp_number": 728910,
+                "imslp_link": "https://imslp.org/images/b/bd/PMLP2581-01.02._Symphony_No._3_In_E-Flat_Major%2C_Op._55_%28%22Eroica%22%29-_Band_No._2-_Second_Movement-_Marche_Funebre_%28Adagio_Assai%29.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro vivace \u2013 Trio",
+                "imslp_number": 728911,
+                "imslp_link": "https://imslp.org/images/3/3d/PMLP2581-02.01._Symphony_No._3_In_E-Flat_Major%2C_Op._55_%28%22Eroica%22%29-_Band_No._1-_Third_Movement-_Scherzo_%28Allegro_Vivace%29.mp3"
+              },
+              {
+                "name": "4. Finale. Allegro molto",
+                "imslp_number": 728912,
+                "imslp_link": "https://imslp.org/images/1/12/PMLP2581-02.02._Symphony_No._3_In_E-Flat_Major%2C_Op._55_%28%22Eroica%22%29-_Band_No._2-_Fourth_Movement-_Finale_%28Allegro_Molto%29.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Boston Symphony Orchestra, Serge Koussevitzky",
+            "publisher": "RCA Victor Red Seal. DM 1161.",
+            "year": "1947",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 728942,
+                "imslp_link": "https://imslp.org/images/1/1b/PMLP2581-01.I.AllegroConBrio.mp3"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai",
+                "imslp_number": 728943,
+                "imslp_link": "https://imslp.org/images/a/a2/PMLP2581-02.Ii.MarciaFunebre-AdagioAssai.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro vivace \u2013 Trio",
+                "imslp_number": 728944,
+                "imslp_link": "https://imslp.org/images/c/cd/PMLP2581-03.Iii.Scherzo-AllegroVivaceTrio.mp3"
+              },
+              {
+                "name": "4. Finale. Allegro molto",
+                "imslp_number": 728945,
+                "imslp_link": "https://imslp.org/images/e/e6/PMLP2581-04.Iv.Finale-AllegroMoltoPocoAndante.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "New York Philharmonic, Bruno Walter",
+            "publisher": "Columbia. MM 449.",
+            "year": "1941",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 728956,
+                "imslp_link": "https://imslp.org/images/9/9f/PMLP2581-New_York_-_1941_-_01.I.AllegroConBrio.mp3"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai",
+                "imslp_number": 728957,
+                "imslp_link": "https://imslp.org/images/1/17/PMLP2581-New_York_-_1941_-_02.Ii.MarciaFunebre-AdagioAssai.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro vivace \u2013 Trio",
+                "imslp_number": 728958,
+                "imslp_link": "https://imslp.org/images/9/9b/PMLP2581-New_York_-_1941_-_03.Iii.Scherzo-AllegroVivaceTrio.mp3"
+              },
+              {
+                "name": "4. Finale. Allegro molto",
+                "imslp_number": 728959,
+                "imslp_link": "https://imslp.org/images/d/d3/PMLP2581-New_York_-_1941_-_04.Iv.Finale-AllegroMoltoPocoAndante.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Berliner Philharmoniker, Hans Pfitzner",
+            "publisher": "Brunswick Hall of Fame. 90060-90065.",
+            "year": "1929",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 728960,
+                "imslp_link": "https://imslp.org/images/6/63/PMLP2581-Berliner_-_1929_-_01.I.AllegroConBrio.mp3"
+              },
+              {
+                "name": "2. Marcia funebre. Adagio assai",
+                "imslp_number": 728951,
+                "imslp_link": "https://imslp.org/images/4/45/PMLP2581-02.Ii.MarciaFunebreAdagioAssai.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro vivace \u2013 Trio",
+                "imslp_number": 728961,
+                "imslp_link": "https://imslp.org/images/e/ee/PMLP2581-Berliner_-_1929_-_03.Iii.Scherzo-AllegroVivaceTrio.mp3"
+              },
+              {
+                "name": "4. Finale. Allegro molto",
+                "imslp_number": 728962,
+                "imslp_link": "https://imslp.org/images/1/16/PMLP2581-Berliner_-_1929_-_04.Iv.Finale-AllegroMoltoPocoAndante.mp3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Symphony No.4, Op.60",
+        "recordings": [
+          {
+            "performers": "Berliner Philharmoniker, Herbert von Karajan",
+            "publisher": "Deutsche Grammophon. 138 803.",
+            "year": "1962",
+            "recording_files": [
+              {
+                "name": "1. Adagio - Allegro Vivace2. Adagio",
+                "imslp_number": 734754,
+                "imslp_link": "https://imslp.org/images/e/eb/PMLP1585-01_Side_1_Symphonie_Nr._4_B-dur_op._60.mp3"
+              },
+              {
+                "name": "3. Allegro vivace. Trio4. Allegro ma non troppo",
+                "imslp_number": 734755,
+                "imslp_link": "https://imslp.org/images/9/95/PMLP1585-02_Side_2_Symphonie_Nr._4_B-dur_op._60.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Royal Philharmonic Orchestra, Ren\u00e9 Leibowitz",
+            "publisher": "Reader's Digest. RDA-6 (1-7).",
+            "year": "1961",
+            "recording_files": [
+              {
+                "name": "1. Adagio - Allegro vivace",
+                "imslp_number": 729163,
+                "imslp_link": "https://imslp.org/images/8/80/PMLP1585-05.01._Symphony_No._4_In_B-Flat_Major%2C_Op._60-_First_Movement_-_Adagio%3B_Allegro_Vivace.mp3"
+              },
+              {
+                "name": "2. Adagio",
+                "imslp_number": 729164,
+                "imslp_link": "https://imslp.org/images/a/a2/PMLP1585-05.02._Symphony_No._4_In_B-Flat_Major%2C_Op._60-_Second_Movement_-_Adagio.mp3"
+              },
+              {
+                "name": "3. Allegro vivace. Trio",
+                "imslp_number": 729165,
+                "imslp_link": "https://imslp.org/images/1/1a/PMLP1585-05.03._Symphony_No._4_In_B-Flat_Major%2C_Op._60-_Third_Movement_-_Menuetto-_Allegro_Vivace%3B_Trio-_Un_Poco_Meno_Allegro.mp3"
+              },
+              {
+                "name": "4. Allegro ma non troppo",
+                "imslp_number": 729166,
+                "imslp_link": "https://imslp.org/images/8/8f/PMLP1585-05.04._Symphony_No._4_In_B-Flat_Major%2C_Op._60-_Fourth_Movement_-_Allegro_Ma_Non_Troppo.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Orchestre de la Suisse Romande, Ernest Ansermet",
+            "publisher": "London Records. STS 15055.",
+            "year": "1959",
+            "recording_files": [
+              {
+                "name": "1. Adagio - Allegro vivace",
+                "imslp_number": 736761,
+                "imslp_link": "https://imslp.org/images/7/7a/PMLP1585-01.01._Symphony_No._4_In_B_Flat_Major%2C_Op._60-_1st_Mov.-_Adagio_-_Allegro_Vivace.mp3"
+              },
+              {
+                "name": "2. Adagio",
+                "imslp_number": 736762,
+                "imslp_link": "https://imslp.org/images/7/74/PMLP1585-01.02._Symphony_No._4_In_B_Flat_Major%2C_Op._60-_2nd_Mov.-_Adagio.mp3"
+              },
+              {
+                "name": "3. Allegro vivace. Trio",
+                "imslp_number": 736763,
+                "imslp_link": "https://imslp.org/images/8/82/PMLP1585-02.01._Symphony_No._4_In_B_Flat_Major%2C_Op._60-_3rd_Mov.-_Allegro_Vivace.mp3"
+              },
+              {
+                "name": "4. Allegro ma non troppo",
+                "imslp_number": 736764,
+                "imslp_link": "https://imslp.org/images/5/51/PMLP1585-02.02._Symphony_No._4_In_B_Flat_Major%2C_Op._60-_4th_Mov.-_Allegro_Ma_Non_Troppo.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Orchestre de la Suisse Romande, Ernest Ansermet",
+            "publisher": "London Records. CS 6070.",
+            "year": "1959",
+            "recording_files": [
+              {
+                "name": "1. Adagio - Allegro vivace",
+                "imslp_number": 736768,
+                "imslp_link": "https://imslp.org/images/b/b6/PMLP1585-01.01._1st_Mov.-_Adagio-Allegro_Vivace.mp3"
+              },
+              {
+                "name": "2. Adagio",
+                "imslp_number": 736769,
+                "imslp_link": "https://imslp.org/images/0/01/PMLP1585-01.02._2nd_Mov.-_Adagio.mp3"
+              },
+              {
+                "name": "3. Allegro vivace. Trio",
+                "imslp_number": 736770,
+                "imslp_link": "https://imslp.org/images/3/33/PMLP1585-02.01._3rd_Mov.-_Allegro_Vivace.mp3"
+              },
+              {
+                "name": "4. Allegro ma non troppo",
+                "imslp_number": 736771,
+                "imslp_link": "https://imslp.org/images/0/0f/PMLP1585-02.02._4th_Mov.-_Allegro_Ma_Non_Troppo.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Philharmonia Orchestra, Herbert von Karajan",
+            "publisher": "Angel Records. Angel 35203.",
+            "year": "1955",
+            "recording_files": [
+              {
+                "name": "1. Adagio - Allegro vivace",
+                "imslp_number": 736750,
+                "imslp_link": "https://imslp.org/images/f/f6/PMLP1585-01.01._Symphony_No._4_In_B_Flat_Major%2C_Op._60-_First_Movement.mp3"
+              },
+              {
+                "name": "2. Adagio",
+                "imslp_number": 736751,
+                "imslp_link": "https://imslp.org/images/d/d2/PMLP1585-01.02._Symphony_No._4_In_B_Flat_Major%2C_Op._60-_Second_Movement.mp3"
+              },
+              {
+                "name": "3. Allegro vivace. Trio",
+                "imslp_number": 736752,
+                "imslp_link": "https://imslp.org/images/0/0f/PMLP1585-01.03._Symphony_No._4_In_B_Flat_Major%2C_Op._60-_Third_Movement.mp3"
+              },
+              {
+                "name": "4. Allegro ma non troppo",
+                "imslp_number": 736753,
+                "imslp_link": "https://imslp.org/images/e/e5/PMLP1585-02.01._Symphony_No._4_In_B_Flat_Major%2C_Op._60-_Fourth_Movement.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "London Philharmonic, Felix Weingartner",
+            "publisher": "Columbia. ML 4504.",
+            "year": "1952",
+            "recording_files": [
+              {
+                "name": "1. Adagio - Allegro vivace",
+                "imslp_number": 736757,
+                "imslp_link": "https://imslp.org/images/c/c3/PMLP1585-01.01._Symphony_No._4_In_B-Flat_Major%2C_Op._60-_First_Movement-_Adagio%3B_Allegro_Vivace.mp3"
+              },
+              {
+                "name": "2. Adagio",
+                "imslp_number": 736758,
+                "imslp_link": "https://imslp.org/images/6/62/PMLP1585-01.02._Symphony_No._4_In_B-Flat_Major%2C_Op._60-_Second_Movement-_Adagio.mp3"
+              },
+              {
+                "name": "3. Allegro vivace. Trio",
+                "imslp_number": 736759,
+                "imslp_link": "https://imslp.org/images/9/9e/PMLP1585-02.01._Symphony_No._4_In_B-Flat_Major%2C_Op._60-_Third_Movement-_Menuetto_And_Trio_%28Allegro_Vivace%29.mp3"
+              },
+              {
+                "name": "4. Allegro ma non troppo",
+                "imslp_number": 736760,
+                "imslp_link": "https://imslp.org/images/9/9b/PMLP1585-02.02._Symphony_No._4_In_B-Flat_Major%2C_Op._60-_Fourth_Movement-_Adagio_Ma_Non_Troppo.mp3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Symphony No.5, Op.67",
+        "recordings": [
+          {
+            "performers": "Columbia Symphony Orchestra, Bruno Walter",
+            "publisher": "Columbia Masterworks. ML 5906.",
+            "year": "1963",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 726695,
+                "imslp_link": "https://imslp.org/images/1/19/PMLP1586-02.01._Symphony_No._5_In_C_Minor%2C_Op._67-_I_-_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Andante con moto",
+                "imslp_number": 726696,
+                "imslp_link": "https://imslp.org/images/2/22/PMLP1586-02.02._Symphony_No._5_In_C_Minor%2C_Op._67-_II_-_Andante_Con_Moto.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro4. Allegro",
+                "imslp_number": 726697,
+                "imslp_link": "https://imslp.org/images/8/8b/PMLP1586-02.03._Symphony_No._5_In_C_Minor%2C_Op._67-_III_-_Scherzo-_Allegro%3B_IV_-_Finale-_Allegro.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Berliner Philharmoniker, Herbert von Karajan",
+            "publisher": "Deutsche Grammophon. 2535 304.",
+            "year": "1962",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 728533,
+                "imslp_link": "https://imslp.org/images/d/d6/PMLP1586-01.01._Symphonie_Nr._5_C-min.%2C_Op._67-_1._Mov-_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Andante con moto",
+                "imslp_number": 728534,
+                "imslp_link": "https://imslp.org/images/6/61/PMLP1586-01.02._Symphonie_Nr._5_C-min.%2C_Op._67-_2._Mov-_Andante_Con_Moto.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro",
+                "imslp_number": 728535,
+                "imslp_link": "https://imslp.org/images/e/e6/PMLP1586-02.01._Symphonie_Nr._5_C-min.%2C_Op._67-_3._Mov-_Allegro_Attacca.mp3"
+              },
+              {
+                "name": "4. Allegro",
+                "imslp_number": 728536,
+                "imslp_link": "https://imslp.org/images/7/7a/PMLP1586-02.02._Symphonie_Nr._5_C-min.%2C_Op._67-_4._Mov-_Allegro.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Royal Philharmonic Orchestra, Ren\u00e9 Leibowitz",
+            "publisher": "Reader's Digest. RDA-6 (1-7).",
+            "year": "1961",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 729213,
+                "imslp_link": "https://imslp.org/images/d/d1/PMLP1586-06.01._Symphony_No._5_In_C_Minor%2C_Op._67-_First_Movement_-_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Andante con moto",
+                "imslp_number": 729214,
+                "imslp_link": "https://imslp.org/images/8/81/PMLP1586-06.02._Symphony_No._5_In_C_Minor%2C_Op._67-_Second_Movement_-_Andante_Con_Motto.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro4. Allegro",
+                "imslp_number": 729215,
+                "imslp_link": "https://imslp.org/images/0/08/PMLP1586-06.03._Symphony_No._5_In_C_Minor%2C_Op._67-_Third_Movement_-_Allegro.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Columbia Symphony Orchestra, Bruno Walter",
+            "publisher": "Odyssey. Y 30314.",
+            "year": "1961",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 726690,
+                "imslp_link": "https://imslp.org/images/9/9a/PMLP1586-02.01._Symphony_No._5_In_C_Minor%2C_Op._67-_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Andante con moto",
+                "imslp_number": 726691,
+                "imslp_link": "https://imslp.org/images/a/a1/PMLP1586-02.02._Symphony_No._5_In_C_Minor%2C_Op._67-_Andante_Con_Moto.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro4. Allegro",
+                "imslp_number": 726692,
+                "imslp_link": "https://imslp.org/images/2/2e/PMLP1586-02.03._Symphony_No._5_In_C_Minor%2C_Op._67-_Scherzo-_Allegro%3B_Finale.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Orchestre de la Suisse Romande, Ernest Ansermet",
+            "publisher": "London Records. CS 6037.",
+            "year": "1958",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 729226,
+                "imslp_link": "https://imslp.org/images/2/29/PMLP1586-london01.01._Symphony_No._5_In_C_Minor%2C_Op._67_First_Movement_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Andante con moto",
+                "imslp_number": 729227,
+                "imslp_link": "https://imslp.org/images/1/15/PMLP1586-london01.02._Symphony_No._5_In_C_Minor%2C_Op._67_Second_Movement_Andante_Con_Moto.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro",
+                "imslp_number": 726649,
+                "imslp_link": "https://imslp.org/images/f/f9/PMLP1586-02.01._Symphony_No._5_In_C_Minor%2C_Op._67-_Third_Movement-_Scherzo-_Allegro.mp3"
+              },
+              {
+                "name": "4. Allegro",
+                "imslp_number": 726650,
+                "imslp_link": "https://imslp.org/images/7/7f/PMLP1586-02.02._Symphony_No._5_In_C_Minor%2C_Op._67-_Fourth_Movement-_Allegro.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Philharmonia Orchestra, Otto Klemperer",
+            "publisher": "Angel. RL 32032.",
+            "year": "1957",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 726679,
+                "imslp_link": "https://imslp.org/images/4/42/PMLP1586-01.01._First_Movement-_Allegro_con_brio.mp3"
+              },
+              {
+                "name": "2. Andante con moto",
+                "imslp_number": 726680,
+                "imslp_link": "https://imslp.org/images/e/eb/PMLP1586-01.02._Second_Movement-_Andante_con_moto_-_Piu_mosso_-_Tempo_1.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro4. Allegro",
+                "imslp_number": 726681,
+                "imslp_link": "https://imslp.org/images/8/8f/PMLP1586-02.01._Third_Movement-_Allegro%2C_Fourth_Movement-_Allegro_-_Presto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Philadelphia Orchestra, Eugene Ormandy",
+            "publisher": "Columbia Masterworks. ML 5098.",
+            "year": "1956",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio (sped up)",
+                "imslp_number": 726651,
+                "imslp_link": "https://imslp.org/images/7/7f/PMLP1586-01.01._Symphony_No._5_In_C_Minor%2C_OP_57-_I_-_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Andante con moto",
+                "imslp_number": 726652,
+                "imslp_link": "https://imslp.org/images/8/84/PMLP1586-01.02._Symphony_No._5_In_C_Minor%2C_OP_57-_II_-_Andante_Con_Moto.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro4. Allegro",
+                "imslp_number": 726653,
+                "imslp_link": "https://imslp.org/images/5/5a/PMLP1586-01.03._Symphony_No._5_In_C_Minor%2C_OP_57-_III_-_Scherzo_%28Allegro%29%2C_IV_-_Finale_%28Allegro%29.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "New York Philharmonic, Bruno Walter",
+            "publisher": "Columbia Masterworks. ML 4009.",
+            "year": "1948",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 726627,
+                "imslp_link": "https://imslp.org/images/a/af/PMLP1586-01.01._Symphony_No._5_In_C_Minor%2C_Op._67-_First_Movement-_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Andante con moto",
+                "imslp_number": 726628,
+                "imslp_link": "https://imslp.org/images/0/09/PMLP1586-01.02._Symphony_No._5_In_C_Minor%2C_Op._67-_Second_Movement-_Andante_Con_Moto.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro4. Allegro",
+                "imslp_number": 726629,
+                "imslp_link": "https://imslp.org/images/f/fd/PMLP1586-02.01._Symphony_No._5_In_C_Minor%2C_Op._67-_Third_Movement-_Scherzo_%28Allegro%29%3B_Fourth_Movement-_Finale_%28Allegro%29.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Berliner Philharmoniker, Wilhelm Furtw\u00e4ngler",
+            "publisher": "Unicorn Records. UNI 106.",
+            "year": "1943",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 726687,
+                "imslp_link": "https://imslp.org/images/f/f9/PMLP1586-01.01._Symphony_No._5_Op._67-_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Andante con moto",
+                "imslp_number": 726688,
+                "imslp_link": "https://imslp.org/images/6/60/PMLP1586-01.02._Symphony_No._5_Op._67-_Andante_Con_Moto.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro4. Allegro",
+                "imslp_number": 726689,
+                "imslp_link": "https://imslp.org/images/3/3e/PMLP1586-01.03._Symphony_No._5_Op._67-_Allegro%3B_Allegro.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Royal Concertgebouw Orchestra, Willem Mengelberg",
+            "publisher": "Capitol Records. P-8110.",
+            "year": "1937",
+            "recording_files": [
+              {
+                "name": "1. Allegro con brio",
+                "imslp_number": 726640,
+                "imslp_link": "https://imslp.org/images/e/e7/PMLP1586-01.01._First_Movement-_Allegro.mp3"
+              },
+              {
+                "name": "2. Andante con moto",
+                "imslp_number": 726641,
+                "imslp_link": "https://imslp.org/images/7/74/PMLP1586-01.02._Second_Movement-_Adante_con_moto.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro4. Allegro",
+                "imslp_number": 726642,
+                "imslp_link": "https://imslp.org/images/8/84/PMLP1586-02.01._Third_Movement-_Alegro%3B_Fourth_Movement-_Allegro-Presto.mp3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Symphony No.6, Op.68",
+        "recordings": [
+          {
+            "performers": "Wiener Philharmoniker, Pierre Monteux",
+            "publisher": "RCA Victrola. VICS 1070.",
+            "year": "1964",
+            "recording_files": [
+              {
+                "name": "1. Allegro ma non troppo",
+                "imslp_number": 734768,
+                "imslp_link": "https://imslp.org/images/a/a8/PMLP1595-01.01._Beethoven_Symphony_No._6_In_F._Op._68_%28%22Pastoral%22%29-_First_Movement-_Allegro_Ma_Non_Troppo.mp3"
+              },
+              {
+                "name": "2. Andante molto mosso",
+                "imslp_number": 734769,
+                "imslp_link": "https://imslp.org/images/4/47/PMLP1595-01.02._Beethoven_Symphony_No._6_In_F._Op._68_%28%22Pastoral%22%29-_Second_Movement-_Andante_Molto_Mosso.mp3"
+              },
+              {
+                "name": "3. Allegro4. Allegro5. Allegretto",
+                "imslp_number": 734770,
+                "imslp_link": "https://imslp.org/images/b/bf/PMLP1595-02.01._Beethoven_Symphony_No._6_In_F._Op._68_%28%22Pastoral%22%29-_Third_Movement-_Allegro%3B_Beethoven_Symphony_No._6_In_F._Op._68_%28%22Pastoral%22%29-_Third_Movement-_Allegro%3B_Fifth_Movement-_Allegretto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "London Symphony Orchestra, Antal Dor\u00e1ti",
+            "publisher": "Mercury. SR 90415.",
+            "year": "1964",
+            "recording_files": [
+              {
+                "name": "1. Allegro ma non troppo",
+                "imslp_number": 735480,
+                "imslp_link": "https://imslp.org/images/d/d1/PMLP1595-01.02._Symphony_No._6_In_F_Major_%22Pastoral%22-_I._Allegro_Ma_Non_Troppo.mp3"
+              },
+              {
+                "name": "2. Andante molto mosso",
+                "imslp_number": 735481,
+                "imslp_link": "https://imslp.org/images/3/35/PMLP1595-02.01._Symphony_No._6_In_F_Major_%22Pastoral%22-_II._Andante_Molto_Mosso.mp3"
+              },
+              {
+                "name": "3. Allegro4. Allegro5. Allegretto",
+                "imslp_number": 735482,
+                "imslp_link": "https://imslp.org/images/9/91/PMLP1595-02.02._Symphony_No._6_In_F_Major_%22Pastoral%22-_III._Allegro_-_IV._Allegro_-_V._Allegretto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Chicago Symphony Orchestra, Fritz Reiner",
+            "publisher": "RCA Victor Red Seal. LSC 2614.",
+            "year": "1963",
+            "recording_files": [
+              {
+                "name": "1. Allegro ma non troppo",
+                "imslp_number": 734759,
+                "imslp_link": "https://imslp.org/images/a/a4/PMLP1595-01.01._Symphony_No._6_In_F%2C_Op._68_%28%22Pastoral%22%29-_Cheerful_Impressions_On_Arriving_In_The_Country.mp3"
+              },
+              {
+                "name": "2. Andante molto mosso",
+                "imslp_number": 734760,
+                "imslp_link": "https://imslp.org/images/5/51/PMLP1595-01.02._Symphony_No._6_In_F%2C_Op._68_%28%22Pastoral%22%29-_By_The_Brook.mp3"
+              },
+              {
+                "name": "3. Allegro4. Allegro5. Allegretto",
+                "imslp_number": 734761,
+                "imslp_link": "https://imslp.org/images/0/0f/PMLP1595-02.01._Symphony_No._6_In_F%2C_Op._68_%28%22Pastoral%22%29-_Peasants_Merrymaking%3B_The_Storm%3B_The_Shepherd%27s_Hymn.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Royal Danish Orchestra, George Hurst",
+            "publisher": "Forum. SF 70018.",
+            "year": "1963",
+            "recording_files": [
+              {
+                "name": "1. Allegro ma non troppo",
+                "imslp_number": 734898,
+                "imslp_link": "https://imslp.org/images/1/12/PMLP1595-01.01._1st_Mvt._Allegro_Ma_Non_Troppo.mp3"
+              },
+              {
+                "name": "2. Andante molto mosso",
+                "imslp_number": 734899,
+                "imslp_link": "https://imslp.org/images/b/bf/PMLP1595-01.02._2nd_Mvt._Andante_Molto_Mosso.mp3"
+              },
+              {
+                "name": "3. Allegro4. Allegro5. Allegretto",
+                "imslp_number": 734900,
+                "imslp_link": "https://imslp.org/images/a/a4/PMLP1595-02.01._3rd_Mvt._Allegro%3B_4th_Mvt._Allegro%3B_5th_Mvt._Allegretto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Royal Philharmonic Orchestra, Ren\u00e9 Leibowitz",
+            "publisher": "Reader's Digest. RDA-6 (1-7).",
+            "year": "1961",
+            "recording_files": [
+              {
+                "name": "1. Allegro ma non troppo",
+                "imslp_number": 729184,
+                "imslp_link": "https://imslp.org/images/7/76/PMLP1595-07.01._Symphony_No._6_In_F_Major%2C_Op._68_%28%22Pastoral%22%29-_First_Movement_-_Allegro_Ma_Non_Troppo_%28Cheerful_Impressions_Awakened_By_Arrival_In_The_Country%29.mp3"
+              },
+              {
+                "name": "2. Andante molto mosso",
+                "imslp_number": 729185,
+                "imslp_link": "https://imslp.org/images/9/94/PMLP1595-07.02._Symphony_No._6_In_F_Major%2C_Op._68_%28%22Pastoral%22%29-_Second_Movement_-_Andante_Con_Molto_%28Scene_By_The_Brook%29.mp3"
+              },
+              {
+                "name": "3. Allegro4. Allegro5. Allegretto",
+                "imslp_number": 729186,
+                "imslp_link": "https://imslp.org/images/0/00/PMLP1595-08.01._Symphony_No._6_In_F_Major%2C_Op._68_%28%22Pastoral%22%29-_Third_Movement_-_Allegro_%28Merry_Gathering_Of_Countryfolk%29%3B_Fourth_Movement_-_Allegro_%28Thunderstorm%2C_Tempest%29%3B_Fifth_Movement_-_Allegretto_%28Shepherd%27s_Song._Glad_And_Grateful....mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Berliner Philharmoniker, Andr\u00e9 Cluytens",
+            "publisher": "His Master's Voice. ALP 1863.",
+            "year": "1960",
+            "recording_files": [
+              {
+                "name": "1. Allegro ma non troppo",
+                "imslp_number": 734765,
+                "imslp_link": "https://imslp.org/images/3/3a/PMLP1595-01.01._Symphony_No._6_In_F_Major%2C_Op._68_%28%22Pastoral%22%29-_First_Movement-_Awakening_Of_Pleasant_Feelings_Upon_Arriving_In_The_Country_%28Allegro_Ma_Non_Troppo%29.mp3"
+              },
+              {
+                "name": "2. Andante molto mosso",
+                "imslp_number": 734766,
+                "imslp_link": "https://imslp.org/images/2/2f/PMLP1595-01.02._Symphony_No._6_In_F_Major%2C_Op._68_%28%22Pastoral%22%29-_Second_Movement-_Scene_At_The_Brook_%28Andante_Molto_Mosso%29.mp3"
+              },
+              {
+                "name": "3. Allegro4. Allegro5. Allegretto",
+                "imslp_number": 734767,
+                "imslp_link": "https://imslp.org/images/1/13/PMLP1595-02.01._Symphony_No._6_In_F_Major%2C_Op._68_%28%22Pastoral%22%29-_Third_Movement-_Peasant%27s_Merrymaking_%28Allegro%29%3B_Fourth_Movement-_The_Storm_%28Allegro%29_%3B_Fifth_Movement-_Shepherd%27s_Hymn_After_The_Storm_%28Allegretto%29.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Orchestre de la Suisse Romande, Ernest Ansermet",
+            "publisher": "London Records. STS 15064.",
+            "year": "1960",
+            "recording_files": [
+              {
+                "name": "1. Allegro ma non troppo",
+                "imslp_number": 734905,
+                "imslp_link": "https://imslp.org/images/8/81/PMLP1595-01.01._Symphony_No._6_In_F_Major%2C_Op._68_%28%22Pastoral%22%29-_1st_Movement-_Allegro_Ma_Non_Troppo.mp3"
+              },
+              {
+                "name": "2. Andante molto mosso",
+                "imslp_number": 734906,
+                "imslp_link": "https://imslp.org/images/2/24/PMLP1595-01.02._Symphony_No._6_In_F_Major%2C_Op._68_%28%22Pastoral%22%29-_2nd_Movement-_Andante_Molto_Mosso.mp3"
+              },
+              {
+                "name": "3. Allegro4. Allegro5. Allegretto",
+                "imslp_number": 734907,
+                "imslp_link": "https://imslp.org/images/e/e9/PMLP1595-02.01._Symphony_No._6_In_F_Major%2C_Op._68_%28%22Pastoral%22%29-_3rd_Movement-_Allegro%3B_4th_Movement-_Allegro%3B_5th_Movement-_Allegretto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Royal Philharmonic Orchestra, Rafael Kubel\u00edk",
+            "publisher": "Capitol Records. SG 7213.",
+            "year": "1960",
+            "recording_files": [
+              {
+                "name": "1. Allegro ma non troppo",
+                "imslp_number": 734909,
+                "imslp_link": "https://imslp.org/images/9/9d/PMLP1595-01.01._Symphony_No._6_In_F_Major%2C_Op._68_%28%22Pastoral%22%29-_I._Awakening_Of_Pleasant_Feelings_Upon_Arriving_In_The_Country_%28Allegro_Non_Troppo%29.mp3"
+              },
+              {
+                "name": "2. Andante molto mosso",
+                "imslp_number": 734910,
+                "imslp_link": "https://imslp.org/images/5/52/PMLP1595-01.02._Symphony_No._6_In_F_Major%2C_Op._68_%28%22Pastoral%22%29-_II._Scene_At_The_Brook_%28Andante_Molto_Mosso%29.mp3"
+              },
+              {
+                "name": "3. Allegro4. Allegro5. Allegretto",
+                "imslp_number": 734911,
+                "imslp_link": "https://imslp.org/images/2/28/PMLP1595-02.01._Symphony_No._6_In_F_Major%2C_Op._68_%28%22Pastoral%22%29-_III._Peasants%27_Merrymaking_%28Allegro%29%3B_IV._The_Storm_%28Allegro%29%3B_V._Shepherds%27_Hymn_After_The_Storm_%28Allegretto%29.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "London Symphony Orchestra, Josef Krips",
+            "publisher": "Everest. SDBR 3074.",
+            "year": "1960",
+            "recording_files": [
+              {
+                "name": "1. Allegro ma non troppo",
+                "imslp_number": 735489,
+                "imslp_link": "https://imslp.org/images/6/60/PMLP1595-01.01._Beethoven-_Symphony_No._6_In_F_Major_Op._68_%28%22Pastoral%22%29-_1st_Movement_-_Allegro_Ma_Non_Troppo.mp3"
+              },
+              {
+                "name": "2. Andante molto mosso",
+                "imslp_number": 735490,
+                "imslp_link": "https://imslp.org/images/b/bd/PMLP1595-01.02._Beethoven-_Symphony_No._6_In_F_Major_Op._68_%28%22Pastoral%22%29-_2nd_Movement_-_Andante_Molto_Moto.mp3"
+              },
+              {
+                "name": "3. Allegro4. Allegro5. Allegretto",
+                "imslp_number": 735491,
+                "imslp_link": "https://imslp.org/images/6/6a/PMLP1595-02.01._Beethoven-_Symphony_No._6_In_F_Major_Op._68_%28%22Pastoral%22%29-_3rd_Movement_-_Allegro%3B_4th_Movement_-_Allegro%3B_5th_Movement_-_Allegretto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Philharmonia Orchestra, Otto Klemperer",
+            "publisher": "Angel Records. ANG 35711.",
+            "year": "1959",
+            "recording_files": [
+              {
+                "name": "1. Allegro ma non troppo",
+                "imslp_number": 734771,
+                "imslp_link": "https://imslp.org/images/c/c9/PMLP1595-01.01._Symphony_No.6_In_F_Major%2C_Op.68_%28%27Pastoral%27-_First_Movement-_Awakening_Of_Pleasant_Feelings_Upon_Arriving_In_The_Country_-_Allegro_Ma_Non_Troppo.mp3"
+              },
+              {
+                "name": "2. Andante molto mosso",
+                "imslp_number": 734772,
+                "imslp_link": "https://imslp.org/images/4/48/PMLP1595-01.02._Symphony_No.6_In_F_Major%2C_Op.68_%28%27Pastoral%27-_Second_Movement-_Scene_At_The_Brook_-_Andanta_Molto_Mosso.mp3"
+              },
+              {
+                "name": "3. Allegro4. Allegro5. Allegretto",
+                "imslp_number": 734773,
+                "imslp_link": "https://imslp.org/images/4/4b/PMLP1595-02.01._Symphony_No._6_In_F_Major%2C_Op._68_%28%22Pastoral%22%29-_III._Peasants%27_Merrymaking_-_Allegro.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Columbia Symphony Orchestra, Bruno Walter",
+            "publisher": "Columbia. MS 6012.",
+            "year": "1958",
+            "recording_files": [
+              {
+                "name": "1. Allegro ma non troppo",
+                "imslp_number": 734892,
+                "imslp_link": "https://imslp.org/images/4/44/PMLP1595-01.01._Symphony_No._6_In_F_Major%2C_Op._68_%28%22Pastorale%22%29-_Allegro_Ma_Non_Troppo_%28The_Awakening_Of_Joyful_Feelings%29.mp3"
+              },
+              {
+                "name": "2. Andante molto mosso",
+                "imslp_number": 734893,
+                "imslp_link": "https://imslp.org/images/1/18/PMLP1595-01.02._Symphony_No._6_In_F_Major%2C_Op._68_%28%22Pastorale%22%29-_Andante_Molto_Moto_%28The_Brook%29.mp3"
+              },
+              {
+                "name": "3. Allegro4. Allegro5. Allegretto",
+                "imslp_number": 734894,
+                "imslp_link": "https://imslp.org/images/d/d5/PMLP1595-02.01._Symphony_No._6_In_F_Major%2C_Op._68_%28%22Pastorale%22%29-_Allegro_%28Village_Festival%29%3B_Allegro_%28The_Storm%29%3B_Allegretto_%28Shepherd%27s_Song%29.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "NBC Symphony Orchestra, Arturo Toscanini",
+            "publisher": "RCA. AT 133.",
+            "year": "1956",
+            "recording_files": [
+              {
+                "name": "1. Allegro ma non troppo",
+                "imslp_number": 734777,
+                "imslp_link": "https://imslp.org/images/9/96/PMLP1595-01.01._First_Movement-_Allegro_Ma_Non_Troppo_%28Risvegli_Di_Piacevoli_Sensazioni_All%27arrivo_In_Campagna%29.mp3"
+              },
+              {
+                "name": "2. Andante molto mosso",
+                "imslp_number": 734778,
+                "imslp_link": "https://imslp.org/images/f/f7/PMLP1595-01.02._Second_Movement-_Andante_Molto_Mosso_%28Scena_Presso_Il_Ruscello%29.mp3"
+              },
+              {
+                "name": "3. Allegro4. Allegro5. Allegretto",
+                "imslp_number": 734779,
+                "imslp_link": "https://imslp.org/images/f/fb/PMLP1595-02.01._Third_Movement-_Allegro_%28Festosa_Riunione_di_Contadini%29%3B_Fourth_Movement-_Allegro_%28Temporale%29%3B_Fifth_Movement-_Allegretto_%28Canto_Pastorale%3B_Sentimenti_di_Gioia_E_Ringraziamento_Dopo_la_Tempesta%29.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Boston Symphony Orchestra, Charles Munch",
+            "publisher": "RCA Victor Red Seal. LM 1997.",
+            "year": "1956",
+            "recording_files": [
+              {
+                "name": "1. Allegro ma non troppo",
+                "imslp_number": 734912,
+                "imslp_link": "https://imslp.org/images/6/69/PMLP1595-01.01._First_Movement-_Awakening_Of_Serene_Impressions_Upon_Arriving_In_The_Country-_Allegro_Ma_Non_Troppo.mp3"
+              },
+              {
+                "name": "2. Andante molto mosso",
+                "imslp_number": 734913,
+                "imslp_link": "https://imslp.org/images/8/8b/PMLP1595-01.02._Second_Movement-_Scene_By_The_Brookside-_Andante_Molto_Mosso.mp3"
+              },
+              {
+                "name": "3. Allegro4. Allegro5. Allegretto",
+                "imslp_number": 734914,
+                "imslp_link": "https://imslp.org/images/d/d8/PMLP1595-02.01._Third_Movement-_Jolly_Gathering_Of_Country_Folk-_Allegro%3B_Fourth_Movement-_Thunder_Storm-_Allegro%3B_Fifth_Movement-_Shepherd%27s_Song--Gladsome_And_Thankful_Feelings_After_The_Storm-_Allegretto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "New York Philharmonic, George Szell",
+            "publisher": "Columbia Masterworks. ML 5057.",
+            "year": "1955",
+            "recording_files": [
+              {
+                "name": "1. Allegro ma non troppo",
+                "imslp_number": 734895,
+                "imslp_link": "https://imslp.org/images/e/ee/PMLP1595-01.01._Symphony_No._6_In_F_Major%2C_Op._68_%28%22Pastorale%22%29-_I_-_Allegro_Ma_Non_Troppo_%28The_Awakening_Of_Joyful_Feelings_Upon_Arrival_In_The_Country%29.mp3"
+              },
+              {
+                "name": "2. Andante molto mosso",
+                "imslp_number": 734896,
+                "imslp_link": "https://imslp.org/images/a/a6/PMLP1595-01.02._Symphony_No._6_In_F_Major%2C_Op._68_%28%22Pastorale%22%29-_II_-_Andante_Molto_Moto_%28The_Brook%29.mp3"
+              },
+              {
+                "name": "3. Allegro4. Allegro5. Allegretto",
+                "imslp_number": 734901,
+                "imslp_link": "https://imslp.org/images/2/2f/PMLP1595-02.01._Symphony_No._6_In_F_Major%2C_Op._68_%28_Pastorale_%29Allegro_%28Village_Festival%29%3B_Allegro_%28The_Storm%29%3B_Allegretto_%28Shepherd%27s_Song%29_ok.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Royal Concertgebouw Orchestra, Erich Kleiber",
+            "publisher": "London Records. LL 916.",
+            "year": "1954",
+            "recording_files": [
+              {
+                "name": "1. Allegro ma non troppo",
+                "imslp_number": 734774,
+                "imslp_link": "https://imslp.org/images/a/a5/PMLP1595-01.01._1st_Movement-_Allegro_Ma_Non_Troppo_%28Awakening_Of_Happy_Feelings_On_Arriving_In_The_Country%29.mp3"
+              },
+              {
+                "name": "2. Andante molto mosso",
+                "imslp_number": 734775,
+                "imslp_link": "https://imslp.org/images/6/66/PMLP1595-01.02._2nd_Movement-_Andante_Molto_Mosso_%28By_The_Brook%29.mp3"
+              },
+              {
+                "name": "3. Allegro4. Allegro5. Allegretto",
+                "imslp_number": 734776,
+                "imslp_link": "https://imslp.org/images/0/0a/PMLP1595-02.01._3rd_Movement-_Allegro_%28Peasants_Merrymaking%29%3B_4th_Movement-_Allegro_%28The_Storm%29%3B_5th_Movement-_Allegretto_%28Sheperd%27s_Hymn-_Thanksgiving_After_The_Storm%29.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Pittsburgh Symphony Orchestra, William Steinberg",
+            "publisher": "Capitol Records. S 8159.",
+            "year": "1952",
+            "recording_files": [
+              {
+                "name": "1. Allegro ma non troppo",
+                "imslp_number": 734915,
+                "imslp_link": "https://imslp.org/images/a/aa/PMLP1595-01.01._1st_Movement_-_Allegro_Ma_Non_Troppo.mp3"
+              },
+              {
+                "name": "2. Andante molto mosso",
+                "imslp_number": 734916,
+                "imslp_link": "https://imslp.org/images/8/8a/PMLP1595-01.02._2nd_Movement_-_Andante_Molto_Mosso.mp3"
+              },
+              {
+                "name": "3. Allegro4. Allegro5. Allegretto",
+                "imslp_number": 734917,
+                "imslp_link": "https://imslp.org/images/3/31/PMLP1595-02.01._3rd_Movement_-_Allegro%3B_4th_Movement_-_Allegro%3B_5th_Movement_-_Allegretto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Wiener Symphoniker, Otto Klemperer",
+            "publisher": "Music-Appreciation Records. MAR 10577.",
+            "year": "1950",
+            "recording_files": [
+              {
+                "name": "1. Allegro ma non troppo",
+                "imslp_number": 735484,
+                "imslp_link": "https://imslp.org/images/8/89/PMLP1595-01.01._Symphony_No._6_In_F_Major%2C_Op._68_%22Pastoral%22-_1_-_Allegro_Ma_Non_Troppo.mp3"
+              },
+              {
+                "name": "2. Andante molto mosso",
+                "imslp_number": 735485,
+                "imslp_link": "https://imslp.org/images/8/8f/PMLP1595-01.02._Symphony_No._6_In_F_Major%2C_Op._68_%22Pastoral%22-_2_-_Andante_Molto_Mosso.mp3"
+              },
+              {
+                "name": "3. Scherzo. Allegro",
+                "imslp_number": 735486,
+                "imslp_link": "https://imslp.org/images/b/b4/PMLP1595-02.01._Symphony_No._6_In_F_Major%2C_Op._68_%22Pastoral%22-_3_-_Allegro.mp3"
+              },
+              {
+                "name": "4. Allegro",
+                "imslp_number": 735487,
+                "imslp_link": "https://imslp.org/images/1/12/PMLP1595-02.02._Symphony_No._6_In_F_Major%2C_Op._68_%22Pastoral%22-_4_-_Allegro.mp3"
+              },
+              {
+                "name": "5. Allegretto",
+                "imslp_number": 735488,
+                "imslp_link": "https://imslp.org/images/4/46/PMLP1595-02.03._Symphony_No._6_In_F_Major%2C_Op._68_%22Pastoral%22-_5_-_Allegretto.mp3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Symphony No.7, Op.92",
+        "recordings": [
+          {
+            "performers": "London Symphony Orchestra, Pierre Monteux",
+            "publisher": "RCA Victrola. VICS 1061.",
+            "year": "1964",
+            "recording_files": [
+              {
+                "name": "1. Poco sostenuto - Vivace",
+                "imslp_number": 723380,
+                "imslp_link": "https://imslp.org/images/e/ee/PMLP1600-01.01._Symphony_No.7_In_A_Major%2C_Opus_92_%22Dance%22-_Poco_Sostenuto.mp3"
+              },
+              {
+                "name": "2. Allegretto",
+                "imslp_number": 723381,
+                "imslp_link": "https://imslp.org/images/e/ec/PMLP1600-01.02._Symphony_No.7_In_A_Major%2C_Opus_92_%22Dance%22-_Allegretto.mp3"
+              },
+              {
+                "name": "3. Presto",
+                "imslp_number": 723382,
+                "imslp_link": "https://imslp.org/images/5/5f/PMLP1600-02.01._Symphony_No.7_In_A_Major%2C_Opus_92_%22Dance%22-_Presto%3B_Presto_Meno_Assai%3B_Presto.mp3"
+              },
+              {
+                "name": "4. Allegro con brio",
+                "imslp_number": 723383,
+                "imslp_link": "https://imslp.org/images/9/91/PMLP1600-02.02._Symphony_No.7_In_A_Major%2C_Opus_92_%22Dance%22-_Allegro_Con_Brio.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Royal Philharmonic Orchestra, Ren\u00e9 Leibowitz",
+            "publisher": "Reader's Digest. RDA-6 (1-7).",
+            "year": "1961",
+            "recording_files": [
+              {
+                "name": "1. Poco sostenuto - Vivace",
+                "imslp_number": 729188,
+                "imslp_link": "https://imslp.org/images/8/80/PMLP1600-09.01._Symphony_No._7_In_A_Major%2C_Op._92-_First_Movement_-_Poco_Sostenuto%3B_Vivace.mp3"
+              },
+              {
+                "name": "2. Allegretto",
+                "imslp_number": 729189,
+                "imslp_link": "https://imslp.org/images/4/4d/PMLP1600-09.02._Symphony_No._7_In_A_Major%2C_Op._92-_Second_Movement_-_Allegretto.mp3"
+              },
+              {
+                "name": "3. Presto",
+                "imslp_number": 729190,
+                "imslp_link": "https://imslp.org/images/a/aa/PMLP1600-10.01._Symphony_No._7_In_A_Major%2C_Op._92-_Third_Movement_-_Presto%3B_Assai_Meno_Presto%3B_Presto.mp3"
+              },
+              {
+                "name": "4. Allegro con brio",
+                "imslp_number": 729191,
+                "imslp_link": "https://imslp.org/images/5/5d/PMLP1600-10.02._Symphony_No._7_In_A_Major%2C_Op._92-_Fourth_Movement_-_Allegro_Con_Brio.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Symphony of the Air, Leopold Stokowski",
+            "publisher": "United Artists Records. USLP 0007.",
+            "year": "1961",
+            "recording_files": [
+              {
+                "name": "1. Poco sostenuto - Vivace",
+                "imslp_number": 723372,
+                "imslp_link": "https://imslp.org/images/f/fd/PMLP1600-01.01._First_Movement-_Poco_sostenuto_-_Vivace.mp3"
+              },
+              {
+                "name": "2. Allegretto",
+                "imslp_number": 723373,
+                "imslp_link": "https://imslp.org/images/3/3b/PMLP1600-01.02._Second_Movement-_Allegretto.mp3"
+              },
+              {
+                "name": "3. Presto",
+                "imslp_number": 723374,
+                "imslp_link": "https://imslp.org/images/6/65/PMLP1600-02.01._Third_Movement-_Presto.mp3"
+              },
+              {
+                "name": "4. Allegro con brio",
+                "imslp_number": 723375,
+                "imslp_link": "https://imslp.org/images/5/59/PMLP1600-02.02._Fourth_Movement-_Allegro_Con_Brio.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Philharmonia Orchestra, Otto Klemperer",
+            "publisher": "Angel Records. RL-32114.",
+            "year": "1961",
+            "recording_files": [
+              {
+                "name": "1. Poco sostenuto - Vivace",
+                "imslp_number": 730987,
+                "imslp_link": "https://imslp.org/images/8/88/PMLP1600-01.01._Band_1_-_First_Movement_-_Poco_Sostenuto_-_Vivace.mp3"
+              },
+              {
+                "name": "2. Allegretto",
+                "imslp_number": 730988,
+                "imslp_link": "https://imslp.org/images/1/1c/PMLP1600-01.02._Band_2_-_Second_Movement_-_Allegretto.mp3"
+              },
+              {
+                "name": "3. Presto",
+                "imslp_number": 730989,
+                "imslp_link": "https://imslp.org/images/8/89/PMLP1600-02.01._Band_1_-_Third_Movement_-_Presto.mp3"
+              },
+              {
+                "name": "4. Allegro con brio",
+                "imslp_number": 730990,
+                "imslp_link": "https://imslp.org/images/d/d9/PMLP1600-02.02._Band_2_-_Fourth_Movement_-_Allegro_Con_Brio.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "London Symphony Orchestra, Josef Krips",
+            "publisher": "Everest. SDBR 3088.",
+            "year": "1961",
+            "recording_files": [
+              {
+                "name": "1. Poco sostenuto - Vivace",
+                "imslp_number": 736445,
+                "imslp_link": "https://imslp.org/images/a/a9/PMLP1600-01.01._Symphony_No._7_In_A_Major%2C_Op._92-_1st_Movement_-_Poco_Sostenuto%3B_Vivace.mp3"
+              },
+              {
+                "name": "2. Allegretto",
+                "imslp_number": 736446,
+                "imslp_link": "https://imslp.org/images/9/9b/PMLP1600-01.02._Symphony_No._7_In_A_Major%2C_Op._92-_2nd_Movement_-_Allegretto.mp3"
+              },
+              {
+                "name": "3. Presto",
+                "imslp_number": 736447,
+                "imslp_link": "https://imslp.org/images/b/bf/PMLP1600-02.01._Symphony_No._7_In_A_Major%2C_Op._92-_3rd_Movement_-_Presto%3B_Presto_Meno_Assai.mp3"
+              },
+              {
+                "name": "4. Allegro con brio",
+                "imslp_number": 736448,
+                "imslp_link": "https://imslp.org/images/2/23/PMLP1600-02.02._Symphony_No._7_In_A_Major%2C_Op._92-_4th_Movement_-_Finale-_Allegro_Con_Brio.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "New York Philharmonic, Leonard Bernstein",
+            "publisher": "Columbia Masterworks. MS 6612.",
+            "year": "1960",
+            "recording_files": [
+              {
+                "name": "1. Poco sostenuto - Vivace",
+                "imslp_number": 723384,
+                "imslp_link": "https://imslp.org/images/b/ba/PMLP1600-01.01._I._-_Poco_Sostenuto-_Vivace.mp3"
+              },
+              {
+                "name": "2. Allegretto",
+                "imslp_number": 723385,
+                "imslp_link": "https://imslp.org/images/b/b9/PMLP1600-01.02._II-_Allegretto.mp3"
+              },
+              {
+                "name": "3. Presto",
+                "imslp_number": 723386,
+                "imslp_link": "https://imslp.org/images/1/17/PMLP1600-02.01._III-_Presto.mp3"
+              },
+              {
+                "name": "4. Allegro con brio",
+                "imslp_number": 723387,
+                "imslp_link": "https://imslp.org/images/5/5d/PMLP1600-02.02._IV-_Allegro_Con_Brio.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Royal Philharmonic Orchestra, Thomas Beecham",
+            "publisher": "Capitol Records. SG 7223.",
+            "year": "1959",
+            "recording_files": [
+              {
+                "name": "1. Poco sostenuto - Vivace",
+                "imslp_number": 723402,
+                "imslp_link": "https://imslp.org/images/5/51/PMLP1600-01.01._Poco_Sostenuto_-_Vivace.mp3"
+              },
+              {
+                "name": "2. Allegretto",
+                "imslp_number": 723403,
+                "imslp_link": "https://imslp.org/images/9/91/PMLP1600-01.02._Allegretto.mp3"
+              },
+              {
+                "name": "3. Presto",
+                "imslp_number": 723404,
+                "imslp_link": "https://imslp.org/images/7/78/PMLP1600-02.01._Presto_-_Assai_Meno_Presto_-_Presto_-_Assai_Meno_Presto_-_Allegro_Con_Brio.mp3"
+              },
+              {
+                "name": "4. Allegro con brio",
+                "imslp_number": 723405,
+                "imslp_link": "https://imslp.org/images/7/77/PMLP1600-02.02._Allegro_Con_Brio.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Columbia Symphony Orchestra, Bruno Walter",
+            "publisher": "Columbia Masterworks. MS 6082.",
+            "year": "1959",
+            "recording_files": [
+              {
+                "name": "1. Poco sostenuto - Vivace",
+                "imslp_number": 723413,
+                "imslp_link": "https://imslp.org/images/e/ef/PMLP1600-01.01._I-_Poco.mp3"
+              },
+              {
+                "name": "2. Allegretto",
+                "imslp_number": 723385,
+                "imslp_link": "https://imslp.org/images/b/b9/PMLP1600-01.02._II-_Allegretto.mp3"
+              },
+              {
+                "name": "3. Presto",
+                "imslp_number": 723386,
+                "imslp_link": "https://imslp.org/images/1/17/PMLP1600-02.01._III-_Presto.mp3"
+              },
+              {
+                "name": "4. Allegro con brio",
+                "imslp_number": 723416,
+                "imslp_link": "https://imslp.org/images/9/9e/PMLP1600-02.02._IV-_Allegro.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Philharmonia Orchestra, Guido Cantelli",
+            "publisher": "Regal. SREG 2011.",
+            "year": "1958",
+            "recording_files": [
+              {
+                "name": "1. Poco sostenuto - Vivace",
+                "imslp_number": 723409,
+                "imslp_link": "https://imslp.org/images/c/cf/PMLP1600-01.01._Symphony_No._7_In_A_Major_Op._92-_1st_Movement-_Poco_Sostenuto_-_Vivace.mp3"
+              },
+              {
+                "name": "2. Allegretto",
+                "imslp_number": 723410,
+                "imslp_link": "https://imslp.org/images/2/26/PMLP1600-01.02._Symphony_No._7_In_A_Major_Op._92-_2nd_Movement-_Allegretto.mp3"
+              },
+              {
+                "name": "3. Presto",
+                "imslp_number": 723411,
+                "imslp_link": "https://imslp.org/images/d/d9/PMLP1600-02.01._Symphony_No._7_In_A_Major_Op._92-_3rd_Movement-_Presto_-_Assai_Meno_Presto_-_Presto_-_Assai_Meno_Presto_-_Presto.mp3"
+              },
+              {
+                "name": "4. Allegro con brio",
+                "imslp_number": 723412,
+                "imslp_link": "https://imslp.org/images/5/52/PMLP1600-02.02._Symphony_No._7_In_A_Major_Op._92-_4th_Movement-_Allegro_Con_Brio.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Philharmonia Orchestra, Otto Klemperer",
+            "publisher": "Angel Records. ANG 35330.",
+            "year": "1957",
+            "recording_files": [
+              {
+                "name": "1. Poco sostenuto - Vivace",
+                "imslp_number": 723393,
+                "imslp_link": "https://imslp.org/images/b/ba/PMLP1600-01.01._Symphony_No._7_In_A_Major%2C_Op._92-_First_Movement-_Poco_Sostenuto_-_Vivace.mp3"
+              },
+              {
+                "name": "2. Allegretto",
+                "imslp_number": 723394,
+                "imslp_link": "https://imslp.org/images/b/b8/PMLP1600-01.02._Symphony_No._7_In_A_Major%2C_Op._92-_Second_Movement-_Allegretto.mp3"
+              },
+              {
+                "name": "3. Presto",
+                "imslp_number": 723399,
+                "imslp_link": "https://imslp.org/images/1/13/PMLP1600-02.01._Symphony_No._7_In_A_Major%2C_Op._92-_Third_Movement-_Presto_-_Assai_Meno_Presto_-_Presto_-_Assai_Meno_Presto_-_Presto.mp3"
+              },
+              {
+                "name": "4. Allegro con brio",
+                "imslp_number": 723396,
+                "imslp_link": "https://imslp.org/images/a/a0/PMLP1600-02.02._Symphony_No._7_In_A_Major%2C_Op._92-_Fourth_Movement-_Allegro_Con_Brio.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "New York Philharmonic, Arturo Toscanini",
+            "publisher": "RCA Camden. CAL 352.",
+            "year": "1957",
+            "recording_files": [
+              {
+                "name": "1. Poco sostenuto - Vivace",
+                "imslp_number": 728529,
+                "imslp_link": "https://imslp.org/images/c/ca/PMLP1600-01.01._First_Movement-_Poco_Sostenuto-_Vivace.mp3"
+              },
+              {
+                "name": "2. Allegretto",
+                "imslp_number": 728537,
+                "imslp_link": "https://imslp.org/images/0/08/PMLP1600-a.01.02._Second_Movement_Allegretto.mp3"
+              },
+              {
+                "name": "3. Presto",
+                "imslp_number": 728531,
+                "imslp_link": "https://imslp.org/images/e/e1/PMLP1600-02.01._Third_Movement-_Presto_Meno_Assai%3B_Presto.mp3"
+              },
+              {
+                "name": "4. Allegro con brio",
+                "imslp_number": 728538,
+                "imslp_link": "https://imslp.org/images/1/12/PMLP1600-a.02.02._Fourth_Movement_Allegro_Con_Brio.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "New York Philharmonic, Bruno Walter",
+            "publisher": "Columbia Masterworks. ML 4414.",
+            "year": "1951",
+            "recording_files": [
+              {
+                "name": "1. Poco sostenuto - Vivace",
+                "imslp_number": 723393,
+                "imslp_link": "https://imslp.org/images/b/ba/PMLP1600-01.01._Symphony_No._7_In_A_Major%2C_Op._92-_First_Movement-_Poco_Sostenuto_-_Vivace.mp3"
+              },
+              {
+                "name": "2. Allegretto",
+                "imslp_number": 723394,
+                "imslp_link": "https://imslp.org/images/b/b8/PMLP1600-01.02._Symphony_No._7_In_A_Major%2C_Op._92-_Second_Movement-_Allegretto.mp3"
+              },
+              {
+                "name": "3. Presto",
+                "imslp_number": 723395,
+                "imslp_link": "https://imslp.org/images/4/4c/PMLP1600-02.01._Symphony_No._7_In_A_Major%2C_Op._92-_Third_Movement-_Presto_%28Scherzo%29.mp3"
+              },
+              {
+                "name": "4. Allegro con brio",
+                "imslp_number": 723396,
+                "imslp_link": "https://imslp.org/images/a/a0/PMLP1600-02.02._Symphony_No._7_In_A_Major%2C_Op._92-_Fourth_Movement-_Allegro_Con_Brio.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Royal Concertgebouw Orchestra, Erich Kleiber",
+            "publisher": "London Records. LLP 240.",
+            "year": "1950",
+            "recording_files": [
+              {
+                "name": "1. Poco sostenuto - Vivace",
+                "imslp_number": 736450,
+                "imslp_link": "https://imslp.org/images/0/0f/PMLP1600-01.01._Symphony_No.7_In_A_Major_Opus_92-_1st_Mov._Poco_Sostenuto-Vivace.mp3"
+              },
+              {
+                "name": "2. Allegretto",
+                "imslp_number": 736451,
+                "imslp_link": "https://imslp.org/images/b/b5/PMLP1600-01.02._Symphony_No.7_In_A_Major_Opus_92-_2nd_Mov._Allegretto.mp3"
+              },
+              {
+                "name": "3. Presto",
+                "imslp_number": 736452,
+                "imslp_link": "https://imslp.org/images/7/79/PMLP1600-02.01._Symphony_No.7_In_A_Major_Opus_92-_3rd_Mov._Presto.mp3"
+              },
+              {
+                "name": "4. Allegro con brio",
+                "imslp_number": 736453,
+                "imslp_link": "https://imslp.org/images/8/8c/PMLP1600-02.02._Symphony_No.7_In_A_Major_Opus_92-_4th_Mov._Allegro_Con_Brio.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Philadelphia Orchestra, Eugene Ormandy",
+            "publisher": "Columbia. MM 557.",
+            "year": "1945",
+            "recording_files": [
+              {
+                "name": "1. Poco sostenuto - Vivace",
+                "imslp_number": 723376,
+                "imslp_link": "https://imslp.org/images/c/ca/PMLP1600-01.I.PocoSostenutoVivace.mp3"
+              },
+              {
+                "name": "2. Allegretto",
+                "imslp_number": 723377,
+                "imslp_link": "https://imslp.org/images/9/90/PMLP1600-02.Ii.Allegretto.mp3"
+              },
+              {
+                "name": "3. Presto",
+                "imslp_number": 723378,
+                "imslp_link": "https://imslp.org/images/3/3b/PMLP1600-03.Iii.Presto.mp3"
+              },
+              {
+                "name": "4. Allegro con brio",
+                "imslp_number": 723379,
+                "imslp_link": "https://imslp.org/images/7/7c/PMLP1600-04.Iv.AllegroConMoto.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "New York Philharmonic, Arturo Toscanini",
+            "publisher": "RCA Victor Red Seal. LCT-1013.",
+            "year": "1936",
+            "recording_files": [
+              {
+                "name": "1. Poco sostenuto - Vivace",
+                "imslp_number": 711680,
+                "imslp_link": "https://imslp.org/images/6/60/PMLP1600-01.01._First_Movemt.mp3"
+              },
+              {
+                "name": "2. Allegretto",
+                "imslp_number": 711681,
+                "imslp_link": "https://imslp.org/images/b/b7/PMLP1600-01.02._Second_Movement.mp3"
+              },
+              {
+                "name": "3. Presto",
+                "imslp_number": 711682,
+                "imslp_link": "https://imslp.org/images/6/6c/PMLP1600-02.01._Third_Movement.mp3"
+              },
+              {
+                "name": "4. Allegro con brio",
+                "imslp_number": 711683,
+                "imslp_link": "https://imslp.org/images/f/fc/PMLP1600-02.02._Fourth_Movement.mp3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Symphony No.8, Op.93",
+        "recordings": [
+          {
+            "performers": "London Symphony Orchestra, Josef Krips",
+            "publisher": "Everest. SDBR 3089.",
+            "year": "1962",
+            "recording_files": [
+              {
+                "name": "1. Allegro vivace e con brio",
+                "imslp_number": 736422,
+                "imslp_link": "https://imslp.org/images/6/64/PMLP1605-02.01._Symphony_No._8_In_F_Major%2C_Op._93-_1st_Movement_-_Allegro_Vivace_E_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Allegretto scherzando",
+                "imslp_number": 736423,
+                "imslp_link": "https://imslp.org/images/b/b8/PMLP1605-02.02._Symphony_No._8_In_F_Major%2C_Op._93-_2nd_Movement_-_Allegreto_Scherzando.mp3"
+              },
+              {
+                "name": "3. Tempo di Menuetto",
+                "imslp_number": 736424,
+                "imslp_link": "https://imslp.org/images/4/48/PMLP1605-02.03._Symphony_No._8_In_F_Major%2C_Op._93-_3rd_Movement_-_Tempo_Di_Minuetto.mp3"
+              },
+              {
+                "name": "4. Allegro vivace",
+                "imslp_number": 736425,
+                "imslp_link": "https://imslp.org/images/5/56/PMLP1605-02.04._Symphony_No._8_In_F_Major%2C_Op._93-_4th_Movement_-_Finale-_Allegro_Vivace.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Royal Philharmonic Orchestra, Ren\u00e9 Leibowitz",
+            "publisher": "Reader's Digest. RDA-6 (1-7).",
+            "year": "1961",
+            "recording_files": [
+              {
+                "name": "1. Allegro vivace e con brio",
+                "imslp_number": 729180,
+                "imslp_link": "https://imslp.org/images/7/7c/PMLP1605-11.01._Symphony_No._8_In_F_Major%2C_Op._93-_First_Movement_-_Allegro_Vivace_E_Con_Brio.mp3"
+              },
+              {
+                "name": "2. Allegretto scherzando",
+                "imslp_number": 729181,
+                "imslp_link": "https://imslp.org/images/3/32/PMLP1605-11.02._Symphony_No._8_In_F_Major%2C_Op._93-_Second_Movement_-_Allegretto_Scherzando.mp3"
+              },
+              {
+                "name": "3. Tempo di Menuetto",
+                "imslp_number": 729182,
+                "imslp_link": "https://imslp.org/images/4/46/PMLP1605-11.03._Symphony_No._8_In_F_Major%2C_Op._93-_Third_Movement_-_Tempo_Di_Menuetto.mp3"
+              },
+              {
+                "name": "4. Allegro vivace",
+                "imslp_number": 729183,
+                "imslp_link": "https://imslp.org/images/4/4e/PMLP1605-11.04._Symphony_No._8_In_F_Major%2C_Op._93-_Fourth_Movement_-_Allegro_Vivace.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Orchestre de la Suisse Romande, Ernest Ansermet",
+            "publisher": "London Records. STS 15032.",
+            "year": "1956",
+            "recording_files": [
+              {
+                "name": "1. Allegro vivace e con brio",
+                "imslp_number": 735785,
+                "imslp_link": "https://imslp.org/images/6/6a/PMLP1605-02.01._Beethoven-_Symphony_No._8_In_F%2C_Op._93-_Allegro_vivace.mp3"
+              },
+              {
+                "name": "2. Allegretto scherzando",
+                "imslp_number": 735786,
+                "imslp_link": "https://imslp.org/images/f/fb/PMLP1605-02.02._Beethoven-_Symphony_No._8_In_F%2C_Op._93-_Allegretto_scherzando.mp3"
+              },
+              {
+                "name": "3. Tempo di Menuetto",
+                "imslp_number": 735787,
+                "imslp_link": "https://imslp.org/images/2/28/PMLP1605-02.03._Beethoven-_Symphony_No._8_In_F%2C_Op._93-_Tempo_di_menuetto.mp3"
+              },
+              {
+                "name": "4. Allegro vivace",
+                "imslp_number": 735788,
+                "imslp_link": "https://imslp.org/images/7/7c/PMLP1605-02.04._Beethoven-_Symphony_No._8_In_F%2C_Op._93-_Allegro_vivace.mp3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Symphony No.9, Op.125",
+        "recordings": [
+          {
+            "performers": "Inge Borkh, Ruth Siewert, Richard Lewis, Ludwig Weber, Beecham Choral Society, Royal Philharmonic Orchestra, Ren\u00e9 Leibowitz",
+            "publisher": "Reader's Digest. RDA-6 (1-7).",
+            "year": "1961",
+            "recording_files": [
+              {
+                "name": "1. Allegro ma non troppo, un poco maestoso",
+                "imslp_number": 729208,
+                "imslp_link": "https://imslp.org/images/2/2d/PMLP1607-12.01._Symphony_No._9_In_D_Major%2C_Op._125_%28%22Choral%22%29-_First_Movement_-_Allegro_Ma_Non_Troppo%2C_Un_Poco_Maestoso.mp3"
+              },
+              {
+                "name": "2. Scherzo. Molto vivace - Presto",
+                "imslp_number": 729209,
+                "imslp_link": "https://imslp.org/images/b/be/PMLP1607-13.01._Symphony_No._9_In_D_Major%2C_Op._125_%28%22Choral%22%29-_Second_Movement_-_Molto_Vivace%3B_Presto.mp3"
+              },
+              {
+                "name": "3. Adagio molto e cantabile",
+                "imslp_number": 729210,
+                "imslp_link": "https://imslp.org/images/a/ae/PMLP1607-13.02._Symphony_No._9_In_D_Major%2C_Op._125_%28%22Choral%22%29-_Third_Movement_-_Adagio_Molto_E_Cantabile%3B_Andante_Moderato%3B_Adagio.mp3"
+              },
+              {
+                "name": "4. Presto",
+                "imslp_number": 729211,
+                "imslp_link": "https://imslp.org/images/4/44/PMLP1607-14.01._Symphony_No._9_In_D_Major%2C_Op._125_%28%22Choral%22%29-_Fourth_Movement_-_Presto%3B_Allegro_Ma_Non_Troppo%3B_Allegro_Assai%3B_Presto%3B_Allegro_Assai_Vivace%2C_Alla_Marcia%3B_Andante_Maestoso%3B_Allegro_Energico_Sempre_Ben_Marcato%3B_Allegro_Ma_Non....mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Otto Klemperer, Royal Concertgebouw Orchestra, Amsterdam Toonkunsktkoor, Gr\u00e9 Brouwenstijn, Annie Hermes, Ernst Haefliger, Hans Wilbrink",
+            "publisher": "Amersterdam: AVRO.",
+            "year": "1956",
+            "recording_files": [
+              {
+                "name": "1. Allegro ma non troppo, un poco maestoso",
+                "imslp_number": 484062,
+                "imslp_link": "https://imslp.org/images/2/2a/PMLP01607-beethoven-9-01-concertgebouw-klemperer-1956-16048.mp3"
+              },
+              {
+                "name": "2. Scherzo. Molto vivace - Presto",
+                "imslp_number": 484063,
+                "imslp_link": "https://imslp.org/images/1/1a/PMLP01607-beethoven-9-02-concertgebouw-klemperer-1956-16048.mp3"
+              },
+              {
+                "name": "3. Adagio molto e cantabile",
+                "imslp_number": 484064,
+                "imslp_link": "https://imslp.org/images/a/a2/PMLP01607-beethoven-9-03-concertgebouw-klemperer-1956-16048.mp3"
+              },
+              {
+                "name": "4. Presto",
+                "imslp_number": 484065,
+                "imslp_link": "https://imslp.org/images/1/14/PMLP01607-beethoven-9-04-concertgebouw-klemperer-1956-16048.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Bayreuth Festival Orchestra, Bayreuth Festival Chorus, Wilhelm Furtw\u00e4ngler, Elisabeth Schwarzkopf, Elisabeth H\u00f6ngen, Hans Hopf, Otto Edelmann",
+            "publisher": "Seraphim. IB 6068.",
+            "year": "1955",
+            "recording_files": [
+              {
+                "name": "1. Allegro ma non troppo, un poco maestoso",
+                "imslp_number": 736777,
+                "imslp_link": "https://imslp.org/images/9/9a/PMLP1607-01.01._1._Allegro_Ma_Non_Troppo%2C_Un_Poco_Maestoso.mp3"
+              },
+              {
+                "name": "2. Scherzo. Molto vivace - Presto",
+                "imslp_number": 736778,
+                "imslp_link": "https://imslp.org/images/9/9d/PMLP1607-02.01._2._Molto_Vivace_%28Scherzo%29.mp3"
+              },
+              {
+                "name": "3. Adagio molto e cantabile",
+                "imslp_number": 736779,
+                "imslp_link": "https://imslp.org/images/e/e2/PMLP1607-03.01._3._Adagio_Molto_E_Cantabile_-Andante_Moderato.mp3"
+              },
+              {
+                "name": "4. Presto",
+                "imslp_number": 736780,
+                "imslp_link": "https://imslp.org/images/a/a6/PMLP1607-04.01._4._Presto-Allegro_Ma_Non_Troppo-_Allegro_Assai_-_Presto.mp3"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "composer": "Johannes Brahms",
+    "compositions": [
+      {
+        "title": "Ein Deutsches Requiem, Op.45",
+        "recordings": [
+          {
+            "performers": "Berliner Philharmoniker, Rudolf Kempe, Dietrich Fischer-Dieskau, Elisabeth Gr\u00fcmmer, Chor der St. Hedwigs-Kathedrale",
+            "publisher": "Club national du disque. CND 593.",
+            "year": "1955",
+            "recording_files": [
+              {
+                "name": "Side 1",
+                "imslp_number": 598907,
+                "imslp_link": "https://imslp.org/images/6/62/PMLP11297-Brahms_J.%2C_Ein_Deutsches_Requiem%2C_op._45_-I--_dir._Rudolf_Kempe_-_CND_593_%281955%29.mp3"
+              },
+              {
+                "name": "Side 2",
+                "imslp_number": 598908,
+                "imslp_link": "https://imslp.org/images/d/d4/PMLP11297-Brahms_J.%2C_Ein_Deutsches_Requiem%2C_op._45_-II-_-_dir._Rudolf_Kempe_-_CND_593_%281955%29.mp3"
+              },
+              {
+                "name": "Side 3",
+                "imslp_number": 598909,
+                "imslp_link": "https://imslp.org/images/d/d8/PMLP11297-Brahms_J.%2C_Ein_Deutsches_Requiem%2C_op._45_-III-_-_dir._Rudolf_Kempe_-_CND_593_%281955%29.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Berliner Philharmoniker, Fritz Lehmann, Maria Stader, Otto Wiener, Chor der St. Hedwigs-Kathedrale, Berlin Motet Choir",
+            "publisher": "Decca. DX 136.",
+            "year": "1955",
+            "recording_files": [
+              {
+                "name": "1. Selig sind, die da Leid tragen",
+                "imslp_number": 769749,
+                "imslp_link": "https://imslp.org/images/8/8c/PMLP11297-01.01._I._Selig_sind%2C_die_da_Leid_tragen.mp3"
+              },
+              {
+                "name": "2. Denn alles Fleisch, es ist wie Gras (Part 1)",
+                "imslp_number": 769750,
+                "imslp_link": "https://imslp.org/images/d/d2/PMLP11297-01.02._II._Denn_alles_Fleisch_es_ist_wie_Gras_%28Pt._1%29.mp3"
+              },
+              {
+                "name": "2. Denn alles Fleisch, es ist wie Gras (Part 2)",
+                "imslp_number": 769751,
+                "imslp_link": "https://imslp.org/images/8/88/PMLP11297-02.01._II._Denn_alles_Fleisch_es_ist_wie_Gras_%28Pt._2%29.mp3"
+              },
+              {
+                "name": "3. Herr, lehre doch mich",
+                "imslp_number": 769752,
+                "imslp_link": "https://imslp.org/images/4/4c/PMLP11297-02.02._III._Herr%2C_lehre_doch_mich.mp3"
+              },
+              {
+                "name": "4. Wie lieblich sind deine Wohnungen",
+                "imslp_number": 769753,
+                "imslp_link": "https://imslp.org/images/1/16/PMLP11297-02.03._IV._Wie_lieblich_sind_deine_Wohnungen.mp3"
+              },
+              {
+                "name": "5. Ihr habt nun Traurigkeit",
+                "imslp_number": 769754,
+                "imslp_link": "https://imslp.org/images/b/b7/PMLP11297-03.01._V._Ihr_habt_nun_Traurigkeit.mp3"
+              },
+              {
+                "name": "6. Denn wir haben hie keine bleibende Statt",
+                "imslp_number": 769755,
+                "imslp_link": "https://imslp.org/images/b/bd/PMLP11297-03.02._VI._Denn_wir_haben_hie_keine_bleibende_Statt.mp3"
+              },
+              {
+                "name": "7. Selig sind die Toten",
+                "imslp_number": 769756,
+                "imslp_link": "https://imslp.org/images/7/75/PMLP11297-04.01._VII._Selig_sind_die_Toten.mp3"
+              }
+            ]
+          },
+          {
+            "performers": "Orchestre national de France, Paul Kletzki, Maria Stader, Dietrich Fischer-Dieskau",
+            "publisher": "Radiodiffusion-t\u00e9l\u00e9vision fran\u00e7aise.",
+            "year": "1952",
+            "recording_files": [
+              {
+                "name": "Nos.1-4",
+                "imslp_number": 423027,
+                "imslp_link": "https://imslp.org/images/8/84/PMLP11297-01_02_03_04_Brahms_Op45_FischerDieskau_ONRTF_Kletzki_05_06_1956.mp3"
+              },
+              {
+                "name": "Nos.5-7",
+                "imslp_number": 423131,
+                "imslp_link": "https://imslp.org/images/9/91/PMLP11297-05_06_07_Brahms_Op45_Stader_FischerDieskau_ONRTF_Kletzki_05_06_1956.mp3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Symphony No.1, Op.68",
+        "recordings": [
+          {
+            "performers": "Czech National Symphony Orchestra",
+            "publisher": "Musopen.",
+            "year": "2012",
+            "recording_files": [
+              {
+                "name": "1. Un poco sostenuto - Allegro",
+                "imslp_number": 831993,
+                "imslp_link": "https://imslp.org/images/1/15/PMLP1662-Symphony_No._1_in_C_Minor%2C_Op._68_-_I._Un_poco_sostenuto_-_Allegro.flac"
+              },
+              {
+                "name": "2. Andante sostenuto",
+                "imslp_number": 831992,
+                "imslp_link": "https://imslp.org/images/e/e6/PMLP1662-Symphony_No._1_in_C_Minor%2C_Op._68_-_II._Andante_sostenuto.flac"
+              },
+              {
+                "name": "3. Un poco allegretto e grazioso",
+                "imslp_number": 831991,
+                "imslp_link": "https://imslp.org/images/d/d7/PMLP1662-Symphony_No._1_in_C_Minor%2C_Op._68_-_III._Un_poco_allegretto_e_grazioso.flac"
+              },
+              {
+                "name": "4. Adagio - Piu\u0300 andante - Allegro non troppo ma con brio",
+                "imslp_number": 831994,
+                "imslp_link": "https://imslp.org/images/c/ce/PMLP1662-Symphony_No._1_in_C_Minor%2C_Op._68_-_IV._Adagio_-_Pi%C3%B9_andante_-_Allegro_non_troppo%2C_ma_con_brio.flac"
+              }
+            ]
+          },
+          {
+            "performers": "New York Philharmonic, Bruno Walter",
+            "publisher": "Philips. A 01625 R.",
+            "year": "1953",
+            "recording_files": [
+              {
+                "name": "1. Un poco sostenuto - Allegro",
+                "imslp_number": 718689,
+                "imslp_link": "https://imslp.org/images/4/4c/PMLP1662-01_Bruno_Walter_PhSONY_-_Brahms_symph_no_1_mov_1.mp3"
+              },
+              {
+                "name": "2. Andante sostenuto",
+                "imslp_number": 718690,
+                "imslp_link": "https://imslp.org/images/6/6f/PMLP1662-02_Bruno_Walter_PhSONY_-_Brahms_symph_no_1_mov_2.mp3"
+              },
+              {
+                "name": "3. Un poco Allegretto e grazioso",
+                "imslp_number": 718691,
+                "imslp_link": "https://imslp.org/images/5/52/PMLP1662-03_Bruno_Walter_PhSONY_-_Brahms_symph_no_1_mov_3.mp3"
+              },
+              {
+                "name": "4. Adagio - Piu Andante - Allegro non troppo ma con brio",
+                "imslp_number": 718692,
+                "imslp_link": "https://imslp.org/images/c/c1/PMLP1662-04_Bruno_Walter_PhSONY_-_Brahms_symph_no_1_mov_4.mp3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Symphony No.2, Op.73",
+        "recordings": [
+          {
+            "performers": "Czech National Symphony Orchestra",
+            "publisher": "Palo Alto: Musopen.",
+            "year": "2012",
+            "recording_files": [
+              {
+                "name": "1. Allegro non troppo",
+                "imslp_number": 246958,
+                "imslp_link": "https://imslp.org/images/0/0f/PMLP01697-Symphon_No._2_in_D_Major%2C_Op._73_-_I._Allegro_non_troppo.mp3"
+              },
+              {
+                "name": "2. Adagio non troppo",
+                "imslp_number": 246959,
+                "imslp_link": "https://imslp.org/images/7/7d/PMLP01697-Symphon_No._2_in_D_Major%2C_Op._73_-_II._Adagio_non_toppo.mp3"
+              },
+              {
+                "name": "3. Allegretto grazioso (quasi andantino)",
+                "imslp_number": 246960,
+                "imslp_link": "https://imslp.org/images/a/a7/PMLP01697-Symphon_No._2_in_D_Major%2C_Op._73_-_III._Allegretto_Grazioso_%28take_1%29.mp3"
+              },
+              {
+                "name": "4. Allegro con spirito",
+                "imslp_number": 246961,
+                "imslp_link": "https://imslp.org/images/b/b0/PMLP01697-Symphon_No._2_in_D_Major%2C_Op._73_-_IV._Allegro_Con_Spirito.mp3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Symphony No.3, Op.90",
+        "recordings": []
+      },
+      {
+        "title": "Symphony No.4, Op.98",
+        "recordings": [
+          {
+            "performers": "Czech National Symphony Orchestra",
+            "publisher": "Palo Alto: Musopen.",
+            "year": "2012",
+            "recording_files": [
+              {
+                "name": "1. Allegro non troppo",
+                "imslp_number": 246966,
+                "imslp_link": "https://imslp.org/images/1/12/PMLP01617-Symphony_No._4_in_E_Minor%2C_Op._98_-_I._Allegro_Non_Troppo.mp3"
+              },
+              {
+                "name": "2. Andante moderato",
+                "imslp_number": 246967,
+                "imslp_link": "https://imslp.org/images/9/9f/PMLP01617-Symphony_No._4_in_E_Minor%2C_Op._98_-_II._Andante_Moderato.mp3"
+              },
+              {
+                "name": "3. Allegro giocoso",
+                "imslp_number": 246968,
+                "imslp_link": "https://imslp.org/images/9/9a/PMLP01617-Symphony_No._4_in_E_Minor%2C_Op._98_-_III._Allegro_Giocoso.mp3"
+              },
+              {
+                "name": "4. Allegro energico e passionato",
+                "imslp_number": 246969,
+                "imslp_link": "https://imslp.org/images/0/09/PMLP01617-Symphony_No._4_in_E_Minor%2C_Op._98_-_IV._Allegro_Energico_e_Passionato.mp3"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "composer": "Anton Bruckner",
+    "compositions": [
+      {
+        "title": "Symphony No.5, WAB.105",
+        "recordings": []
+      }
+    ]
+  }
+]

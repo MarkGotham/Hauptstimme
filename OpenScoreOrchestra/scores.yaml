@@ -1,0 +1,372 @@
+- id: 1
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/01
+  name: Kyrie eleison
+  set_id: 1
+- id: 2
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/02
+  name: Christe eleison
+  set_id: 1
+- id: 3
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/03
+  name: Kyrie eleison
+  set_id: 1
+- id: 4
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/04
+  name: Gloria in excelsis. Et in terra pax
+  set_id: 1
+- id: 5
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/05
+  name: Laudamus te
+  set_id: 1
+- id: 6
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/06
+  name: Gratias agimus tibi
+  set_id: 1
+- id: 7
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/07a
+  name: Domine Deus
+  set_id: 1
+- id: 8
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/07b
+  name: Qui tollis peccata mundi
+  set_id: 1
+- id: 9
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/08
+  name: Qui sedes ad dexteram Patris
+  set_id: 1
+- id: 10
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/09a
+  name: Quoniam tu solus sanctus
+  set_id: 1
+- id: 11
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/09b
+  name: Cum Sancto Spiritu
+  set_id: 1
+- id: 12
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/10
+  name: Credo in unum Deum
+  set_id: 1
+- id: 13
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/11
+  name: Patrem omnipotentem
+  set_id: 1
+- id: 14
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/12
+  name: Et in unum Dominum
+  set_id: 1
+- id: 15
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/13
+  name: Et incarnatus est
+  set_id: 1
+- id: 16
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/14
+  name: Crucifixus
+  set_id: 1
+- id: 17
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/15
+  name: Et resurrexit
+  set_id: 1
+- id: 18
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/16
+  name: Et in Spiritum sanctum
+  set_id: 1
+- id: 19
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/17
+  name: Confiteor. Et expecto
+  set_id: 1
+- id: 20
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/18
+  name: Sanctus. Pleni sunt coeli
+  set_id: 1
+- id: 21
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/19,21
+  name: Osanna
+  set_id: 1
+- id: 22
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/20
+  name: Benedictus
+  set_id: 1
+- id: 23
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/22
+  name: Agnus Dei
+  set_id: 1
+- id: 24
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232/23
+  name: Dona nobis pacem
+  set_id: 1
+- id: 25
+  path: Bach,_Johann_Sebastian/Brandenburg_Concerto_No.3,_BWV.1048/1
+  name: Allegro
+  set_id: 2
+- id: 26
+  path: Bach,_Johann_Sebastian/Brandenburg_Concerto_No.3,_BWV.1048/2
+  name: Adagio
+  set_id: 2
+- id: 27
+  path: Bach,_Johann_Sebastian/Brandenburg_Concerto_No.3,_BWV.1048/3
+  name: Allegro
+  set_id: 2
+- id: 28
+  path: Bach,_Johann_Sebastian/Brandenburg_Concerto_No.4,_BWV.1049/1
+  name: Allegro
+  set_id: 3
+- id: 29
+  path: Bach,_Johann_Sebastian/Brandenburg_Concerto_No.4,_BWV.1049/2
+  name: Andante
+  set_id: 3
+- id: 30
+  path: Bach,_Johann_Sebastian/Brandenburg_Concerto_No.4,_BWV.1049/3
+  name: Presto
+  set_id: 3
+- id: 31
+  path: Beach,_Amy/Symphony_in_E_minor_(Gaelic),_Op.32/1
+  name: Allegro con fuoco
+  set_id: 4
+- id: 32
+  path: Beach,_Amy/Symphony_in_E_minor_(Gaelic),_Op.32/2
+  name: Alla Siciliana - Allegro vivace - Andante
+  set_id: 4
+- id: 33
+  path: Beach,_Amy/Symphony_in_E_minor_(Gaelic),_Op.32/3
+  name: Lento con molto espressione
+  set_id: 4
+- id: 34
+  path: Beach,_Amy/Symphony_in_E_minor_(Gaelic),_Op.32/4
+  name: Allegro di molto
+  set_id: 4
+- id: 35
+  path: Beethoven,_Ludwig_van/Symphony_No.1,_Op.21/1
+  name: "Adagio molto \u2013 Allegro con brio"
+  set_id: 5
+- id: 36
+  path: Beethoven,_Ludwig_van/Symphony_No.1,_Op.21/2
+  name: Andante cantabile con moto
+  set_id: 5
+- id: 37
+  path: Beethoven,_Ludwig_van/Symphony_No.1,_Op.21/3
+  name: Minuet. Allegro molto e vivace - Trio
+  set_id: 5
+- id: 38
+  path: Beethoven,_Ludwig_van/Symphony_No.1,_Op.21/4
+  name: "Finale. Adagio \u2013 Allegro molto e vivace"
+  set_id: 5
+- id: 39
+  path: Beethoven,_Ludwig_van/Symphony_No.2,_Op.36/1
+  name: "Adagio molto \u2014 Allegro con brio"
+  set_id: 6
+- id: 40
+  path: Beethoven,_Ludwig_van/Symphony_No.2,_Op.36/2
+  name: Larghetto
+  set_id: 6
+- id: 41
+  path: Beethoven,_Ludwig_van/Symphony_No.2,_Op.36/3
+  name: Scherzo. Allegro - Trio
+  set_id: 6
+- id: 42
+  path: Beethoven,_Ludwig_van/Symphony_No.2,_Op.36/4
+  name: Allegro molto
+  set_id: 6
+- id: 43
+  path: Beethoven,_Ludwig_van/Symphony_No.3,_Op.55/1
+  name: Allegro con brio
+  set_id: 7
+- id: 44
+  path: Beethoven,_Ludwig_van/Symphony_No.3,_Op.55/2
+  name: Marcia funebre. Adagio assai
+  set_id: 7
+- id: 45
+  path: Beethoven,_Ludwig_van/Symphony_No.3,_Op.55/3
+  name: "Scherzo. Allegro vivace \u2013 Trio"
+  set_id: 7
+- id: 46
+  path: Beethoven,_Ludwig_van/Symphony_No.3,_Op.55/4
+  name: Finale. Allegro molto
+  set_id: 7
+- id: 47
+  path: Beethoven,_Ludwig_van/Symphony_No.4,_Op.60/1
+  name: Adagio - Allegro vivace
+  set_id: 8
+- id: 48
+  path: Beethoven,_Ludwig_van/Symphony_No.4,_Op.60/2
+  name: Adagio
+  set_id: 8
+- id: 49
+  path: Beethoven,_Ludwig_van/Symphony_No.4,_Op.60/3
+  name: Allegro vivace
+  set_id: 8
+- id: 50
+  path: Beethoven,_Ludwig_van/Symphony_No.4,_Op.60/4
+  name: Allegro ma non troppo
+  set_id: 8
+- id: 51
+  path: Beethoven,_Ludwig_van/Symphony_No.5,_Op.67/1
+  name: Allegro con brio
+  set_id: 9
+- id: 52
+  path: Beethoven,_Ludwig_van/Symphony_No.5,_Op.67/2
+  name: Andante con moto
+  set_id: 9
+- id: 53
+  path: Beethoven,_Ludwig_van/Symphony_No.5,_Op.67/3
+  name: Scherzo. Allegro - Trio
+  set_id: 9
+- id: 54
+  path: Beethoven,_Ludwig_van/Symphony_No.5,_Op.67/4
+  name: Allegro
+  set_id: 9
+- id: 55
+  path: Beethoven,_Ludwig_van/Symphony_No.6,_Op.68/1
+  name: Allegro ma non troppo
+  set_id: 10
+- id: 56
+  path: Beethoven,_Ludwig_van/Symphony_No.6,_Op.68/2
+  name: Andante molto mosso
+  set_id: 10
+- id: 57
+  path: Beethoven,_Ludwig_van/Symphony_No.6,_Op.68/3
+  name: Allegro
+  set_id: 10
+- id: 58
+  path: Beethoven,_Ludwig_van/Symphony_No.6,_Op.68/4
+  name: Allegro
+  set_id: 10
+- id: 59
+  path: Beethoven,_Ludwig_van/Symphony_No.6,_Op.68/5
+  name: Allegretto
+  set_id: 10
+- id: 60
+  path: Beethoven,_Ludwig_van/Symphony_No.7,_Op.92/1
+  name: Poco sostenuto - Vivace
+  set_id: 11
+- id: 61
+  path: Beethoven,_Ludwig_van/Symphony_No.7,_Op.92/2
+  name: Allegretto
+  set_id: 11
+- id: 62
+  path: Beethoven,_Ludwig_van/Symphony_No.7,_Op.92/3
+  name: Presto
+  set_id: 11
+- id: 63
+  path: Beethoven,_Ludwig_van/Symphony_No.7,_Op.92/4
+  name: Allegro con brio
+  set_id: 11
+- id: 64
+  path: Beethoven,_Ludwig_van/Symphony_No.8,_Op.93/1
+  name: Allegro vivace e con brio
+  set_id: 12
+- id: 65
+  path: Beethoven,_Ludwig_van/Symphony_No.8,_Op.93/2
+  name: Allegretto scherzando
+  set_id: 12
+- id: 66
+  path: Beethoven,_Ludwig_van/Symphony_No.8,_Op.93/3
+  name: Tempo di Menuetto
+  set_id: 12
+- id: 67
+  path: Beethoven,_Ludwig_van/Symphony_No.8,_Op.93/4
+  name: Allegro vivace
+  set_id: 12
+- id: 68
+  path: Beethoven,_Ludwig_van/Symphony_No.9,_Op.125/1
+  name: Allegro ma non troppo, un poco maestoso
+  set_id: 13
+- id: 69
+  path: Beethoven,_Ludwig_van/Symphony_No.9,_Op.125/2
+  name: Scherzo. Molto vivace - Presto
+  set_id: 13
+- id: 70
+  path: Beethoven,_Ludwig_van/Symphony_No.9,_Op.125/3
+  name: Adagio molto e cantabile
+  set_id: 13
+- id: 71
+  path: Beethoven,_Ludwig_van/Symphony_No.9,_Op.125/4
+  name: Presto
+  set_id: 13
+- id: 72
+  path: Brahms,_Johannes/Ein_Deutsches_Requiem,_Op.45/1
+  name: Selig sind, die la Leid tragen
+  set_id: 14
+- id: 73
+  path: Brahms,_Johannes/Symphony_No.1,_Op.68/1
+  name: Un poco sostenuto - Allegro
+  set_id: 15
+- id: 74
+  path: Brahms,_Johannes/Symphony_No.1,_Op.68/2
+  name: Andante sostenuto
+  set_id: 15
+- id: 75
+  path: Brahms,_Johannes/Symphony_No.1,_Op.68/3
+  name: Un poco Allegretto e grazioso
+  set_id: 15
+- id: 76
+  path: Brahms,_Johannes/Symphony_No.1,_Op.68/4
+  name: Adagio - Piu Andante - Allegro non troppo ma con brio
+  set_id: 15
+- id: 77
+  path: Brahms,_Johannes/Symphony_No.2,_Op.73/1
+  name: Allegro non troppo
+  set_id: 16
+- id: 78
+  path: Brahms,_Johannes/Symphony_No.2,_Op.73/2
+  name: Adagio non troppo
+  set_id: 16
+- id: 79
+  path: Brahms,_Johannes/Symphony_No.2,_Op.73/3
+  name: Allegretto grazioso (quasi andantino)
+  set_id: 16
+- id: 80
+  path: Brahms,_Johannes/Symphony_No.2,_Op.73/4
+  name: Allegro con spirito
+  set_id: 16
+- id: 81
+  path: Brahms,_Johannes/Symphony_No.3,_Op.90/1
+  name: Allegro con brio
+  set_id: 17
+- id: 82
+  path: Brahms,_Johannes/Symphony_No.3,_Op.90/2
+  name: Andante
+  set_id: 17
+- id: 83
+  path: Brahms,_Johannes/Symphony_No.3,_Op.90/3
+  name: Poco allegretto
+  set_id: 17
+- id: 84
+  path: Brahms,_Johannes/Symphony_No.3,_Op.90/4
+  name: Allegro
+  set_id: 17
+- id: 85
+  path: Brahms,_Johannes/Symphony_No.4,_Op.98/1
+  name: Allegro non troppo
+  set_id: 18
+- id: 86
+  path: Brahms,_Johannes/Symphony_No.4,_Op.98/2
+  name: Andante moderato
+  set_id: 18
+- id: 87
+  path: Brahms,_Johannes/Symphony_No.4,_Op.98/3
+  name: Allegro giocoso
+  set_id: 18
+- id: 88
+  path: Brahms,_Johannes/Symphony_No.4,_Op.98/4
+  name: Allegro energico e passionato
+  set_id: 18
+- id: 89
+  path: Bruckner,_Anton/Symphony_No.5,_WAB.105/1
+  name: Adagio - Allegro
+  set_id: 19
+- id: 90
+  path: Bruckner,_Anton/Symphony_No.5,_WAB.105/2
+  name: Adagio. Sehr langsam
+  set_id: 19
+- id: 91
+  path: Bruckner,_Anton/Symphony_No.5,_WAB.105/3a
+  name: Scherzo. Molto vivace (schnell)
+  set_id: 19
+- id: 92
+  path: Bruckner,_Anton/Symphony_No.5,_WAB.105/3b
+  name: Trio. Im gleichen Tempo
+  set_id: 19
+- id: 93
+  path: Bruckner,_Anton/Symphony_No.5,_WAB.105/4
+  name: Adagio - Allegro moderato
+  set_id: 19

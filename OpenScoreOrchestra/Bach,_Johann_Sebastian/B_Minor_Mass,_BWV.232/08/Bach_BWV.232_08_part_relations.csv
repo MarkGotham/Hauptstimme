@@ -1,0 +1,92 @@
+qstamp_start,qstamp_end,Oboe d’amore 1,Violin 1,Violin 2,Viola,Alto solo,Continuo
+0.0,1.75,Main Part,P4(Violin 2)&P8(Viola)&P6(Continuo),P4(Violin 1)&P4(Viola)&P3(Continuo),P8(Violin 1)&P4(Violin 2)&P6(Continuo),,P6(Violin 1)&P3(Violin 2)&P6(Viola)
+1.75,3.0,,Main Part,,,,
+3.0,4.75,Main Part,,,,,
+4.75,6.0,,Main Part,,,,
+6.0,11.25,Main Part,,,,,
+11.25,12.0,,Main Part,P6(Main),,,
+12.0,13.75,Main Part,,,,,
+13.75,15.0,,Main Part,,,,
+15.0,16.75,Main Part,P8(Continuo),,,,P8(Violin 1)
+16.75,18.0,,Main Part,,,,
+18.0,21.75,Main Part,,,,,
+21.75,28.25,Main Part,,,,,
+28.25,30.0,,Main Part,P3(Viola),P3(Violin 2),,
+30.0,36.75,Main Part,,,,,
+36.75,38.5,,Main Part,,,,
+38.5,47.25,Main Part,,,,,
+47.25,48.0,,Main Part,P4(Main),,,
+48.0,54.0,Main Part,,,,,
+54.0,55.5,,P4(Violin 2)&P6(Viola)&P8(Continuo),P4(Violin 1)&P3(Viola)&P4(Continuo),P6(Violin 1)&P3(Violin 2)&P6(Continuo),Main Part,P8(Violin 1)&P4(Violin 2)&P6(Viola)
+55.5,57.0,Main Part,,,,,
+57.0,58.5,,P4(Violin 2)&P6(Viola)&P8(Continuo),P4(Violin 1)&P3(Viola)&P4(Continuo),P6(Violin 1)&P3(Violin 2)&P6(Continuo),Main Part,P8(Violin 1)&P4(Violin 2)&P6(Viola)
+58.5,60.0,Main Part,,P4(Viola)&P4(Continuo),P4(Violin 2),,P4(Violin 2)
+60.0,65.25,U(Main),,,,Main Part,
+65.25,66.0,,Main Part,P6(Main),,,
+66.0,67.5,,P6(Viola),,P6(Violin 1),Main Part,
+67.5,69.0,Main Part,,,,,
+69.0,70.5,,P2(Violin 2)&P6(Viola)&P4(Continuo),P2(Violin 1)&P5(Viola)&P3(Continuo),P6(Violin 1)&P5(Violin 2)&P3(Continuo),Main Part,P4(Violin 1)&P3(Violin 2)&P3(Viola)
+70.5,72.0,Main Part,,,,,
+72.0,74.5,,,,,Main Part,
+74.5,77.25,Main Part,,,,,
+77.25,78.0,,Main Part,P4(Main),,,
+78.0,79.5,,P4(Violin 2)&P4(Viola),P4(Violin 1)&P7(Viola),P4(Violin 1)&P7(Violin 2),Main Part,
+79.5,81.0,Main Part,,,,,
+81.0,82.5,,P4(Violin 2)&P6(Viola)&P8(Continuo),P4(Violin 1)&P3(Viola)&P4(Continuo),P6(Violin 1)&P3(Violin 2)&P6(Continuo),Main Part,P8(Violin 1)&P4(Violin 2)&P6(Viola)
+82.5,84.0,Main Part,,,,,
+84.0,90.0,,,,,Main Part,
+90.0,91.75,Main Part,P4(Violin 2),P4(Violin 1),P3(Continuo),,P3(Viola)
+91.75,93.0,,Main Part,P4(Main),,,
+93.0,94.75,Main Part,,,,,
+94.75,96.0,,Main Part,,,,
+96.0,101.25,Main Part,,,,,
+101.25,102.0,,Main Part,P3(Viola),P3(Violin 2),,
+102.0,103.75,Main Part,,,,,
+103.75,105.0,,Main Part,,,,
+105.0,106.75,Main Part,P8(Continuo),,,,P8(Violin 1)
+106.75,108.0,,Main Part,,,,
+108.0,111.75,Main Part,,,,,
+111.75,118.25,Main Part,,,,,
+118.25,120.0,,Main Part,,,,
+120.0,129.25,Main Part,,,,,
+129.25,131.75,,,,,Main Part,
+131.75,133.0,Main Part,,,,,
+133.0,134.75,,,,,Main Part,
+134.75,135.5,Main Part,U(Violin 2)&P4(Viola),U(Violin 1)&P4(Viola),P4(Violin 1)&P4(Violin 2),,
+135.5,140.25,,,,,Main Part,
+140.25,141.25,,Main Part,P3(Main),,P4(Continuo),P4(Alto solo)
+141.25,149.75,,,,,Main Part,
+149.75,151.25,Main Part,,,,,
+151.25,161.25,,,,,Main Part,
+161.25,162.25,,Main Part,,,P2(Continuo),P2(Alto solo)
+162.25,166.25,,P3(Violin 2)&P5(Viola),P3(Violin 1)&P3(Viola),P5(Violin 1)&P3(Violin 2),Main Part,
+166.25,168.0,,Main Part,,,,
+168.0,169.75,Main Part,,,,,
+169.75,171.0,,Main Part,P3(Continuo),,,P3(Violin 2)
+171.0,172.75,Main Part,,,P3(Continuo),,P3(Viola)
+172.75,174.0,,Main Part,P6(Continuo),,,P6(Violin 2)
+174.0,179.25,Main Part,,,,,
+179.25,180.0,,Main Part,P5(Main)&P3(Viola),P3(Main)&P3(Violin 2),,
+180.0,181.75,Main Part,P3(Viola),,P3(Violin 1),,
+181.75,183.0,,Main Part,P3(Continuo),P3(Main),,P3(Violin 2)
+183.0,184.75,Main Part,P3(Violin 2)&P3(Viola),P3(Violin 1)&P5(Viola),P3(Violin 1)&P5(Violin 2),,
+184.75,186.0,,Main Part,,,,
+186.0,192.25,Main Part,,,,,
+192.25,204.0,,,,,Main Part,
+204.0,205.5,,P4(Violin 2)&P4(Viola)&P8(Continuo),P4(Violin 1)&P7(Viola)&P4(Continuo),P4(Violin 1)&P7(Violin 2)&P4(Continuo),Main Part,P8(Violin 1)&P4(Violin 2)&P4(Viola)
+205.5,207.0,Main Part,,,,,
+207.0,208.5,,P6(Violin 2)&P6(Viola)&P8(Continuo),P6(Violin 1)&U(Viola)&P6(Continuo),P6(Violin 1)&U(Violin 2)&P6(Continuo),Main Part,P8(Violin 1)&P6(Violin 2)&P6(Viola)
+208.5,210.0,Main Part,,P4(Viola)&P4(Continuo),P4(Violin 2),,P4(Violin 2)
+210.0,215.25,U(Main),,,,Main Part,
+215.25,216.25,P3(Alto solo)&P5(Continuo),Main Part,P6(Main),,P3(Oboe d’amore 1)&P7(Continuo),P5(Oboe d’amore 1)&P7(Alto solo)
+216.25,222.25,,,,,Main Part,
+222.25,225.75,,,,,Main Part,
+225.75,229.0,,Main Part,,,,
+229.0,239.75,,,,,Main Part,
+239.75,240.25,Main Part,,,,,
+240.25,242.25,,,,,Main Part,
+242.25,244.25,Main Part,,,,,
+244.25,246.0,,,,,Main Part,
+246.0,247.25,Main Part,,,,,
+247.25,249.0,,Main Part,P5(Main)&P3(Viola),P3(Violin 2),,
+249.0,257.25,Main Part,,,,,
