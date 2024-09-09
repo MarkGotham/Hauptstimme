@@ -1,0 +1,78 @@
+[
+  {
+    "ID": "1",
+    "count": 1,
+    "qstamp": 0.0,
+    "number": 1,
+    "name": "1",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      2
+    ]
+  },
+  {
+    "ID": "102",
+    "count": 102,
+    "qstamp": 303.0,
+    "number": 102,
+    "name": "102",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      103,
+      104
+    ]
+  },
+  {
+    "ID": "103",
+    "count": 103,
+    "qstamp": 306.0,
+    "number": 103,
+    "name": "103a",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": true,
+    "next": [
+      1
+    ]
+  },
+  {
+    "ID": "104",
+    "count": 104,
+    "qstamp": 309.0,
+    "number": 104,
+    "name": "104b",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      105
+    ]
+  },
+  {
+    "ID": "374",
+    "count": 374,
+    "qstamp": 1119.0,
+    "number": 374,
+    "name": "374",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      -1
+    ]
+  }
+]
