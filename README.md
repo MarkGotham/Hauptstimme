@@ -53,6 +53,8 @@ All of these cases include the files in the format `<identifier>` plus:
 - `_melody.mxl`: The annotated melody segments stitched together to form a single-stave 'melody score'.
 - `.mm.json`: The compressed ['measure map'](https://dl.acm.org/doi/10.1145/3625135.3625136) - a lightweight representation of the bar information to enable alignment with other corpora.
 - `.csv`: A 'lightweight' .csv file extracted from the full score (with repeats expanded), indicating the highest pitch being played by each instrument part at every timestamp in which a change occurs in the score.
+- `_part_relations.csv`: A derived analysis of the interplay between the score parts in each Hauptstimme annotation block.
+- `_alignment.csv`: An alignment table containing timestamps for each score note onset in a set of public domain / open license audio recordings obtained from IMSLP. (These files only exist for scores where such recordings are available.)
 
 The filename structure is as follows:
 ```
@@ -62,7 +64,7 @@ The filename structure is as follows:
 ## Code Summary
 
 We provide the `hauptstimme` package as well as the following code:
-- `main.py`: Take a score's MuseScore file and produces the rest of the files specified above.
+- `main.py`: Take a score's MuseScore file and produces the rest of the files specified above (except the alignment table).
 - `build_corpus.py`: Produce all corpus files from each score's MuseScore file.
 - `get_part_relations.py`: Take a score's MusicXML file and produce a part relationships summary.
 - `compare_segmentations.py`: Take a score's MusicXML file and perform a comparison of the Hauptstimme annotation points to a three different sets of automatic segmentation points (novelty-based (tempogram features), novelty-based (chromagram features), and changepoint detection-based).

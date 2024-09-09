@@ -132,8 +132,8 @@ def split_part(
                 ).name.replace("-", "b")
             # This works in almost all cases but manual change is
             # needed for the occasional horns 3-4
-            new_part1.partName = f"{trans} {i.classes[0]} 1"
-            new_part2.partName = f"{trans} {i.classes[0]} 2"
+            new_part1.partName = f"{trans} {i.classes[0]} 1".strip()
+            new_part2.partName = f"{trans} {i.classes[0]} 2".strip()
             new_part1.partAbbreviation = i.instrumentAbbreviation + " 1"  # type: ignore
             new_part2.partAbbreviation = i.instrumentAbbreviation + " 2"  # type: ignore
 
