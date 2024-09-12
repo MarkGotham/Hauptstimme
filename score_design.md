@@ -50,6 +50,7 @@
           - If present in the original source 
           - In square brackets where clarification is needed (e.g., `Tempo I` is often not enough).
       - Here, as elsewhere, avoid any "hidden" markings.
+        - Except: 'tuplets' (e.g., Brahms 1/iv). Show the first '6' or '12' and then hide thereafter.
 - Non-tempo textual markings:
   - Haupstimme annotations usually as lyrics, as described in [this explanation doc](./annotation.md).
   - `Stave text` for instrument-specific markings like `arco`.
