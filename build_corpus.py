@@ -213,10 +213,10 @@ if __name__ == "__main__":
     get_corpus_alignment_tables()
 
     user_region = "EU"
-    create_audio_metadata(user_region)
-    create_score_metadata()
-    match_audios_to_scores()
-    get_yaml_files()
-    make_contents()
+    # create_audio_metadata(user_region)
+    # create_score_metadata()
+    # match_audios_to_scores()
     # Manual cleanup for score names and audio-score matching will be
     # required
+    get_yaml_files()
+    make_contents()

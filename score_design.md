@@ -27,14 +27,13 @@
       - This does not convert reliably, and adding a new part creates its own problems.
     - Where that is not possible in MS4, a manual workaround is required.
       - Brahms 1/iii has horns and trumpets in B _natural_, which means setting the transposition manually.
-- Stave size. Manually set for each work to:
-  - Attempt approximate consistency across multi-movement works.
-  - Use the largest stave size that fits within the page, including the large lyric annotations ... within reason.
-    - As MuseScore does not allow variable stave size per page, we accept the occasional overflow to make the majority of pages plausible.
+- Stave size:
+  - Manually set for each work to use the largest stave size that fits within the page, including the large lyric annotations while maintaining approximate consistency across multi-movement works.
   - Again, if anyone uses these scores in performance, they may wish to adjust. 
   - More formally:
-    - Strong preference for not overfilling page. 
-    - Medium preference for avoiding under-fill. 
+    - Strong preference for not overfilling page.
+    - Strong preference for approximate consistency across multi-movement works.
+    - Medium preference for not underfilling.
     - Medium preference for the same number of staves on each page and weak preference that this includes the last page.
 - Copy the named (public domain) source edition exactly, except in limited cases like:
   - Some variation in "crescendo" vs "cresc." vs "hairpin" etc.
@@ -46,11 +45,12 @@
     - Tempo markings:
       - Tempos etc. exactly as in the source and properly encoded in MuseScore (mostly successful in conversion).
         - Tempo text (e.g., `Allegro`) is only ever included if present in the original source.
-        - Tempo in metronome mark is included
-          - If present in the original source 
-          - In square brackets where clarification is needed (e.g., `Tempo I` is often not enough).
-      - Here, as elsewhere, avoid any "hidden" markings.
-        - Except: 'tuplets' (e.g., Brahms 1/iv). Show the first '6' or '12' and then hide thereafter.
+        - Tempo in metronome mark is included:
+          - If present in the original source.
+          - In square brackets where clarification is needed.
+      - Here, as elsewhere, avoid any "hidden" markings, except:
+        - 'tuplets' (e.g., Brahms 1/iv). Show the first '6' or '12' and then hide thereafter.
+        - ornament markings (e.g., staccato) that are missing in the source but wanted for playback.
 - Non-tempo textual markings:
   - Haupstimme annotations usually as lyrics, as described in [this explanation doc](./annotation.md).
   - `Stave text` for instrument-specific markings like `arco`.

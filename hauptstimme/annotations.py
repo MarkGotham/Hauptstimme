@@ -820,7 +820,6 @@ class HauptstimmeAnnotations:
         # Metadata
         md = self.score.metadata
         md.movementName += " - Melody Score"
-        md.composer = self.score.metadata.composer
         melody_score.metadata = md
 
         if add_bass_part:

@@ -1,0 +1,123 @@
+[
+  {
+    "ID": "1",
+    "count": 1,
+    "qstamp": 0.0,
+    "number": 1,
+    "name": "1",
+    "time_signature": "2/4",
+    "nominal_length": 2.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      2
+    ]
+  },
+  {
+    "ID": "71",
+    "count": 71,
+    "qstamp": 140.0,
+    "number": 71,
+    "name": "71",
+    "time_signature": "6/8",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      72
+    ]
+  },
+  {
+    "ID": "87",
+    "count": 87,
+    "qstamp": 188.0,
+    "number": 87,
+    "name": "87",
+    "time_signature": "6/8",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": true,
+    "end_repeat": false,
+    "next": [
+      88
+    ]
+  },
+  {
+    "ID": "107",
+    "count": 107,
+    "qstamp": 248.0,
+    "number": 107,
+    "name": "107",
+    "time_signature": "6/8",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      108,
+      109
+    ]
+  },
+  {
+    "ID": "108",
+    "count": 108,
+    "qstamp": 251.0,
+    "number": 108,
+    "name": "108a",
+    "time_signature": "6/8",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": true,
+    "next": [
+      87
+    ]
+  },
+  {
+    "ID": "109",
+    "count": 109,
+    "qstamp": 254.0,
+    "number": 109,
+    "name": "109b",
+    "time_signature": "6/8",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      110
+    ]
+  },
+  {
+    "ID": "110",
+    "count": 110,
+    "qstamp": 257.0,
+    "number": 110,
+    "name": "110",
+    "time_signature": "2/4",
+    "nominal_length": 2.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      111
+    ]
+  },
+  {
+    "ID": "165",
+    "count": 165,
+    "qstamp": 367.0,
+    "number": 165,
+    "name": "165",
+    "time_signature": "2/4",
+    "nominal_length": 2.0,
+    "actual_length": 2.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      -1
+    ]
+  }
+]

@@ -335,8 +335,7 @@ def expand_score(
     try:
         path_parts = Path(score_mxl.parent).parts[-3:]
         score.metadata.composer = path_parts[0].replace("_", " ")
-        score.metadata.title = path_parts[1].replace("_", " ")
-        score.metadata.movementName = path_parts[1].replace("_", " ")
+        score.metadata.title = path_parts[1].split(",_")[0].replace("_", " ")
         score.metadata.movementNumber = path_parts[2]
         score.metadata.opusNumber = path_parts[1].split(",_")[1]
         score.metadata.copyright = "Score: CC0 1.0 Universal; Annotations: CC-By-SA"

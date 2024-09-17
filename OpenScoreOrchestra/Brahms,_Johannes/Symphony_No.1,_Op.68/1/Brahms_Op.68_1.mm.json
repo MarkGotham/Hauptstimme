@@ -1,0 +1,138 @@
+[
+  {
+    "ID": "1",
+    "count": 1,
+    "qstamp": 0.0,
+    "number": 1,
+    "name": "1",
+    "time_signature": "6/8",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      2
+    ]
+  },
+  {
+    "ID": "8",
+    "count": 8,
+    "qstamp": 21.0,
+    "number": 8,
+    "name": "8",
+    "time_signature": "9/8",
+    "nominal_length": 4.5,
+    "actual_length": 4.5,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      9
+    ]
+  },
+  {
+    "ID": "9",
+    "count": 9,
+    "qstamp": 25.5,
+    "number": 9,
+    "name": "9",
+    "time_signature": "6/8",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      10
+    ]
+  },
+  {
+    "ID": "40",
+    "count": 40,
+    "qstamp": 118.5,
+    "number": 40,
+    "name": "40",
+    "time_signature": "6/8",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": true,
+    "end_repeat": false,
+    "next": [
+      41
+    ]
+  },
+  {
+    "ID": "188",
+    "count": 188,
+    "qstamp": 562.5,
+    "number": 188,
+    "name": "188",
+    "time_signature": "6/8",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      189,
+      191
+    ]
+  },
+  {
+    "ID": "189",
+    "count": 189,
+    "qstamp": 565.5,
+    "number": 189,
+    "name": "189a",
+    "time_signature": "6/8",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      190
+    ]
+  },
+  {
+    "ID": "190",
+    "count": 190,
+    "qstamp": 568.5,
+    "number": 190,
+    "name": "190a",
+    "time_signature": "6/8",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": true,
+    "next": [
+      40
+    ]
+  },
+  {
+    "ID": "191",
+    "count": 191,
+    "qstamp": 571.5,
+    "number": 191,
+    "name": "191b",
+    "time_signature": "6/8",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      192
+    ]
+  },
+  {
+    "ID": "513",
+    "count": 513,
+    "qstamp": 1537.5,
+    "number": 513,
+    "name": "513",
+    "time_signature": "6/8",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      -1
+    ]
+  }
+]

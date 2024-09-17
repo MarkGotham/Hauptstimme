@@ -1,4 +1,4 @@
-qstamp,tstamp,measure,beat,Flute 1,Flute 2,Oboe 1,Oboe 2,Bb Clarinet,Bb Clarinet 2,Bassoon 1,Bassoon 2,Eb Horn 1,Eb Horn 2,C Trumpet 1,C Trumpet 2,Timpani,Violin 1,Violin 2,Viola,Violoncello,Contrabass
+qstamp,tstamp,measure,beat,Flute 1,Flute 2,Oboe 1,Oboe 2,Bb Clarinet,Bb Clarinet 2,Bassoon 1,Bassoon 2,Eb Horn 1,Eb Horn 2,C Trumpet 1,C Trumpet 2,"C, G Timpani",Violin 1,Violin 2,Viola,Violoncello,Contrabass
 0.5,0.1389,1,1.5,r,r,r,r,G4,G4,r,r,r,r,r,r,r,G4,G4,G3,G2,G2
 1.0,0.2778,1,2.0,r,r,r,r,G4,G4,r,r,r,r,r,r,r,G4,G4,G3,G2,G2
 1.5,0.4167,1,2.5,r,r,r,r,G4,G4,r,r,r,r,r,r,r,G4,G4,G3,G2,G2
