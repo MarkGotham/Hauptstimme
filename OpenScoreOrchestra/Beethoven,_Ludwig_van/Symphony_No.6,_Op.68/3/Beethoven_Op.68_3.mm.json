@@ -8,7 +8,7 @@
     "time_signature": "3/4",
     "nominal_length": 3.0,
     "actual_length": 1.0,
-    "start_repeat": false,
+    "start_repeat": true,
     "end_repeat": false,
     "next": [
       2

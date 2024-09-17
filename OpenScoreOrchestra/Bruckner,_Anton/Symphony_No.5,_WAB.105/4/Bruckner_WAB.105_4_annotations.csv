@@ -2,7 +2,6 @@ qstamp,measure,beat,measure_fraction,label,part,part_num,instrument
 0.0,1,1.0,0.0,x,Vc,23,Vc
 8.0,3,1.0,0.0,a,Vla,22,Vla
 12.0,4,1.0,0.0,a,Vln 2,21,Vln
-16.0,5,-7.0,0.0,a,Vln 1,20,Vln
 40.0,11,1.0,0.0,b,Cl 1,4,Cl
 48.0,13,1.0,0.0,y,Vln 1,20,Vln
 56.0,15,1.0,0.0,c,Vla,22,Vla
