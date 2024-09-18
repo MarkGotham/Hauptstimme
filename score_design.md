@@ -26,7 +26,7 @@
       - For example, the Beethoven symphonies do this in the horn parts (4/ii, 5/iii 4 bars before the end), and clarinets (9/iv).
       - This does not convert reliably, and adding a new part creates its own problems.
     - Where that is not possible in MS4, a manual workaround is required.
-      - Brahms 1/iii has horns and trumpets in B _natural_, which means setting the transposition manually.
+      - Brahms 1/iii and 2/ii have horns and trumpets in B _natural_, which means setting the transposition manually.
 - Stave size:
   - Manually set for each work to use the largest stave size that fits within the page, including the large lyric annotations while maintaining approximate consistency across multi-movement works.
   - Again, if anyone uses these scores in performance, they may wish to adjust. 
@@ -53,7 +53,7 @@
         - ornament markings (e.g., staccato) that are missing in the source but wanted for playback.
 - Non-tempo textual markings:
   - Haupstimme annotations usually as lyrics, as described in [this explanation doc](./annotation.md).
-  - `Stave text` for instrument-specific markings like `arco`.
+  - `Stave text` or `Playing technique` for instrument-specific markings like `arco`.
     - Note that original scores use annotations like `a2` where there are two parts on one stave.
       - We have split those parts, so don't strictly need these annotations.
       - All the same, we include them where it might plausibly help clarify solos and the moves to/from unison.
