@@ -65,3 +65,4 @@
     - MuseScore offers some functionality to 'exclude bars from the measure count'. This can lead to improved layout in the app, but experimentation shows that it does not convert well.
       - We therefore avoid such _manual_ changes and (attempt) to fix them automatically from the measure map.
     - Example issues: anacruses, first/second time bars, split bars.
+    
