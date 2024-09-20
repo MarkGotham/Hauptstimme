@@ -1,0 +1,92 @@
+[
+  {
+    "ID": "1",
+    "count": 1,
+    "qstamp": 0.0,
+    "number": 1,
+    "name": "1",
+    "time_signature": "3/8",
+    "nominal_length": 1.5,
+    "actual_length": 0.5,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      2
+    ]
+  },
+  {
+    "ID": "54",
+    "count": 54,
+    "qstamp": 78.5,
+    "number": 54,
+    "name": "54",
+    "time_signature": "3/8",
+    "nominal_length": 1.5,
+    "actual_length": 1.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      55
+    ]
+  },
+  {
+    "ID": "55",
+    "count": 55,
+    "qstamp": 79.5,
+    "number": 55,
+    "name": "55",
+    "time_signature": "3/8",
+    "nominal_length": 1.5,
+    "actual_length": 0.5,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      56
+    ]
+  },
+  {
+    "ID": "100",
+    "count": 100,
+    "qstamp": 146.0,
+    "number": 100,
+    "name": "100",
+    "time_signature": "3/8",
+    "nominal_length": 1.5,
+    "actual_length": 1.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      101
+    ]
+  },
+  {
+    "ID": "101",
+    "count": 101,
+    "qstamp": 147.0,
+    "number": 101,
+    "name": "101",
+    "time_signature": "3/8",
+    "nominal_length": 1.5,
+    "actual_length": 0.5,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      102
+    ]
+  },
+  {
+    "ID": "166",
+    "count": 166,
+    "qstamp": 243.5,
+    "number": 166,
+    "name": "166",
+    "time_signature": "3/8",
+    "nominal_length": 1.5,
+    "actual_length": 1.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      -1
+    ]
+  }
+]
