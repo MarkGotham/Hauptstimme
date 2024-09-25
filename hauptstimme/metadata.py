@@ -42,6 +42,7 @@ import pandas as pd
 import json
 import re
 import pathlib
+import markdown
 from hauptstimme.utils import csv_to_yaml
 from hauptstimme.alignment.scraping import (
     get_imslp_audio_files, get_github_repo_files
@@ -277,10 +278,10 @@ def make_contents():
     Produce a tabular summary of files committed to the corpus with raw
     file links to enable direct download. This is the 'README.md'.
     """
-    with open(CORPUS_PATH / "README.md", "w") as f:
-        f.write("## Corpus contents with direct download links\n")
-        f.write("|composer|collection|movement|score|-|melody|\n")
-        f.write("|---|---|---|---|---|---|\n")
+    with open(CORPUS_PATH / "README.md", "w") as md_f:
+        md_f.write("## Corpus contents with direct download links\n")
+        md_f.write("|composer|collection|movement|score|-|melody|\n")
+        md_f.write("|---|---|---|---|---|---|\n")
 
         contents = []
 
@@ -309,4 +310,50 @@ def make_contents():
             contents.append("|".join(line))
 
         for line in contents:
-            f.write(line)
+            md_f.write(line)
+
+    with open(CORPUS_PATH / "README.html", "w") as html_f:
+        with open(CORPUS_PATH / "README.md", "r") as md_f:
+            contents = md_f.read()
+        contents = markdown.markdown(
+            contents, extensions=["markdown.extensions.tables"]
+        )
+        contents = "<body>\n" + contents.replace(
+            "<table>\n", '<table id="README" class="display">'
+        )
+        contents += (
+            '<link rel="stylesheet" href="https://cdn.datatables.net' +
+            '/2.1.7/css/dataTables.dataTables.css" />\n' +
+            '<script src="https://ajax.googleapis.com/ajax/libs/jquery' +
+            '/2.1.3/jquery.min.js"></script>\n' +
+            '<script src="https://cdn.datatables.net/2.1.7/js/' +
+            'dataTables.js"></script>\n' +
+            '<script>\n' +
+            '$(document).ready(function () {\n' +
+            '$.fn.dataTable.ext.type.order["movement-pre"] = function' +
+            ' (d) {\n' +
+            '// Match the (first) movement number and letter (a, b, ' +
+            'etc.) if present\n' +
+            'var match = d.match(/^(\d+)([a-z]?|(?:,\d+)*)$/i);\n' +
+            'if (match) {\n' +
+            '// Parse the (first) movement number\n' +
+            'var number = parseInt(match[1], 10);\n' +
+            '// Extract the movement letter if present\n' +
+            'var letter = match[2] || "";\n' +
+            '// Return the movement number (scaled up) + the ASCII' +
+            ' value of the movement letter\n' +
+            'return number * 1000 + (letter.charCodeAt(0) || 0);\n' +
+            '}\n' +
+            'return 0;\n' +
+            '};\n' +
+            '$("#README").DataTable({\n' +
+            'paging: false,\n' +
+            'columnDefs: [\n' +
+            '{ "type": "movement", target: 2 }\n' +
+            ']\n' +
+            '});\n' +
+            '});\n' +
+            '</script>\n' +
+            '</body>\n'
+        )
+        html_f.write(contents)
