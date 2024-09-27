@@ -26,11 +26,11 @@ specifically for splitting two voices within a measure, but this is
 only a small part of the consideration.
 This code handles a wider set of considerations.
 
-Potential Future TODOs:
+Possible future TODOs:
 - Add proper XML IDs like .instrumentId = "wind.reed.clarinet.bflat" to
 improve MS4 parsing.
 - In score cleanup: only keep one dynamic after split and delete 
-dynamics with no notes
+dynamics with no notes.
 """
 from __future__ import annotations
 

@@ -71,6 +71,9 @@ We provide the `hauptstimme` package as well as the following code:
 - `align_score_audios.py`: Take a score's MuseScore/MusicXML file and a set of audio files, then align the audio files to the score, producing an alignment table.
 - `demo.ipynb`: A demonstration of how functions in the haupstimme package can be used.
 
+Possible future TODOs:
+- Analysis of hypotheses such as 'loud dynamic and lots of unison = camera on whole orchestra'.
+- Distance between melodic blocks and clustering.
 
 ## Acknowledgements
 

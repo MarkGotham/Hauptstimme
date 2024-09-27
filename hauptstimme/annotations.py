@@ -28,9 +28,9 @@ Notes:
 3.  Each annotation is for a specific voice within a part (e.g. Flute 1
     instead of 1 and 2).
 
-Possible Future TODOs:
-- Test robustness/flexibility with settable voices
-- Additional functionality to extract <all> or <first_instance> of theme
+Possible future TODOs:
+- Test robustness/flexibility with settable voices.
+- Additional functionality to extract all or first_instance of a theme.
 """
 from __future__ import annotations
 
