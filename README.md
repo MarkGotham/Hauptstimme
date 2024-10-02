@@ -72,6 +72,7 @@ We provide the `hauptstimme` package as well as the following code:
 - `demo.ipynb`: A demonstration of how functions in the haupstimme package can be used.
 
 Possible future TODOs:
+- Renumbering scores based on measure maps.
 - Analysis of hypotheses such as 'loud dynamic and lots of unison = camera on whole orchestra'.
 - Distance between melodic blocks and clustering.
 
