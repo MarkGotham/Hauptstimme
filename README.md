@@ -75,6 +75,10 @@ Possible future TODOs:
 - Renumbering scores based on measure maps.
 - Analysis of hypotheses such as 'loud dynamic and lots of unison = camera on whole orchestra'.
 - Distance between melodic blocks and clustering.
+- Extracting all instances of a particular theme.
+- Allowing multiple annotations at the same timestamp (currently causes issues with the part relationship summaries, but would be useful in the case of polyphony).
+
+Development was done in Python 3.11.
 
 ## Acknowledgements
 
