@@ -1,0 +1,24 @@
+Source,CHdV,CHdV,CHdV,CHdV,Adler,Adler,Adler
+Units,Name,Semitones,Name,Name,Name,Name,Name
+Instrument,Mean,StandardDeviation,Lowest,Highest,ConventionalLowest,ConventionalHighest,Median
+Piccolo,A6,6.91,D#4,A#7,D5,C8,G6
+Flute,A5,7.42,A#3,D7,C4,D7,G5
+Oboe,D#5,5.64,G#3,E6,A#3,G6,D5
+English Horn,G4,6.03,F3,A#5,E3,C6,G#4
+Clarinet (B-flat),A4,8,G#2,F#6,D3,G6,A#4
+Bass Clarinet,C3,10.89,C#1,A#4,A#1,D5,F#3
+Bassoon,F#3,8.52,A#1,D#5,A#1,E5,G3
+Contrabassoon,C2,7.52,B0,A#3,A#0,A#3,E2
+French Horn,C#4,7.23,D1,C6,G1,F5,F#3
+Trumpet,A#4,6.4,G2,C#6,F#3,C6,A4
+Trombone,A#3,6.78,D1,D5,E2,F5,A#3
+Bass Trombone,C#3,6.15,C2,A#4,A#1,A#4,E3
+Tuba,E2,5.92,E1,F#3,D1,G4,A#2
+Timpani,F#3,11.34,C2,A5,D2,C4,C#3
+Piano,D#4,17.4,C#1,G#7,A0,C8,E4
+Continuo,G#3,8.72,C2,F5,N/A,N/A,N/A
+Harp,D3,13.74,D1,D7,B1,F#7,D4
+Violin,C5,8.66,C3,A#7,G3,B7,A5
+Viola,D4,7.03,G2,E6,C3,A6,A#4
+Cello,F3,8.59,C2,D6,C2,E6,D4
+Contrabass,D#2,6.85,C1,G#4,C1,G4,A2
