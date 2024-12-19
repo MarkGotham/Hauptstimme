@@ -77,6 +77,7 @@ Possible future TODOs:
 - Distance between melodic blocks and clustering.
 - Extracting all instances of a particular theme.
 - Allowing multiple annotations at the same timestamp (currently causes issues with the part relationship summaries, but would be useful in the case of polyphony).
+- Produce instrument range data from our corpus (see `range_data_adler_chon_huron_devlieger.csv`)
 
 Development was done in Python 3.11.
 

@@ -80,7 +80,7 @@ def ms3_convert(
     else:
         out_dir = validate_path(out_dir, dir=True)
 
-    command = (f"ms3 convert -d '{input_dir}' -o '{out_dir}' " +
+    command = (f'ms3 convert -d "{input_dir}" -o "{out_dir}" ' +
                rf"-i {regex}\.{input_ext} --format {output_ext} " +
                f"--extensions {input_ext} -l c")
 
@@ -99,14 +99,14 @@ def ms3_convert(
                 program_files, r"MuseScore 4\bin\MuseScore4.exe"
             )
             subprocess.run(
-                command + f" -m '{ms4_path}'",
+                command + f' -m "{ms4_path}"',
                 shell=True,
                 check=True
             )
         except KeyError:
             ms4_path = "/Applications/MuseScore 4.app/Contents/MacOS/mscore"
             subprocess.run(
-                command + f" -m '{ms4_path}'",
+                command + f' -m "{ms4_path}"',
                 shell=True,
                 check=True
             )
@@ -136,8 +136,8 @@ def get_measure_map(
     score_mscz = validate_path(score_mscz)
     os.makedirs(".score_audio_alignment_temp", exist_ok=True)
     os.system(
-        f"ms3 extract -d '{score_mscz.parent}' -a -i '{score_mscz.name}' " +
-        f"-M '{os.getcwd()}/.score_audio_alignment_temp' -l c"
+        f'ms3 extract -d "{score_mscz.parent}" -a -i "{score_mscz.name}" ' +
+        f'-M "{os.getcwd()}/.score_audio_alignment_temp" -l c'
     )
     os.rename(
         f".score_audio_alignment_temp/{score_mscz.stem}.measures.tsv",
@@ -145,7 +145,7 @@ def get_measure_map(
     )
     os.system(
         f"MM convert -d .score_audio_alignment_temp -o " +
-        f"'{score_mscz.parent}' -l c"
+        f'"{score_mscz.parent}" -l c'
     )
     os.system("rm -rf .score_audio_alignment_temp")
 
@@ -186,8 +186,8 @@ def get_measure_map_given_measures(
     score_mscz = validate_path(score_mscz)
     score_measures = validate_path(score_measures)
     os.system(
-        f"MM convert -d '{score_measures.parent}' -o '{score_mscz.parent}' " +
-        f"-r '{score_measures.name}' -l c"
+        f'MM convert -d "{score_measures.parent}" -o "{score_mscz.parent}" ' +
+        f'-r "{score_measures.name}" -l c'
     )
 
     score_mm = score_mscz.with_suffix(".mm.json")
