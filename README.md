@@ -98,7 +98,7 @@ Many thanks to:
 
 - Scores: CC0 1.0 Universal
 - Annotations: CC-By-SA
-- Code: CC-By-SA
+- Code: MIT
 
 All scores have been copied from clearly identified and unequivocally public source editions on IMSLP.
 Transcribers have committed to making these transcriptions using that public source edition, and working from scratch.
@@ -108,4 +108,4 @@ If you see anything that we ought to review, please let us know.
 
 ## Citation
 
-To follow ;). Provisionally Martins et al. 2024.
+To follow.

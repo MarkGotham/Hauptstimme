@@ -12,8 +12,7 @@ Matthew Blessing
 
 LICENCE:
 ===============================
-Creative Commons Attribution-ShareAlike 4.0 International License
-https://creativecommons.org/licenses/by-sa/4.0/
+Code = MIT. See [README](https://github.com/MarkGotham/Hauptstimme/tree/main#licence)
 
 
 ABOUT:
