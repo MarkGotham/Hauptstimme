@@ -12,11 +12,11 @@ This repo is about that effect, providing:
 Please see [this explanation](./annotation.md)
 for more details on the annotation method and FAQs.
 
-Here's is an example of what the annotated scores look like.
+Here is an example of what the annotated scores look like.
 This is a famous melody (the start of the main theme in Beethoven's 5th)
 that's distributed among several parts.
 
-![Annotated score exrtract](extract_example.png).
+![Annotated score extract](extract_example.png).
 
 
 ## Score design choices
@@ -28,36 +28,29 @@ As such, we also explain the [stylistic design criteria here](./score_design.md)
 
 ## Corpus Summary
 
-The full, core corpus consists of over 100 movements:
-- Bach, JS:
-  - B Minor Mass,
-    - 27 movements (ish ... depending on how you count it).
-    - the movements are numbered according to NBAII (1–23) and are split by movement where possible (e.g., 7a from 7b), but not in the case of dovetail (e.g., 4a and 4b are one with double bar line and editorial tempo marking).
-  - Brandenburg Concerto No.3 (BWV 1048),
-    - 3 movements.
-  - Brandenburg Concerto No.4 (BWV 1049),
-    - 3 movements.
-- Beach, Amy:
-  - 1 symphony, the 'Gaelic',
-    - 4 movements.
-- Beethoven
-  - 9 symphonies,
-    - 37 movements.
-- Brahms, Johannes:
-  - Ein Deutsches Requiem,
-    - 1 movement, the 1st.
-  - 4 symphonies,
-    - 16 movements.
-- Bruckner, Anton:
-  - 1 symphony, the 5th,
-    - 4 movements.
+The full, core corpus consists of c.100 movements.
+
+|Composer|Large scale work/s|Movements|
+|---|---|---|---|
+Bach, Johann Sebastian|B Minor Mass, BWV.232|27|
+Bach, Johann Sebastian|Brandenburg Concerto No.3, BWV.1048|3|
+Bach, Johann Sebastian|Brandenburg Concerto No.4, BWV.1049|3|
+Beach, Amy|Symphony in E minor (Gaelic), Op.32|4|
+Beethoven, Ludwig van|Complete Symphonies (1–9) |37|
+Brahms, Johannes|Ein Deutsches Requiem, Op.45|1 (from 7)|
+Brahms, Johannes|Complete Symphonies (1–4) | 16 |
+Bruckner, Anton|Symphony No.5, WAB.105| 4/5 |
+
+Movement numbering is complex in the following cases:
+- Bach: B Minor Mass. The movements are numbered according to NBAII (1–23) and are split by movement where possible (e.g., 7a from 7b), but not in the case of dovetail (e.g., 4a and 4b are one with double bar line and editorial tempo marking).
+- Bruckner: Symphony No.5, WAB.105. We split the 3rd movement into two files.
 
 All of these cases include the files in the format `<identifier>` plus:
 - `.mscz`: The annotated MuseScore file. Edit this file.
 - `.mxl`: A conversion of the `.mscz` file.
 - `_annotations.csv`: Information about each annotation including the qstamp, theme label, and instrument.
 - `_melody.mxl`: The annotated melody segments stitched together to form a single-stave 'melody score'.
-- `.mm.json`: The compressed ['measure map'](https://dl.acm.org/doi/10.1145/3625135.3625136) - a lightweight representation of the bar information to enable alignment with other corpora.
+- `.mm.json`: The compressed ['measure map'](https://dl.acm.org/doi/10.1145/3625135.3625136) – a lightweight representation of the bar information to enable alignment with other corpora.
 - `.csv`: A 'lightweight' .csv file extracted from the full score (with repeats expanded), indicating the highest pitch being played by each instrument part at every timestamp in which a change occurs in the score.
 - `_part_relations.csv`: A derived analysis of the interplay between the score parts in each Hauptstimme annotation block.
 - `_alignment.csv`: An alignment table containing timestamps for each score note onset in a set of public domain / open license audio recordings obtained from IMSLP. (These files only exist for scores where such recordings are available.)
@@ -73,7 +66,7 @@ We provide the `hauptstimme` package as well as the following code:
 - `main.py`: Take a score's MuseScore file and produces the rest of the files specified above (except the alignment table).
 - `build_corpus.py`: Produce all corpus files from each score's MuseScore file.
 - `get_part_relations.py`: Take a score's MusicXML file and produce a part relationships summary.
-- `compare_segmentations.py`: Take a score's MusicXML file and perform a comparison of the Hauptstimme annotation points to a three different sets of automatic segmentation points (novelty-based (tempogram features), novelty-based (chromagram features), and changepoint detection-based).
+- `compare_segmentations.py`: Take a score's MusicXML file and perform a comparison of the Hauptstimme annotation points to three different sets of automatic segmentation points (novelty-based (tempogram features), novelty-based (chromagram features), and changepoint detection-based).
 - `align_score_audios.py`: Take a score's MuseScore/MusicXML file and a set of audio files, then align the audio files to the score, producing an alignment table.
 - `demo.ipynb`: A demonstration of how functions in the haupstimme package can be used.
 
