@@ -12,6 +12,12 @@ This repo is about that effect, providing:
 Please see [this explanation](./annotation.md)
 for more details on the annotation method and FAQs.
 
+Here's is an example of what the annotated scores look like.
+This is a famous melody (the start of the main theme in Beethoven's 5th)
+that's distributed among several parts.
+
+![Annotated score exrtract](extract_example.png).
+
 
 ## Score design choices
 
