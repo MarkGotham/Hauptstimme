@@ -6,9 +6,9 @@ Markdown==3.7
 matplotlib==3.7.4
 music21==9.1.0
 ms3==2.5.3
-numpy==2.1.2
+numpy==1.26.4
 pandas==1.5.3
-pyMeasureMap==0.1.post1.dev2+g6f30987
+git+https://github.com/measure-map/pyMeasureMap.git@convert_cmd#egg=pyMeasureMap
 PyYAML==6.0.1
 Requests==2.32.3
 ruptures==1.1.9
