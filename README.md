@@ -31,7 +31,7 @@ As such, we also explain the [stylistic design criteria here](./score_design.md)
 The full, core corpus consists of c.100 movements.
 
 |Composer|Large scale work/s|Movements|
-|---|---|---|---|
+|---|---|---|
 Bach, Johann Sebastian|B Minor Mass, BWV.232|27|
 Bach, Johann Sebastian|Brandenburg Concerto No.3, BWV.1048|3|
 Bach, Johann Sebastian|Brandenburg Concerto No.4, BWV.1049|3|
