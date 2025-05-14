@@ -20,7 +20,7 @@
   path: Beach,_Amy/Symphony_in_E_minor_(Gaelic),_Op.32
   name: Symphony in E minor, Op. 32 "Gaelic"
   scores: 4
-  imslp_link: https://imslp.org/wiki/Symphony_in_E_minor,_Op.32_'Gaelic'_(Beach,_Amy_Marcy)
+  imslp_link: "https://imslp.org/wiki/Symphony_in_E_minor,_Op.32_'Gaelic'_(Beach,_Amy_Marcy)"
   composer_id: 235699
 - id: 5
   path: Beethoven,_Ludwig_van/Symphony_No.1,_Op.21
