@@ -22,7 +22,7 @@ each other in each Hauptstimme annotation block.
 
 It requires the .mxl file for a score.
 
-Run 'python3 compare_segmentations.py {score_mxl_file}'.
+Run 'python3 get_part_relations.py {score_mxl_file}'.
 """
 from __future__ import annotations
 
