@@ -54,7 +54,7 @@ import re
 from pathlib import Path
 from scipy import interpolate
 from music21 import converter
-from music21.stream import Score
+from music21.stream.base import Score
 from synctoolbox.dtw.mrmsdtw import sync_via_mrmsdtw
 from synctoolbox.dtw.utils import (
     compute_optimal_chroma_shift,
@@ -205,13 +205,13 @@ def align_score_audio(
 
     # Compute the range of audio file samples to use in the alignment
     if start:
-        start_secs = (start.hour*60 + start.minute)*60 + start.second
+        start_secs = (start.hour * 60 + start.minute) * 60 + start.second
         start_sample = start_secs * SAMPLE_RATE
     else:
         start_secs = 0
         start_sample = None
     if end:
-        end_secs = (end.hour*60 + end.minute)*60 + end.second
+        end_secs = (end.hour * 60 + end.minute) * 60 + end.second
         end_sample = end_secs * SAMPLE_RATE + 1
     else:
         end_sample = None

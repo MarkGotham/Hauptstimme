@@ -16,7 +16,7 @@ Code = MIT. See [README](https://github.com/MarkGotham/Hauptstimme/tree/main#lic
 
 ABOUT:
 ===============================
-Build the OpenScore Orchestra corpus from the .mscz files.
+Build the corpus from the .mscz files.
 
 For each file:
 - Convert to .mxl
@@ -175,8 +175,8 @@ def get_corpus_part_relations():
 
 def get_corpus_alignment_tables():
     """
-    Get an alignment for every score in the corpus with at least one
-    public domain/open license recording on IMSLP.
+    Get an alignment file for every score in the corpus with at least 
+    one public domain/open license recording on IMSLP.
     """
     mscz_files = get_corpus_files(file_path="*.mscz", pathlib=True)
     audios = pd.read_csv(DATA_PATH / "audios.tsv", sep="\t")

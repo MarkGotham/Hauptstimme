@@ -39,7 +39,7 @@ from __future__ import annotations
 import pandas as pd
 import numpy as np
 from music21 import converter, chord, note, tempo, pitch, instrument
-from music21.stream import Score, Part, Measure
+from music21.stream.base import Score, Part, Measure
 from music21.meter.base import TimeSignature
 from pathlib import Path
 from src.utils import validate_path
@@ -325,7 +325,7 @@ def score_measure_map_to_df(
         # Get qstamp for end of the measure
         diff = measure_end - row["score_qstamp"]
         qstamp += diff
-        tstamp += diff*curr_quarter_length
+        tstamp += diff * curr_quarter_length
 
     # Convert rows containing lists into multiple rows
     df_score = df_score.explode(["qstamp", "tstamp"]).apply(
@@ -550,7 +550,7 @@ def score_to_df(score: Score) -> pd.DataFrame:
         if row["qstamp"] != max_qstamp:
             # Calculate the timestamp for the next note event
             diff = df_score.loc[i + 1, "qstamp"] - row["qstamp"]
-            next_tstamp += diff*curr_quarter_length
+            next_tstamp += diff * curr_quarter_length
 
     print("Conversion successful.")
 

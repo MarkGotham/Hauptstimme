@@ -45,7 +45,7 @@ from src.utils import csv_to_yaml
 from src.alignment.scraping import (
     get_imslp_audio_files, get_github_repo_files
 )
-from src.constants import REPO_AUTHOR, REPO_NAME, DATA_PATH
+from src.constants import REPO_AUTHOR, REPO_NAME, DATA_PATH, DATA_DIR
 
 
 def create_audio_metadata(user_region: str):
@@ -295,7 +295,7 @@ def make_contents():
                 mscz_file.parts[-4:-1]
             ]
             # If collection has no movements
-            if movement[-4:] == "mscz":
+            if composer == DATA_DIR:
                 composer = collection
                 collection = movement
                 movement = ""
