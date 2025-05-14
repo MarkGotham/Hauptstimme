@@ -5,7 +5,7 @@ import os
 import subprocess
 import pandas as pd
 import yaml
-from music21.stream import Part, Measure
+from music21.stream.base import Part, Measure
 from pymeasuremap import base
 from pathlib import Path
 from src.constants import DATA_PATH

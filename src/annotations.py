@@ -41,7 +41,7 @@ from pathlib import Path
 from music21 import (
     converter, clef, expressions, chord, tempo, spanner, dynamics, note, base
 )
-from music21.stream import Score, Part, Measure
+from music21.stream.base import Score, Part, Measure
 from music21.meter.base import TimeSignature
 from src.utils import (
     get_corpus_files, validate_path, check_measure_exists

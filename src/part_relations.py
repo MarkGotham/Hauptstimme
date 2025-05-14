@@ -25,7 +25,7 @@ from __future__ import annotations
 import pandas as pd
 from pathlib import Path
 from music21 import converter
-from music21.stream import Score
+from music21.stream.base import Score
 from src.utils import validate_path
 from src.types import Scalar
 from typing import Union, Dict

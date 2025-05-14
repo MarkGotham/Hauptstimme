@@ -4,10 +4,11 @@ import pathlib
 import numpy as np
 
 REPO_AUTHOR = "MarkGotham"
+DATA_DIR = "data"
 CODE_PATH = pathlib.Path(__file__).parent
 REPO_PATH = CODE_PATH.parent
 REPO_NAME = REPO_PATH.name
-DATA_PATH = REPO_PATH / "data"
+DATA_PATH = REPO_PATH / DATA_DIR
 
 SAMPLE_RATE = 22050
 FEATURE_RATE = 50

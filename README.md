@@ -49,7 +49,8 @@ The datasets include the following files for each orchestral work in the format 
 - `.mxl`: A conversion of the `.mscz` file.
 - `.mm.json`: The compressed ['measure map'](https://dl.acm.org/doi/10.1145/3625135.3625136) – a lightweight representation of the bar information to enable alignment with other corpora.
 - `.csv`: A 'lightweight' .csv file extracted from the full score (with repeats expanded), indicating the highest pitch being played by each instrument part at every timestamp in which a change occurs in the score.
-- `_alignment.csv`: An alignment table containing timestamps for each score note onset in a set of public domain / open licence audio recordings obtained from the International Music Score Library Project [(IMSLP)](https://imslp.org). (These files only exist for scores where such recordings are available.)
+- COMING SOON...
+`_alignment.csv`: An alignment table containing timestamps for each score note onset in a set of public domain / open licence audio recordings obtained from the International Music Score Library Project [(IMSLP)](https://imslp.org). (These files are only included for scores with sufficiently high-quality alignments.)
 - `_annotations.csv`: Information about each annotation including the qstamp, theme label, and instrument.
 - `_melody.mxl`: The annotated melody segments stitched together to form a single-stave 'melody score'.
 - `_part_relations.csv`: A derived analysis of the interplay between the score parts in each Hauptstimme annotation block.
@@ -69,17 +70,20 @@ We provide the following scripts, located in `scripts/`:
 - `compare_segmentations.py`: Take a score's MusicXML file and perform a comparison of the Hauptstimme annotation points to three different sets of automatic segmentation points (novelty-based (tempogram features), novelty-based (chromagram features), and changepoint detection-based).
 - `align_score_audios.py`: Take a score's MuseScore/MusicXML file and a set of audio files, then align the audio files to the score, producing an alignment table.
 
+See each script's docstring for how it can be run in the command line.
+
 We also provide Jupyter notebooks, located in `notebooks/`:
 - `demo.ipynb`: A demonstration of how the functions in `src` can be used directly.
-- `proofs_of_concept.ipynb`: Code showcasing how the comparison of Hauptstimme annotations and video annotations for two proofs of concept (as seen in the paper) was conducted.
+<!-- - `proofs_of_concept.ipynb`: Code showcasing how the comparison of Hauptstimme annotations and video annotations for two proofs of concept (as seen in the paper) was conducted. -->
 
-Possible future TODOs:
+<!-- Possible future TODOs:
 - Renumbering scores based on measure maps.
 - Analysis of hypotheses such as 'loud dynamic and lots of unison = camera on whole orchestra'.
 - Distance between melodic blocks and clustering.
 - Extracting all instances of a particular theme.
 - Allowing multiple annotations at the same timestamp (currently causes issues with the part relationship summaries, but would be useful in the case of polyphony).
-- Produce instrument range data from our corpus (see `range_data_adler_chon_huron_devlieger.csv`).
+- Produce instrument range data and other data summaries.
+(see `range_data_adler_chon_huron_devlieger.csv`) -->
 
 Development was done in Python 3.11. 
 

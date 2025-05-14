@@ -39,7 +39,7 @@ from attr import validate
 from music21 import (
     converter, instrument, key, layout, pitch, stream, dynamics, chord, note
 )
-from music21.stream import Part, Measure, Score, Stream
+from music21.stream.base import Part, Measure, Score, Stream
 from pathlib import Path
 from src.utils import get_corpus_files, validate_path
 from src.constants import DATA_PATH
