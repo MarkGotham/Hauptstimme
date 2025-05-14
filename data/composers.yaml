@@ -1,0 +1,78 @@
+- id: 1339
+  path: Bach,_Johann_Sebastian
+  name: Johann Sebastian Bach
+  gender: Male
+  born: 1685
+  died: 1750
+  desc: German composer
+  sets: 3
+  scores: 30
+  wikidata: Q1339
+  wikipedia: https://en.wikipedia.org/wiki/Johann_Sebastian_Bach
+  imslp: https://imslp.org/wiki/Category:Bach,_Johann_Sebastian
+  image: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Johann_Sebastian_Bach.jpg/220px-Johann_Sebastian_Bach.jpg
+- id: 235699
+  path: Beach,_Amy
+  name: Amy Beach
+  gender: Female
+  born: 1867
+  died: 1944
+  desc: American composer and pianist
+  sets: 1
+  scores: 4
+  wikidata: Q235699
+  wikipedia: https://en.wikipedia.org/wiki/Amy_Beach
+  imslp: https://imslp.org/wiki/Category:Beach,_Amy_Marcy
+  image: https://upload.wikimedia.org/wikipedia/commons/9/91/Amy_March_(Cheney)_Beach,_1867-1944,_head_and_shoulders,_facing_slightly_left_LCCN2006690272.jpg
+- id: 255
+  path: Beethoven,_Ludwig_van
+  name: Ludwig van Beethoven
+  gender: Male
+  born: 1770
+  died: 1827
+  desc: German composer
+  sets: 9
+  scores: 37
+  wikidata: Q255
+  wikipedia: https://en.wikipedia.org/wiki/Ludwig_van_Beethoven
+  imslp: https://imslp.org/wiki/Category:Beethoven,_Ludwig_van
+  image: https://upload.wikimedia.org/wikipedia/commons/6/6f/Beethoven.jpg
+- id: 230412
+  path: Boulanger,_Lili
+  name: Lili Boulanger
+  gender: Female
+  born: 1893
+  died: 1918
+  desc: French composer
+  sets: 1
+  scores: 1
+  wikidata: Q230412
+  wikipedia: https://en.wikipedia.org/wiki/Lili_Boulanger
+  imslp: https://imslp.org/wiki/Category:Boulanger,_Lili
+  image: https://upload.wikimedia.org/wikipedia/commons/d/da/Lili_Boulanger_1.jpg
+- id: 7294
+  path: Brahms,_Johannes
+  name: Johannes Brahms
+  gender: Male
+  born: 1833
+  died: 1897
+  desc: German composer and pianist
+  sets: 4
+  scores: 16
+  wikidata: Q7294
+  wikipedia: https://en.wikipedia.org/wiki/Johannes_Brahms
+  imslp: https://imslp.org/wiki/Category:Brahms,_Johannes
+  image: https://upload.wikimedia.org/wikipedia/commons/1/15/JohannesBrahms.jpg
+- id: 81752
+  path: Bruckner,_Anton
+  name: Anton Bruckner
+  gender: Male
+  born: 1824
+  died: 1896
+  desc: Austrian composer
+  sets: 1
+  scores: 4
+  wikidata: Q81752
+  wikipedia: https://en.wikipedia.org/wiki/Anton_Bruckner
+  imslp: https://imslp.org/wiki/Category:Bruckner,_Anton
+  image: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Anton_Bruckner.jpg/220px-Anton_Bruckner.jpg

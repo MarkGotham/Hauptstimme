@@ -1,0 +1,120 @@
+- id: 1
+  path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232
+  name: Mass in B minor, BMV 232
+  scores: 24
+  imslp_link: https://imslp.org/wiki/Mass_in_B_minor,_BWV_232_(Bach,_Johann_Sebastian)
+  composer_id: 1339
+- id: 2
+  path: Bach,_Johann_Sebastian/Brandenburg_Concerto_No.3,_BWV.1048
+  name: Brandenburg Concerto No.3 in G major, BMV 1048
+  scores: 3
+  imslp_link: https://imslp.org/wiki/Brandenburg_Concerto_No.3_in_G_major,_BWV_1048_(Bach,_Johann_Sebastian)
+  composer_id: 1339
+- id: 3
+  path: Bach,_Johann_Sebastian/Brandenburg_Concerto_No.4,_BWV.1049
+  name: Brandenburg Concerto No.4 in G major, BMV 1049
+  scores: 3
+  imslp_link: https://imslp.org/wiki/Brandenburg_Concerto_No.4_in_G_major,_BWV_1049_(Bach,_Johann_Sebastian)
+  composer_id: 1339
+- id: 4
+  path: Beach,_Amy/Symphony_in_E_minor_(Gaelic),_Op.32
+  name: Symphony in E minor, Op. 32 "Gaelic"
+  scores: 4
+  imslp_link: https://imslp.org/wiki/Symphony_in_E_minor,_Op.32_'Gaelic'_(Beach,_Amy_Marcy)
+  composer_id: 235699
+- id: 5
+  path: Beethoven,_Ludwig_van/Symphony_No.1,_Op.21
+  name: Symphony No.1, Op.21
+  scores: 4
+  imslp_link: https://imslp.org/wiki/Symphony_No.1,_Op.21_(Beethoven,_Ludwig_van)
+  composer_id: 255
+- id: 6
+  path: Beethoven,_Ludwig_van/Symphony_No.2,_Op.36
+  name: Symphony No.2, Op.36
+  scores: 4
+  imslp_link: https://imslp.org/wiki/Symphony_No.2,_Op.36_(Beethoven,_Ludwig_van)
+  composer_id: 255
+- id: 7
+  path: Beethoven,_Ludwig_van/Symphony_No.3,_Op.55
+  name: Symphony No.3, Op.55
+  scores: 4
+  imslp_link: https://imslp.org/wiki/Symphony_No.3,_Op.55_(Beethoven,_Ludwig_van)
+  composer_id: 255
+- id: 8
+  path: Beethoven,_Ludwig_van/Symphony_No.4,_Op.60
+  name: Symphony No.4, Op.60
+  scores: 4
+  imslp_link: https://imslp.org/wiki/Symphony_No.4,_Op.60_(Beethoven,_Ludwig_van)
+  composer_id: 255
+- id: 9
+  path: Beethoven,_Ludwig_van/Symphony_No.5,_Op.67
+  name: Symphony No.5, Op.67
+  scores: 4
+  imslp_link: https://imslp.org/wiki/Symphony_No.5,_Op.67_(Beethoven,_Ludwig_van)
+  composer_id: 255
+- id: 10
+  path: Beethoven,_Ludwig_van/Symphony_No.6,_Op.68
+  name: Symphony No.6, Op.68
+  scores: 5
+  imslp_link: https://imslp.org/wiki/Symphony_No.6,_Op.68_(Beethoven,_Ludwig_van)
+  composer_id: 255
+- id: 11
+  path: Beethoven,_Ludwig_van/Symphony_No.7,_Op.92
+  name: Symphony No.7, Op.92
+  scores: 4
+  imslp_link: https://imslp.org/wiki/Symphony_No.7,_Op.92_(Beethoven,_Ludwig_van)
+  composer_id: 255
+- id: 12
+  path: Beethoven,_Ludwig_van/Symphony_No.8,_Op.93
+  name: Symphony No.8, Op.93
+  scores: 4
+  imslp_link: https://imslp.org/wiki/Symphony_No.8,_Op.93_(Beethoven,_Ludwig_van)
+  composer_id: 255
+- id: 13
+  path: Beethoven,_Ludwig_van/Symphony_No.9,_Op.125
+  name: Symphony No.9, Op.125
+  scores: 4
+  imslp_link: https://imslp.org/wiki/Symphony_No.9,_Op.125_(Beethoven,_Ludwig_van)
+  composer_id: 255
+- id: 14
+  path: Boulanger,_Lili/D'un_matin_de_printemps
+  name: D'un_matin_de_printemps
+  scores: 1
+  imslp_link: "https://imslp.org/wiki/D'un_matin_de_printemps_(Boulanger,_Lili)"
+  composer_id: 230412
+- id: 15
+  path: Brahms,_Johannes/Ein_Deutsches_Requiem
+  name: Ein Deutsches Requiem, Op.45
+  scores: 1
+  imslp_link: https://imslp.org/wiki/Ein_deutsches_Requiem,_Op.45_(Brahms,_Johannes)
+  composer_id: 7294
+- id: 16
+  path: Brahms,_Johannes/Symphony_No.1,_Op.68
+  name: Symphony No.1, Op.68
+  scores: 4
+  imslp_link: https://imslp.org/wiki/Symphony_No.1,_Op.68_(Brahms,_Johannes)
+  composer_id: 7294
+- id: 17
+  path: Brahms,_Johannes/Symphony_No.2,_Op.73
+  name: Symphony No.2, Op.73
+  scores: 4
+  imslp_link: https://imslp.org/wiki/Symphony_No.2,_Op.73_(Brahms,_Johannes)
+  composer_id: 7294
+- id: 18
+  path: Brahms,_Johannes/Symphony_No.3,_Op.90
+  name: Symphony No.3, Op.90
+  scores: 4
+  imslp_link: https://imslp.org/wiki/Symphony_No.3,_Op.90_(Brahms,_Johannes)
+  composer_id: 7294
+- id: 19
+  path: Brahms,_Johannes/Symphony_No.4,_Op.98
+  name: Symphony No.4, Op.98
+  scores: 4
+  imslp_link: https://imslp.org/wiki/Symphony_No.4,_Op.98_(Brahms,_Johannes)
+  composer_id: 7294
+- id: 20
+  path: Bruckner,_Anton/Symphony_No.5,_WAB.105
+  name: Symphony No.5, WAB.105
+  scores: 5
+  imslp_link: https://imslp.org/wiki/Symphony_No.5_in_B-flat_major,_WAB_105_(Bruckner,_Anton)
+  composer_id: 81752

@@ -1,0 +1,122 @@
+[
+  {
+    "ID": "1",
+    "count": 1,
+    "qstamp": 0.0,
+    "number": 1,
+    "name": "1",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      2
+    ]
+  },
+  {
+    "ID": "57",
+    "count": 57,
+    "qstamp": 168.0,
+    "number": 57,
+    "name": "57",
+    "time_signature": "4/4",
+    "nominal_length": 4.0,
+    "actual_length": 4.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      58
+    ]
+  },
+  {
+    "ID": "58",
+    "count": 58,
+    "qstamp": 172.0,
+    "number": 58,
+    "name": "58",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      59
+    ]
+  },
+  {
+    "ID": "61",
+    "count": 61,
+    "qstamp": 181.0,
+    "number": 61,
+    "name": "61",
+    "time_signature": "4/4",
+    "nominal_length": 4.0,
+    "actual_length": 4.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      62
+    ]
+  },
+  {
+    "ID": "62",
+    "count": 62,
+    "qstamp": 185.0,
+    "number": 62,
+    "name": "62",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      63
+    ]
+  },
+  {
+    "ID": "63",
+    "count": 63,
+    "qstamp": 188.0,
+    "number": 63,
+    "name": "63",
+    "time_signature": "4/4",
+    "nominal_length": 4.0,
+    "actual_length": 4.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      64
+    ]
+  },
+  {
+    "ID": "64",
+    "count": 64,
+    "qstamp": 192.0,
+    "number": 64,
+    "name": "64",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      65
+    ]
+  },
+  {
+    "ID": "207",
+    "count": 207,
+    "qstamp": 621.0,
+    "number": 207,
+    "name": "207",
+    "time_signature": "3/4",
+    "nominal_length": 3.0,
+    "actual_length": 3.0,
+    "start_repeat": false,
+    "end_repeat": false,
+    "next": [
+      -1
+    ]
+  }
+]
