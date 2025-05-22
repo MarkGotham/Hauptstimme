@@ -324,39 +324,9 @@ def make_contents():
         contents = "<body>\n" + contents.replace(
             "<table>\n", '<table id="README" class="display">'
         )
-        contents += (
-            '<link rel="stylesheet" href="https://cdn.datatables.net' +
-            '/2.1.7/css/dataTables.dataTables.css" />\n' +
-            '<script src="https://ajax.googleapis.com/ajax/libs/jquery' +
-            '/2.1.3/jquery.min.js"></script>\n' +
-            '<script src="https://cdn.datatables.net/2.1.7/js/' +
-            'dataTables.js"></script>\n' +
-            '<script>\n' +
-            '$(document).ready(function () {\n' +
-            '$.fn.dataTable.ext.type.order["movement-pre"] = function' +
-            ' (d) {\n' +
-            '// Match the (first) movement number and letter (a, b, ' +
-            'etc.) if present\n' +
-            r'var match = d.match(/^(\d+)([a-z]?|(?:,\d+)*)$/i);\n' +
-            'if (match) {\n' +
-            '// Parse the (first) movement number\n' +
-            'var number = parseInt(match[1], 10);\n' +
-            '// Extract the movement letter if present\n' +
-            'var letter = match[2] || "";\n' +
-            '// Return the movement number (scaled up) + the ASCII' +
-            ' value of the movement letter\n' +
-            'return number * 1000 + (letter.charCodeAt(0) || 0);\n' +
-            '}\n' +
-            'return 0;\n' +
-            '};\n' +
-            '$("#README").DataTable({\n' +
-            'paging: false,\n' +
-            'columnDefs: [\n' +
-            '{ "type": "movement", target: 2 }\n' +
-            ']\n' +
-            '});\n' +
-            '});\n' +
-            '</script>\n' +
-            '</body>\n'
-        )
+        contents += '<link rel="stylesheet" href="https://cdn.datatables.net/2.1.7/css/dataTables.dataTables.css"/>\n'
+        contents += '<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>\n'
+        contents += '<script src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>\n'
+        contents += '<script src="search.js"></script>\n'
+        contents += '</body>\n'
         html_f.write(contents)
