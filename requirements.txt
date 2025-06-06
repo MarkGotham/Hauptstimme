@@ -8,7 +8,7 @@ music21==9.1.0
 ms3==2.5.3
 numpy==1.26.4
 pandas==1.5.3
-git+https://github.com/measure-map/pyMeasureMap.git@convert_cmd#egg=pyMeasureMap
+git+https://github.com/measure-map/pyMeasureMap.git#egg=pyMeasureMap
 PyYAML==6.0.1
 Requests==2.32.3
 ruptures==1.1.9
