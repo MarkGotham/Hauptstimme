@@ -59,6 +59,9 @@ The filename structure is as follows:
 ```
 data/<composer>/<set>/<score>/<files>
 ```
+- `<composer>` is the composer's name in the form `<Last,_First_Second>`.
+- `<set>` is an identifier for the work.
+- `<score>` is the movement number for multi-movement works. For single-movement works, the \verb`<score>` level is omitted.
 
 
 ## Code Summary
@@ -92,7 +95,7 @@ Development was done in Python 3.11.
 
 Please run `pip install -r requirements.txt --no-deps` to install the Python dependencies. 
 
-`--no-deps` is required due to a clash in the dependencies: `synctoolbox` and `libfmp` require `music21<6.0.0,>=5.7.0`, but `pyMeasureMap` requires a much newer version. However, having `music21` 9.1.0 caused no issues with the functionality used from `synctoolbox` and `libfmp`.
+`--no-deps` is required due to a clash in the dependencies: `synctoolbox` and `libfmp` require `music21<6.0.0,>=5.7.0`, but `pyMeasureMap` requires a much newer version. However, having `music21 9.1.0` caused no issues with the functionality used from `synctoolbox` and `libfmp`.
 
 Additional dependencies include:
 - MuseScore 4
