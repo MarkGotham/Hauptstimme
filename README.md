@@ -49,8 +49,7 @@ The datasets include the following files for each orchestral work in the format 
 - `.mxl`: A conversion of the `.mscz` file.
 - `.mm.json`: The compressed ['measure map'](https://dl.acm.org/doi/10.1145/3625135.3625136) – a lightweight representation of the bar information to enable alignment with other corpora.
 - `.csv`: A 'lightweight' .csv file extracted from the full score (with repeats expanded), indicating the highest pitch being played by each instrument part at every timestamp in which a change occurs in the score.
-- COMING SOON...
-`_alignment.csv`: An alignment table containing timestamps for each score note onset in a set of public domain / open licence audio recordings obtained from the International Music Score Library Project [(IMSLP)](https://imslp.org). (These files are only included for scores with sufficiently high-quality alignments.)
+- `_alignment.csv`: An alignment table containing timestamps for each score note onset in a set of public domain / open licence audio recordings obtained from the International Music Score Library Project [(IMSLP)](https://imslp.org). (These files are only included for scores with available audio recordings.)
 - `_annotations.csv`: Information about each annotation including the qstamp, theme label, and instrument.
 - `_melody.mxl`: The annotated melody segments stitched together to form a single-stave 'melody score'.
 - `_part_relations.csv`: A derived analysis of the interplay between the score parts in each Hauptstimme annotation block.
