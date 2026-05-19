@@ -33,7 +33,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from pathlib import Path
 
-import instrument_classification
+from amads.instruments import instrument_classification
 
 
 def process_csv_files(
