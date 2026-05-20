@@ -61,42 +61,36 @@ reg = instrument_classification.InstrumentRegistry()
 
 # -----------------------------------------------------------------------------
 
-# Supporting
+# CSV / token parsing
 
 def _parse_csv_row(line: str) -> list[str]:
     """Minimal CSV field splitter that respects double-quoted tokens."""
     return next(csv.reader(io.StringIO(line)))
 
 
-def _parse_token(
-        raw: str,
-        ignore_list: list[str] = ["Qstamp_Start", "Qstamp_End"],
-) -> tuple[str, str] | None:
+_IGNORE_SET: frozenset[str] = frozenset(
+    s.strip().lower() for s in ("Qstamp_Start", "Qstamp_End")
+)
+
+
+def _parse_token(raw: str) -> tuple[str, str] | None:
     """
     Return (canonical_name, family) for a single instrument token
-    or None.
+    or `None` for cases where the token is in the ignore list, or unrecognised.
     """
     if not raw:
         return None
-    ignore_list = [s.strip().lower() for s in ignore_list]
-
-    clean_raw = raw.strip().lower()
-    if clean_raw in ignore_list:
+    if raw.strip().lower() in _IGNORE_SET:
         return None
 
     parsed = reg.parse(raw)
-    if parsed:
-        return parsed.canonical, parsed.family
-    else:
-        return None
+    return (parsed.canonical, parsed.family) if parsed else None
 
 
 def parse_header(header_line: str) -> list[tuple[str, str]]:
     """Return list of (canonical, family) tuples from a header row string."""
-    tokens = _parse_csv_row(header_line)
-
     result = []
-    for t in tokens:
+    for t in _parse_csv_row(header_line):
         if not t.strip():
             continue
         parsed = _parse_token(t)
@@ -122,9 +116,6 @@ FAMILY_CMAPS: dict[str, tuple[str, str]] = {
     "Unknown":    ("#e5e4e0", "#383735"),
 }
 
-# Single shared sequential ramp for the combined (canonical) mode
-_SHARED_LIGHT, _SHARED_DARK = "#e8eaf6", "#1a237e"
-
 
 def _family_cmap(family: str) -> mcolors.LinearSegmentedColormap:
     light, dark = FAMILY_CMAPS.get(family, ("#f0f0f0", "#222222"))
@@ -136,18 +127,42 @@ def _family_cmap(family: str) -> mcolors.LinearSegmentedColormap:
 # Corpus loading
 
 def load_corpus(directory: Path, suffix: str) -> dict[str, list[tuple[str, str]]]:
+    """
+    Rglob for `*{suffix}.csv` files in the given directory.
+    Keys are relative paths, e.g. "X/Y/Z_part_relations.csv",
+    preserving folder structure for optional grouping.
+    """
     pattern = f"*{suffix}.csv"
     files = sorted(directory.rglob(pattern))
     if not files:
         sys.exit(f"No files matching '{pattern}' found in {directory}")
-    corpus = {}
+    corpus: dict[str, list[tuple[str, str]]] = {}
     for f in files:
         try:
             header = f.read_text(encoding="utf-8-sig").splitlines()[0]
-            corpus[f.name] = parse_header(header)
+            key = str(f.relative_to(directory))
+            corpus[key] = parse_header(header)
         except Exception as e:
             print(f"  Warning: could not read {f.name}: {e}", file=sys.stderr)
     return corpus
+
+
+def group_corpus_by_folder(
+    corpus: dict[str, list[tuple[str, str]]],
+) -> dict[str, list[tuple[str, str]]]:
+    """
+    Collapse corpus keys by their top-level subdirectory,
+    concatenating all parts so
+    matrix cell values become summed counts across the group.
+
+    Files directly under the root (no subdirectory) are grouped as "(root)".
+    """
+    grouped: dict[str, list[tuple[str, str]]] = {}
+    for rel_path, parts in corpus.items():
+        parts_obj = Path(rel_path).parts
+        top = parts_obj[0] if len(parts_obj) > 1 else "(root)"
+        grouped.setdefault(top, []).extend(parts)
+    return grouped
 
 
 # -----------------------------------------------------------------------------
@@ -155,15 +170,17 @@ def load_corpus(directory: Path, suffix: str) -> dict[str, list[tuple[str, str]]
 # Matrix builders
 
 def build_family_matrix(
-    corpus: dict,
+    corpus: dict[str, list[tuple[str, str]]],
 ) -> tuple[list[str], list[str], np.ndarray]:
     """
     Returns (row_labels, col_labels, matrix) where matrix[r, c] is the
-    number of parts belonging to family r in file c.
+    number of parts belonging to family r in file/group c.
     """
     filenames = list(corpus.keys())
-    families  = [f for f in FAMILY_ORDER
-                 if any(fam == f for parts in corpus.values() for _, fam in parts)]
+    families = [
+        f for f in FAMILY_ORDER
+        if any(fam == f for parts in corpus.values() for _, fam in parts)
+    ]
     mat = np.zeros((len(families), len(filenames)), dtype=int)
     for ci, fname in enumerate(filenames):
         for _, fam in corpus[fname]:
@@ -173,15 +190,20 @@ def build_family_matrix(
 
 
 def build_canonical_matrix(
-    corpus: dict,
-) -> tuple[list[str], list[str], np.ndarray, dict[str, str]]:  # added dict
+    corpus: dict[str, list[tuple[str, str]]],
+) -> tuple[list[str], list[str], np.ndarray, dict[str, str]]:
+    """
+    Like `build_family_matrix` but where rows = canonical instrument types,
+    sorted by family then name.
+    Also returns `fam_of` for use in plotting.
+    """
     filenames = list(corpus.keys())
     fam_of: dict[str, str] = {}
     for parts in corpus.values():
         for canon, fam in parts:
             fam_of.setdefault(canon, fam)
 
-    def sort_key(name):
+    def sort_key(name: str) -> tuple[int, str]:
         fidx = FAMILY_ORDER.index(fam_of[name]) if fam_of[name] in FAMILY_ORDER else 99
         return (fidx, name.lower())
 
@@ -197,12 +219,45 @@ def build_canonical_matrix(
 
 # -----------------------------------------------------------------------------
 
-# Plotting
+# Shared helpers
 
-def _short_name(filename: str, max_len: int = 22) -> str:
-    stem = Path(filename).stem
+def _short_name(key: str, max_len: int = 32) -> str:
+    """
+    Return a readable column label from a corpus key.
+    Uses the file stem (basename without extension); truncates with a leading
+    ellipsis if longer than max_len.
+    """
+    stem = Path(key).stem
     return stem if len(stem) <= max_len else "…" + stem[-(max_len - 1):]
 
+
+def _is_compact(n_cols: int, annotate: bool | None) -> bool:
+    """Determine whether to suppress per-cell annotations."""
+    return not annotate if annotate is not None else n_cols > 30
+
+
+def _apply_grid(ax, n_rows: int, n_cols: int) -> None:
+    """Draw thin grid lines over the heatmap cells."""
+    for ci in range(n_cols + 1):
+        ax.axvline(ci - 0.5, color="#dddddd", linewidth=0.4, zorder=2)
+    for ri in range(n_rows + 1):
+        ax.axhline(ri - 0.5, color="#dddddd", linewidth=0.4, zorder=2)
+
+
+def _set_col_labels(ax, col_labels: list[str], n_cols: int) -> None:
+    """Apply x-axis tick labels at 90-degree rotation."""
+    ax.set_xticks(range(n_cols))
+    ax.set_xticklabels(
+        col_labels,
+        rotation=90,
+        ha="center",
+        fontsize=8 if n_cols > 20 else 9,
+    )
+
+
+# -----------------------------------------------------------------------------
+
+# Plotting
 
 def plot_family_heatmap(
     corpus: dict,
@@ -211,36 +266,30 @@ def plot_family_heatmap(
 ) -> None:
     families, filenames, mat = build_family_matrix(corpus)
     n_rows, n_cols = mat.shape
-    compact = n_cols > 30 if annotate is None else not annotate
+    compact = _is_compact(n_cols, annotate)
 
     col_labels = [_short_name(f) for f in filenames]
 
-    cell_w  = 1.2 if compact else max(1.6, min(3.2, 180 / n_cols))
-    cell_h  = 0.8
-    fig_w   = max(8, n_cols * cell_w + 3.5)
-    fig_h   = max(3, n_rows * cell_h + 2.0)
+    cell_w = 1.2 if compact else max(1.6, min(3.2, 180 / n_cols))
+    cell_h = 0.8
+    fig_w  = max(8, n_cols * cell_w + 3.5)
+    fig_h  = max(3, n_rows * cell_h + 2.0)
 
     fig, ax = plt.subplots(figsize=(fig_w, fig_h))
 
-    # Draw each row with its own colour ramp so family identity is visible
     for ri, fam in enumerate(families):
-        cmap  = _family_cmap(fam)
-        vmax  = mat[ri].max() or 1
+        cmap = _family_cmap(fam)
+        vmax = mat[ri].max() or 1
         for ci in range(n_cols):
             val  = mat[ri, ci]
-            rgba = cmap(val / vmax if vmax else 0)
-            rect = plt.Rectangle([ci - 0.5, ri - 0.5], 1, 1, color=rgba)
-            ax.add_patch(rect)
+            rgba = cmap(val / vmax)
+            ax.add_patch(plt.Rectangle([ci - 0.5, ri - 0.5], 1, 1, color=rgba))
             if not compact and val > 0:
-                lum = 0.299*rgba[0] + 0.587*rgba[1] + 0.114*rgba[2]
+                lum = 0.299 * rgba[0] + 0.587 * rgba[1] + 0.114 * rgba[2]
                 ax.text(ci, ri, str(val), ha="center", va="center",
                         fontsize=8, color="white" if lum < 0.55 else "#333333")
 
-    # Grid lines
-    for ci in range(n_cols + 1):
-        ax.axvline(ci - 0.5, color="#dddddd", linewidth=0.4, zorder=2)
-    for ri in range(n_rows + 1):
-        ax.axhline(ri - 0.5, color="#dddddd", linewidth=0.4, zorder=2)
+    _apply_grid(ax, n_rows, n_cols)
 
     ax.set_xlim(-0.5, n_cols - 0.5)
     ax.set_ylim(-0.5, n_rows - 0.5)
@@ -248,13 +297,10 @@ def plot_family_heatmap(
 
     ax.set_yticks(range(n_rows))
     ax.set_yticklabels(families, fontsize=10)
-    ax.set_xticks(range(n_cols))
-    ax.set_xticklabels(col_labels, rotation=45, ha="right",
-                       fontsize=8 if n_cols > 20 else 9)
+    _set_col_labels(ax, col_labels, n_cols)
     ax.tick_params(length=0)
     ax.spines[:].set_visible(False)
 
-    # Colour-swatch legend
     swatches = [
         mpatches.Patch(
             facecolor=_family_cmap(f)(0.75),
@@ -263,15 +309,19 @@ def plot_family_heatmap(
         )
         for f in families
     ]
-    ax.legend(handles=swatches, loc="upper right",
-              bbox_to_anchor=(1.0, -0.18 - 0.03 * n_cols / 10),
-              frameon=False, fontsize=9, ncol=min(4, len(families)),
-              handlelength=1, handleheight=0.9, title="Family",
-              title_fontsize=9)
+    fig.legend(
+        handles=swatches,
+        loc="lower center",
+        bbox_to_anchor=(0.5, -0.02),
+        frameon=False, fontsize=9,
+        ncol=min(len(families), 7),
+        handlelength=1, handleheight=0.9,
+        title="Family", title_fontsize=9,
+    )
 
     n_files = len(filenames)
     fig.suptitle(
-        f"Instrument-family heatmap — {n_files} file{'s' if n_files != 1 else ''}\n"
+        f"Instrument-family heatmap — {n_files} column{'s' if n_files != 1 else ''}\n"
         f"Cell value = number of parts  |  colour ramp is per-family",
         fontsize=11, fontweight="normal", x=0.01, ha="left",
     )
@@ -293,7 +343,7 @@ def plot_canonical_heatmap(
     """
     row_labels, filenames, mat, fam_of = build_canonical_matrix(corpus)
     n_rows, n_cols = mat.shape
-    compact = n_cols > 30 if annotate is None else not annotate
+    compact = _is_compact(n_cols, annotate)
 
     col_labels = [_short_name(f) for f in filenames]
 
@@ -309,21 +359,21 @@ def plot_canonical_heatmap(
         fam  = fam_of.get(canon, "Unknown")
         cmap = _family_cmap(fam)
         vmax = mat[ri].max() or 1
-        # Thin divider between families
+
         if fam != prev_fam and ri > 0:
             ax.axhline(ri - 0.5, color="#888888", linewidth=0.8, zorder=3)
         prev_fam = fam
 
         for ci in range(n_cols):
             val  = mat[ri, ci]
-            rgba = cmap(val / vmax if vmax else 0)
-            rect = plt.Rectangle([ci - 0.5, ri - 0.5], 1, 1, color=rgba)
-            ax.add_patch(rect)
+            rgba = cmap(val / vmax)
+            ax.add_patch(plt.Rectangle([ci - 0.5, ri - 0.5], 1, 1, color=rgba))
             if not compact and val > 0:
-                lum = 0.299*rgba[0] + 0.587*rgba[1] + 0.114*rgba[2]
+                lum = 0.299 * rgba[0] + 0.587 * rgba[1] + 0.114 * rgba[2]
                 ax.text(ci, ri, str(val), ha="center", va="center",
                         fontsize=7, color="white" if lum < 0.55 else "#333333")
 
+    # Fine grid (family dividers drawn above take priority via zorder)
     for ci in range(n_cols + 1):
         ax.axvline(ci - 0.5, color="#dddddd", linewidth=0.3, zorder=2)
     for ri in range(n_rows + 1):
@@ -335,13 +385,10 @@ def plot_canonical_heatmap(
 
     ax.set_yticks(range(n_rows))
     ax.set_yticklabels(row_labels, fontsize=8)
-    ax.set_xticks(range(n_cols))
-    ax.set_xticklabels(col_labels, rotation=45, ha="right",
-                       fontsize=8 if n_cols > 20 else 9)
+    _set_col_labels(ax, col_labels, n_cols)
     ax.tick_params(length=0)
     ax.spines[:].set_visible(False)
 
-    # Family colour legend
     seen_fams = list(dict.fromkeys(fam_of.get(r, "Unknown") for r in row_labels))
     swatches = [
         mpatches.Patch(
@@ -351,16 +398,19 @@ def plot_canonical_heatmap(
         )
         for f in seen_fams
     ]
-    ax.legend(handles=swatches, loc="upper right",
-              bbox_to_anchor=(1.0, -0.15),
-              frameon=False, fontsize=9,
-              ncol=min(4, len(seen_fams)),
-              handlelength=1, handleheight=0.9,
-              title="Family", title_fontsize=9)
+    fig.legend(
+        handles=swatches,
+        loc="lower center",
+        bbox_to_anchor=(0.5, -0.02),
+        frameon=False, fontsize=9,
+        ncol=min(len(seen_fams), 7),
+        handlelength=1, handleheight=0.9,
+        title="Family", title_fontsize=9,
+    )
 
     n_files = len(filenames)
     fig.suptitle(
-        f"Instrument-type heatmap — {n_files} file{'s' if n_files != 1 else ''}\n"
+        f"Instrument-type heatmap — {n_files} column{'s' if n_files != 1 else ''}\n"
         f"Cell value = number of parts  |  dividers separate families",
         fontsize=11, fontweight="normal", x=0.01, ha="left",
     )
@@ -375,9 +425,12 @@ def plot_canonical_heatmap(
 
 # CLI
 
-def main():
-    ap = argparse.ArgumentParser(description=__doc__,
-                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+
+def main() -> None:
+    ap = argparse.ArgumentParser(
+        description=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
     ap.add_argument(
         "--directory",
         type=Path,
@@ -385,41 +438,51 @@ def main():
         help="Path to corpus directory"
     )
     ap.add_argument(
-    "--suffix",
+        "--suffix",
         default="_part_relations",
         help="Filename suffix (before `.csv`)"
     )
     ap.add_argument(
-    "--out",
-        default = "instrument_heatmap.pdf",
-        help = "Output image path  (default: instrument_heatmap.pdf)"
-    )
-    ap.add_argument(
-    "--min-files",
-        type=int,
-        default=4,
-        metavar="N",
-        help="Only show types present in ≥N files"
-    )
-    ap.add_argument(
-        "--no-unknown",
-        action="store_false",
-        help="Exclude instruments that could not be classified to a known family",
+        "--out",
+        default="instrument_heatmap.pdf",
+        help="Output image path",
     )
     ap.add_argument(
         "--mode",
         choices=["family", "canonical"],
         default="family",
-        help="Row grouping: 'family' (default) or 'canonical' instrument types"
+        help="Row grouping: 'family' (default) or 'canonical' instrument types",
     )
     ap.add_argument(
-        "--annotate", action=argparse.BooleanOptionalAction, default=None,
-                    help="Force cell annotations on/off (auto: on for ≤30 files)")
+        "--annotate",
+        action=argparse.BooleanOptionalAction,
+        default=None,
+        help="Force cell annotations on/off (auto: on for ≤30 columns)",
+    )
+    ap.add_argument(
+        "--group-files",
+        action="store_true",
+        default=False,
+        help="Group files by top-level subdirectory instead of showing individually",
+    )
+    ap.add_argument(
+        "--group-files-threshold",
+        type=int,
+        default=40,
+        metavar="N",
+        help="Auto-group by folder when file count exceeds N (default: 40)",
+    )
     args = ap.parse_args()
 
     corpus = load_corpus(args.directory, args.suffix)
     n = len(corpus)
     print(f"Loaded {n} file(s).")
+
+    if args.group_files or n > args.group_files_threshold:
+        reason = "flag set" if args.group_files else f">{args.group_files_threshold} files"
+        print(f"Grouping {n} files by top-level folder ({reason}).")
+        corpus = group_corpus_by_folder(corpus)
+        print(f"  → {len(corpus)} group(s).")
 
     if args.mode == "canonical":
         plot_canonical_heatmap(corpus, Path(args.out), args.annotate)
