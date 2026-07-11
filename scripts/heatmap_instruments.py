@@ -228,7 +228,7 @@ def _short_name(key: str, max_len: int = 32) -> str:
     ellipsis if longer than max_len.
     """
     stem = Path(key).stem
-    return stem if len(stem) <= max_len else "…" + stem[-(max_len - 1):]
+    return stem.split("_")[0][:max_len]
 
 
 def _is_compact(n_cols: int, annotate: bool | None) -> bool:
@@ -328,7 +328,7 @@ def plot_family_heatmap(
 
     plt.tight_layout()
     fig.savefig(out_path, dpi=150, bbox_inches="tight")
-    print(f"Saved → {out_path}")
+    print(f"Saved to {out_path}")
     plt.close(fig)
 
 
@@ -417,7 +417,7 @@ def plot_canonical_heatmap(
 
     plt.tight_layout()
     fig.savefig(out_path, dpi=150, bbox_inches="tight")
-    print(f"Saved → {out_path}")
+    print(f"Saved to {out_path}")
     plt.close(fig)
 
 
@@ -482,7 +482,7 @@ def main() -> None:
         reason = "flag set" if args.group_files else f">{args.group_files_threshold} files"
         print(f"Grouping {n} files by top-level folder ({reason}).")
         corpus = group_corpus_by_folder(corpus)
-        print(f"  → {len(corpus)} group(s).")
+        print(f"... in {len(corpus)} group(s).")
 
     if args.mode == "canonical":
         plot_canonical_heatmap(corpus, Path(args.out), args.annotate)
