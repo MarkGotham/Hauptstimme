@@ -1,6 +1,6 @@
 # Hauptstimme: Score design choices
 
-- Minimal deviations from MuseScore defaults
+- Minimal deviations from MuseScore defaults (manual edits do not convert)
 - Most systematic changes as defined in the `.mss` style sheet:
   - Justify full page.
   - All present instruments showing at all times (none hidden).
@@ -36,7 +36,11 @@
     - Medium preference for not underfilling.
     - Medium preference for the same number of staves on each page and weak preference that this includes the last page.
 - Copy the named (public domain) source edition exactly, except in limited cases like:
-  - Some variation in "crescendo" vs "cresc." vs "hairpin" etc.
+  - Some variation in "crescendo" vs "cresc." vs hairpins. In future we will aim for:
+    - "Cresc." text with the dotted line for long-range (e.g., across a page break),
+    - Hairpin symbols for all short range (e.g., 1 bar),
+    - Some discretion for busy staves ("cresc" takes less space).
+    - Note that this is certainly not consistenly implemented througout at present.
   - Stave and page breaks mostly follow MuseScore defaults.
     - Given the stylistic choices above, we make no attempt for page breaks to follow the source.
       - E.g., using Eulenberg for the Beethoven means a very different page size.
