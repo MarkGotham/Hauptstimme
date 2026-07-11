@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 import subprocess
+import re
 import tempfile
 import pandas as pd
 import yaml
@@ -9,7 +10,7 @@ from music21.stream.base import Part, Measure
 from pymeasuremap import base
 from pathlib import Path
 from src.constants import DATA_PATH
-from typing import Union, List, Optional
+from typing import List, Optional, Union
 
 
 def get_corpus_files(
@@ -50,6 +51,67 @@ def get_corpus_files(
         files.append(file if pathlib else file.as_posix())
 
     return files
+
+
+def musescore_convert(
+    input_dir: Union[str, Path],
+    input_ext: str = "mscz",
+    output_ext: str = "mxl",
+    regex: str = ".*",
+    executable: str = "/Applications/MuseScore 4.app/Contents/MacOS/mscore",
+    out_dir: Optional[Union[str, Path]] = None
+) -> None:
+    """
+    Convert all files in a directory (and its subdirectories) that match
+    a particular regex pattern and extension into a different file type,
+    using MuseScore's command-line interface directly.
+
+    Args:
+        input_dir: The path to the directory containing the files.
+        input_ext: The extension of the file type to convert from
+            (e.g., 'mscz').
+        output_ext: The extension of the file type to convert to.
+        regex: A regular expression to filter the file names (excluding
+            extension) of the files being converted.
+        executable: Path to the mscore executable.
+            Defaults to "/Applications/MuseScore 4.app/Contents/MacOS/mscore",
+            which is (clearly) for mac and MuseScore 4.
+            Check and adjust for windows etc.
+        out_dir: The path to the directory in which the converted files
+            will be saved. Default = None (same directory as each input
+            file).
+    """
+    input_dir = validate_path(input_dir, dir=True)
+    out_dir = validate_path(out_dir, dir=True) if out_dir is not None else None
+    pattern = re.compile(regex)
+
+    files = [
+        f for f in input_dir.rglob(f"*.{input_ext}")
+        if pattern.match(f.stem)
+    ]
+
+    if not files:
+        print(f"No '.{input_ext}' files matching '{regex}' found in '{input_dir}'.")
+        return
+
+    failures = []
+    for f in files:
+        if out_dir is not None:
+            target_dir = out_dir / f.parent.relative_to(input_dir)
+        else:
+            target_dir = f.parent
+        target_dir.mkdir(parents=True, exist_ok=True)
+        output_path = target_dir / f"{f.stem}.{output_ext}"
+
+        try:
+            subprocess.run(
+                [executable, "-o", str(output_path), str(f)],
+                check=True,
+                capture_output=True,
+                text=True
+            )
+        except subprocess.CalledProcessError as e:
+            failures.append((f, e.stderr.strip() if e.stderr else str(e)))
 
 
 def ms3_convert(
