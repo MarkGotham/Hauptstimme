@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-import time
 import os
 import subprocess
+import tempfile
 import pandas as pd
 import yaml
 from music21.stream.base import Part, Measure
@@ -21,32 +21,33 @@ def get_corpus_files(
     Get paths to files in the corpus that match the filename pattern.
 
     Args:
-        corpus_sub_dir: The path to a subdirectory within the 
+        corpus_sub_dir: The path to a subdirectory within the
             corpus to get files from. Default = DATA_PATH.
-        file_path: A pattern that the names of the files 
+        file_path: A pattern that the names of the files
             must match to be included.
         pathlib: Whether the output list should contain pathlib paths
             (True) or strings (False). Default = False.
 
-    Returns: 
+    Returns:
         files: A list of filepaths.
 
     Raises:
-        AssertionError: If the subdirectory is not relative to the 
+        ValueError: If the subdirectory is not relative to the
             corpus directory.
-        AssertionError: If the subdirectory doesn't exist.
+        ValueError: If the subdirectory doesn't exist.
     """
     corpus_sub_dir = validate_path(corpus_sub_dir, dir=True)
 
-    assert corpus_sub_dir.is_relative_to(DATA_PATH)
-    assert corpus_sub_dir.exists()
+    if not corpus_sub_dir.is_relative_to(DATA_PATH):
+        raise ValueError(
+            f"'{corpus_sub_dir}' must be inside DATA_PATH ({DATA_PATH})"
+        )
+    if not corpus_sub_dir.exists():
+        raise ValueError(f"'{corpus_sub_dir}' does not exist")
 
     files = []
     for file in corpus_sub_dir.rglob(file_path):
-        if pathlib:
-            files.append(file)
-        else:
-            files.append(file.as_posix())
+        files.append(file if pathlib else file.as_posix())
 
     return files
 
@@ -64,15 +65,14 @@ def ms3_convert(
 
     Args:
         input_dir: The path to the directory containing the files.
-        input_ext: The extension of the file type to convert from 
-            (e.g., 'mxl').
+        input_ext: The extension of the file type to convert from
+            (e.g., 'mscz').
         output_ext: The extension of the file type to convert to.
-        regex: A regular expression to filter the names (notincluding 
+        regex: A regular expression to filter the file names (excluding
             extension) of the files being converted.
         out_dir: The path to the directory in which the converted files
             will be saved. Default = None.
     """
-    # Check if the input directory exists
     input_dir = validate_path(input_dir, dir=True)
 
     if out_dir is None:
@@ -93,23 +93,18 @@ def ms3_convert(
             stderr=subprocess.DEVNULL
         )
     except subprocess.CalledProcessError:
-        try:
-            program_files = os.environ["PROGRAMFILES"]
+        program_files = os.environ.get("PROGRAMFILES")
+        if program_files:
             ms4_path = os.path.join(
                 program_files, r"MuseScore 4\bin\MuseScore4.exe"
             )
-            subprocess.run(
-                command + f' -m "{ms4_path}"',
-                shell=True,
-                check=True
-            )
-        except KeyError:
+        else:
             ms4_path = "/Applications/MuseScore 4.app/Contents/MacOS/mscore"
-            subprocess.run(
-                command + f' -m "{ms4_path}"',
-                shell=True,
-                check=True
-            )
+        subprocess.run(
+            command + f' -m "{ms4_path}"',
+            shell=True,
+            check=True
+        )
 
 
 def get_measure_map(
@@ -131,29 +126,29 @@ def get_measure_map(
     """
     if verbose:
         print("\nNow creating a measure map for the score...")
-        time.sleep(1)
-    # Create a measure map for the score
+
     score_mscz = validate_path(score_mscz)
-    os.makedirs(".score_audio_alignment_temp", exist_ok=True)
-    os.system(
-        f'ms3 extract -d "{score_mscz.parent}" -a -i "{score_mscz.name}" ' +
-        f'-M "{os.getcwd()}/.score_audio_alignment_temp" -l c'
-    )
-    os.rename(
-        f".score_audio_alignment_temp/{score_mscz.stem}.measures.tsv",
-        f".score_audio_alignment_temp/{score_mscz.stem}.tsv"
-    )
-    os.system(
-        f"MM convert -d .score_audio_alignment_temp -o " +
-        f'"{score_mscz.parent}" -l c'
-    )
-    os.system("rm -rf .score_audio_alignment_temp")
+
+    with tempfile.TemporaryDirectory() as tmp:
+        subprocess.run(
+            f'ms3 extract -d "{score_mscz.parent}" -a '
+            f'-i "{score_mscz.name}" -M "{tmp}" -l c',
+            shell=True,
+            check=True
+        )
+        os.rename(
+            f"{tmp}/{score_mscz.stem}.measures.tsv",
+            f"{tmp}/{score_mscz.stem}.tsv"
+        )
+        subprocess.run(
+            f'MM convert -d "{tmp}" -o "{score_mscz.parent}" -l c',
+            shell=True,
+            check=True
+        )
 
     score_mm = score_mscz.with_suffix(".mm.json")
     if verbose:
-        print(
-            f"Measure map '{score_mm}' created successfully."
-        )
+        print(f"Measure map '{score_mm}' created successfully.")
 
     return score_mm
 
@@ -172,7 +167,7 @@ def get_measure_map_given_measures(
 
     Args:
         score_mscz: The path to the score's MuseScore file.
-        score_measures: The path to the score's .measures.tsv 
+        score_measures: The path to the score's .measures.tsv
             file.
         verbose: Whether to include print statements. Default = True.
 
@@ -181,13 +176,14 @@ def get_measure_map_given_measures(
     """
     if verbose:
         print("\nNow creating a measure map for the score...")
-        time.sleep(1)
-    # Create a measure map for the score
+
     score_mscz = validate_path(score_mscz)
     score_measures = validate_path(score_measures)
-    os.system(
-        f'MM convert -d "{score_measures.parent}" -o "{score_mscz.parent}" ' +
-        f'-r "{score_measures.name}" -l c'
+    subprocess.run(
+        f'MM convert -d "{score_measures.parent}" -o "{score_mscz.parent}" '
+        f'-r "{score_measures.name}" -l c',
+        shell=True,
+        check=True
     )
 
     score_mm = score_mscz.with_suffix(".mm.json")
@@ -239,7 +235,7 @@ def get_compressed_measure_map_given_measures(
     verbose: bool = True
 ) -> Path:
     """
-    Get the compressed measure map for a score that already has a 
+    Get the compressed measure map for a score that already has a
     .measures.tsv file.
 
     Notes:
@@ -248,7 +244,7 @@ def get_compressed_measure_map_given_measures(
 
     Args:
         score_mscz: The path to the score's MuseScore file.
-        score_measures: The path to the score's .measures.tsv 
+        score_measures: The path to the score's .measures.tsv
             file.
         verbose: Whether to include print statements. Default = True.
 
@@ -265,7 +261,7 @@ def get_compressed_measure_map_given_measures(
 
 def csv_to_yaml(
     csv_file: Union[str, Path],
-    sep: Optional[str] = None
+    sep: str = ","
 ):
     """
     Convert a .csv file to a .yaml file. Used for creating the corpus
@@ -273,7 +269,7 @@ def csv_to_yaml(
 
     Args:
         csv_file: The .csv file name.
-        sep: The .csv file separator.
+        sep: The .csv file separator. Default = ",".
     """
     csv_file = validate_path(csv_file)
     csv = pd.read_csv(csv_file, sep=sep)
@@ -288,7 +284,7 @@ def validate_path(path: Union[str, Path], dir=False) -> Path:
 
     Args:
         path: A path.
-        dir: Whether the path should be for a directory. Default = 
+        dir: Whether the path should be for a directory. Default =
             False.
 
     Returns:
@@ -322,7 +318,7 @@ def check_measure_exists(
         measure_num: A measure number.
 
     Returns:
-        measure: Either the measure or None.
+        measure: The measure.
 
     Raises:
         ValueError: If the measure does not exist.
