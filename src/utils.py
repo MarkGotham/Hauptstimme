@@ -66,20 +66,27 @@ def musescore_convert(
     a particular regex pattern and extension into a different file type,
     using MuseScore's command-line interface directly.
 
+    For the default arguments this effectively produces a shell script of the kind:
+
+    ```
+    for file in input_dir/.../*.mscz; do
+      '/Applications/MuseScore 4.app/Contents/MacOS/mscore' -o "${file%.mscz}.mxl" "$file"
+    done
+    ```
+
     Args:
         input_dir: The path to the directory containing the files.
         input_ext: The extension of the file type to convert from
             (e.g., 'mscz').
         output_ext: The extension of the file type to convert to.
-        regex: A regular expression to filter the file names (excluding
-            extension) of the files being converted.
+        regex: A regular expression to filter the file names
+            (excluding extension) of the files being converted.
         executable: Path to the mscore executable.
             Defaults to "/Applications/MuseScore 4.app/Contents/MacOS/mscore",
-            which is (clearly) for mac and MuseScore 4.
+            which is (clearly) intended for Mac devices and v4 of MuseScore.
             Check and adjust for windows etc.
-        out_dir: The path to the directory in which the converted files
-            will be saved. Default = None (same directory as each input
-            file).
+        out_dir: The path to the directory in which the converted files will be saved.
+            Default = None (same directory as each input file).
     """
     input_dir = validate_path(input_dir, dir=True)
     out_dir = validate_path(out_dir, dir=True) if out_dir is not None else None
