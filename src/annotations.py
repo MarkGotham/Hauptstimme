@@ -188,7 +188,7 @@ class HauptstimmeAnnotations:
         """
         score_mxl = validate_path(score_mxl)
         self.score_path = score_mxl
-        score = converter.parse(score_mxl)
+        score = converter.parse(score_mxl).toSoundingPitch()
         if not isinstance(score, Score):
             raise ValueError(
                 "Error: Score is not of type 'music21.stream.Score'."
@@ -232,13 +232,13 @@ class HauptstimmeAnnotations:
             return True
 
         # If a regex restriction
-        if type(self.annotation_restrictions) == str:
+        if isinstance(self.annotation_restrictions, str):
             if re.fullmatch(self.annotation_restrictions, annotation_label):
                 return True
             else:
                 return False
         # If a list of accepted values
-        elif type(self.annotation_restrictions) == list:
+        elif isinstance(self.annotation_restrictions, list):
             if annotation_label in self.annotation_restrictions:
                 return True
             else:
@@ -252,8 +252,8 @@ class HauptstimmeAnnotations:
         part_info: Dict[str, str]
     ) -> List[Dict[str, Union[str, Scalar, Fraction]]]:
         """
-        Extract the annotations from the lyrics in a particular part of 
-        the score.
+        Extract the annotations from the lyrics in a particular
+        part of the score.
 
         Args:
             part: A part of the score.
@@ -376,7 +376,17 @@ class HauptstimmeAnnotations:
 
         Args:
             annotations: A list of annotations.
+
+        Raises:
+            ValueError: If `annotations` is empty.
         """
+        if len(annotations) == 0:
+            raise ValueError(
+                "Error: No annotations were found, so annotation ends " +
+                "cannot be set. Check that the score contains " +
+                "annotations meeting the given restrictions."
+            )
+
         for index in range(len(annotations) - 1):
             annotation = annotations[index]
             next_annotation = annotations[index + 1]
@@ -406,10 +416,7 @@ class HauptstimmeAnnotations:
         annotations = []
 
         for part_count, part in enumerate(self.score.parts):
-            part = cast(Part, part.toSoundingPitch())
-            # Get an abbreviation of the part name (e.g., 'Vln 1')
             part_abbrev = part.partAbbreviation
-            # Get an abbreviation of the instrument name (e.g., 'Vln')
             part_instrument = part.getInstrument()
             if not part_instrument:
                 raise ValueError(
@@ -454,8 +461,7 @@ class HauptstimmeAnnotations:
                 file will be saved. Default = None.
 
         Raises:
-            ValueError: If there are multiple annotations at a 
-                particular qstamp.
+            ValueError: If there are multiple annotations at a single qstamp.
         """
         if out_dir is None:
             out_dir = self.score_path.parent
@@ -649,6 +655,8 @@ class HauptstimmeAnnotations:
                         inPlace=True
                     )
 
+            n.stemDirection = None
+
             # Insert note into melody part
             measure = check_measure_exists(self.melody_part, measure_num)
             measure.insert(n.offset, n)
@@ -811,10 +819,15 @@ class HauptstimmeAnnotations:
                     new_hairpin = dynamics.Crescendo()
                 elif hairpin.type == "diminuendo":
                     new_hairpin = dynamics.Diminuendo()
+                else:
+                    # Unrecognised hairpin type; skip rather than
+                    # risk an UnboundLocalError on new_hairpin below
+                    continue
                 new_hairpin.addSpannedElements(hairpin_notes)
                 self.melody_part.insert(0, new_hairpin)
 
         self.melody_part.makeBeams(inPlace=True)
+        self.melody_part.partAbbreviation = ""  # Do not display
 
     def write_melody_score(
             self,
@@ -825,10 +838,10 @@ class HauptstimmeAnnotations:
         Write the melody score file.
 
         Args:
-            out_dir: A path to the directory to write the melody score 
-                to. Default = None.
-            add_bass_part: Whether to add a bass part to the melody 
-                score or not. Default = False.
+            out_dir: A path to the directory to write the melody score.
+                Default = None.
+            add_bass_part: If True, add a bass part to the melody score.
+                Default = False.
         """
         if out_dir is None:
             out_dir = self.score_path.parent
@@ -839,7 +852,9 @@ class HauptstimmeAnnotations:
 
         # Metadata
         md = self.score.metadata
-        md.movementName += " - Melody Score"
+        if md.movementName.endswith(".mxl"):
+            md.movementName = md.movementName[:-len(".mxl")].replace("_", " ")
+        md.movementName += ": Melody Score"
         melody_score.metadata = md
 
         if add_bass_part:
@@ -925,8 +940,7 @@ def get_annotations_and_melody_scores(
 ):
     """
     Get the Hauptstimme annotations file and melody score for all
-    scores in the corpus, with the option to do for a sub section of
-    the corpus.
+    scores in the corpus or subsection thereof.
 
     Args:
         corpus_sub_dir: The path to a subdirectory within the corpus to
