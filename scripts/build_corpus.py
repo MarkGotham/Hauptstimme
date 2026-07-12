@@ -6,6 +6,7 @@ Build Corpus (build_corpus.py)
 
 BY
 ===============================
+Mark Gotham
 Matthew Blessing
 
 
@@ -39,7 +40,7 @@ from pathlib import Path
 from src.score_conversion import score_to_lightweight_df
 from src.metadata import *
 from src.utils import (
-    ms3_convert, get_corpus_files, get_compressed_measure_map_given_measures
+    musescore_convert, get_corpus_files, get_compressed_measure_map_given_measures
 )
 from src.annotations import get_annotations_and_melody_scores
 from src.part_relations import get_part_relationship_summary
@@ -78,64 +79,78 @@ def get_corpus_measure_maps():
     os.system("rm -rf .temp")
 
 
-def get_corpus_annotations_and_melody_scores():
+def process_annotations_and_melody_scores():
     """
-    Get an annotation file and melody score for all scores in the 
-    corpus.
+    Get an annotation file and melody score for
+    all scores in the corpus.
+
+    Compiles (path, kwargs) pairs per corpus.
+    kwargs are passed straight through to `get_annotations_and_melody_scores`,
+    so omitting key indicates use of the default:
+    a single letter with an optional prime
+    "[a-zA-Z]'?".
+
+    Here we use that for most cases, including those known not to have the prime.
+    Special cases are hard-corded with more flexible regex.
     """
     bach_path = DATA_PATH / "Bach,_Johann_Sebastian"
-    get_annotations_and_melody_scores(
-        f"{bach_path}/B_Minor_Mass,_BWV.232",
-        lyrics_not_text=False,
-        annotation_restrictions="[a-zA-Z]"
-    )
-    get_annotations_and_melody_scores(
-        f"{bach_path}/Brandenburg_Concerto_No.3,_BWV.1048"
-    )
-    get_annotations_and_melody_scores(
-        f"{bach_path}/Brandenburg_Concerto_No.4,_BWV.1049"
-    )
-
     beach_path = DATA_PATH / "Beach,_Amy"
-    get_annotations_and_melody_scores(
-        beach_path,
-        annotation_restrictions=(
-            r"([a-zA-Z]([a-zA-Z]|('+|!))?)|([a-zA-Z]\+[a-zA-Z])|cad\.|trans"
-        )
-    )
-
     beethoven_path = DATA_PATH / "Beethoven,_Ludwig_van"
-    get_annotations_and_melody_scores(
-        beethoven_path,
-        annotation_restrictions="([a-zA-Z]('+|!)?)|tr.?"
-    )
-    get_annotations_and_melody_scores(
-        f"{beethoven_path}/Symphony_No.9,_Op.125/4",
-        lyrics_not_text=False,
-        annotation_restrictions="([a-zA-Z]('+|!)?)|tr.?"
-    )
-
     boulanger_path = DATA_PATH / "Boulanger,_Lili"
-    get_annotations_and_melody_scores(
-        boulanger_path
-    )
-
     brahms_path = DATA_PATH / "Brahms,_Johannes"
-    get_annotations_and_melody_scores(
-        brahms_path,
-        annotation_restrictions="[a-zA-Z]'?"
-    )
-    get_annotations_and_melody_scores(
-        f"{brahms_path}/Ein_Deutsches_Requiem,_Op.45",
-        lyrics_not_text=False,
-        annotation_restrictions="[a-zA-Z]'?"
-    )
-
     bruckner_path = DATA_PATH / "Bruckner,_Anton"
-    get_annotations_and_melody_scores(
-        bruckner_path,
-        annotation_restrictions="[a-zA-Z]'?"
-    )
+    haydn_path = DATA_PATH / "Haydn,_Franz"
+    schubert_path = DATA_PATH / "Schubert,_Franz"
+
+    TR_EXT = "([a-zA-Z]('+|!)?)|tr.?"  # Extended regex to include transition and more
+
+    jobs = [
+        (bach_path / "B_Minor_Mass,_BWV.232",
+            dict(lyrics_not_text=False)),
+        (bach_path / "Brandenburg_Concerto_No.3,_BWV.1048", {}),
+        (bach_path / "Brandenburg_Concerto_No.4,_BWV.1049", {}),
+
+        (beach_path, dict(
+            annotation_restrictions=None # Unusually diverse annotations, and all/only lyrics.
+        )),
+
+        (beethoven_path / "Symphony_No.1,_Op.21", dict(
+            annotation_restrictions= TR_EXT
+        )),
+        (beethoven_path / "Symphony_No.2,_Op.36", {}),
+        (beethoven_path / "Symphony_No.3,_Op.55", {}),
+        (beethoven_path / "Symphony_No.4,_Op.60", {}),
+        (beethoven_path / "Symphony_No.5,_Op.67", {}),
+        (beethoven_path / "Symphony_No.6,_Op.68", {}),
+        (beethoven_path / "Symphony_No.7,_Op.92", {}),
+        (beethoven_path / "Symphony_No.8,_Op.93", {}),
+        (beethoven_path / "Symphony_No.9,_Op.125/1", {}),
+        (beethoven_path / "Symphony_No.9,_Op.125/2", {}),
+        (beethoven_path / "Symphony_No.9,_Op.125/3", {}),
+        (beethoven_path / "Symphony_No.9,_Op.125/4", dict(
+            lyrics_not_text=False, annotation_restrictions=TR_EXT
+        )),
+
+        (boulanger_path, {}),
+
+        (brahms_path / "Symphony_No.1,_Op.68", {}),
+        (brahms_path / "Symphony_No.2,_Op.73", {}),
+        (brahms_path / "Symphony_No.3,_Op.90", {}),
+        (brahms_path / "Symphony_No.4,_Op.98", {}),
+        (brahms_path / "Ein_Deutsches_Requiem,_Op.45", dict(
+            lyrics_not_text=False,
+        )),
+
+        (bruckner_path, {}),
+
+        (haydn_path, {}),
+
+        (schubert_path, {}),
+
+    ]
+
+    for path, kwargs in jobs:
+        get_annotations_and_melody_scores(path, **kwargs)
 
 
 def get_corpus_lightweight_scores():
@@ -204,28 +219,25 @@ def get_corpus_alignment_tables():
 
 if __name__ == "__main__":
     # Convert all scores to MusicXML files
-    ms3_convert(DATA_PATH, "mscz", "mxl")
+    musescore_convert(DATA_PATH, "mscz", "mxl")
 
     # Get compressed measure maps
     get_corpus_measure_maps()
 
-    # Get annotations files and melody scores
-    get_corpus_annotations_and_melody_scores()
-
-    # Get lightweight score .csv files
+    # Get annotations, and process melody scores, .csvs, part relationship summaries
+    process_annotations_and_melody_scores()
     get_corpus_lightweight_scores()
-
-    # Get part relationship summaries
     get_corpus_part_relations()
 
-    # Get alignment tables
+    # Audio:
     get_corpus_alignment_tables()
-
     user_region = "EU"
     create_audio_metadata(user_region)
+
+    # Metadata:
     create_score_metadata()
     match_audios_to_scores()
-    # Manual cleanup for score names and audio-score matching will be
-    # required
+
+    # NB: Manual cleanup for score names and audio-score matching required
     get_yaml_files()
     make_contents()
