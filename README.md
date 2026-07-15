@@ -17,9 +17,11 @@ The OpenScore Orchestra Corpus consists of c.100 transcribed orchestral movement
 | Boulanger, Lili        | _D'un matin de printemps_           | 1          |
 | Brahms, Johannes       | _Ein Deutsches Requiem_, Op.45      | 1 (from 7) |
 | Brahms, Johannes       | Complete Symphonies (1–4)           | 16         |
-| Bruckner, Anton        | Symphony No.5, WAB.105              | 4/5        |
+| Bruckner, Anton        | Symphony No.5, WAB.105              | 4 or 5     |
+| Haydn, Franz           | Symphony No.104                     | 1 (from 4) |
+| Schubert, Franz        | Symphony No.5, D.485                | 1 (from 4) |
 
-Movement numbering is complex in the following cases:
+Movement numbering is complex, especially in the following cases:
 - Bach: B Minor Mass. The movements are numbered according to NBAII (1–23) and are split by movement where possible (e.g., 7a from 7b), but not in the case of dovetail (e.g., 4a and 4b are one with double bar line and editorial tempo marking).
 - Bruckner: Symphony No.5, WAB.105. We split the 3rd movement into two files.
 
