@@ -1,0 +1,75 @@
+# Single source of truth for dependencies.
+#
+#   pip install -e .                 # core: build the corpus, derive scores
+#   pip install -e ".[dev]"          # ... plus pytest
+#   pip install -e ".[analysis]"     # ... plus the plotting / analysis scripts
+#   pip install -e ".[alignment]"    # ... plus audio alignment and segmentation comparison
+#   pip install --no-deps synctoolbox==1.3.2 libfmp==1.2.5   # ... and this too, for [alignment]
+#
+# Why the last line is separate: synctoolbox and libfmp declare
+# `music21<6.0.0`, which conflicts with the music21 this project needs.
+# music21 9.1.0 works fine with the functionality used from them, but pip's
+# resolver can't be told that from inside a dependency list, so they are
+# installed with --no-deps (all their other requirements are in the
+# `alignment` extra).
+#
+# music21 and converter21 are pinned exactly on purpose: the derived .krn
+# files (and tests/golden/) depend on their exact versions. Bump them
+# deliberately, and regenerate the corpus in one commit.
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hauptstimme"
+version = "0.1.0"
+description = "The Hauptstimme annotations and OpenScore Orchestra corpus, with code for processing them."
+readme = "README.md"
+# The exact pins below (pandas 1.5.3 in particular) have no Python 3.12 wheels.
+requires-python = ">=3.11,<3.12"
+license = { text = "MIT" }  # Code. Scores: CC0 1.0. Annotations: CC-By-SA.
+
+dependencies = [
+    "music21==9.1.0",
+    "converter21==3.4.0",
+    "pandas==1.5.3",
+    "numpy==1.26.4",
+    "PyYAML==6.0.1",
+    "requests==2.32.3",
+    "beautifulsoup4==4.12.3",
+    "Markdown==3.7",
+    "ms3==2.5.3",
+    "pyMeasureMap @ git+https://github.com/measure-map/pyMeasureMap.git",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+# Plotting and the analysis scripts (histograms, heatmaps, pitch database, ...).
+analysis = [
+    "matplotlib==3.7.4",
+    "amads>=1.1.0",
+]
+
+# Audio alignment (src/alignment) and segmentation comparison (src/segmentation).
+# Also needs the libsndfile C library (required by the soundfile package),
+# and synctoolbox + libfmp installed with --no-deps (see top of this file).
+# The ranges below are those declared by synctoolbox and libfmp, minus music21.
+alignment = [
+    "librosa==0.10.1",
+    "scipy==1.14.1",
+    "ruptures==1.1.9",
+    "matplotlib==3.7.4",
+    "numba>=0.58.1,<0.60",
+    "ipython>=7.10,<8",
+    "pretty-midi>=0.2,<1",
+    "soundfile>=0.9,<1",
+]
+
+[tool.setuptools]
+# The code lives in the top-level `src` package (imported as `src.*`).
+packages = ["src", "src.alignment"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
