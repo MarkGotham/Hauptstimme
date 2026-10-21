@@ -1,6 +1,6 @@
 - id: 1
   path: Bach,_Johann_Sebastian/B_Minor_Mass,_BWV.232
-  name: Mass in B minor, BMV 232
+  name: Mass in B minor, BWV 232
   scores: 24
   imslp_link: https://imslp.org/wiki/Mass_in_B_minor,_BWV_232_(Bach,_Johann_Sebastian)
   composer_id: 1339
@@ -8,7 +8,7 @@
   date: 1749  # Complex. Kyrie–Gloria 1733, full mass 1748–49 (this used), publication much later.
 - id: 2
   path: Bach,_Johann_Sebastian/Brandenburg_Concerto_No.3,_BWV.1048
-  name: Brandenburg Concerto No.3 in G major, BMV 1048
+  name: Brandenburg Concerto No.3 in G major, BWV 1048
   scores: 3
   imslp_link: https://imslp.org/wiki/Brandenburg_Concerto_No.3_in_G_major,_BWV_1048_(Bach,_Johann_Sebastian)
   composer_id: 1339
@@ -16,7 +16,7 @@
   date: 1721
 - id: 3
   path: Bach,_Johann_Sebastian/Brandenburg_Concerto_No.4,_BWV.1049
-  name: Brandenburg Concerto No.4 in G major, BMV 1049
+  name: Brandenburg Concerto No.4 in G major, BWV 1049
   scores: 3
   imslp_link: https://imslp.org/wiki/Brandenburg_Concerto_No.4_in_G_major,_BWV_1049_(Bach,_Johann_Sebastian)
   composer_id: 1339
