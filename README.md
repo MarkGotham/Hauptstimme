@@ -94,17 +94,34 @@ Development was done in Python 3.11.
 
 ## Requirements
 
-Please run `pip install -r requirements.txt --no-deps` to install the Python dependencies. 
+Python 3.11 (the exact version pins in `pyproject.toml` have no 3.12 wheels), and MuseScore 4 (not pip-installable).
 
-`--no-deps` is required due to a clash in the dependencies: `synctoolbox` and `libfmp` require `music21<6.0.0,>=5.7.0`, but `pyMeasureMap` requires a much newer version. However, having `music21 9.1.0` caused no issues with the functionality used from `synctoolbox` and `libfmp`.
+Install from the repository root:
 
-Additional dependencies include:
-- MuseScore 4
-- If you want to align your own scores and audio files: the `libsndfile` C library (required by the `soundfile` Python package). After installing it you may need to run:
 ```bash
-  pip uninstall soundfile
-  pip install soundfile
+pip install -e .                 # core: build the corpus, derive scores
+pip install -e ".[dev]"          # ... plus pytest, to run `pytest tests/`
+pip install -e ".[analysis]"     # ... plus the plotting / analysis scripts
 ```
+
+To also align your own scores and audio files, or compare segmentations, add the audio stack:
+
+```bash
+pip install -e ".[alignment]"
+pip install --no-deps synctoolbox==1.3.2 libfmp==1.2.5
+```
+
+The second line is separate because `synctoolbox` and `libfmp` require `music21<6.0.0`, which clashes with the music21 this project needs (and `pyMeasureMap` requires a much newer version).
+`--no-deps` is therefore required for those two, whose other requirements are all in the `alignment` extra.
+However, having `music21 9.1.0` caused no issues with the functionality used from them.
+The `alignment` extra also needs the `libsndfile` C library (required by the `soundfile` Python package). After installing it you may need to run:
+
+```bash
+pip uninstall soundfile
+pip install soundfile
+```
+
+`music21` and `converter21` are pinned exactly on purpose: the derived `.krn` files depend on their versions (see `src/derive.py`).
 
 
 ## Acknowledgements
