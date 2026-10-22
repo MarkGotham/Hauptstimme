@@ -69,12 +69,30 @@ data/<composer>/<set>/<score>/<files>
 
 We provide the following scripts, located in `scripts/`:
 - `main.py`: Take a score's MuseScore file and produce the rest of the files specified above (except the alignment table).
-- `build_corpus.py`: Produce all corpus files from each score's MuseScore file.
+- `build_corpus.py`: Produce all corpus files from each score's MuseScore file. By default it only rebuilds what is missing or out of date (see below).
 - `get_part_relations.py`: Take a score's MusicXML file and produce a part relationships summary.
 - `compare_segmentations.py`: Take a score's MusicXML file and perform a comparison of the Hauptstimme annotation points to three different sets of automatic segmentation points (novelty-based (tempogram features), novelty-based (chromagram features), and changepoint detection-based).
 - `align_score_audios.py`: Take a score's MuseScore/MusicXML file and a set of audio files, then align the audio files to the score, producing an alignment table.
 
 See each script's docstring for how it can be run in the command line.
+
+### Rebuilding the corpus
+
+Most corpus files are derived from others (`.mscz` → `.mxl` → annotations, melody score, `.krn`, lightweight `.csv` → part relations), so `build_corpus.py` checks each derived file before making it. Use `--overwrite` to choose what happens to files that already exist:
+
+```bash
+python scripts/build_corpus.py                      # = --overwrite stale
+python scripts/build_corpus.py --overwrite missing  # only make what is missing; never replace
+python scripts/build_corpus.py --overwrite always   # rebuild everything
+```
+
+- `stale` (default): build a file if it is missing, or if any file it is made from was modified more recently. Editing one `.mscz` therefore rebuilds just that score's chain.
+- `missing`: build only what is missing.
+- `always`: build regardless.
+
+This is decided by file modification times, which cannot see changes to the code, the annotation conventions in `scripts/build_corpus.py`, or tool versions (MuseScore, music21, converter21). Use `--overwrite always` after any of those, and after a fresh `git clone` or checkout, where modification times reflect when files were checked out rather than when they were last changed. The audio alignment and metadata steps are not affected by this option.
+
+Running `main.py` on a single score (or calling `derive_score` directly) always rewrites, as an explicit request.
 
 We also provide Jupyter notebooks, located in `notebooks/`:
 - `demo.ipynb`: A demonstration of how the functions in `src` can be used directly.
