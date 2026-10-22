@@ -20,6 +20,7 @@ Given a score's .mscz file:
 - Convert to .mxl
 - Get compressed measure map
 - Get Hauptstimme annotations file and 'melody score'
+- Get annotation-free .krn (and _plain.mxl under build/ or the output dir)
 - Get lightweight score file
 - Get part relationships summary
 
@@ -42,6 +43,7 @@ sys.path.insert(
 import argparse
 from pathlib import Path
 from src.annotations import get_annotations_and_melody_score
+from src.derive import derive_score
 from src.score_conversion import score_to_lightweight_df
 from src.part_relations import get_part_relationship_summary
 from src.utils import ms3_convert, get_compressed_measure_map
@@ -144,6 +146,13 @@ if __name__ == "__main__":
         get_annotations_and_melody_score(
             score_mxl, out_dir, not (text), annotation_restrictions
         )
+
+    # Get annotation-free scores (.krn and _plain.mxl), with the same
+    # annotation conventions as above
+    derive_kwargs = dict(lyrics_not_text=not (text))
+    if annotation_restrictions is not None:
+        derive_kwargs["annotation_restrictions"] = annotation_restrictions
+    derive_score(score_mxl, out_dir, **derive_kwargs)
 
     # Get lightweight score file
     score_lw_df = score_to_lightweight_df(score_mxl, score_mm)
