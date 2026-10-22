@@ -139,7 +139,7 @@ def plot_histogram(
     ax.set_xlabel("Year", fontsize=11, labelpad=8, color="#333333")
     ax.set_ylabel("Number of works", fontsize=11, labelpad=8, color="#333333")
     ax.set_title(
-        f"Histogram of {field.replace("_", " ")}\n"
+        f"Histogram of {field.replace('_', ' ')}\n"
         f"({len(years)} works, {bin_size}-year bins)",
         fontsize=12, pad=14, color="#222222",
     )
