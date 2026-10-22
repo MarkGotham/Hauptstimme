@@ -46,6 +46,7 @@ from music21.meter.base import TimeSignature
 from src.utils import (
     get_corpus_files, validate_path, check_measure_exists
 )
+from src.freshness import check_overwrite_mode, needs_update
 from src.constants import DATA_PATH, ROUNDING_VALUE
 from src.types import Scalar
 from typing import cast, Union, Dict, Optional, List
@@ -143,6 +144,38 @@ def hauptstimme_round(value):
     return value
 
 
+def meets_restrictions(
+    annotation_label: str,
+    annotation_restrictions: Optional[Union[list, str]]
+) -> bool:
+    """
+    Determine whether an annotation label complies with a set of label
+    restrictions. Shared by annotation extraction (this module) and
+    annotation stripping (`src.derive`) so that the two always agree on
+    what counts as a Hauptstimme annotation.
+
+    Args:
+        annotation_label: The annotation label.
+        annotation_restrictions: Either None (anything goes), a list of
+            allowed values, or a regex that requires a full match.
+
+    Raises:
+        TypeError: If the restrictions are of an invalid type.
+    """
+    # If no restrictions
+    if annotation_restrictions is None:
+        return True
+
+    # If a regex restriction
+    if isinstance(annotation_restrictions, str):
+        return re.fullmatch(annotation_restrictions, annotation_label) is not None
+    # If a list of accepted values
+    elif isinstance(annotation_restrictions, list):
+        return annotation_label in annotation_restrictions
+    else:
+        raise TypeError("Error: Invalid restrictions type.")
+
+
 class HauptstimmeAnnotations:
     """
     A class to extract the hauptstimme annotations from a score and
@@ -219,7 +252,7 @@ class HauptstimmeAnnotations:
     def meets_restrictions(self, annotation_label: str) -> bool:
         """
         Determine whether an annotation label complies with the label
-        restrictions.
+        restrictions (see the module-level `meets_restrictions`).
 
         Args:
             annotation_label: The annotation label.
@@ -227,24 +260,9 @@ class HauptstimmeAnnotations:
         Raises:
             TypeError: If the restrictions are of an invalid type.
         """
-        # If no restrictions
-        if self.annotation_restrictions is None:
-            return True
-
-        # If a regex restriction
-        if isinstance(self.annotation_restrictions, str):
-            if re.fullmatch(self.annotation_restrictions, annotation_label):
-                return True
-            else:
-                return False
-        # If a list of accepted values
-        elif isinstance(self.annotation_restrictions, list):
-            if annotation_label in self.annotation_restrictions:
-                return True
-            else:
-                return False
-        else:
-            raise TypeError("Error: Invalid restrictions type.")
+        return meets_restrictions(
+            annotation_label, self.annotation_restrictions
+        )
 
     def annotations_from_lyrics(
         self,
@@ -934,7 +952,7 @@ def get_annotations_and_melody_score(
 
 def get_annotations_and_melody_scores(
     corpus_sub_dir: Union[str, Path] = DATA_PATH,
-    replace: bool = True,
+    overwrite: str = "always",
     lyrics_not_text: bool = True,
     annotation_restrictions: Optional[Union[list, str]] = "[a-zA-Z]'?"
 ):
@@ -945,8 +963,12 @@ def get_annotations_and_melody_scores(
     Args:
         corpus_sub_dir: The path to a subdirectory within the corpus to
             get files from. Default = CORPUS_PATH.
-        replace: Whether to replace the annotation files/melody scores
-            for scores that already have them. Default = True
+        overwrite: Whether to (re)make the annotations file and melody
+            score of a score that already has them: "stale" (if either is
+            missing or older than the score's .mxl), "missing" (only if
+            either is missing) or "always". Default = "always".
+            (This replaces the former `replace` flag, where
+            replace=True is "always" and replace=False is "missing".)
         lyrics_not_text: Whether the annotations are lyrics (True) or
             text expressions (False). Default = True.
         annotation_restrictions: Restrictions for the annotation
@@ -956,42 +978,34 @@ def get_annotations_and_melody_scores(
             2.  A regex that requires a full match.
             Default = "[a-zA-Z]'?".
     """
+    check_overwrite_mode(overwrite)
+
     for file_path in get_corpus_files(
         corpus_sub_dir, file_path="*.mxl", pathlib=True
     ):
         file_path = cast(Path, file_path)
-        if file_path.name.endswith("_melody.mxl"):
-            # Ignore melody scores
+        if file_path.name.endswith(("_melody.mxl", "_plain.mxl")):
+            # Ignore derived scores
             continue
 
         print("Score:", file_path.name)
 
-        if replace:
-            try:
-                get_annotations_and_melody_score(
-                    file_path,
-                    lyrics_not_text=lyrics_not_text,
-                    annotation_restrictions=annotation_restrictions
-                )
-            except Exception as e:
-                print(
-                    "Warning: Failed to get annotations file and melody " +
-                    f"score for '{file_path.name}' due to error: {e}")
-        else:
-            annotations_file = (
-                file_path.parent / f"{file_path.stem}_annotations.csv"
+        outputs = [
+            file_path.parent / f"{file_path.stem}_annotations.csv",
+            file_path.parent / f"{file_path.stem}_melody.mxl",
+        ]
+        if not needs_update(
+            file_path, outputs, overwrite, label="annotations and melody score"
+        ):
+            continue
+
+        try:
+            get_annotations_and_melody_score(
+                file_path,
+                lyrics_not_text=lyrics_not_text,
+                annotation_restrictions=annotation_restrictions
             )
-            if annotations_file.exists():
-                print(f"Skipping '{file_path.name}' since it already has " +
-                      "an annotations file and melody score.")
-            else:
-                try:
-                    get_annotations_and_melody_score(
-                        file_path,
-                        lyrics_not_text=lyrics_not_text,
-                        annotation_restrictions=annotation_restrictions
-                    )
-                except Exception as e:
-                    print("Warning: Failed to get annotations file and " +
-                          f"melody score for '{file_path.name}'due to " +
-                          f"error: {e}.")
+        except Exception as e:
+            print(
+                "Warning: Failed to get annotations file and melody " +
+                f"score for '{file_path.name}' due to error: {e}")
