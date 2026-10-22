@@ -1,0 +1,26 @@
+!!!COM: Bach, Johann Sebastian
+!!!OTL: Brandenburg Concerto No.3
+!!!OMD: Adagio
+!!!OMV: 2
+!!!YEC: Score: CC0 1.0 Universal; Annotations: CC-By-SA
+**kern	**kern	**kern	**kern	**kern	**kern	**kern	**kern	**kern	**kern	**kern
+*part11	*part10	*part9	*part8	*part7	*part6	*part5	*part4	*part3	*part2	*part1
+*staff11	*staff10	*staff9	*staff8	*staff7	*staff6	*staff5	*staff4	*staff3	*staff2	*staff1
+*I"Harpsichord	*I"Violone	*I"Violoncello 3	*I"Violoncello 2	*I"Violoncello 1	*I"Viola 3	*I"Viola 2	*I"Viola 1	*I"Violin 3	*I"Violin 2	*I"Violin 1
+*I'Hch	*I'Vne	*I'Vc 3	*I'Vc 2	*I'Vc 1	*I'Vla 3	*I'Vla 2	*I'Vla 1	*I'Vln 3	*I'Vln 2	*I'Vln 1
+*clefF4	*clefF4	*clefF4	*clefF4	*clefF4	*clefC3	*clefC3	*clefC3	*clefG2	*clefG2	*clefG2
+*	*ITrd7c12	*	*	*	*	*	*	*	*	*
+*k[f#]	*k[f#]	*k[f#]	*k[f#]	*k[f#]	*k[f#]	*k[f#]	*k[f#]	*k[f#]	*k[f#]	*k[f#]
+!!LO:TX:omd:t=
+*M4/4	*M4/4	*M4/4	*M4/4	*M4/4	*M4/4	*M4/4	*M4/4	*M4/4	*M4/4	*M4/4
+*met(c)	*met(c)	*met(c)	*met(c)	*met(c)	*met(c)	*met(c)	*met(c)	*met(c)	*met(c)	*met(c)
+=1	=1	=1	=1	=1	=1	=1	=1	=1	=1	=1
+!	!	!	!	!	!	!	!	!	!	!LO:TX:a:B:t=Adagio
+2C/	2CC/	2C/	2C/	2C/	2E/	2c\	2a\	2e/	2e/	2a/
+2BB;</	2BBB;</	2BB;</	2BB;</	2BB;</	2B;</	2F#;</	2d#X;<\	2d#X;</	2f#;</	2b;<\
+==	==	==	==	==	==	==	==	==	==	==
+*-	*-	*-	*-	*-	*-	*-	*-	*-	*-	*-
+!!!system-decoration: [(s1,s2,s3)][(s4,s5,s6)][(s7,s8,s9)][(s10,s11)]
+!!!ONM: BWV.1048
+!!!RDF**kern: > = above
+!!!RDF**kern: < = below
