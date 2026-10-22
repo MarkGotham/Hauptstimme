@@ -35,7 +35,6 @@ import requests
 import re
 import time
 import unicodedata
-import librosa
 import numpy as np
 from pathlib import Path
 from bs4 import BeautifulSoup, element
@@ -294,6 +293,8 @@ def load_audio_from_url(audio_url: str) -> np.ndarray:
     Returns:
         audio: The audio data.
     """
+    import librosa  # Imported here so the rest of the module needs no audio stack
+
     response = requests.get(audio_url)
     audio_bytes = BytesIO(response.content)
     audio, _ = librosa.load(audio_bytes)
