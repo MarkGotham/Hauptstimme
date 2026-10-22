@@ -66,6 +66,7 @@ from music21.stream.base import Score
 
 from src.annotations import meets_restrictions
 from src.constants import BUILD_PATH, DATA_PATH
+from src.freshness import OVERWRITE_MODES, check_overwrite_mode, needs_update
 from src.utils import validate_path
 
 # Same default as `get_annotations_and_melody_scores`:
@@ -192,12 +193,17 @@ def write_krn(score: Score, path: Union[str, Path]) -> Path:
 
 def plain_mxl_path(
     score_mxl: Path,
-    out_dir: Optional[Path] = None
+    out_dir: Optional[Path] = None,
+    mkdir: bool = True
 ) -> Path:
     """
     Where the annotation-free MusicXML for a score goes:
     `out_dir` if given, otherwise under `build/plain/`, mirroring the score's
     location in the data folder. Never inside the data folder itself.
+
+    Args:
+        mkdir: Whether to create the directory. Default = True. Pass False
+            to only look up the path (e.g., to check whether it exists).
     """
     if out_dir is None:
         try:
@@ -207,7 +213,8 @@ def plain_mxl_path(
         except ValueError:
             relative_dir = Path()
         out_dir = BUILD_PATH / "plain" / relative_dir
-    out_dir.mkdir(parents=True, exist_ok=True)
+    if mkdir:
+        out_dir.mkdir(parents=True, exist_ok=True)
     return out_dir / f"{score_mxl.stem}_plain.mxl"
 
 
@@ -219,8 +226,9 @@ def derive_score(
         DEFAULT_ANNOTATION_RESTRICTIONS
     ),
     krn: bool = True,
-    plain_mxl: bool = True
-) -> Dict[str, Union[Path, int]]:
+    plain_mxl: bool = True,
+    overwrite: str = "always"
+) -> Dict[str, Union[Path, int, None, list]]:
     """
     Derive the annotation-free kern and/or MusicXML for one score.
 
@@ -234,13 +242,46 @@ def derive_score(
             (see `strip_annotations`). Default = "[a-zA-Z]'?".
         krn: Whether to write the .krn file. Default = True.
         plain_mxl: Whether to write the _plain.mxl file. Default = True.
+        overwrite: Whether to (re)write each output: "stale" (if missing
+            or older than the score), "missing" (only if missing) or
+            "always". Each output is judged separately, and the score is
+            not even parsed if none needs writing. Default = "always"
+            (an explicit call does what it says; corpus builds choose
+            their own, see `scripts/build_corpus.py`).
 
     Returns:
-        A dict with 'removed' (the number of annotations stripped)
-        and, as written, 'krn' and 'plain_mxl' (paths).
+        A dict with:
+        - 'removed': the number of annotations stripped (None if the score
+            was not parsed because everything was up to date).
+        - 'krn' and 'plain_mxl': the paths written (if any).
+        - 'skipped': the names of requested outputs left alone because
+            they were up to date.
     """
+    check_overwrite_mode(overwrite)
     score_mxl = validate_path(score_mxl)
     out_dir = validate_path(out_dir, dir=True) if out_dir is not None else None
+
+    # Decide what to write, output by output (without creating directories).
+    wanted = {}
+    if krn:
+        wanted["krn"] = (out_dir or score_mxl.parent) / f"{score_mxl.stem}.krn"
+    if plain_mxl:
+        wanted["plain_mxl"] = plain_mxl_path(score_mxl, out_dir, mkdir=False)
+
+    todo = {}
+    skipped = []
+    for name, path in wanted.items():
+        if needs_update(score_mxl, path, overwrite, label=path.name):
+            todo[name] = path
+        else:
+            skipped.append(name)
+
+    results: Dict[str, Union[Path, int, None, list]] = {
+        "removed": None, "skipped": skipped
+    }
+    if not todo:
+        return results
+
     register_converter21()
 
     # forceSource: never use music21's parse cache, which could hide changes.
@@ -249,6 +290,7 @@ def derive_score(
         raise ValueError("Error: Score is not of type 'music21.stream.Score'.")
 
     removed = strip_annotations(score, lyrics_not_text, annotation_restrictions)
+    results["removed"] = removed
     if removed == 0:
         print(
             f"Warning: no annotations found in '{score_mxl.name}'. Check " +
@@ -256,18 +298,15 @@ def derive_score(
             "for this score."
         )
 
-    results: Dict[str, Union[Path, int]] = {"removed": removed}
-
     # Exporters can modify the stream they are given, so give the second
     # one its own copy, taken before the first runs.
-    plain_score = deepcopy(score) if plain_mxl else None
+    plain_score = deepcopy(score) if "plain_mxl" in todo else None
 
-    if krn:
-        krn_path = (out_dir or score_mxl.parent) / f"{score_mxl.stem}.krn"
-        results["krn"] = write_krn(score, krn_path)
+    if "krn" in todo:
+        results["krn"] = write_krn(score, todo["krn"])
 
     if plain_score is not None:
-        plain_path = plain_mxl_path(score_mxl, out_dir)
+        plain_path = plain_mxl_path(score_mxl, out_dir, mkdir=True)
         plain_score.write("mxl", fp=str(plain_path))
         results["plain_mxl"] = plain_path
 
@@ -290,11 +329,16 @@ if __name__ == "__main__":
         "-t", "--text", action="store_true",
         help="The annotations are text expressions (not lyrics)."
     )
+    parser.add_argument(
+        "--overwrite", choices=OVERWRITE_MODES, default="always",
+        help="Whether to rewrite outputs that exist. Default = always."
+    )
     args = parser.parse_args()
 
     print(derive_score(
         args.score,
         out_dir=args.out,
         lyrics_not_text=not args.text,
-        annotation_restrictions=args.restr
+        annotation_restrictions=args.restr,
+        overwrite=args.overwrite
     ))
