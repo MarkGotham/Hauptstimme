@@ -9,6 +9,8 @@ CODE_PATH = pathlib.Path(__file__).parent
 REPO_PATH = CODE_PATH.parent
 REPO_NAME = REPO_PATH.name
 DATA_PATH = REPO_PATH / DATA_DIR
+BUILD_DIR = "build"  # Git-ignored; holds derived files kept out of the data folder
+BUILD_PATH = REPO_PATH / BUILD_DIR
 
 SAMPLE_RATE = 22050
 FEATURE_RATE = 50
