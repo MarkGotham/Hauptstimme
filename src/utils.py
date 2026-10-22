@@ -9,6 +9,7 @@ import yaml
 from music21.stream.base import Part, Measure
 from pymeasuremap import base
 from pathlib import Path
+from src.freshness import check_overwrite_mode, needs_update
 from src.constants import DATA_PATH
 from typing import List, Optional, Union
 
@@ -59,7 +60,8 @@ def musescore_convert(
     output_ext: str = "mxl",
     regex: str = ".*",
     executable: str = "/Applications/MuseScore 4.app/Contents/MacOS/mscore",
-    out_dir: Optional[Union[str, Path]] = None
+    out_dir: Optional[Union[str, Path]] = None,
+    overwrite: str = "always"
 ) -> None:
     """
     Convert all files in a directory (and its subdirectories) that match
@@ -87,7 +89,12 @@ def musescore_convert(
             Check and adjust for windows etc.
         out_dir: The path to the directory in which the converted files will be saved.
             Default = None (same directory as each input file).
+        overwrite: Whether to convert files whose output exists: "stale"
+            (only if the input is newer than the output), "missing" (never
+            replace an existing output) or "always". Default = "always".
+            See `src/freshness.py`.
     """
+    check_overwrite_mode(overwrite)
     input_dir = validate_path(input_dir, dir=True)
     out_dir = validate_path(out_dir, dir=True) if out_dir is not None else None
     pattern = re.compile(regex)
@@ -109,6 +116,9 @@ def musescore_convert(
             target_dir = f.parent
         target_dir.mkdir(parents=True, exist_ok=True)
         output_path = target_dir / f"{f.stem}.{output_ext}"
+
+        if not needs_update(f, output_path, overwrite, label=output_path.name):
+            continue
 
         try:
             subprocess.run(
